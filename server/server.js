@@ -1,6 +1,6 @@
-import express from "express";
-import cors from "cors";
-import data from "./data/demoData.json" assert { type: "json" };
+const express = require("express");
+const cors = require("cors");
+const data = require("./data/demoData.json");
 
 const app = express();
 app.use(cors());
