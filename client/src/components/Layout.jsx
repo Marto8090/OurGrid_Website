@@ -8,8 +8,8 @@ export default function Layout() {
   return (
     <div>
       <nav style={{ padding: 12, background: "#ffea00" }}>
-        <Link to={`${base}/what-is-grid-congestion`}>What is grid congestion?</Link>{" | "}
-        <Link to={`${base}/faq`}>FAQ</Link>{" | "}
+        <Link to={`${base}/what-is-grid-congestion`}>What is grid congestion?</Link> {" | "}
+        <Link to={`${base}/faq`}>FAQ</Link> {" | "}
         <Link to="/">← Back</Link>
       </nav>
       <Outlet />

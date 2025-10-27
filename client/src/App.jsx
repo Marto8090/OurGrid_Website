@@ -1,19 +1,33 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AudienceProvider } from "./context/AudienceContext.jsx";
 
-function Home() { return <h1 style={{ padding: 24 }}>Home ✅</h1>; }
-function About() { return <h1 style={{ padding: 24 }}>About ✅</h1>; }
+import AudienceChoice from "./pages/AudienceChoice.jsx";
+import Layout from "./components/Layout.jsx";
+import WhatIsCongestion from "./pages/WhatIsCongestion.jsx";
+import FAQ from "./pages/FAQ.jsx";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <nav style={{ padding: 12, background: "#ffe08a" }}>
-        <Link to="/">Home</Link> {" | "}
-        <Link to="/about">About</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
+    <AudienceProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AudienceChoice />} />
+
+          {/* Resident */}
+          <Route path="/u" element={<Layout />}>
+            <Route index element={<Navigate to="what-is-grid-congestion" replace />} />
+            <Route path="what-is-grid-congestion" element={<WhatIsCongestion />} />
+            <Route path="faq" element={<FAQ />} />
+          </Route>
+
+          {/* Municipality */}
+          <Route path="/m" element={<Layout />}>
+            <Route index element={<Navigate to="what-is-grid-congestion" replace />} />
+            <Route path="what-is-grid-congestion" element={<WhatIsCongestion />} />
+            <Route path="faq" element={<FAQ />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AudienceProvider>
   );
 }

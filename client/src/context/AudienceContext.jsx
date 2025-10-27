@@ -4,7 +4,7 @@ const AudienceContext = createContext();
 
 export function AudienceProvider({ children }) {
   const [audience, setAudience] = useState(
-    () => localStorage.getItem("audience") || null
+    () => localStorage.getItem("audience") || null // "user" | "municipality"
   );
   useEffect(() => { if (audience) localStorage.setItem("audience", audience); }, [audience]);
   return (
