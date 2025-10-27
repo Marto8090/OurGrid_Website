@@ -1,0 +1,5 @@
+{
+  "transformerLoad": [60, 72, 88, 95, 100, 84, 70],
+  "timeLabels": ["08:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00"],
+  "message": "Avoid using heavy appliances during 16:00–18:00 to reduce congestion."
+}
