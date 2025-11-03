@@ -1,3 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/index.css (Tailwind v4) */
+@import "tailwindcss";
+
+/* Load your font (use the exact family name you want: "Nono Sans", "Noto Sans", or "Nunito Sans") */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+/* Tailwind v4: set the default sans font */
+@theme {
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* OPTIONAL: basic body styling */
+:root {
+  color-scheme: light dark;
+}
