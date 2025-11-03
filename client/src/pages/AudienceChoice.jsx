@@ -1,19 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
+import { User, Building2 } from "lucide-react";
 
 export default function AudienceChoice() {
   const { setAudience } = useAudience();
   const nav = useNavigate();
-
-  const handleResident = () => {
-    setAudience("user");
-    nav("/u");
-  };
-
-  const handleMunicipality = () => {
-    setAudience("municipality");
-    nav("/m");
-  };
 
   return (
     <main className="min-h-screen bg-[#4a2431] flex flex-col font-sans">
@@ -27,33 +18,48 @@ export default function AudienceChoice() {
           Are you a resident or a member of the municipality?
         </h2>
 
-        <div className="flex flex-col md:flex-row w-full max-w-md md:max-w-3xl gap-4 md:gap-8">
-          {/* Resident button */}
+        {/* One container; column on mobile, row on desktop */}
+        <div className="w-full max-w-sm md:max-w-3xl flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-8">
+          {/* Resident */}
           <button
-            className="flex-1 bg-[#f9a825] hover:bg-[#fcd34d] text-[#4a2431] rounded-2xl p-6 md:p-10 flex flex-col items-center justify-center shadow-lg transition-all md:text-lg"
-            onClick={handleResident}
+            onClick={() => { setAudience("user"); nav("/u"); }}
+            className="order-1 group w-full md:flex-1 bg-[#f9a825] hover:bg-[#fcd34d] text-[#4a2431] 
+                       rounded-2xl p-5 md:p-10 flex flex-col items-center justify-center shadow-lg 
+                       transition-all"
           >
             <span className="text-sm md:text-base">I am a</span>
             <span className="text-2xl md:text-4xl font-bold">Resident</span>
-            <span className="text-4xl md:text-6xl mt-2" role="img" aria-label="resident">
-              👤
-            </span>
+            <User
+              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-300 
+                         group-hover:scale-110 group-hover:rotate-3"
+              strokeWidth={2.5}
+            />
           </button>
 
-          {/* Municipality button */}
+          {/* OR — always the middle item */}
+          <div className="order-2 flex items-center justify-center">
+            <span className="inline-flex items-center justify-center rounded-full border border-white/40 
+                             text-white/90 text-sm md:text-base h-8 w-8 md:h-9 md:w-9">
+              OR
+            </span>
+          </div>
+
+          {/* Municipality */}
           <button
-            className="flex-1 bg-[#39b54a] hover:bg-[#51c261] text-[#4a2431] rounded-2xl p-6 md:p-10 flex flex-col items-center justify-center shadow-lg transition-all md:text-lg"
-            onClick={handleMunicipality}
+            onClick={() => { setAudience("municipality"); nav("/m"); }}
+            className="order-3 group w-full md:flex-1 bg-[#39b54a] hover:bg-[#51c261] text-[#4a2431] 
+                       rounded-2xl p-5 md:p-10 flex flex-col items-center justify-center shadow-lg 
+                       transition-all"
           >
             <span className="text-sm md:text-base">I am a member of a</span>
             <span className="text-2xl md:text-4xl font-bold">Municipality</span>
-            <span className="text-4xl md:text-6xl mt-2" role="img" aria-label="municipality">
-              🏛️
-            </span>
+            <Building2
+              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-300 
+                         group-hover:scale-110 group-hover:-rotate-3"
+              strokeWidth={2.5}
+            />
           </button>
         </div>
-
-        <div className="text-white font-bold md:hidden">OR</div>
       </section>
     </main>
   );
