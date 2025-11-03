@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
+import Header from "../components/Header.jsx"; // 👈 add this
 
 export default function Layout() {
   const { audience } = useAudience();
@@ -7,6 +8,10 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* New sticky header (logo + hamburger). Self-contained styles. */}
+      <Header />
+
+      {/* Your existing nav with audience-aware links (unchanged). */}
       <nav className="bg-[#ffea00] p-3 flex justify-center gap-4 font-medium text-gray-800">
         <Link
           to={`${base}/what-is-grid-congestion`}
@@ -22,7 +27,10 @@ export default function Layout() {
           FAQ
         </Link>
         <span>|</span>
-        <Link to="/" className="hover:underline hover:text-gray-900 transition-colors">
+        <Link
+          to="/"
+          className="hover:underline hover:text-gray-900 transition-colors"
+        >
           ← Back
         </Link>
       </nav>
