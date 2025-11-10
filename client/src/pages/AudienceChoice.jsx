@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
 import { User, Building2 } from "lucide-react";
+import Logo from "../assets/Logo.png";
 
 export default function AudienceChoice() {
   const { setAudience } = useAudience();
@@ -8,11 +9,18 @@ export default function AudienceChoice() {
 
   return (
     <main className="min-h-screen bg-[#4a2431] flex flex-col font-sans">
-      {/* Top bar */}
-      <header className="bg-[#ffea00] py-4 px-4 md:py-6 md:px-8">
-        <h1 className="text-xl md:text-3xl font-bold text-[#4a2431]">
-          OurGrid
-        </h1>
+      {/* Top bar with brand yellow + matching logo/text sizes */}
+      <header className="bg-[#F4B14A] py-4 px-4 md:py-6 md:px-8 shadow-md">
+        <div className="flex items-center gap-3">
+          <img
+            src={Logo}
+            alt="OurGrid logo"
+            className="h-9 w-9 lg:h-12 lg:w-12 object-contain rounded-xl"
+          />
+          <h1 className="font-extrabold text-[#F9F5F2] text-[22px] lg:text-[24px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
+            OurGrid
+          </h1>
+        </div>
       </header>
 
       <section className="flex flex-col items-center justify-center flex-1 px-4 py-8 space-y-8 md:space-y-12">

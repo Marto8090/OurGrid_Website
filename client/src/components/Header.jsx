@@ -7,10 +7,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const { audience } = useAudience();
 
-  // Logo destination:
-  // municipality -> /m
-  // user         -> /u
-  // none         -> /
+  // Logo destination
   const homePath =
     audience === "municipality"
       ? "/m"
@@ -34,32 +31,33 @@ export default function Header() {
   // Shared link style (desktop + mobile)
   const navLinkClass = `
     text-[17px]
-    text-[#F4B14A]
-    font-medium
+    text-[#4F2E39]
+    font-semibold
     tracking-wide
     pb-1
     border-b-2 border-transparent
     hover:text-white
-    hover:border-[#F4B14A]
-    hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]
+    hover:border-[#4F2E39]
+    hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]
     transition-all
   `;
 
-  // EXACT shared style for Switch audience (desktop + mobile)
+  // Shared style for "Switch audience"
   const switchAudienceClass = `
     inline-flex items-center justify-center
     px-4 py-2
     rounded-full
-    border border-[#F4B14A]/70
+    border border-[#4F2E39]/70
     text-sm
-    text-[#F4B14A]
-    hover:bg-[#F4B14A]
-    hover:text-[#4F2E39]
+    text-[#4F2E39]
+    font-semibold
+    hover:bg-[#4F2E39]
+    hover:text-[#F4B14A]
     transition-all
   `;
 
   return (
-    <header className="sticky top-0 z-30 bg-[#4F2E39] text-[#F9F5F2]">
+    <header className="sticky top-0 z-30 bg-[#F4B14A] text-[#4F2E39] shadow-md">
       <style>{`
         @keyframes menuDrop {
           from { transform: scaleY(0.85); opacity: 0; }
@@ -71,18 +69,19 @@ export default function Header() {
         }
         @keyframes glowPulse {
           0%, 100% {
-            filter: drop-shadow(0 0 6px rgba(244,177,74,0.4));
+            filter: drop-shadow(0 0 4px rgba(249,245,242,0.3));
           }
           50% {
-            filter: drop-shadow(0 0 14px rgba(244,177,74,0.9));
+            filter: drop-shadow(0 0 10px rgba(249,245,242,0.9));
           }
         }
       `}</style>
 
       <div className="w-full h-16 lg:h-20 px-4 lg:px-8 flex items-center justify-between relative">
-        {/* Left: logo + text as one unit */}
+        {/* Logo + text */}
         <Link
           to={homePath}
+          onClick={() => setOpen(false)}
           className="
             flex items-center gap-3
             group
@@ -90,7 +89,6 @@ export default function Header() {
             hover:scale-105
             hover:animate-[glowPulse_1.6s_ease-in-out_infinite]
           "
-          onClick={() => setOpen(false)}
         >
           <img
             src={Logo}
@@ -104,9 +102,10 @@ export default function Header() {
           />
           <span
             className="
-              font-semibold
-              text-[#F4B14A]
+              font-extrabold
+              text-[#F9F5F2]
               text-[22px] lg:text-[24px]
+              drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]
               transition-all duration-300
             "
           >
@@ -114,64 +113,59 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* DESKTOP NAV (lg+) */}
+        {/* DESKTOP NAV */}
         <div className="hidden lg:flex items-center gap-8">
           {hasAudience &&
-            links.map(link => (
-              <Link
-                key={link.label}
-                to={link.to}
-                className={navLinkClass}
-              >
+            links.map((link) => (
+              <Link key={link.label} to={link.to} className={navLinkClass}>
                 {link.label}
               </Link>
             ))}
 
-          {/* Desktop: Switch audience -> "/" */}
           <Link to="/" className={switchAudienceClass}>
             Switch audience
           </Link>
         </div>
 
-        {/* MOBILE/TABLET BURGER (shown < lg) */}
+        {/* MOBILE BURGER */}
         <button
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setOpen(v => !v)}
+          onClick={() => setOpen((v) => !v)}
           className="
             lg:hidden
             relative w-9 h-9
             flex items-center justify-center
             rounded-full
-            border border-[#F4B14A]
-            hover:bg-[#4F2E39]/70
+            border border-[#4F2E39]
+            hover:bg-[#4F2E39]/20
             transition-colors duration-200
-            focus:outline-none focus:ring-2 focus:ring-[#F4B14A]/80
+            focus:outline-none focus:ring-2 focus:ring-[#4F2E39]/60
           "
         >
           <span
             className={`
-              absolute h-0.5 w-5 rounded bg-[#F4B14A]
+              absolute h-0.5 w-5 rounded bg-[#4F2E39]
               transition-all duration-200
               ${open ? "rotate-45 translate-y-0" : "-translate-y-1.5"}
             `}
           />
           <span
             className={`
-              absolute h-0.5 w-5 rounded bg-[#F4B14A]
+              absolute h-0.5 w-5 rounded bg-[#4F2E39]
               transition-all duration-200
               ${open ? "opacity-0" : "opacity-100"}
             `}
           />
           <span
             className={`
-              absolute h-0.5 w-5 rounded bg-[#F4B14A]
+              absolute h-0.5 w-5 rounded bg-[#4F2E39]
               transition-all duration-200
               ${open ? "-rotate-45 translate-y-0" : "translate-y-1.5"}
             `}
           />
         </button>
 
-        {/* MOBILE/TABLET DROPDOWN */}
+        {/* MOBILE MENU */}
         {open && (
           <div
             className="
@@ -179,17 +173,17 @@ export default function Header() {
               absolute
               right-0 top-14 mr-1
               w-72
-              bg-[#4F2E39]
-              border border-[#F4B14A]
+              bg-[#F4B14A]
+              border border-[#4F2E39]
               rounded-[20px]
-              shadow-2xl shadow-[#000000]/40
+              shadow-xl shadow-[#000000]/30
               py-6 px-7
               flex flex-col gap-4
               menu-enter
             "
           >
             {hasAudience ? (
-              links.map(link => (
+              links.map((link) => (
                 <Link
                   key={link.label}
                   to={link.to}
@@ -200,19 +194,18 @@ export default function Header() {
                     text-left
                     px-2 py-1
                     rounded-md
-                    active:bg-[#F4B14A]/10
+                    active:bg-[#4F2E39]/10
                   `}
                 >
                   {link.label}
                 </Link>
               ))
             ) : (
-              <p className="text-sm text-[#F4B14A]/80">
+              <p className="text-sm text-[#4F2E39]/80">
                 Select your role to see more pages.
               </p>
             )}
 
-            {/* Mobile: Switch audience -> "/" with same styles */}
             <Link
               to="/"
               onClick={() => setOpen(false)}
