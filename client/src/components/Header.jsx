@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
+import { ArrowLeft } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { audience } = useAudience();
 
-  // audience === "municipality" -> /m, else /u
   const base = audience === "municipality" ? "/m" : "/u";
 
   const links = [
@@ -15,12 +15,11 @@ export default function Header() {
     { label: "Dashboards", to: `${base}/dashboards` },
     { label: "FAQ", to: `${base}/faq` },
     { label: "Privacy policy", to: `${base}/privacy-policy` },
-    { label: "Back to audience choice", to: "/" },
   ];
 
   return (
-    <header className="sticky top-0 z-30 bg-[#4a2431] text-white">
-      <div className="mx-auto max-w-screen-sm h-14 px-4 flex items-center justify-between">
+    <header className="sticky top-0 z-30 bg-[#4F2E39] text-[#F9F5F2]">
+      <div className="mx-auto max-w-screen-sm h-14 px-4 flex items-center justify-between relative">
         {/* Left: logo + brand */}
         <div className="flex items-center gap-2">
           <svg
@@ -28,85 +27,111 @@ export default function Header() {
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <circle cx="12" cy="12" r="12" fill="#ffea00" />
-            <circle cx="12" cy="12" r="6" fill="#4a2431" />
+            <circle cx="12" cy="12" r="12" fill="#F4B14A" />
+            <circle cx="12" cy="12" r="6" fill="#4F2E39" />
           </svg>
-          <span className="font-semibold text-[#ffea00]">OurGrid</span>
+          <span className="font-semibold text-[#F4B14A] text-lg">OurGrid</span>
         </div>
 
-        {/* Right: hamburger */}
+        {/* Right: animated burger button */}
         <button
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setOpen((v) => !v)}
-          className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#ffea00] hover:bg-white/10"
-        >
-          {open ? (
-            // X icon
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          ) : (
-            // Hamburger icon
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          )}
-        </button>
-      </div>
-
-      {/* Fullscreen overlay menu */}
-      {open && (
-        <div
           className="
-            fixed inset-0 z-20
-            bg-[#4a2431]/98
-            flex flex-col items-center
-            pt-20 gap-4
+            relative w-9 h-9
+            flex items-center justify-center
+            rounded-full
+            border border-[#F4B14A]
+            hover:bg-[#4F2E39]/70
+            transition-colors duration-200
+            focus:outline-none focus:ring-2 focus:ring-[#F4B14A]/80
           "
         >
+          {/* 3 lines that transform into an X */}
+          <span
+            className={`
+              absolute h-0.5 w-5 bg-[#F4B14A] rounded
+              transition-all duration-200
+              ${open ? "rotate-45 translate-y-0" : "-translate-y-1.5"}
+            `}
+          />
+          <span
+            className={`
+              absolute h-0.5 w-5 bg-[#F4B14A] rounded
+              transition-all duration-200
+              ${open ? "opacity-0" : "opacity-100"}
+            `}
+          />
+          <span
+            className={`
+              absolute h-0.5 w-5 bg-[#F4B14A] rounded
+              transition-all duration-200
+              ${open ? "-rotate-45 translate-y-0" : "translate-y-1.5"}
+            `}
+          />
+        </button>
+
+        {/* Dropdown menu (next to button, not full-screen) */}
+        {open && (
           <div
             className="
-              w-[85%]
-              max-w-sm
-              border border-[#00a887]
-              rounded-3xl
-              px-6 py-5
-              bg-[#4a2431]
-              shadow-2xl
-              flex flex-col gap-3
+              absolute
+              right-0 top-14
+              mr-1
+              w-72
+              bg-[#4F2E39]
+              border border-[#F4B14A]
+              rounded-[20px]
+              shadow-2xl shadow-[#000000]/40
+              py-5 px-6
+              flex flex-col gap-4
             "
           >
-            <p className="text-sm uppercase tracking-[0.16em] text-[#ffea00]/80">
-              Menu
+            <p className="text-[12px] uppercase tracking-[0.16em] text-[#F4B14A]/90 mb-2">
+              Navigation
             </p>
+
             {links.map((link) => (
               <Link
                 key={link.label}
                 to={link.to}
                 onClick={() => setOpen(false)}
                 className="
-                  text-base
-                  text-white
-                  hover:text-[#ffea00]
-                  transition-colors
+                  text-[20px]
+                  text-[#F4B14A]
+                  font-medium
+                  drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]
+                  hover:drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]
+                  transition-all
+                  hover:translate-x-1
                 "
               >
                 {link.label}
               </Link>
             ))}
+
+            {/* Back to audience choice */}
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="
+                flex items-center gap-2
+                text-[20px]
+                text-[#F4B14A]
+                font-semibold
+                drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]
+                hover:drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]
+                transition-all
+                hover:-translate-x-1
+                pt-2 border-t border-[#F4B14A]/40 mt-1
+              "
+            >
+              <ArrowLeft className="w-6 h-6 text-[#F4B14A]" />
+              Back to audience choice
+            </Link>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 }
