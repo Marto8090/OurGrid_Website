@@ -30,9 +30,9 @@ export default function AudienceChoice() {
             <span className="text-sm md:text-base">I am a</span>
             <span className="text-2xl md:text-4xl font-bold">Resident</span>
             <User
-              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-300 
+              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-500
                          group-hover:scale-110 group-hover:rotate-3"
-              strokeWidth={2.5}
+              strokeWidth={2.0}
             />
           </button>
 
@@ -54,9 +54,9 @@ export default function AudienceChoice() {
             <span className="text-sm md:text-base">I am a member of a</span>
             <span className="text-2xl md:text-4xl font-bold">Municipality</span>
             <Building2
-              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-300 
+              className="w-9 h-9 md:w-16 md:h-16 mt-3 text-[#4a2431] transition-transform duration-500 
                          group-hover:scale-110 group-hover:-rotate-3"
-              strokeWidth={2.5}
+              strokeWidth={2.0}
             />
           </button>
         </div>
