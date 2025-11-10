@@ -2,59 +2,87 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
 import { ArrowLeft } from "lucide-react";
+import Logo from "../assets/Logo.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { audience } = useAudience();
 
-  const base = audience === "municipality" ? "/m" : "/u";
+  // Decide home target for the logo:
+  // - municipality -> /m
+  // - user         -> /u
+  // - none         -> /landing  (your landing page)
+  const homePath =
+    audience === "municipality"
+      ? "/m"
+      : audience === "user"
+      ? "/u"
+      : "/landing";
 
-  const links = [
-    { label: "What is grid congestion?", to: `${base}/what-is-grid-congestion` },
-    { label: "How OurGrid works", to: `${base}/how-ourgrid-works` },
-    { label: "Dashboards", to: `${base}/dashboards` },
-    { label: "FAQ", to: `${base}/faq` },
-    { label: "Privacy policy", to: `${base}/privacy-policy` },
-  ];
+  // Only build section links if an audience is chosen
+  let links = [];
+  if (audience === "municipality" || audience === "user") {
+    const base = audience === "municipality" ? "/m" : "/u";
+    links = [
+      { label: "What is grid congestion?", to: `${base}/what-is-grid-congestion` },
+      { label: "How OurGrid works", to: `${base}/how-ourgrid-works` },
+      { label: "Dashboards", to: `${base}/dashboards` },
+      { label: "FAQ", to: `${base}/faq` },
+      { label: "Privacy policy", to: `${base}/privacy-policy` },
+    ];
+  }
 
   return (
     <header className="sticky top-0 z-30 bg-[#4F2E39] text-[#F9F5F2]">
-      {/* local CSS for the dropdown animation */}
       <style>{`
         @keyframes menuDrop {
-          from {
-            transform: scaleY(0.85);
-            opacity: 0;
-          }
-          to {
-            transform: scaleY(1);
-            opacity: 1;
-          }
+          from { transform: scaleY(0.85); opacity: 0; }
+          to { transform: scaleY(1); opacity: 1; }
         }
         .menu-enter {
           animation: menuDrop 0.18s ease-out;
           transform-origin: top right;
         }
+        @keyframes glowPulse {
+          0%, 100% {
+            box-shadow: 0 0 8px rgba(244,177,74,0.4);
+          }
+          50% {
+            box-shadow: 0 0 18px rgba(244,177,74,0.8);
+          }
+        }
       `}</style>
 
-      <div className="mx-auto max-w-screen-sm h-14 px-4 flex items-center justify-between relative">
-        {/* Left: logo + brand */}
-        <div className="flex items-center gap-2">
-          <svg
-            className="h-7 w-7 rounded"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="12" fill="#F4B14A" />
-            <circle cx="12" cy="12" r="6" fill="#4F2E39" />
-          </svg>
-          <span className="font-semibold text-[#F4B14A] text-lg">OurGrid</span>
+      <div className="mx-auto max-w-screen-sm h-16 sm:h-20 px-4 flex items-center justify-between relative">
+        {/* Logo + title */}
+        <div className="flex items-center gap-3">
+          {/* Logo: goes to correct landing depending on current state */}
+          <Link to={homePath} className="flex items-center gap-3">
+            <img
+              src={Logo}
+              alt="OurGrid logo"
+              className="
+                h-9 w-9 sm:h-12 sm:w-12
+                object-contain
+                rounded-xl
+                transition-all duration-300
+                hover:scale-105
+                hover:animate-[glowPulse_1.6s_ease-in-out_infinite]
+                hover:ring-2 hover:ring-[#F4B14A]/80
+                hover:shadow-[0_0_15px_rgba(244,177,74,0.6)]
+                cursor-pointer
+              "
+            />
+            <span className="font-semibold text-[#F4B14A] text-xl sm:text-2xl">
+              OurGrid
+            </span>
+          </Link>
         </div>
 
-        {/* Right: animated burger button */}
+        {/* Burger button */}
         <button
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(v => !v)}
           className="
             relative w-9 h-9
             flex items-center justify-center
@@ -65,7 +93,6 @@ export default function Header() {
             focus:outline-none focus:ring-2 focus:ring-[#F4B14A]/80
           "
         >
-          {/* 3 lines that transform into an X */}
           <span
             className={`
               absolute h-0.5 w-5 bg-[#F4B14A] rounded
@@ -89,7 +116,7 @@ export default function Header() {
           />
         </button>
 
-        {/* Dropdown menu (expands from top to bottom next to button) */}
+        {/* Dropdown menu */}
         {open && (
           <div
             className="
@@ -109,7 +136,14 @@ export default function Header() {
               Navigation
             </p>
 
-            {links.map((link) => (
+            {/* Only render links if we have an audience */}
+            {links.length === 0 && (
+              <p className="text-sm text-[#F4B14A]/80">
+                Select your role first to see navigation.
+              </p>
+            )}
+
+            {links.map(link => (
               <Link
                 key={link.label}
                 to={link.to}
@@ -128,8 +162,9 @@ export default function Header() {
               </Link>
             ))}
 
+            {/* Explicit link back to audience choice */}
             <Link
-              to="/"
+              to="/audience"
               onClick={() => setOpen(false)}
               className="
                 flex items-center gap-2
