@@ -19,6 +19,24 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-30 bg-[#4F2E39] text-[#F9F5F2]">
+      {/* local CSS for the dropdown animation */}
+      <style>{`
+        @keyframes menuDrop {
+          from {
+            transform: scaleY(0.85);
+            opacity: 0;
+          }
+          to {
+            transform: scaleY(1);
+            opacity: 1;
+          }
+        }
+        .menu-enter {
+          animation: menuDrop 0.18s ease-out;
+          transform-origin: top right;
+        }
+      `}</style>
+
       <div className="mx-auto max-w-screen-sm h-14 px-4 flex items-center justify-between relative">
         {/* Left: logo + brand */}
         <div className="flex items-center gap-2">
@@ -71,13 +89,12 @@ export default function Header() {
           />
         </button>
 
-        {/* Dropdown menu (next to button, not full-screen) */}
+        {/* Dropdown menu (expands from top to bottom next to button) */}
         {open && (
           <div
             className="
               absolute
-              right-0 top-14
-              mr-1
+              right-0 top-14 mr-1
               w-72
               bg-[#4F2E39]
               border border-[#F4B14A]
@@ -85,6 +102,7 @@ export default function Header() {
               shadow-2xl shadow-[#000000]/40
               py-5 px-6
               flex flex-col gap-4
+              menu-enter
             "
           >
             <p className="text-[12px] uppercase tracking-[0.16em] text-[#F4B14A]/90 mb-2">
@@ -110,7 +128,6 @@ export default function Header() {
               </Link>
             ))}
 
-            {/* Back to audience choice */}
             <Link
               to="/"
               onClick={() => setOpen(false)}
