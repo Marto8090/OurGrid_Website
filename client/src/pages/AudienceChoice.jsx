@@ -81,7 +81,7 @@ export default function AudienceChoice() {
         <div className="w-full max-w-sm md:max-w-3xl flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-8">
           {/* Resident */}
           <button
-            onClick={() => handleSelect("user", "/u")}
+            onClick={() => handleSelect("user", "/u/city")}
             className="order-1 group w-full md:flex-1 bg-[#f9a825] hover:bg-[#fcd34d] text-[#4a2431]
                        rounded-2xl p-5 md:p-10 flex flex-col items-center justify-center shadow-lg
                        transition-all"
@@ -105,7 +105,7 @@ export default function AudienceChoice() {
 
           {/* Municipality */}
           <button
-            onClick={() => handleSelect("municipality", "/m")}
+            onClick={() => handleSelect("municipality", "/m/city")}
             className="order-3 group w-full md:flex-1 bg-[#39b54a] hover:bg-[#51c261] text-[#4a2431]
                        rounded-2xl p-5 md:p-10 flex flex-col items-center justify-center shadow-lg
                        transition-all"
