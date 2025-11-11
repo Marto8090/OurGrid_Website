@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+// client/src/App.jsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AudienceProvider } from "./context/AudienceContext.jsx";
 
 import AudienceChoice from "./pages/AudienceChoice.jsx";
@@ -8,21 +9,20 @@ import FAQ from "./pages/FAQ.jsx";
 import HowItWorks from "./pages/How_OurGrid_works.jsx";
 import Dashboards from "./pages/Dashboard.jsx";
 import Privacy from "./pages/Privacy_policy.jsx";
+import Landing from "./pages/Landing.jsx";
 
 export default function App() {
   return (
     <AudienceProvider>
       <BrowserRouter>
         <Routes>
-          {/* Landing: choose audience */}
+          {/* Step 1: choose audience */}
           <Route path="/" element={<AudienceChoice />} />
 
           {/* Resident */}
           <Route path="/u" element={<Layout />}>
-            <Route
-              index
-              element={<Navigate to="what-is-grid-congestion" replace />}
-            />
+            {/* Step 2: audience-specific landing */}
+            <Route index element={<Landing />} />
             <Route
               path="what-is-grid-congestion"
               element={<WhatIsCongestion />}
@@ -35,10 +35,8 @@ export default function App() {
 
           {/* Municipality */}
           <Route path="/m" element={<Layout />}>
-            <Route
-              index
-              element={<Navigate to="what-is-grid-congestion" replace />}
-            />
+            {/* Step 2: audience-specific landing */}
+            <Route index element={<Landing />} />
             <Route
               path="what-is-grid-congestion"
               element={<WhatIsCongestion />}

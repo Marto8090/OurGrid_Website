@@ -69,10 +69,10 @@ export default function Header() {
         }
         @keyframes glowPulse {
           0%, 100% {
-            filter: drop-shadow(0 0 4px rgba(249,245,242,0.3));
+            filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
           }
           50% {
-            filter: drop-shadow(0 0 10px rgba(249,245,242,0.9));
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
           }
         }
       `}</style>
@@ -105,7 +105,7 @@ export default function Header() {
               font-extrabold
               text-[#F9F5F2]
               text-[22px] lg:text-[24px]
-              drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]
+              drop-shadow-[0_2px_3px_rgba(79,46,57,0.8)]
               transition-all duration-300
             "
           >
