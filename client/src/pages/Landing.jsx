@@ -17,7 +17,7 @@ export default function Landing() {
     <div className="space-y-0">
       {/* 1. Background video section */}
       <section className="bg-[#F4B14A] text-[#4F2E39] rounded-b-3xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 flex items-center justify-center">
           <div className="w-full h-40 md:h-64 bg-[#F9F5F2]/40 border-2 border-[#F9F5F2]/70 rounded-3xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide">
             Background video placeholder
           </div>
@@ -25,50 +25,62 @@ export default function Landing() {
       </section>
 
       {/* 2. Purple feature band */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] pt-10 pb-12 md:pt-12 md:pb-16">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] pt-12 pb-14 md:pt-16 md:pb-20">
         <div className="max-w-6xl mx-auto px-4">
           {/* Title + subtitle */}
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <h1 className="text-2xl md:text-3xl font-extrabold leading-snug">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold leading-snug md:leading-tight">
               {heroTitle}
             </h1>
-            <p className="mt-3 text-sm md:text-base text-[#F9F5F2]/90">
+            <p className="mt-5 text-base md:text-xl text-[#F9F5F2]/90">
               {heroSubtitle}
             </p>
           </div>
 
           {/* Phone + bullets */}
-          <div className="flex flex-col-reverse md:flex-row items-center gap-10">
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12">
             {/* Bullets */}
-            <div className="w-full md:w-1/2 space-y-4">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">⚡</span>
+            <div className="w-full md:w-7/12 space-y-8 md:pr-2">
+              <div className="flex items-start gap-4 md:gap-5">
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
+                  ⚡
+                </span>
                 <div>
-                  <p className="font-semibold">Shift your usage</p>
-                  <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
-                    Move flexible appliances to less crowded hours and help
-                    your neighborhood avoid grid stress.
+                  <p className="font-semibold text-base md:text-2xl">
+                    Shift your usage
+                  </p>
+                  <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
+                    Move flexible appliances to less crowded hours and help your
+                    neighborhood avoid grid stress.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">📉</span>
+              <div className="flex items-start gap-4 md:gap-5">
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
+                  📉
+                </span>
                 <div>
-                  <p className="font-semibold">Avoid peaks</p>
-                  <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
+                  <p className="font-semibold text-base md:text-2xl">
+                    Avoid peaks
+                  </p>
+                  <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
                     When many people use electricity at the same time, cables
-                    and transformers hit their limits. OurGrid helps spread
-                    that demand.
+                    and transformers hit their limits. OurGrid helps spread that
+                    demand.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🏅</span>
+              <div className="flex items-start gap-4 md:gap-5">
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
+                  🏅
+                </span>
                 <div>
-                  <p className="font-semibold">Earn points</p>
-                  <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
+                  <p className="font-semibold text-base md:text-2xl">
+                    Earn points
+                  </p>
+                  <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
                     Residents can earn points for shifting their usage. Cities
                     can connect these to local rewards and initiatives.
                   </p>
@@ -76,15 +88,15 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Phone with mask fade (border + shadow also fade) */}
-            <div className="w-full md:w-1/2 flex justify-center">
+            {/* Phone with mask fade */}
+            <div className="w-full md:w-4/12 flex justify-center md:justify-end">
               <div
                 className="
                   relative
-                  w-[210px] sm:w-[230px] md:w-[260px] lg:w-[300px]
+                  w-[220px] sm:w-[240px] md:w-[270px] lg:w-[320px]
                   transition-transform
                   drop-shadow-2xl
-                  [mask-image:linear-gradient(to_top,transparent_0%,transparent_20%,black_75%,black_100%)]
+                  [mask-image:linear-gradient(to_top,transparent_0%,transparent_25%,black_80%,black_100%)]
                   [mask-size:100%_100%]
                   [mask-repeat:no-repeat]
                 "
@@ -107,31 +119,31 @@ export default function Landing() {
       </section>
 
       {/* 3. Start now section */}
-      <section className="bg-[#F9F5F2] text-[#4F2E39] py-10 md:py-14">
-        <div className="max-w-6xl mx-auto px-4 space-y-6">
-          <h2 className="text-center text-2xl md:text-3xl font-extrabold mb-2">
+      <section className="bg-[#F9F5F2] text-[#4F2E39] py-12 md:py-18">
+        <div className="max-w-6xl mx-auto px-4 space-y-8">
+          <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold">
             Start now
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="w-40 h-40 md:w-44 md:h-44 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl flex items-center justify-center text-xs text-center">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12">
+            <div className="w-40 h-40 md:w-44 md:h-44 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl flex items-center justify-center text-xs md:text-sm text-center">
               QR code placeholder
             </div>
 
-            <div className="space-y-3 text-center md:text-left">
+            <div className="space-y-4 md:space-y-5 text-center md:text-left max-w-xl">
               <p className="text-sm md:text-base">
                 Scan the QR or use the buttons below to download the app when
                 OurGrid is available in your area.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <button className="px-5 py-2.5 rounded-xl bg-black text-white text-sm font-semibold flex items-center gap-2 shadow-md">
-                  <span className="text-lg">▶</span>
+                <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
+                  <span className="text-lg md:text-xl">▶</span>
                   <span>Get it on Google Play</span>
                 </button>
 
-                <button className="px-5 py-2.5 rounded-xl bg-black text-white text-sm font-semibold flex items-center gap-2 shadow-md">
-                  <span className="text-lg"></span>
+                <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
+                  <span className="text-lg md:text-xl"></span>
                   <span>Download on the App Store</span>
                 </button>
               </div>
@@ -141,15 +153,15 @@ export default function Landing() {
       </section>
 
       {/* 4. CTA banner */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] py-8 md:py-10">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="rounded-3xl bg-[#4F2E39] border border-[#F4B14A] shadow-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 px-4 py-5 md:px-6 md:py-6">
-              <div className="flex items-center gap-3 md:w-1/3">
-                <div className="w-14 h-14 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
-                  <span className="text-3xl">🤔</span>
+            <div className="flex flex-col md:flex-row items-center gap-5 md:gap-7 px-5 py-6 md:px-8 md:py-8">
+              <div className="flex items-center gap-3 md:gap-4 md:w-1/3">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
+                  <span className="text-3xl md:text-5xl leading-none">🤔</span>
                 </div>
-                <p className="font-semibold text-sm md:text-base">
+                <p className="font-semibold text-sm md:text-lg">
                   Are you curious what grid congestion is?
                 </p>
               </div>
@@ -163,7 +175,7 @@ export default function Landing() {
                   }
                   className="
                     inline-flex items-center justify-center
-                    px-6 md:px-8 py-2.5
+                    px-6 md:px-9 py-2.5 md:py-3
                     rounded-full
                     bg-[#01AC51]
                     text-white font-semibold text-sm md:text-base
