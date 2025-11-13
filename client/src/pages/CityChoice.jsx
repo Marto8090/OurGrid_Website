@@ -15,23 +15,19 @@ const CITIES = [
   "Arnhem",
 ];
 
-// Dummy map of where OurGrid is “active” for now.
-// Tweak as needed once you have real info.
 const HAS_OURGRID = new Set(["Eindhoven", "Arnhem"]);
 
 export default function CityChoice() {
   const { audience } = useAudience();
   const nav = useNavigate();
   const [city, setCity] = useState("Eindhoven");
+  const [isOpen, setIsOpen] = useState(false);
 
-  // If audience is not set, force user back to start.
   useEffect(() => {
-    if (!audience) {
-      nav("/");
-    }
+    if (!audience) nav("/");
   }, [audience, nav]);
 
-  if (!audience) return null; // avoid flicker during redirect
+  if (!audience) return null;
 
   const base = audience === "municipality" ? "/m" : "/u";
   const hasProject = HAS_OURGRID.has(city);
@@ -42,69 +38,117 @@ export default function CityChoice() {
   };
 
   return (
-    // Kill the padding from Layout's <main> so we can own the full width band
-    <div
-      className="
-        -m-4
-        bg-[#4F2E39]
-        flex justify-center
-        py-12
-        md:py-16
-      "
-    >
+    <div className="-m-4 bg-[#4F2E39] flex justify-center py-12 md:py-16">
       <style>{`
-        @keyframes cityEnter {
-          from { opacity: 0; transform: translateY(16px); }
+        @keyframes floatIn {
+          from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .animate-city-enter {
-          animation: cityEnter 0.3s ease-out forwards;
+        .animate-float-in {
+          animation: floatIn .35s ease-out forwards;
+        }
+
+        /* Custom scrollbar for the dropdown */
+        .city-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: #F9F5F2 #4F2E39;
+        }
+        .city-scroll::-webkit-scrollbar {
+          width: 8px;
+        }
+        .city-scroll::-webkit-scrollbar-track {
+          background: #4F2E39;
+          border-radius: 999px;
+        }
+        .city-scroll::-webkit-scrollbar-thumb {
+          background: #F9F5F2;
+          border-radius: 999px;
+          border: 2px solid #4F2E39;
+        }
+        .city-scroll::-webkit-scrollbar-thumb:hover {
+          background: #FFEA00;
         }
       `}</style>
 
-      <div className="animate-city-enter w-full max-w-3xl text-[#F9F5F2] px-4 text-left md:text-center">
+      <div className="animate-float-in w-full max-w-3xl text-[#F9F5F2] px-4 text-left md:text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Select your city
         </h2>
 
-        {/* Dropdown */}
+        {/* NEW Dropdown UI */}
         <div className="mb-10 flex justify-start md:justify-center">
           <div className="relative w-full max-w-md">
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+            <button
+              onClick={() => setIsOpen((p) => !p)}
               className="
-                w-full appearance-none
-                bg-[#F9F5F2] text-[#4F2E39]
-                text-lg font-medium
-                px-4 py-3 pr-10
+                w-full bg-[#F9F5F2] text-[#4F2E39]
+                text-lg font-bold
+                px-5 py-4
                 rounded-2xl
-                shadow-md
-                focus:outline-none focus:ring-2 focus:ring-[#01AC51]
-                cursor-pointer
+                shadow-lg
+                flex items-center justify-between
+                transition-all
+                hover:shadow-xl
+                hover:bg-[#FFF7C2]
               "
             >
-              {CITIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-            <span
-              className="
-                pointer-events-none
-                absolute inset-y-0 right-4
-                flex items-center
-                text-[#4F2E39]
-                text-2xl
-              "
-            >
-              ▾
-            </span>
+              {city}
+              <span
+                className={`
+                  text-2xl transition-transform
+                  ${isOpen ? "rotate-180" : "rotate-0"}
+                `}
+              >
+                ▼
+              </span>
+            </button>
+
+            {isOpen && (
+              <div
+                className="
+                  absolute z-20 w-full mt-2
+                  bg-[#F9F5F2]
+                  rounded-2xl shadow-xl
+                  border border-[#4F2E39]/15
+                  max-h-60 overflow-y-auto
+                  p-3 
+                  grid gap-3
+                  city-scroll
+                "
+              >
+                {CITIES.map((c) => {
+                  const selected = c === city;
+                  return (
+                    <button
+                      key={c}
+                      onClick={() => {
+                        setCity(c);
+                        setIsOpen(false);
+                      }}
+                      className={`
+                        w-full text-left px-4 py-3
+                        text-sm md:text-base
+                        font-medium
+                        rounded-xl
+                        transition-all
+                        ${
+                          selected
+                            ? "bg-[#01AC51] text-white shadow-md"
+                            : "bg-white text-[#4F2E39]"
+                        }
+                        hover:bg-[#FFEA00] hover:text-[#4F2E39] hover:shadow-md
+                      `}
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Status + copy */}
+        {/* Status Section */}
         <div className="max-w-xl mx-auto text-sm md:text-base leading-relaxed">
           <h3 className="text-xl md:text-2xl font-bold mb-3">
             {hasProject ? "OurGrid is active here." : "Your city not listed?"}
@@ -119,8 +163,7 @@ export default function CityChoice() {
           <p className="mb-8 text-[#F9F5F2]/90">
             If you’d like to see the OurGrid app in your area, contact your
             municipality or local energy co-operative and let them know you’re
-            interested. Each new city that joins helps build a stronger, smarter
-            energy network.
+            interested.
           </p>
         </div>
 

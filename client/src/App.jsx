@@ -11,6 +11,7 @@ import Dashboards from "./pages/Dashboard.jsx";
 import Privacy from "./pages/Privacy_policy.jsx";
 import Landing from "./pages/Landing.jsx";
 
+
 export default function App() {
   return (
     <AudienceProvider>
