@@ -26,22 +26,28 @@ export default function Landing() {
 
       {/* 2. Purple feature band */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] pt-10 pb-12 md:pt-12 md:pb-16">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-          
-          {/* Left text */}
-          <div className="md:w-1/2 space-y-5">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Title + subtitle */}
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <h1 className="text-2xl md:text-3xl font-extrabold leading-snug">
               {heroTitle}
             </h1>
-            <p className="text-sm md:text-base text-[#F9F5F2]/90">{heroSubtitle}</p>
+            <p className="mt-3 text-sm md:text-base text-[#F9F5F2]/90">
+              {heroSubtitle}
+            </p>
+          </div>
 
-            <div className="mt-3 space-y-3 text-sm md:text-base">
+          {/* Phone + bullets */}
+          <div className="flex flex-col-reverse md:flex-row items-center gap-10">
+            {/* Bullets */}
+            <div className="w-full md:w-1/2 space-y-4">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">⚡</span>
                 <div>
                   <p className="font-semibold">Shift your usage</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
-                    Move flexible appliances to less crowded hours.
+                    Move flexible appliances to less crowded hours and help
+                    your neighborhood avoid grid stress.
                   </p>
                 </div>
               </div>
@@ -51,7 +57,9 @@ export default function Landing() {
                 <div>
                   <p className="font-semibold">Avoid peaks</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
-                    Reduce neighborhood stress on cables and transformers.
+                    When many people use electricity at the same time, cables
+                    and transformers hit their limits. OurGrid helps spread
+                    that demand.
                   </p>
                 </div>
               </div>
@@ -61,73 +69,59 @@ export default function Landing() {
                 <div>
                   <p className="font-semibold">Earn points</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-sm">
-                    Rewards for shifting usage at the right moments.
+                    Residents can earn points for shifting their usage. Cities
+                    can connect these to local rewards and initiatives.
                   </p>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Right side: PHONE MOCKUP */}
-          <div className="md:w-1/2 flex justify-center">
-            <div
-              className="
-                w-[180px] sm:w-[200px] md:w-[260px] lg:w-[300px]
-                aspect-[9/19]
-                bg-[#2D1820]
-                rounded-[32px]
-                border-4 border-[#F4B14A]/70
-                shadow-2xl shadow-black/50
-                flex flex-col items-center
-                relative
-              "
-            >
-              {/* Top bar */}
-              <div className="w-16 h-1 rounded-full bg-[#F9F5F2]/40 mt-3"></div>
-
-              {/* ACTUAL SCREEN CONTENT */}
+            {/* Phone with mask fade (border + shadow also fade) */}
+            <div className="w-full md:w-1/2 flex justify-center">
               <div
                 className="
-                  absolute top-[40px] bottom-[40px] left-3 right-3
-                  rounded-[22px]
-                  overflow-hidden
-                  bg-black
+                  relative
+                  w-[210px] sm:w-[230px] md:w-[260px] lg:w-[300px]
+                  transition-transform
+                  drop-shadow-2xl
+                  [mask-image:linear-gradient(to_top,transparent_0%,transparent_20%,black_75%,black_100%)]
+                  [mask-size:100%_100%]
+                  [mask-repeat:no-repeat]
                 "
               >
                 <img
                   src={PhoneImage}
-                  alt="OurGrid app"
-                  className="w-full h-full object-cover"
+                  alt="OurGrid app on phone"
+                  className="
+                    w-full h-auto
+                    rounded-[32px]
+                    border-4 border-[#F4B14A]/70
+                    shadow-2xl shadow-black/60
+                    object-cover
+                  "
                 />
               </div>
-
-              {/* Home indicator */}
-              <div className="absolute bottom-3 w-20 h-1.5 rounded-full bg-[#F9F5F2]/40"></div>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* 3. Start now section */}
       <section className="bg-[#F9F5F2] text-[#4F2E39] py-10 md:py-14">
         <div className="max-w-6xl mx-auto px-4 space-y-6">
-
           <h2 className="text-center text-2xl md:text-3xl font-extrabold mb-2">
             Start now
           </h2>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-
-            {/* QR Placeholder */}
             <div className="w-40 h-40 md:w-44 md:h-44 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl flex items-center justify-center text-xs text-center">
               QR code placeholder
             </div>
 
-            {/* Buttons */}
             <div className="space-y-3 text-center md:text-left">
               <p className="text-sm md:text-base">
-                Scan the QR or download the app when OurGrid is available.
+                Scan the QR or use the buttons below to download the app when
+                OurGrid is available in your area.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
@@ -142,20 +136,15 @@ export default function Landing() {
                 </button>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
 
       {/* 4. CTA banner */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] py-8 md:py-10">
         <div className="max-w-6xl mx-auto px-4">
-
           <div className="rounded-3xl bg-[#4F2E39] border border-[#F4B14A] shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 px-4 py-5 md:px-6 md:py-6">
-
-              {/* Icon + text */}
               <div className="flex items-center gap-3 md:w-1/3">
                 <div className="w-14 h-14 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
                   <span className="text-3xl">🤔</span>
@@ -165,7 +154,6 @@ export default function Landing() {
                 </p>
               </div>
 
-              {/* CTA Button */}
               <div className="flex-1 flex justify-center md:justify-end w-full">
                 <a
                   href={
@@ -185,13 +173,10 @@ export default function Landing() {
                   What Grid Congestion is?
                 </a>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }
