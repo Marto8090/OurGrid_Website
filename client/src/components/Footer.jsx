@@ -11,17 +11,17 @@ export default function Footer() {
     <footer className="bg-[#4F2E39] text-[#F9F5F2] border-t-4 border-[#F4B14A] mt-12">
       <div className="max-w-6xl mx-auto px-4 py-6 md:py-8">
 
-        {/* Header bar: "Links" */}
+        {/* Title */}
         <div className="border-b border-[#F4B14A] mb-4">
           <h2 className="text-center text-xl md:text-2xl font-semibold tracking-wide py-1">
             Links
           </h2>
         </div>
 
-        {/* LINKS + LOGO (now side by side on ALL sizes) */}
+        {/* Main row (links + glowing logo) */}
         <div className="flex flex-row items-start justify-between gap-6 mb-6">
 
-          {/* Links list */}
+          {/* Links */}
           <nav className="space-y-2 text-sm md:text-base">
             <Link
               to={`${base}/what-is-grid-congestion`}
@@ -55,23 +55,50 @@ export default function Footer() {
             </Link>
           </nav>
 
-          {/* Logo + brand (RIGHT SIDE ALWAYS) */}
+          {/* Logo + Brand */}
           <div className="flex flex-col items-center gap-2 whitespace-nowrap">
-            <div className="p-2 rounded-3xl bg-[#4F2E39] border border-[#F4B14A]/60 shadow-md shadow-black/30">
+
+            <Link
+              to={base}
+              className="
+                group
+                p-2 rounded-3xl border border-[#F4B14A]/60
+                shadow-md shadow-black/30
+                transition-all
+                hover:shadow-[#F4B14A] hover:shadow-lg
+                hover:border-[#F4B14A]
+              "
+            >
               <img
                 src={Logo}
                 alt="OurGrid logo"
-                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover"
+                className="
+                  w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover
+                  transition-all
+                  group-hover:brightness-110
+                  group-hover:drop-shadow-[0_0_8px_#F4B14A]
+                "
               />
-            </div>
-            <span className="text-2xl md:text-3xl font-semibold tracking-wide">
+            </Link>
+
+            {/* Glowing text + clickable */}
+            <Link
+              to={base}
+              className="
+                text-2xl md:text-3xl font-semibold tracking-wide
+                transition-all
+                hover:text-[#F4B14A]
+                hover:drop-shadow-[0_0_6px_#F4B14A]
+              "
+            >
               OurGrid
-            </span>
+            </Link>
+
           </div>
 
         </div>
 
-        {/* Bottom legal bar */}
+        {/* Bottom legal */}
         <div className="text-[11px] md:text-xs text-[#F9F5F2]/85 space-y-1 leading-snug">
           <p>All rights reserved © {year}</p>
           <p>Postadres: Example Netherlands BV, Example 000 0000 BZ Amsterdam</p>
