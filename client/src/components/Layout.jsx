@@ -12,13 +12,7 @@ export default function Layout() {
       {/* TOP NAVIGATION BAR */}
       <Header />
 
-<<<<<<< HEAD
-      <main className="flex-1 py-6 md:py-10">
-=======
-      {/* MAIN CONTENT AREA WHERE INDIVIDUAL PAGES RENDER */}
-      {/* OUTLET = WHERE CHILD ROUTES SHOW UP */}
-      <main className="flex-1 px-4 py-6 md:px-8 md:py-10">
->>>>>>> ab2361991e9246125beb8714ed33b1c9d7778e39
+      <main className="flex-1 md:py-10">
         <Outlet />
       </main>
 

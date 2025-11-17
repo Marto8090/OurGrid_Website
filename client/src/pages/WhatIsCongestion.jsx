@@ -1,5 +1,6 @@
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
+import backgroundImage from "../assets/electricity_poles.png";
 
 export default function WhatIsCongestion() {
   const { audience } = useAudience();
@@ -35,48 +36,63 @@ export default function WhatIsCongestion() {
   return (
     <div className="space-y-0">
       {/* TOP STRIP — BACKGROUND VIDEO AREA */}
-      <section className="bg-[#4F2E39] rounded-b-3xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
+      <section className="bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 flex items-center justify-center">
           {/* Replace this with real video later */}
-          <div className="w-full h-40 md:h-56 bg-[#F9F5F2]/5 border-2 border-[#F9F5F2]/30 rounded-3xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide text-[#F9F5F2]/70">
+          <div className="w-full h-40 md:h-56 bg-[#F9F5F2]/5 border-2 border-[#F9F5F2]/30 rounded-2xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide text-[#F9F5F2]/70">
             background video
           </div>
         </div>
       </section>
 
-      {/* MAIN PANEL */}
-      <section className="bg-[#F9F5F2] text-[#4F2E39] pt-12 pb-16 md:pt-16 md:pb-20 rounded-t-3xl md:rounded-t-[40px] -mt-8 md:-mt-12">
-        <div className="max-w-6xl mx-auto px4 space-y-14 md:space-y-20">
-          {/* ROW 1 — MAIN EXPLAINER + WHY SECTION */}
-          <div className="grid gap-6 md:grid-cols-2">
+      {/* MAIN PANEL -*/}
+      <section className="bg-[#F9F5F2] text-[#4F2E39] md:pt-16 md:pb-20 rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
+        <div className="max-w-6xl mx-auto px4  md:space-y-20">
+          {/* ROW 1 — WHAT + WHY SECTION */}
+          <div className="grid md:grid-cols-2">
             {/* LEFT CARD — WHAT / POLICY IMPACT */}
-            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-3xl shadow-md p-6 md:p-8 space-y-4">
-              <h2 className="text-xl md:text-2xl font-bold">{mainTitle}</h2>
-              <p className="text-sm md:text-base text-[#F9F5F2]/90">
-                {mainParagraph}
-              </p>
-            </div>
+            <div
+  className="relative rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
+  style={{
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }}
+>
+  {/* DARK OVERLAY */}
+  <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
+
+  {/* CONTENT */}
+  <div className="relative p-6 md:p-8 text-[#F9F5F2] space-y-4">
+    <h2 className="text-center text-xl md:text-2xl font-bold">{mainTitle}</h2>
+    <p className="text-sm md:text-base text-[#F9F5F2]/90">{mainParagraph}</p>
+  </div>
+</div>
+
 
             {/* RIGHT CARD — WHY SECTION */}
-            <div className="bg-white border border-[#01AC51]/30 rounded-3xl shadow-md p-6 md:p-8">
+            
+            <div className="bg-white text-center border-2 border-[#F4B14A] rounded-2xl shadow-md p-6 md:p-8">
               <h2 className="text-lg md:text-xl font-bold text-[#01AC51] mb-3">
                 {whyTitle}
               </h2>
-              <div className="space-y-4 text-sm md:text-base">
-                {reasons.map((text, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <span className="text-[#01AC51] text-lg">
-                      {isMunicipality ? "↻" : "⚡"}
-                    </span>
-                    <p>{text}</p>
-                  </div>
-                ))}
+             <div className="text-sm md:text-base">
+                <div className="flex flex-col divide-y divide-[#F4B14A]/60">
+                  {reasons.map((text, index) => (
+                    <div key={index} className="flex items-start gap-3 py-3">
+                      <span className="mt-1 text-[#01AC51] text-lg">
+                        {isMunicipality ? "↻" : "⚡"}
+                      </span>
+                      <p>{text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-3xl shadow-md p-6 md:p-8 space-y-6">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center">
               Why is it a problem?
             </h2>
@@ -105,7 +121,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-          <div className="bg-white rounded-3xl shadow-md border border-[#4F2E39]/10 p-6 md:p-8 space-y-6">
+          <div className="bg-white rounded-2xl shadow-md border border-[#4F2E39]/10 p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
@@ -123,7 +139,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-3xl shadow-md p-6 md:p-8">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md p-6 md:p-8">
             <div className="grid gap-6 md:grid-cols-[1fr,1fr] items-center">
               <div className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold">
