@@ -14,8 +14,8 @@ export default function WhatIsCongestion() {
     : "What is Grid Congestion?";
 
   const mainParagraph = isMunicipality
-    ? "New housing and EV stations can’t connect to the grid. Higher local energy costs and slower renewable rollout. Climate goals delayed by network limits. Reduced reliability in high-density areas."
-    : "Grid congestion happens when too many people use electricity at the same time – for example, when everyone cooks, charges their car, and turns on heating in the evening.";
+    ? "New housing and EV stations can't connect to the grid. Higher local energy costs and slower renewable rollout. Climate goals delayed by network limits. Reduced reliability in high-density areas."
+    : "Grid congestion happens when too many people use electricity at the same time - for example, when everyone cooks, charges their car, and turns on heating in the evening.";
 
   const whyTitle = isMunicipality
     ? "Why does it matter for cities?"
@@ -25,12 +25,12 @@ export default function WhatIsCongestion() {
     ? [
         "Rapid electrification: Heat pumps, EVs, and solar panels are spreading faster than grid upgrades.",
         "Limited transformer capacity: Urban networks reach overload during cold evenings or sunny afternoons.",
-        "Investment delays: Reinforcement projects can take 3–5 years, blocking new developments.",
+        "Investment delays: Reinforcement projects can take 3-5 years, blocking new developments.",
       ]
     : [
-        "The electricity grid wasn’t designed for all the new electric cars, heat pumps, and solar panels.",
+        "The electricity grid wasn't designed for all the new electric cars, heat pumps, and solar panels.",
         "Power demand spikes during the same hours (morning and evening).",
-        "Local transformers have limits – if everyone uses power at once, they get overloaded.",
+        "Local transformers have limits - if everyone uses power at once, they get overloaded.",
       ];
 
   return (
@@ -48,26 +48,24 @@ export default function WhatIsCongestion() {
       {/* MAIN PANEL -*/}
       <section className="bg-[#F9F5F2] text-[#4F2E39] md:pt-16 md:pb-20 rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
         <div className="max-w-6xl mx-auto px4  md:space-y-20">
-          {/* ROW 1 — WHAT + WHY SECTION */}
-          <div className="grid md:grid-cols-2">
+            {/* ROW 1 — WHAT + WHY SECTION */}
+            <div className="grid md:grid-cols-2">
             {/* LEFT CARD — WHAT / POLICY IMPACT */}
-            <div
-  className="relative rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
-  style={{
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center"
-  }}
->
-  {/* DARK OVERLAY */}
-  <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}>
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
 
-  {/* CONTENT */}
-  <div className="relative p-6 md:p-8 text-[#F9F5F2] space-y-4">
-    <h2 className="text-center text-xl md:text-2xl font-bold">{mainTitle}</h2>
-    <p className="text-sm md:text-base text-[#F9F5F2]/90">{mainParagraph}</p>
-  </div>
-</div>
+              {/* CONTENT */}
+              <div className="relative p-6 md:p-8 text-[#F9F5F2] space-y-4">
+                <h2 className="text-center text-xl md:text-2xl font-bold">{mainTitle}</h2>
+                <p className="text-sm md:text-base text-[#F9F5F2]/90">{mainParagraph}</p>
+              </div>
+          </div>
 
 
             {/* RIGHT CARD — WHY SECTION */}
@@ -76,7 +74,7 @@ export default function WhatIsCongestion() {
               <h2 className="text-lg md:text-xl font-bold text-[#01AC51] mb-3">
                 {whyTitle}
               </h2>
-             <div className="text-sm md:text-base">
+             <div className="text-sm md:text-base text-[#01AC51]">
                 <div className="flex flex-col divide-y divide-[#F4B14A]/60">
                   {reasons.map((text, index) => (
                     <div key={index} className="flex items-start gap-3 py-3">
@@ -98,21 +96,21 @@ export default function WhatIsCongestion() {
             </h2>
             <div className="grid gap-4 md:grid-cols-2 text-sm md:text-base">
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
+             <div className="flex items-center justify-between border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
                   <span className="text-[#F4B14A] text-lg">🏠</span>
                   <p>Harder to connect new homes or EV chargers.</p>
                 </div>
-                <div className="flex items-start gap-3">
+               <div className="flex items-center justify-between  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
                   <span className="text-[#F4B14A] text-lg">💸</span>
                   <p>Higher electricity costs during peaks.</p>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
+               <div className="flex items-center justify-between border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
                   <span className="text-[#F4B14A] text-lg">🌍</span>
                   <p>More pressure on the environment.</p>
                 </div>
-                <div className="flex items-start gap-3">
+               <div className="flex items-center justify-between  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
                   <span className="text-[#F4B14A] text-lg">⚠️</span>
                   <p>Greater risk of local power outages.</p>
                 </div>
