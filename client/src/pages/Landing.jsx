@@ -1,6 +1,7 @@
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 import BackgroundVideo from "../assets/background.mov";
+import QR from "../assets/QR.jpeg";
 
 export default function Landing() {
   const { audience } = useAudience();
@@ -18,7 +19,6 @@ export default function Landing() {
     <div className="space-y-0">
       {/* HERO - full width background video */}
       <section className="relative w-full overflow-hidden bg-black text-[#F9F5F2] h-[85vh] md:h-[95vh]">
-        {/* Video */}
         <video
           src={BackgroundVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-80"
@@ -28,12 +28,10 @@ export default function Landing() {
           playsInline
         />
 
-        {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/40" />
 
-        {/* Hero content pushed to lower part of video */}
-        <div className="relative z-10 flex items-end justify-center w-full h-full">
-          <div className="w-full max-w-4xl mx-auto px-4 pb-20 md:pb-28 text-center">
+        <div className="relative z-10 flex items-center justify-center w-full h-full px-4 text-center">
+          <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
               {heroTitle}
             </h1>
@@ -44,16 +42,15 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Spacer between hero and content */}
       <div className="h-12 md:h-20 bg-[#4F2E39]" />
 
-      {/* SECTION 2 - main feature band */}
+      {/* SECTION 2 */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] pt-10 md:pt-12 pb-14 md:pb-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12">
-            {/* Left - bullet explanations */}
+            
+            {/* Bullets */}
             <div className="w-full md:w-7/12 space-y-8 md:pr-2">
-              {/* Bullet 1 */}
               <div className="flex items-start gap-4 md:gap-5">
                 <span className="text-4xl md:text-6xl leading-none">⚡</span>
                 <div>
@@ -64,7 +61,6 @@ export default function Landing() {
                 </div>
               </div>
 
-              {/* Bullet 2 */}
               <div className="flex items-start gap-4 md:gap-5">
                 <span className="text-4xl md:text-6xl leading-none">📉</span>
                 <div>
@@ -76,7 +72,6 @@ export default function Landing() {
                 </div>
               </div>
 
-              {/* Bullet 3 */}
               <div className="flex items-start gap-4 md:gap-5">
                 <span className="text-4xl md:text-6xl leading-none">🏅</span>
                 <div>
@@ -89,7 +84,7 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Right - phone mockup */}
+            {/* Phone */}
             <div className="w-full md:w-4/12 flex justify-center md:justify-end">
               <div
                 className="
@@ -116,7 +111,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* SECTION 3 - download */}
+      {/* SECTION 3 */}
       <section className="bg-[#F9F5F2] text-[#4F2E39] py-12 md:py-18">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
           <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold">
@@ -124,41 +119,41 @@ export default function Landing() {
           </h2>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12">
-            {/* QR placeholder */}
-            <div className="w-40 h-40 md:w-44 md:h-44 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl flex items-center justify-center text-sm text-center">
-              QR code placeholder
+            
+            {/* QR – hidden on mobile/tablet */}
+            <div className="hidden lg:block w-40 h-40 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl overflow-hidden">
+              <img src={QR} alt="QR code" className="w-full h-full object-cover" />
             </div>
 
-            {/* Download text and buttons */}
+            {/* Text + buttons */}
             <div className="space-y-4 md:space-y-5 text-center md:text-left max-w-xl">
               <p className="text-sm md:text-base">
                 Scan the QR or use the buttons below to download the app when OurGrid is available in your area.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                {/* Google Play */}
                 <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
                   <span className="text-lg md:text-xl">▶</span>
                   <span>Get it on Google Play</span>
                 </button>
 
-                {/* App Store */}
                 <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
                   <span className="text-lg md:text-xl"></span>
                   <span>Download on the App Store</span>
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* SECTION 4 - CTA banner */}
+      {/* SECTION 4 */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="rounded-3xl bg-[#4F2E39] border border-[#F4B14A] shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-7 px-5 py-6 md:px-8 md:py-8">
-              {/* Left - text */}
+              
               <div className="flex items-center gap-3 md:gap-4 md:w-1/3">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
                   <span className="text-3xl md:text-5xl leading-none">🤔</span>
@@ -168,7 +163,6 @@ export default function Landing() {
                 </p>
               </div>
 
-              {/* Right - button */}
               <div className="flex-1 flex justify-center md:justify-end w-full">
                 <a
                   href={
@@ -188,6 +182,7 @@ export default function Landing() {
                   What Grid Congestion is?
                 </a>
               </div>
+
             </div>
           </div>
         </div>
