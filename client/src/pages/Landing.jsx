@@ -2,6 +2,7 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 import BackgroundVideo from "../assets/background.mov";
 import QR from "../assets/QR.jpeg";
+import Question from "../assets/question.png";
 
 export default function Landing() {
   const { audience } = useAudience();
@@ -42,13 +43,13 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Spacer */}
       <div className="h-12 md:h-20 bg-[#4F2E39]" />
 
       {/* SECTION 2 */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] pt-10 md:pt-12 pb-14 md:pb-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12">
-            
             {/* Bullets */}
             <div className="w-full md:w-7/12 space-y-8 md:pr-2">
               <div className="flex items-start gap-4 md:gap-5">
@@ -119,7 +120,6 @@ export default function Landing() {
           </h2>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12">
-            
             {/* QR – hidden on mobile/tablet */}
             <div className="hidden lg:block w-40 h-40 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl overflow-hidden">
               <img src={QR} alt="QR code" className="w-full h-full object-cover" />
@@ -148,22 +148,25 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* SECTION 4 */}
+      {/* SECTION 4 – CTA */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="rounded-3xl bg-[#4F2E39] border border-[#F4B14A] shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-7 px-5 py-6 md:px-8 md:py-8">
-              
-              <div className="flex items-center gap-3 md:gap-4 md:w-1/3">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
-                  <span className="text-3xl md:text-5xl leading-none">🤔</span>
-                </div>
-                <p className="font-semibold text-sm md:text-lg">
+              {/* Icon + text */}
+              <div className="flex items-center gap-3 md:gap-4 md:flex-1">
+                <img
+                  src={Question}
+                  alt="Question icon"
+                  className="w-16 h-auto md:w-32 lg:w-40 object-contain flex-shrink-0"
+                />
+                <p className="font-semibold text-sm md:text-2xl md:whitespace-nowrap flex-1">
                   Are you curious what grid congestion is?
                 </p>
               </div>
 
-              <div className="flex-1 flex justify-center md:justify-end w-full">
+              {/* Button */}
+              <div className="flex-1 flex justify-center md:justify-end w-full mt-4 md:mt-0">
                 <a
                   href={
                     isMunicipality
