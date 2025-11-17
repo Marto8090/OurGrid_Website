@@ -3,25 +3,30 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import Logo from "../assets/Logo.png";
 
 export default function Footer() {
+  // GET CURRENT AUDIENCE (RESIDENT OR MUNICIPALITY)
   const { audience } = useAudience();
+
+  // SET THE BASE ROUTE DEPENDING ON AUDIENCE
   const base = audience === "municipality" ? "/m" : "/u";
+
+  // CURRENT YEAR FOR COPYRIGHT
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-[#4F2E39] text-[#F9F5F2] border-t-4 border-[#F4B14A] mt-12">
       <div className="max-w-6xl mx-auto px-4 py-6 md:py-8">
 
-        {/* Title */}
+        {/* SECTION TITLE */}
         <div className="border-b border-[#F4B14A] mb-4">
           <h2 className="text-center text-xl md:text-2xl font-semibold tracking-wide py-1">
             Links
           </h2>
         </div>
 
-        {/* Main row (links + glowing logo) */}
+        {/* MAIN ROW: LINKS + GLOWING LOGO */}
         <div className="flex flex-row items-start justify-between gap-6 mb-6">
 
-          {/* Links */}
+          {/* NAVIGATION LINKS */}
           <nav className="space-y-2 text-sm md:text-base">
             <Link
               to={`${base}/what-is-grid-congestion`}
@@ -29,24 +34,28 @@ export default function Footer() {
             >
               What is grid congestion?
             </Link>
+
             <Link
               to={`${base}/how-ourgrid-works`}
               className="block hover:text-[#F4B14A] transition-colors"
             >
               How OurGrid works?
             </Link>
+
             <Link
               to={`${base}/dashboards`}
               className="block hover:text-[#F4B14A] transition-colors"
             >
               Dashboards
             </Link>
+
             <Link
               to={`${base}/privacy-policy`}
               className="block hover:text-[#F4B14A] transition-colors"
             >
               Privacy policy
             </Link>
+
             <Link
               to={`${base}/faq`}
               className="block hover:text-[#F4B14A] transition-colors"
@@ -55,9 +64,10 @@ export default function Footer() {
             </Link>
           </nav>
 
-          {/* Logo + Brand */}
+          {/* LOGO + BRAND NAME (WITH GLOWING EFFECTS + CLICKABLE) */}
           <div className="flex flex-col items-center gap-2 whitespace-nowrap">
 
+            {/* GLOWING LOGO BUTTON THAT LINKS BACK TO AUDIENCE LANDING PAGE */}
             <Link
               to={base}
               className="
@@ -81,7 +91,7 @@ export default function Footer() {
               />
             </Link>
 
-            {/* Glowing text + clickable */}
+            {/* CLICKABLE BRAND TEXT WITH LIGHT GLOW */}
             <Link
               to={base}
               className="
@@ -98,7 +108,7 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom legal */}
+        {/* BOTTOM LEGAL DETAILS */}
         <div className="text-[11px] md:text-xs text-[#F9F5F2]/85 space-y-1 leading-snug">
           <p>All rights reserved © {year}</p>
           <p>Postadres: Example Netherlands BV, Example 000 0000 BZ Amsterdam</p>

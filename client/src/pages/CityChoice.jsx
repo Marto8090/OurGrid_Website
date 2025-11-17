@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAudience } from "../context/AudienceContext.jsx";
 
+// LIST OF AVAILABLE CITIES IN DROPDOWN
 const CITIES = [
   "Eindhoven",
   "Amsterdam",
@@ -15,23 +16,37 @@ const CITIES = [
   "Arnhem",
 ];
 
+// CITIES THAT CURRENTLY HAVE ACTIVE OURGRID PROJECTS
 const HAS_OURGRID = new Set(["Eindhoven", "Arnhem"]);
 
 export default function CityChoice() {
+  // CURRENT AUDIENCE (USER OR MUNICIPALITY)
   const { audience } = useAudience();
+
+  // NAVIGATION HOOK
   const nav = useNavigate();
+
+  // CURRENTLY SELECTED CITY
   const [city, setCity] = useState("Eindhoven");
+
+  // DROPDOWN OPEN/CLOSE STATE
   const [isOpen, setIsOpen] = useState(false);
 
+  // IF USER HAS NO AUDIENCE SELECTED, REDIRECT THEM BACK TO HOME
   useEffect(() => {
     if (!audience) nav("/");
   }, [audience, nav]);
 
+  // PREVENT RENDERING IF USER SOMEHOW HAS NO AUDIENCE SET
   if (!audience) return null;
 
+  // DETERMINE BASE ROUTE BASED ON AUDIENCE
   const base = audience === "municipality" ? "/m" : "/u";
+
+  // CHECK IF SELECTED CITY HAS AN ACTIVE OURGRID PROJECT
   const hasProject = HAS_OURGRID.has(city);
 
+  // SAVE CITY TO LOCALSTORAGE AND NAVIGATE TO AUDIENCE LANDING PAGE
   const handleContinue = () => {
     localStorage.setItem("ourgrid_city", city);
     nav(base);
@@ -39,6 +54,8 @@ export default function CityChoice() {
 
   return (
     <div className="-m-4 bg-[#4F2E39] flex justify-center py-12 md:py-16">
+
+      {/* INLINE CSS: FLOAT-IN ANIMATION + CUSTOM SCROLLBAR */}
       <style>{`
         @keyframes floatIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -48,7 +65,7 @@ export default function CityChoice() {
           animation: floatIn .35s ease-out forwards;
         }
 
-        /* Custom scrollbar for the dropdown */
+        /* CUSTOM SCROLLBAR FOR DROPDOWN LIST */
         .city-scroll {
           scrollbar-width: thin;
           scrollbar-color: #F9F5F2 #4F2E39;
@@ -70,14 +87,19 @@ export default function CityChoice() {
         }
       `}</style>
 
+      {/* MAIN CONTAINER */}
       <div className="animate-float-in w-full max-w-3xl text-[#F9F5F2] px-4 text-left md:text-center">
+        
+        {/* PAGE TITLE */}
         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Select your city
         </h2>
 
-        {/* NEW Dropdown UI */}
+        {/* CITY DROPDOWN */}
         <div className="mb-10 flex justify-start md:justify-center">
           <div className="relative w-full max-w-md">
+
+            {/* DROPDOWN BUTTON */}
             <button
               onClick={() => setIsOpen((p) => !p)}
               className="
@@ -93,6 +115,8 @@ export default function CityChoice() {
               "
             >
               {city}
+
+              {/* ARROW ICON ROTATION */}
               <span
                 className={`
                   text-2xl transition-transform
@@ -103,6 +127,7 @@ export default function CityChoice() {
               </span>
             </button>
 
+            {/* DROPDOWN LIST */}
             {isOpen && (
               <div
                 className="
@@ -118,6 +143,7 @@ export default function CityChoice() {
               >
                 {CITIES.map((c) => {
                   const selected = c === city;
+
                   return (
                     <button
                       key={c}
@@ -148,12 +174,15 @@ export default function CityChoice() {
           </div>
         </div>
 
-        {/* Status Section */}
+        {/* CITY STATUS MESSAGE */}
         <div className="max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+
+          {/* DYNAMIC TITLE: SHOWS WHETHER THE CITY HAS OURGRID */}
           <h3 className="text-xl md:text-2xl font-bold mb-3">
             {hasProject ? "OurGrid is active here." : "Your city not listed?"}
           </h3>
 
+          {/* INFO PARAGRAPHS */}
           <p className="mb-4 text-[#F9F5F2]/90">
             Even if your city isn’t part of an OurGrid project yet, you can
             still explore this website to learn what grid congestion means and
@@ -167,7 +196,7 @@ export default function CityChoice() {
           </p>
         </div>
 
-        {/* CTA */}
+        {/* CONTINUE BUTTON */}
         <div className="flex justify-start md:justify-center">
           <button
             onClick={handleContinue}

@@ -2,32 +2,42 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 
 export default function Landing() {
+  // GET CURRENT AUDIENCE (USER OR MUNICIPALITY)
   const { audience } = useAudience();
+
+  // CHECK IF CURRENT AUDIENCE IS MUNICIPALITY
   const isMunicipality = audience === "municipality";
 
+  // TITLE CHANGES BASED ON AUDIENCE
   const heroTitle = isMunicipality
     ? "OurGrid for Municipalities"
     : "OurGrid for your neighborhood";
 
+  // SUBTITLE CHANGES BASED ON AUDIENCE
   const heroSubtitle = isMunicipality
     ? "Help your city reduce grid stress, support local energy co-ops, and give residents a clear, fair way to join in."
     : "Help your neighborhood avoid grid stress, save money, and get rewarded for using electricity at smarter moments.";
 
   return (
     <div className="space-y-0">
-      {/* 1. Background video section */}
+
+      {/* SECTION 1 — BACKGROUND VIDEO PLACEHOLDER */}
       <section className="bg-[#F4B14A] text-[#4F2E39] rounded-b-3xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 flex items-center justify-center">
+          
+          {/* TEMPORARY BOX UNTIL VIDEO IS ADDED */}
           <div className="w-full h-40 md:h-64 bg-[#F9F5F2]/40 border-2 border-[#F9F5F2]/70 rounded-3xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide">
             Background video placeholder
           </div>
+
         </div>
       </section>
 
-      {/* 2. Purple feature band */}
+      {/* SECTION 2 — MAIN FEATURE BAND */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] pt-12 pb-14 md:pt-16 md:pb-20">
         <div className="max-w-6xl mx-auto px-4">
-          {/* Title + subtitle */}
+
+          {/* HERO TITLE + SUBTITLE */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold leading-snug md:leading-tight">
               {heroTitle}
@@ -37,58 +47,47 @@ export default function Landing() {
             </p>
           </div>
 
-          {/* Phone + bullets */}
+          {/* PHONE VISUAL + BULLET POINTS */}
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12">
-            {/* Bullets */}
+
+            {/* LEFT SIDE — BULLET POINT EXPLANATIONS */}
             <div className="w-full md:w-7/12 space-y-8 md:pr-2">
+
+              {/* BULLET 1 */}
               <div className="flex items-start gap-4 md:gap-5">
-                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
-                  ⚡
-                </span>
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">⚡</span>
                 <div>
-                  <p className="font-semibold text-base md:text-2xl">
-                    Shift your usage
-                  </p>
+                  <p className="font-semibold text-base md:text-2xl">Shift your usage</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
-                    Move flexible appliances to less crowded hours and help your
-                    neighborhood avoid grid stress.
+                    Move flexible appliances to less crowded hours and help your neighborhood avoid grid stress.
                   </p>
                 </div>
               </div>
 
+              {/* BULLET 2 */}
               <div className="flex items-start gap-4 md:gap-5">
-                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
-                  📉
-                </span>
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">📉</span>
                 <div>
-                  <p className="font-semibold text-base md:text-2xl">
-                    Avoid peaks
-                  </p>
+                  <p className="font-semibold text-base md:text-2xl">Avoid peaks</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
-                    When many people use electricity at the same time, cables
-                    and transformers hit their limits. OurGrid helps spread that
-                    demand.
+                    When many people use electricity at the same time, cables and transformers hit their limits. OurGrid helps spread that demand.
                   </p>
                 </div>
               </div>
 
+              {/* BULLET 3 */}
               <div className="flex items-start gap-4 md:gap-5">
-                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">
-                  🏅
-                </span>
+                <span className="text-3xl md:text-5xl lg:text-6xl leading-none">🏅</span>
                 <div>
-                  <p className="font-semibold text-base md:text-2xl">
-                    Earn points
-                  </p>
+                  <p className="font-semibold text-base md:text-2xl">Earn points</p>
                   <p className="text-[#F9F5F2]/80 text-xs md:text-base mt-1">
-                    Residents can earn points for shifting their usage. Cities
-                    can connect these to local rewards and initiatives.
+                    Residents can earn points for shifting their usage. Cities can connect these to local rewards and initiatives.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Phone with mask fade */}
+            {/* RIGHT SIDE — PHONE MOCKUP */}
             <div className="w-full md:w-4/12 flex justify-center md:justify-end">
               <div
                 className="
@@ -101,6 +100,8 @@ export default function Landing() {
                   [mask-repeat:no-repeat]
                 "
               >
+
+                {/* PHONE IMAGE */}
                 <img
                   src={PhoneImage}
                   alt="OurGrid app on phone"
@@ -114,22 +115,29 @@ export default function Landing() {
                 />
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 3. Start now section */}
+      {/* SECTION 3 — START NOW (DOWNLOAD SECTION) */}
       <section className="bg-[#F9F5F2] text-[#4F2E39] py-12 md:py-18">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
+
+          {/* TITLE */}
           <h2 className="text-center text-2xl md:text-4xl lg:text-5xl font-extrabold">
             Start now
           </h2>
 
+          {/* QR + DOWNLOAD BUTTONS */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12">
+
+            {/* QR PLACEHOLDER */}
             <div className="w-40 h-40 md:w-44 md:h-44 bg-[#4F2E39]/5 border-2 border-[#4F2E39]/30 rounded-2xl flex items-center justify-center text-xs md:text-sm text-center">
               QR code placeholder
             </div>
 
+            {/* DOWNLOAD TEXT + BUTTONS */}
             <div className="space-y-4 md:space-y-5 text-center md:text-left max-w-xl">
               <p className="text-sm md:text-base">
                 Scan the QR or use the buttons below to download the app when
@@ -137,26 +145,33 @@ export default function Landing() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+
+                {/* GOOGLE PLAY BUTTON */}
                 <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
                   <span className="text-lg md:text-xl">▶</span>
                   <span>Get it on Google Play</span>
                 </button>
 
+                {/* APP STORE BUTTON */}
                 <button className="px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-black text-white text-sm md:text-base font-semibold flex items-center gap-2 shadow-md">
                   <span className="text-lg md:text-xl"></span>
                   <span>Download on the App Store</span>
                 </button>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. CTA banner */}
+      {/* SECTION 4 — CTA BANNER */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-12">
         <div className="max-w-6xl mx-auto px-4">
+
           <div className="rounded-3xl bg-[#4F2E39] border border-[#F4B14A] shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-7 px-5 py-6 md:px-8 md:py-8">
+
+              {/* CTA EMOJI + SHORT TEXT */}
               <div className="flex items-center gap-3 md:gap-4 md:w-1/3">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#F9F5F2]/10 flex items-center justify-center">
                   <span className="text-3xl md:text-5xl leading-none">🤔</span>
@@ -166,6 +181,7 @@ export default function Landing() {
                 </p>
               </div>
 
+              {/* CTA BUTTON — LINKS TO “WHAT IS GRID CONGESTION?” */}
               <div className="flex-1 flex justify-center md:justify-end w-full">
                 <a
                   href={
@@ -185,8 +201,10 @@ export default function Landing() {
                   What Grid Congestion is?
                 </a>
               </div>
+
             </div>
           </div>
+
         </div>
       </section>
     </div>

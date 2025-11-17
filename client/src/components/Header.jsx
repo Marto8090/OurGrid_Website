@@ -4,10 +4,15 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import Logo from "../assets/Logo.png";
 
 export default function Header() {
+  // MOBILE MENU OPEN/CLOSE STATE
   const [open, setOpen] = useState(false);
+
+  // GET CURRENT AUDIENCE (USER OR MUNICIPALITY)
   const { audience } = useAudience();
 
-  // Logo destination
+  // DETERMINE WHERE THE LOGO SHOULD SEND THE USER
+  // IF AUDIENCE IS SET -> SEND TO /u OR /m
+  // IF NOT SET -> SEND TO ROOT
   const homePath =
     audience === "municipality"
       ? "/m"
@@ -15,9 +20,13 @@ export default function Header() {
       ? "/u"
       : "/";
 
+  // CHECK IF USER HAS SELECTED AN AUDIENCE
   const hasAudience = audience === "municipality" || audience === "user";
+
+  // BASE ROUTE FOR LINKS
   const base = audience === "municipality" ? "/m" : "/u";
 
+  // NAVIGATION LINKS THAT ONLY SHOW IF AUDIENCE IS SELECTED
   const links = hasAudience
     ? [
         { label: "What is grid congestion?", to: `${base}/what-is-grid-congestion` },
@@ -28,7 +37,7 @@ export default function Header() {
       ]
     : [];
 
-  // Shared link style (desktop + mobile)
+  // SHARED STYLING FOR NAV LINKS (DESKTOP + MOBILE)
   const navLinkClass = `
     text-[17px]
     text-[#4F2E39]
@@ -42,7 +51,7 @@ export default function Header() {
     transition-all
   `;
 
-  // Shared style for "Switch audience"
+  // SHARED STYLES FOR "SWITCH AUDIENCE" BUTTON
   const switchAudienceClass = `
     inline-flex items-center justify-center
     px-4 py-2
@@ -59,6 +68,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 bg-[#F4B14A] text-[#4F2E39] shadow-md">
       <style>{`
+        /* ANIMATION FOR MOBILE MENU DROPDOWN */
         @keyframes menuDrop {
           from { transform: scaleY(0.85); opacity: 0; }
           to { transform: scaleY(1); opacity: 1; }
@@ -67,6 +77,8 @@ export default function Header() {
           animation: menuDrop 0.18s ease-out;
           transform-origin: top right;
         }
+
+        /* GLOW PULSE ANIMATION FOR LOGO */
         @keyframes glowPulse {
           0%, 100% {
             filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
@@ -78,10 +90,11 @@ export default function Header() {
       `}</style>
 
       <div className="w-full h-16 lg:h-20 px-4 lg:px-8 flex items-center justify-between relative">
-        {/* Logo + text */}
+
+        {/* LOGO + TEXT (ALSO BUTTON TO GO HOME) */}
         <Link
           to={homePath}
-          onClick={() => setOpen(false)}
+          onClick={() => setOpen(false)} // CLOSE MENU IF OPEN
           className="
             flex items-center gap-3
             group
@@ -113,7 +126,7 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* DESKTOP NAV */}
+        {/* DESKTOP NAVIGATION (ONLY SHOWN FROM LG UP) */}
         <div className="hidden lg:flex items-center gap-8">
           {hasAudience &&
             links.map((link) => (
@@ -122,15 +135,16 @@ export default function Header() {
               </Link>
             ))}
 
+          {/* SWITCH AUDIENCE BUTTON */}
           <Link to="/" className={switchAudienceClass}>
             Switch audience
           </Link>
         </div>
 
-        {/* MOBILE BURGER */}
+        {/* MOBILE BURGER BUTTON */}
         <button
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen((v) => !v)} // TOGGLE MENU
           className="
             lg:hidden
             relative w-9 h-9
@@ -142,6 +156,7 @@ export default function Header() {
             focus:outline-none focus:ring-2 focus:ring-[#4F2E39]/60
           "
         >
+          {/* THREE BURGER LINES TRANSFORMING INTO AN X */}
           <span
             className={`
               absolute h-0.5 w-5 rounded bg-[#4F2E39]
@@ -165,7 +180,7 @@ export default function Header() {
           />
         </button>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE DROPDOWN MENU */}
         {open && (
           <div
             className="
@@ -182,12 +197,13 @@ export default function Header() {
               menu-enter
             "
           >
+            {/* IF AUDIENCE IS SELECTED -> SHOW LINKS */}
             {hasAudience ? (
               links.map((link) => (
                 <Link
                   key={link.label}
                   to={link.to}
-                  onClick={() => setOpen(false)}
+                  onClick={() => setOpen(false)} // CLOSE MENU AFTER CLICK
                   className={`
                     ${navLinkClass}
                     w-full
@@ -201,11 +217,13 @@ export default function Header() {
                 </Link>
               ))
             ) : (
+              // MESSAGE IF NO AUDIENCE SELECTED YET
               <p className="text-sm text-[#4F2E39]/80">
                 Select your role to see more pages.
               </p>
             )}
 
+            {/* SWITCH AUDIENCE BUTTON (MOBILE) */}
             <Link
               to="/"
               onClick={() => setOpen(false)}
