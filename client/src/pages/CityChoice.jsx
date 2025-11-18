@@ -84,7 +84,8 @@ export default function CityChoice() {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="animate-float-in w-full max-w-2xl mx-auto px-4 text-center">
+        <div className="animate-float-in w-full max-w-2xl mx-auto px-4 text-left lg:text-center">
+
 
           {/* TITLE */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-8">
@@ -95,16 +96,20 @@ export default function CityChoice() {
           <div className="mb-12 flex justify-center">
             <div className="relative w-full">
               <button
-                onClick={() => setIsOpen((p) => !p)}
-                className="
-                  w-full bg-[#F9F5F2] text-[#4F2E39]
-                  text-lg md:text-xl lg:text-2xl font-semibold
-                  px-5 py-3.5 md:py-4 lg:py-5
-                  rounded-full shadow-lg
-                  flex items-center justify-between
-                  transition-all hover:shadow-xl hover:bg-[#FFF7C2]
-                "
-              >
+  onClick={() => setIsOpen((p) => !p)}
+  className="
+    w-full bg-[#F9F5F2] text-[#4F2E39]
+    text-base md:text-lg lg:text-2xl font-semibold
+    px-4 md:px-5
+    py-2.5 md:py-3.5 lg:py-5
+    rounded-full shadow-lg
+    flex items-center justify-between
+    transition-all
+    hover:shadow-xl
+    hover:bg-[#FFF7C2]
+  "
+>
+
                 <span className="truncate text-left">{city}</span>
 
                 {/* ARROW ROTATION */}
