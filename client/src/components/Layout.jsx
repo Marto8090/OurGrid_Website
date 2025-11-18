@@ -9,7 +9,7 @@ export default function Layout() {
       {/* Top navigation bar */}
       <Header />
 
-      <main className="flex-1 md:py-10">
+      <main className="flex-1 ">
         <Outlet />
       </main>
 
