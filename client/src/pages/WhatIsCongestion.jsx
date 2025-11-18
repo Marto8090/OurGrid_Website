@@ -123,16 +123,19 @@ export default function WhatIsCongestion() {
             <h2 className="text-xl md:text-2xl font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
-            <div className="grid gap-3 md:grid-cols-3 text-sm md:text-base">
-              <div className="border border-[#4F2E39]/20 rounded-full px-4 py-2 text-center">
-                Shift some use to quieter hours.
-              </div>
-              <div className="border border-[#4F2E39]/20 rounded-full px-4 py-2 text-center">
-                Delay EV charging or laundry.
-              </div>
-              <div className="border border-[#4F2E39]/20 rounded-full px-4 py-2 text-center">
-                Small changes = big community impact.
-              </div>
+            <div className="grid gap-4 md:grid-cols-2 text-sm md:text-base">
+                 <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
+                    <span className="text-[#F4B14A] text-lg" >🌍</span>
+                    <p className=" text-[#01AC51] ml-3">Shift some use to quieter hours.</p>
+                  </div>
+                <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg">🌍</span>
+                  <p className=" text-[#01AC51] ml-3 ">Delay EV charging or laundry.</p>
+                </div>
+                <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg">🌍</span>
+                  <p className=" text-[#01AC51] ml-3">Small changes = big community impact.</p>
+                </div>
             </div>
           </div>
 
