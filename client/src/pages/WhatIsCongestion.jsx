@@ -1,6 +1,9 @@
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 import backgroundImage from "../assets/electricity_poles.png";
+import LightBulb from "../assets/light-bulb.png";
+import mainPage from "../assets/mainPage.jpg";
+import devicesPage from "../assets/devicesPage.jpg";
 
 export default function WhatIsCongestion() {
   const { audience } = useAudience();
@@ -90,7 +93,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md p-6 md:p-8 space-y-6">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-2xl shadow-md p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center">
               Why is it a problem?
             </h2>
@@ -119,7 +122,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-          <div className="bg-white rounded-2xl shadow-md border border-[#4F2E39]/10 p-6 md:p-8 space-y-6">
+          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
@@ -140,9 +143,12 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md p-6 md:p-8">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A]  shadow-md p-6 md:p-8">
             <div className="grid gap-6 md:grid-cols-[1fr,1fr] items-center">
-              <div className="space-y-4">
+              <div className="space-y-4 text-center">
+                <div className="flex justify-center">
+                  <img src={LightBulb} alt="Light bulb icon" className="w-20 h-20 object-contain" />
+                </div>
                 <h2 className="text-xl md:text-2xl font-bold">
                   From problem to solution
                 </h2>
@@ -156,26 +162,26 @@ export default function WhatIsCongestion() {
                   reduce peak loads, avoid costly upgrades, and build more
                   resilient local energy systems.
                 </p>
-                <a
-                  href={`${base}/how-ourgrid-works`}
+                <a href={`${base}/how-ourgrid-works`}
                   className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-base shadow-md hover:bg-[#019245] transition-colors mt-1 md:mt-2"
                 >
                   See how OurGrid works
                 </a>
               </div>
 
-              {/* PHONE MOCKUP */}
-              <div className="flex justify-center md:justify-end">
-                <div className="relative w-40 h-80 md:w-48 md:h-[21rem] rounded-[2.25rem] bg-[#1e1b24] shadow-2xl border-[3px] border-black/30 overflow-hidden">
-                  <div className="absolute inset-[6px] rounded-[1.9rem] bg-black overflow-hidden">
-                    <img
-                      src={PhoneImage}
-                      alt="OurGrid app screen"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* decorative notch */}
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-1.5 rounded-full bg-black/60" />
+              {/* STACKED SCREENS */}
+              <div className="flex justify-center md:justify-center">
+                <div className="relative w-55 h-75 md:w-52 md:h-[22rem]">
+
+                  {/* back phone */}
+                  <img  src={devicesPage} alt="OurGrid devices screen"
+                    className="absolute right-0 top-0 w-32 h-64 md:w-36 md:h-[18rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+                  />
+
+                  {/* front phone */}
+                  <img src={mainPage} alt="OurGrid main screen"
+                    className="absolute left-0 bottom-0 w-32 h-64 md:w-36 md:h-[18rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+                  />
                 </div>
               </div>
             </div>
