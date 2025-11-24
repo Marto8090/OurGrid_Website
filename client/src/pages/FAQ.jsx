@@ -23,17 +23,17 @@ export default function FAQ() {
       qa: [
         {
           q: "What do I need to start using OurGrid?",
-          a: "Just download the app, sign in, and connect your P1 dongle to your smart meter."
+          a: "Just download the app, sign in, and connect your P1 dongle to your smart meter.",
         },
         {
           q: "What happens during a congestion challenge?",
-          a: "The app alerts you and gives a target limit. Stay below it to earn points and help your neighbourhood."
+          a: "The app alerts you and gives a target limit. Stay below it to earn points and help your neighbourhood.",
         },
         {
           q: "Can renters also join?",
-          a: "Yes, anyone with access to a smart meter can participate."
-        }
-      ]
+          a: "Yes, anyone with access to a smart meter can participate.",
+        },
+      ],
     },
     {
       key: "rewards",
@@ -42,17 +42,17 @@ export default function FAQ() {
       qa: [
         {
           q: "How do I earn rewards?",
-          a: "You earn points for each minute you stay below the target during challenges."
+          a: "You earn points for each minute you stay below the target during challenges.",
         },
         {
           q: "What can I do with my points?",
-          a: "You can convert them into money or donate them to local community projects."
+          a: "You can convert them into money or donate them to local community projects.",
         },
         {
           q: "Is there a limit to how many points I can earn?",
-          a: "No, you can join as many challenges as you like – more participation means more rewards."
-        }
-      ]
+          a: "No, you can join as many challenges as you like – more participation means more rewards.",
+        },
+      ],
     },
     {
       key: "privacy",
@@ -61,17 +61,17 @@ export default function FAQ() {
       qa: [
         {
           q: "Who can see my data?",
-          a: "Only anonymised data is used to track challenges – no personal info is shared."
+          a: "Only anonymised data is used to track challenges – no personal info is shared.",
         },
         {
           q: "How long is my data kept?",
-          a: "Usage data is automatically deleted after three months."
+          a: "Usage data is automatically deleted after three months.",
         },
         {
           q: "Can I delete my account?",
-          a: "Yes, you can remove your dongle and delete your account anytime from the app settings."
-        }
-      ]
+          a: "Yes, you can remove your dongle and delete your account anytime from the app settings.",
+        },
+      ],
     },
     {
       key: "technical",
@@ -80,13 +80,13 @@ export default function FAQ() {
       qa: [
         {
           q: "Which devices can I connect?",
-          a: "You can link your smart meter, EV charger, battery, and heat pump."
+          a: "You can link your smart meter, EV charger, battery, and heat pump.",
         },
         {
           q: "Does the app control my devices automatically?",
-          a: "Only if you allow it — you can always choose manual control."
-        }
-      ]
+          a: "Only if you allow it — you can always choose manual control.",
+        },
+      ],
     },
     {
       key: "projects",
@@ -95,24 +95,24 @@ export default function FAQ() {
       qa: [
         {
           q: "What's the goal of OurGrid in my city?",
-          a: "To help your neighbourhood avoid grid overload and make local energy use smarter and fairer."
+          a: "To help your neighbourhood avoid grid overload and make local energy use smarter and fairer.",
         },
         {
           q: "Who runs these projects?",
-          a: "They're led by local municipalities and partners, with technology from OpenRemote."
-        }
-      ]
-    }
+          a: "They're led by local municipalities and partners, with technology from OpenRemote.",
+        },
+      ],
+    },
   ];
 
   return (
     <div className="relative w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-12 flex justify-center">
       {/* FLOATING LIGHTNING ICONS (desktop only) */}
-      <div className="hidden lg:block absolute left-20 top-40 opacity-20">
+      <div className="hidden lg:block absolute left-20 top-40 opacity-20 pointer-events-none">
         <Zap size={140} strokeWidth={3} className="text-[#F9F5F2]" />
       </div>
 
-      <div className="hidden lg:block absolute right-20 top-60 opacity-20 -scale-x-100">
+      <div className="hidden lg:block absolute right-20 top-60 opacity-20 -scale-x-100 pointer-events-none">
         <Zap size={140} strokeWidth={3} className="text-[#F9F5F2]" />
       </div>
 
@@ -131,16 +131,19 @@ export default function FAQ() {
             <div
               key={item.key}
               className={`
+                relative
                 self-start
                 w-full
                 sm:w-[48%]
                 lg:w-[31%]
                 bg-[#F9F5F2] text-[#4F2E39]
                 rounded-3xl shadow-lg border-2
-                overflow-hidden transition-shadow duration-200
-                ${isOpen ? "border-[#01AC51] shadow-xl" : "border-transparent"}
+                transition-shadow duration-200
+                ${isOpen ? "border-[#01AC51] shadow-xl z-20" : "border-transparent z-0"}
               `}
+              style={{ overflow: "visible" }} // let dropdown overflow the card
             >
+              {/* HEADER BUTTON */}
               <button
                 onClick={() => toggle(item.key)}
                 className="
@@ -172,19 +175,35 @@ export default function FAQ() {
                 )}
               </button>
 
+              {/* DROPDOWN – visually attached to the card */}
               {isOpen && (
-                <div className="px-6 pb-8 pt-2 border-t border-[#E3DDD7]">
-                  <div className="space-y-6">
-                    {item.qa.map((qa, i) => (
-                      <div key={i}>
-                        <p className="font-semibold text-lg lg:text-xl">
-                          {qa.q}
-                        </p>
-                        <p className="text-[#01AC51] text-sm lg:text-base">
-                          {qa.a}
-                        </p>
-                      </div>
-                    ))}
+                <div
+                  className="
+                    absolute left-0 right-0 top-full
+                    transform -translate-y-2
+                    z-30
+                  "
+                >
+                  <div
+                    className="
+                      bg-[#F9F5F2] text-[#4F2E39]
+                      rounded-3xl rounded-t-none
+                      shadow-2xl border border-[#E3DDD7]
+                      px-6 pb-8 pt-4
+                    "
+                  >
+                    <div className="space-y-6">
+                      {item.qa.map((qa, i) => (
+                        <div key={i}>
+                          <p className="font-semibold text-lg lg:text-xl">
+                            {qa.q}
+                          </p>
+                          <p className="text-[#01AC51] text-sm lg:text-base">
+                            {qa.a}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
