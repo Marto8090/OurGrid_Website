@@ -37,21 +37,28 @@ export default function WhatIsCongestion() {
 
   return (
     <div className="space-y-0">
-      {/* TOP STRIP — BACKGROUND VIDEO AREA */}
+      {/* TOP STRIP */}
       <section className="bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 flex items-center justify-center">
-          <div className="w-full h-40 md:h-56 bg-[#F9F5F2]/5 border-2 border-[#F9F5F2]/30 rounded-2xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide text-[#F9F5F2]/70">
-            background video
-          </div>
+       <div className="max-w-3xl mx-auto px-4 py-10 md:py-16 md:pb-26 text-center space-y-4">
+          <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#F9F5F2]/60">
+            Learn about grid congestion
+          </p>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-[#F9F5F2]">
+            Keeping the grid in balance together
+          </h1>
+          <p className="text-sm md:text-base text-[#F9F5F2]/80">
+            See what grid congestion is, why it's a problem, and how{" "}
+            <span className="font-semibold text-[#F4B14A]">OurGrid</span> helps.
+          </p>
         </div>
       </section>
 
-      {/* MAIN PANEL -*/}
+      {/* MAIN PANEL */}
       <section className="bg-[#F9F5F2] text-[#4F2E39] rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
         <div className="w-full md:space-y-20">
             {/* WHAT + WHY SECTION */}
          <div className="grid md:grid-cols-2  -mb-4 md:mb-0">
-            {/* LEFT CARD — WHAT / POLICY IMPACT */}
+            {/* LEFT CARD — WHAT SECTION */}
             <div className="relative rounded-t-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
               style={{
                 backgroundImage: `url(${backgroundImage})`,
@@ -63,8 +70,8 @@ export default function WhatIsCongestion() {
 
               {/* CONTENT */}
               <div className="relative p-6 md:p-8 text-[#F9F5F2] space-y-4">
-                <h2 className="text-center text-xl md:text-2xl font-bold">{mainTitle}</h2>
-                <p className="text-sm md:text-base text-[#F9F5F2]/90">{mainParagraph}</p>
+                <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
+                <p className="text-center text-sm md:text-xl md:px-14 md:pt-8 text-[#F9F5F2]/90">{mainParagraph}</p>
               </div>
             </div>
 
@@ -72,7 +79,7 @@ export default function WhatIsCongestion() {
             {/* RIGHT CARD — WHY SECTION */}
             
             <div className="bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 ">
-              <h2 className="text-lg md:text-xl font-bold text-[#01AC51] mb-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">
                 {whyTitle}
               </h2>
              <div className="text-sm md:text-base text-[#01AC51]">
@@ -91,11 +98,11 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-        <div className="relative z-20 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 space-y-6">
-            <h2 className="text-xl md:text-2xl font-bold text-center">
+        <div className="relative z-20 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-8 space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-center">
               Why is it a problem?
             </h2>
-            <div className="grid gap-4 md:grid-cols-2 text-sm md:text-base">
+            <div className="grid gap-4 md:grid-cols-2 md:py-6 text-sm md:text-base">
               <div className="space-y-3">
              <div className="flex items-center justify-between border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
                   <span className="text-[#F4B14A] text-lg">🏠</span>
@@ -120,28 +127,37 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-       <div className="relative z-10 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 space-y-6">
-            <h2 className="text-xl md:text-2xl font-bold text-center text-[#01AC51]">
+          <div className="relative z-10 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-8 space-y-6 md:space-y-0">
+            <h2 className="text-2xl md:text-3xl md:pb-6 font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
-            <div className="grid gap-4 md:grid-cols-2 text-sm md:text-base">
-                 <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
-                    <span className="text-[#F4B14A] text-lg" >🌍</span>
-                    <p className=" text-[#01AC51] ml-3">Shift some use to quieter hours.</p>
-                  </div>
-                <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">🌍</span>
-                  <p className=" text-[#01AC51] ml-3 ">Delay EV charging or laundry.</p>
-                </div>
-                <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">🌍</span>
-                  <p className=" text-[#01AC51] ml-3">Small changes = big community impact.</p>
-                </div>
+            <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:py-6 text-sm md:text-base place-items-center">
+              {/* pill 1 */}
+              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
+                <span className="text-[#F4B14A] text-lg">🌍</span>
+                <p className="md:text-xl text-[#01AC51] ml-4">
+                  Shift some use to quieter hours.
+                </p>
+              </div>
+              {/* pill 2 */}
+              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
+                <span className="text-[#F4B14A] text-lg">🌍</span>
+                <p className="md:text-xl text-[#01AC51] ml-4">
+                  Delay EV charging or laundry.
+                </p>
+              </div>
+              {/* pill 3 */}
+              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3 md:col-span-2 md:justify-self-center">
+                <span className="text-[#F4B14A] text-lg">🌍</span>
+                <p className="md:text-xl text-[#01AC51] ml-4">
+                  Small changes = big community impact.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-10 md:p-8">
+            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:p-8">
               {/* top row: text left, phones right */}
               <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
                 {/* TEXT + ICON LEFT */}
@@ -152,7 +168,7 @@ export default function WhatIsCongestion() {
                     className="w-18 h-18 md:w-24 md:h-24 object-contain"
                   />
 
-                  <h2 className="text-xl md:text-3xl font-bold">
+                  <h2 className="text-2xl md:text-3xl font-bold">
                     From problem to solution
                   </h2>
 
