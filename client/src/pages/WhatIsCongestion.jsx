@@ -41,7 +41,6 @@ export default function WhatIsCongestion() {
       {/* TOP STRIP — BACKGROUND VIDEO AREA */}
       <section className="bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 flex items-center justify-center">
-          {/* Replace this with real video later */}
           <div className="w-full h-40 md:h-56 bg-[#F9F5F2]/5 border-2 border-[#F9F5F2]/30 rounded-2xl flex items-center justify-center text-center text-sm md:text-lg font-semibold tracking-wide text-[#F9F5F2]/70">
             background video
           </div>
@@ -52,7 +51,7 @@ export default function WhatIsCongestion() {
       <section className="bg-[#F9F5F2] text-[#4F2E39] md:pt-16 md:pb-20 rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
         <div className="max-w-6xl mx-auto px4  md:space-y-20">
             {/* ROW 1 — WHAT + WHY SECTION */}
-            <div className="grid md:grid-cols-2">
+         <div className="grid md:grid-cols-2 relative z-30 -mb-4 md:mb-0">
             {/* LEFT CARD — WHAT / POLICY IMPACT */}
             <div className="relative rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
               style={{
@@ -73,7 +72,7 @@ export default function WhatIsCongestion() {
 
             {/* RIGHT CARD — WHY SECTION */}
             
-            <div className="bg-white text-center border-2 border-[#F4B14A] rounded-2xl shadow-md p-6 md:p-8">
+            <div className="bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 ">
               <h2 className="text-lg md:text-xl font-bold text-[#01AC51] mb-3">
                 {whyTitle}
               </h2>
@@ -93,7 +92,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-2xl shadow-md p-6 md:p-8 space-y-6">
+        <div className="relative z-20 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center">
               Why is it a problem?
             </h2>
@@ -122,7 +121,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 space-y-6">
+       <div className="relative z-10 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
@@ -143,7 +142,7 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A]  shadow-md p-6 md:p-8">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 md:p-8">
             <div className="grid gap-6 md:grid-cols-[1fr,1fr] items-center">
               <div className="space-y-4 text-center">
                 <div className="flex justify-center">
@@ -152,16 +151,19 @@ export default function WhatIsCongestion() {
                 <h2 className="text-xl md:text-2xl font-bold">
                   From problem to solution
                 </h2>
-                <p className="text-sm md:text-base">
-                  <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
-                  helps you see when your grid is under stress and rewards you
-                  for helping balance it.
-                </p>
-                <p className="text-sm md:text-base text-[#F9F5F2]/90">
-                  Municipalities, co-ops, and residents can work together to
-                  reduce peak loads, avoid costly upgrades, and build more
-                  resilient local energy systems.
-                </p>
+              {isMunicipality ? (
+                  <p className="text-sm md:text-base text-[#F9F5F2]/90">
+                    Municipalities, co-ops, and residents can work together to
+                    reduce peak loads, avoid costly upgrades, and build more
+                    resilient local energy systems.
+                  </p>
+                ) : (
+                  <p className="text-sm md:text-base">
+                    <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
+                    helps you see when your grid is under stress and rewards you
+                    for helping balance it.
+                  </p>
+                )}
                 <a href={`${base}/how-ourgrid-works`}
                   className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-base shadow-md hover:bg-[#019245] transition-colors mt-1 md:mt-2"
                 >
