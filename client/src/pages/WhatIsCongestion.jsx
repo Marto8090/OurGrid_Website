@@ -1,5 +1,4 @@
 import { useAudience } from "../context/AudienceContext.jsx";
-import PhoneImage from "../assets/OurGrid1.png";
 import backgroundImage from "../assets/electricity_poles.png";
 import LightBulb from "../assets/light-bulb.png";
 import mainPage from "../assets/mainPage.jpg";
@@ -48,12 +47,12 @@ export default function WhatIsCongestion() {
       </section>
 
       {/* MAIN PANEL -*/}
-      <section className="bg-[#F9F5F2] text-[#4F2E39] md:pt-16 md:pb-20 rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
-        <div className="max-w-6xl mx-auto px4  md:space-y-20">
-            {/* ROW 1 — WHAT + WHY SECTION */}
-         <div className="grid md:grid-cols-2 relative z-30 -mb-4 md:mb-0">
+      <section className="bg-[#F9F5F2] text-[#4F2E39] rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
+        <div className="w-full md:space-y-20">
+            {/* WHAT + WHY SECTION */}
+         <div className="grid md:grid-cols-2  -mb-4 md:mb-0">
             {/* LEFT CARD — WHAT / POLICY IMPACT */}
-            <div className="relative rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
+            <div className="relative rounded-t-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
               style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: "cover",
@@ -67,7 +66,7 @@ export default function WhatIsCongestion() {
                 <h2 className="text-center text-xl md:text-2xl font-bold">{mainTitle}</h2>
                 <p className="text-sm md:text-base text-[#F9F5F2]/90">{mainParagraph}</p>
               </div>
-          </div>
+            </div>
 
 
             {/* RIGHT CARD — WHY SECTION */}
@@ -142,51 +141,60 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 md:p-8">
-            <div className="grid gap-6 md:grid-cols-[1fr,1fr] items-center">
-              <div className="space-y-4 text-center">
-                <div className="flex justify-center">
-                  <img src={LightBulb} alt="Light bulb icon" className="w-20 h-20 object-contain" />
-                </div>
-                <h2 className="text-xl md:text-2xl font-bold">
-                  From problem to solution
-                </h2>
-              {isMunicipality ? (
-                  <p className="text-sm md:text-base text-[#F9F5F2]/90">
-                    Municipalities, co-ops, and residents can work together to
-                    reduce peak loads, avoid costly upgrades, and build more
-                    resilient local energy systems.
-                  </p>
-                ) : (
-                  <p className="text-sm md:text-base">
-                    <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
-                    helps you see when your grid is under stress and rewards you
-                    for helping balance it.
-                  </p>
-                )}
-                <a href={`${base}/how-ourgrid-works`}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-base shadow-md hover:bg-[#019245] transition-colors mt-1 md:mt-2"
-                >
-                  See how OurGrid works
-                </a>
-              </div>
-
-              {/* STACKED SCREENS */}
-              <div className="flex justify-center md:justify-center">
-                <div className="relative w-55 h-75 md:w-52 md:h-[22rem]">
-
-                  {/* back phone */}
-                  <img  src={devicesPage} alt="OurGrid devices screen"
-                    className="absolute right-0 top-0 w-32 h-64 md:w-36 md:h-[18rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-10 md:p-8">
+              {/* top row: text left, phones right */}
+              <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
+                {/* TEXT + ICON LEFT */}
+                <div className="flex flex-col items-center md:items-center text-center md:text-left space-y-4">
+                  <img
+                    src={LightBulb}
+                    alt="Light bulb icon"
+                    className="w-18 h-18 md:w-24 md:h-24 object-contain"
                   />
 
-                  {/* front phone */}
-                  <img src={mainPage} alt="OurGrid main screen"
-                    className="absolute left-0 bottom-0 w-32 h-64 md:w-36 md:h-[18rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
-                  />
+                  <h2 className="text-xl md:text-3xl font-bold">
+                    From problem to solution
+                  </h2>
+
+                  {isMunicipality ? (
+                    <p className="text-base md:text-lg text-[#F9F5F2]/90 max-w-md">
+                      Municipalities, co-ops, and residents can work together to reduce
+                      peak loads, avoid costly upgrades, and build more resilient local
+                      energy systems.
+                    </p>
+                  ) : (
+                    <p className="text-base md:text-xl max-w-md">
+                      <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
+                      helps you see when your grid is under stress and rewards you for
+                      helping balance it.
+                    </p>
+                  )}
+                    {/* button exactly under phones */}
+                  <a href={`${base}/how-ourgrid-works`}
+                    className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 mt-2 md:mt-5 rounded-full bg-[#01AC51] text-white 
+                    font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors">
+                   <span>See how</span> <span className="mx-1 font-semibold text-[#F4B14A]">OurGrid</span> <span>works</span>
+                  </a>
                 </div>
-              </div>
-            </div>
+
+                {/* PHONES RIGHT + BUTTON UNDER */}
+                <div className="flex flex-col items-center md:items-center gap-4">
+                  <div className="relative w-40 h-80 md:w-64 md:h-94">
+                    {/* back phone */}
+                    <img
+                      src={devicesPage}
+                      alt="OurGrid devices screen"
+                      className="absolute right-0 top-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+                    />
+                    {/* front phone */}
+                    <img
+                      src={mainPage}
+                      alt="OurGrid main screen"
+                      className="absolute left-0 bottom-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+                    />
+                  </div>
+                </div>
+              </div>              
           </div>
         </div>
       </section>
