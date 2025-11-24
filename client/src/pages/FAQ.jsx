@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Zap } from "lucide-react";
 import { useAudience } from "../context/AudienceContext.jsx";
 
 // Images from /assets
@@ -105,79 +105,93 @@ export default function FAQ() {
     }
   ];
 
- return (
-  <div className="w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-12 flex justify-center">
-    <div className="max-w-6xl w-full flex flex-wrap gap-x-8 gap-y-2 justify-center items-start">
+  return (
+    <div className="relative w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-12 flex justify-center">
+      {/* FLOATING LIGHTNING ICONS (desktop only) */}
+      <div className="hidden lg:block absolute left-20 top-40 opacity-20">
+        <Zap size={140} strokeWidth={3} className="text-[#F9F5F2]" />
+      </div>
 
-      {sections.map((item) => {
-        const isOpen = open === item.key;
+      <div className="hidden lg:block absolute right-20 top-60 opacity-20 -scale-x-100">
+        <Zap size={140} strokeWidth={3} className="text-[#F9F5F2]" />
+      </div>
 
-        return (
-          <div
-            key={item.key}
-            className={`
-              w-full
-              sm:w-[48%]
-              lg:w-[31%]
-              bg-[#F9F5F2] text-[#4F2E39]
-              rounded-3xl shadow-lg border-2
-              overflow-hidden transition-shadow duration-200
-              ${isOpen ? "border-[#01AC51] shadow-xl" : "border-transparent"}
-            `}
-          >
-            {/* HEADER: icon → title → arrow, centered as a block */}
-            <button
-              onClick={() => toggle(item.key)}
-              className="
+      <div
+        className="
+          max-w-6xl w-full flex flex-wrap
+          gap-x-8
+          gap-y-8 lg:gap-y-4
+          justify-center items-start
+        "
+      >
+        {sections.map((item) => {
+          const isOpen = open === item.key;
+
+          return (
+            <div
+              key={item.key}
+              className={`
+                self-start
                 w-full
-                flex flex-col items-center justify-center
-                text-center
-                px-6 py-8
-                gap-4
-              "
+                sm:w-[48%]
+                lg:w-[31%]
+                bg-[#F9F5F2] text-[#4F2E39]
+                rounded-3xl shadow-lg border-2
+                overflow-hidden transition-shadow duration-200
+                ${isOpen ? "border-[#01AC51] shadow-xl" : "border-transparent"}
+              `}
             >
-              <img
-                src={item.img}
-                alt={item.title}
+              <button
+                onClick={() => toggle(item.key)}
                 className="
-                  w-20 h-20
-                  sm:w-24 sm:h-24
-                  lg:w-28 lg:h-28
-                  object-contain
+                  w-full flex flex-col items-center justify-center
+                  text-center
+                  px-6 py-8 lg:py-10
+                  gap-4
                 "
-              />
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="
+                    w-20 h-20
+                    sm:w-24 sm:h-24
+                    lg:w-28 lg:h-28
+                    object-contain
+                  "
+                />
 
-              <p className="font-semibold text-xl sm:text-2xl lg:text-3xl">
-                {item.title}
-              </p>
+                <p className="font-semibold text-xl sm:text-2xl lg:text-3xl">
+                  {item.title}
+                </p>
 
-              {isOpen ? (
-                <ChevronUp className="w-5 h-5 text-[#01AC51]" />
-              ) : (
-                <ChevronDown className="w-5 h-5 text-[#01AC51]" />
-              )}
-            </button>
+                {isOpen ? (
+                  <ChevronUp className="w-5 h-5 text-[#01AC51]" />
+                ) : (
+                  <ChevronDown className="w-5 h-5 text-[#01AC51]" />
+                )}
+              </button>
 
-            {isOpen && (
-              <div className="px-6 pb-8 pt-2 border-t border-[#E3DDD7]">
-                <div className="space-y-6">
-                  {item.qa.map((qa, i) => (
-                    <div key={i}>
-                      <p className="font-semibold text-lg lg:text-xl">
-                        {qa.q}
-                      </p>
-                      <p className="text-[#01AC51] text-sm lg:text-base">
-                        {qa.a}
-                      </p>
-                    </div>
-                  ))}
+              {isOpen && (
+                <div className="px-6 pb-8 pt-2 border-t border-[#E3DDD7]">
+                  <div className="space-y-6">
+                    {item.qa.map((qa, i) => (
+                      <div key={i}>
+                        <p className="font-semibold text-lg lg:text-xl">
+                          {qa.q}
+                        </p>
+                        <p className="text-[#01AC51] text-sm lg:text-base">
+                          {qa.a}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        );
-      })}
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
 }
