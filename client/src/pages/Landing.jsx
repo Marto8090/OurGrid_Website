@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 import BackgroundVideo from "../assets/background.mov";
@@ -18,6 +19,29 @@ export default function Landing() {
   const heroSubtitle = isMunicipality
     ? "Help your city reduce grid stress, support local energy co-ops, and give residents a clear, fair way to join in."
     : "Help your neighborhood avoid grid stress  and get money using our app";
+
+  // Scroll-triggered circle animation over the phone image
+  useEffect(() => {
+    const element = document.getElementById("circleAnimation");
+    const ring = document.getElementById("ring");
+
+    if (!element || !ring) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Animate to full circle
+            ring.style.strokeDashoffset = "0";
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="space-y-0">
@@ -108,7 +132,7 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Phone */}
+            {/* Phone with animated circle overlay */}
             <div className="w-full md:w-4/12 flex justify-center md:justify-end">
               <div
                 className="
@@ -118,6 +142,40 @@ export default function Landing() {
                   [mask-image:linear-gradient(to_top,transparent_0%,transparent_25%,black_80%,black_100%)]
                 "
               >
+                {/* FULL CIRCLE ANIMATION OVERLAY */}
+       {/* FULL CIRCLE ANIMATION OVERLAY */}
+<div
+  id="circleAnimation"
+  className="
+    absolute inset-0
+    flex items-center justify-center
+    pointer-events-none
+    -translate-y-[28.6%]
+  "
+>
+  <svg
+    className="w-[54%] h-[54%]"
+    viewBox="0 0 120 120"
+  >
+    <circle
+      id="ring"
+      cx="60"
+      cy="60"
+      r="54"
+      stroke="#01AC51"
+      strokeWidth="9"
+      fill="none"
+      strokeLinecap="round"
+      className="transition-all duration-[1800ms] ease-out"
+      strokeDasharray="339"
+      strokeDashoffset="339"
+    />
+  </svg>
+</div>
+
+
+
+                {/* PHONE IMAGE */}
                 <img
                   src={PhoneImage}
                   alt="OurGrid app on phone"
@@ -136,96 +194,93 @@ export default function Landing() {
       </section>
 
       {/* SECTION 3+4 – Start now + Grid congestion cards */}
- <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-14">
-  {/* full-width container with only side padding */}
-  <div className="w-full px-4 lg:px-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
-      
-      {/* START NOW CARD */}
-      <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-between">
-        {/* Top: QR + text */}
-        <div className="flex items-start gap-4 md:gap-6">
-          {/* QR – tablet/desktop only */}
-          <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0">
-            <img
-              src={QR}
-              alt="QR"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-14">
+        {/* full-width container with only side padding */}
+        <div className="w-full px-4 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+            {/* START NOW CARD */}
+            <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-between">
+              {/* Top: QR + text */}
+              <div className="flex items-start gap-4 md:gap-6">
+                {/* QR – tablet/desktop only */}
+                <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0">
+                  <img
+                    src={QR}
+                    alt="QR"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-          <div className="text-left">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold">
-              Start now
-            </h2>
-            <p className="mt-2 text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
-              Scan the QR or use the buttons below to download the app
-              when OurGrid is available in your area.
-            </p>
+                <div className="text-left">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold">
+                    Start now
+                  </h2>
+                  <p className="mt-2 text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
+                    Scan the QR or use the buttons below to download the app
+                    when OurGrid is available in your area.
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom: store buttons */}
+              <div className="mt-6 flex flex-col lg:flex-row gap-4 justify-center md:justify-start flex-wrap">
+                <a href="#" className="block">
+                  <img
+                    src={PlayStore1}
+                    alt="Get it on Google Play"
+                    className="h-20 md:h-24 w-auto object-contain min-w-[210px]"
+                  />
+                </a>
+
+                <a href="#" className="block">
+                  <img
+                    src={AppStore}
+                    alt="Download on the App Store"
+                    className="h-20 md:h-24 w-auto object-contain min-w-[230px]"
+                  />
+                </a>
+              </div>
+            </div>
+
+            {/* WHAT IS GRID CONGESTION CARD */}
+            <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-center">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center lg:text-left">
+                Are you curious what grid congestion is?
+              </h3>
+
+              <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+                <img
+                  src={Question}
+                  alt="Question"
+                  className="w-20 md:w-28 lg:w-32 object-contain flex-shrink-0"
+                />
+
+                <div className="flex-1 flex justify-center sm:justify-start">
+                  <a
+                    href={
+                      isMunicipality
+                        ? "/m/what-is-grid-congestion"
+                        : "/u/what-is-grid-congestion"
+                    }
+                    className="
+                      inline-flex items-center justify-center
+                      px-8 md:px-10 lg:px-12
+                      py-3 md:py-3.5 lg:py-4
+                      rounded-full
+                      bg-[#01AC51]
+                      text-white font-semibold
+                      text-sm md:text-base lg:text-lg
+                      shadow-md hover:bg-[#019245] transition-colors
+                    "
+                  >
+                    What is Grid congestion?
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Bottom: store buttons */}
-        <div className="mt-6 flex flex-col lg:flex-row gap-4 justify-center md:justify-start flex-wrap">
-          <a href="#" className="block">
-            <img
-              src={PlayStore1}
-              alt="Get it on Google Play"
-              className="h-20 md:h-24 w-auto object-contain min-w-[210px]"
-            />
-          </a>
-
-          <a href="#" className="block">
-            <img
-              src={AppStore}
-              alt="Download on the App Store"
-              className="h-20 md:h-24 w-auto object-contain min-w-[230px]"
-            />
-          </a>
-        </div>
-      </div>
-
-      {/* WHAT IS GRID CONGESTION CARD */}
-      <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-center">
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center lg:text-left">
-          Are you curious what grid congestion is?
-        </h3>
-
-        <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 md:gap-6">
-          <img
-            src={Question}
-            alt="Question"
-            className="w-20 md:w-28 lg:w-32 object-contain flex-shrink-0"
-          />
-
-          <div className="flex-1 flex justify-center sm:justify-start">
-            <a
-              href={
-                isMunicipality
-                  ? "/m/what-is-grid-congestion"
-                  : "/u/what-is-grid-congestion"
-              }
-              className="
-                inline-flex items-center justify-center
-                px-8 md:px-10 lg:px-12
-                py-3 md:py-3.5 lg:py-4
-                rounded-full
-                bg-[#01AC51]
-                text-white font-semibold
-                text-sm md:text-base lg:text-lg
-                shadow-md hover:bg-[#019245] transition-colors
-              "
-            >
-              What is Grid congestion?
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
     </div>
   );
 }
