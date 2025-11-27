@@ -4,6 +4,15 @@ import LightBulb from "../assets/light-bulb.png";
 import mainPage from "../assets/mainPage.jpg";
 import devicesPage from "../assets/devicesPage.jpg";
 
+import { House } from 'lucide-react';
+import { BanknoteArrowUp } from 'lucide-react';
+import { Earth } from 'lucide-react';
+import { TriangleAlert } from 'lucide-react';
+import { Zap } from 'lucide-react';
+import { Clock10 } from 'lucide-react';
+import { History } from 'lucide-react';
+import { Handshake } from 'lucide-react';
+
 export default function WhatIsCongestion() {
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
@@ -38,7 +47,7 @@ export default function WhatIsCongestion() {
   return (
     <div className="space-y-0">
       {/* TOP STRIP */}
-      <section className="bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
+      <section className="relative -mb-4 md:mb-0 bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
        <div className="max-w-3xl mx-auto px-4 py-10 md:py-16 md:pb-26 text-center space-y-4">
           <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#F9F5F2]/60">
             Learn about grid congestion
@@ -54,72 +63,69 @@ export default function WhatIsCongestion() {
       </section>
 
       {/* MAIN PANEL */}
-      <section className="bg-[#F9F5F2] text-[#4F2E39] rounded-t-2xl md:rounded-t-[40px] -mt-8 md:-mt-12">
-        <div className="w-full md:space-y-20">
+      <section className="bg-[#F9F5F2] text-[#4F2E39] rounded-2xl  md:rounded-t-[40px] md:-mt-12">
+        <div className="w-full">
             {/* WHAT + WHY SECTION */}
-         <div className="grid md:grid-cols-2  -mb-4 md:mb-0">
-            {/* LEFT CARD — WHAT SECTION */}
-            <div className="relative rounded-t-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
-              style={{
-                backgroundImage: `url(${backgroundImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-              }}>
-              {/* DARK OVERLAY */}
-              <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
+            <div className="grid md:grid-cols-2">
 
-              {/* CONTENT */}
-              <div className="relative p-6 md:p-8 text-[#F9F5F2] space-y-4">
-                <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
-                <p className="text-center text-sm md:text-xl md:px-14 md:pt-8 text-[#F9F5F2]/90">{mainParagraph}</p>
-              </div>
-            </div>
+              {/* LEFT CARD — WHAT SECTION */}
+              <div className="relative z-20 -mb-6 md:mb-0 rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md "
+                style={{
+                  backgroundImage: `url(${backgroundImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                }}>
+                {/* DARK OVERLAY */}
+                <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
 
-
-            {/* RIGHT CARD — WHY SECTION */}
-            
-            <div className="bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 ">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">
-                {whyTitle}
-              </h2>
-             <div className="text-sm md:text-base text-[#01AC51]">
-                <div className="flex flex-col divide-y divide-[#F4B14A]/60">
-                  {reasons.map((text, index) => (
-                    <div key={index} className="flex items-start gap-3 py-3">
-                      <span className="mt-1 text-[#01AC51] text-lg">
-                        {isMunicipality ? "↻" : "⚡"}
-                      </span>
-                      <p>{text}</p>
-                    </div>
-                  ))}
+                {/* CONTENT */}
+                <div className="relative z-20 p-6 md:p-8 text-[#F9F5F2] space-y-4">
+                  <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
+                  <p className="text-center text-sm md:text-xl md:px-14 md:pt-8 text-[#F9F5F2]/90">{mainParagraph}</p>
                 </div>
+              </div>
+
+              {/* RIGHT CARD — WHY SECTION */}
+              <div className="relative z-15 -mb-6 md:mb-0 bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6  pt-12 md:p-8  ">
+                <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">
+                  {whyTitle}
+                </h2>
+              <div className="text-sm md:text-base text-[#01AC51]">
+                  <div className="flex flex-col divide-y divide-[#F4B14A]/60">
+                    {reasons.map((text, index) => (
+                      <div key={index} className="flex items-start gap-3 py-3">
+                        <span className="mt-1 text-[#F8D092] text-lg"> <Zap /> </span>
+                        <p>{text}</p>
+                      </div>
+                    ))}
+                  </div>
               </div>
             </div>
           </div>
 
           {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-        <div className="relative z-20 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-8 space-y-6">
+        <div className="relative z-10 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-12 space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-center">
               Why is it a problem?
             </h2>
             <div className="grid gap-4 md:grid-cols-2 md:py-6 text-sm md:text-base">
               <div className="space-y-3">
-             <div className="flex items-center justify-between border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">🏠</span>
+             <div className="flex items-center gap-3 justify-start border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg"><House /></span>
                   <p>Harder to connect new homes or EV chargers.</p>
                 </div>
-               <div className="flex items-center justify-between  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">💸</span>
+               <div className="flex items-center gap-3 justify-start  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg"><BanknoteArrowUp /></span>
                   <p>Higher electricity costs during peaks.</p>
                 </div>
               </div>
               <div className="space-y-3">
-               <div className="flex items-center justify-between border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">🌍</span>
+               <div className="flex items-center gap-3 justify-start border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg"><Earth /></span>
                   <p>More pressure on the environment.</p>
                 </div>
-               <div className="flex items-center justify-between  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg">⚠️</span>
+               <div className="flex items-center gap-3 justify-start  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] text-lg"><TriangleAlert /></span>
                   <p>Greater risk of local power outages.</p>
                 </div>
               </div>
@@ -127,28 +133,28 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-          <div className="relative z-10 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-8 space-y-6 md:space-y-0">
+          <div className="relative z-5 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-8 space-y-6 md:space-y-0 pt-10 md:p-8">
             <h2 className="text-2xl md:text-3xl md:pb-6 font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
             <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:py-6 text-sm md:text-base place-items-center">
               {/* pill 1 */}
-              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
-                <span className="text-[#F4B14A] text-lg">🌍</span>
+              <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
+                <span className="text-[#F4B14A] text-lg"><Clock10 /></span>
                 <p className="md:text-xl text-[#01AC51] ml-4">
                   Shift some use to quieter hours.
                 </p>
               </div>
               {/* pill 2 */}
-              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
-                <span className="text-[#F4B14A] text-lg">🌍</span>
+              <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
+                <span className="text-[#F4B14A] text-lg"><History /></span>
                 <p className="md:text-xl text-[#01AC51] ml-4">
                   Delay EV charging or laundry.
                 </p>
               </div>
               {/* pill 3 */}
-              <div className="flex items-center bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3 md:col-span-2 md:justify-self-center">
-                <span className="text-[#F4B14A] text-lg">🌍</span>
+              <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3 md:col-span-2 md:justify-self-center">
+                <span className="text-[#F4B14A] text-lg"><Handshake /></span>
                 <p className="md:text-xl text-[#01AC51] ml-4">
                   Small changes = big community impact.
                 </p>
@@ -161,7 +167,7 @@ export default function WhatIsCongestion() {
               {/* top row: text left, phones right */}
               <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
                 {/* TEXT + ICON LEFT */}
-                <div className="flex flex-col items-center md:items-center text-center md:text-left space-y-4">
+                <div className="flex flex-col items-center md:items-center text-center md:text-left md:pl-14 space-y-4">
                   <img
                     src={LightBulb}
                     alt="Light bulb icon"
@@ -173,13 +179,13 @@ export default function WhatIsCongestion() {
                   </h2>
 
                   {isMunicipality ? (
-                    <p className="text-base md:text-lg text-[#F9F5F2]/90 max-w-md">
+                    <p className="text-base text-center md:text-lg text-[#F9F5F2]/90 max-w-md">
                       Municipalities, co-ops, and residents can work together to reduce
                       peak loads, avoid costly upgrades, and build more resilient local
                       energy systems.
                     </p>
                   ) : (
-                    <p className="text-base md:text-xl max-w-md">
+                    <p className="text-base text-center md:text-xl max-w-md">
                       <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
                       helps you see when your grid is under stress and rewards you for
                       helping balance it.
