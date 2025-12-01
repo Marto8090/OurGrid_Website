@@ -68,8 +68,8 @@ export default function WhatIsCongestion() {
             {/* WHAT + WHY SECTION */}
             <div className="grid md:grid-cols-2">
 
-              {/* LEFT CARD — WHAT SECTION */}
-              <div className="relative z-20 -mb-6 md:mb-0 rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md "
+              {/* LEFT CARD - WHAT SECTION */}
+              <div className="relative z-20 -mb-6 rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md "
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
                   backgroundSize: "cover",
@@ -81,20 +81,20 @@ export default function WhatIsCongestion() {
                 {/* CONTENT */}
                 <div className="relative z-20 p-6 md:p-8 text-[#F9F5F2] space-y-4">
                   <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
-                  <p className="text-center text-sm md:text-xl md:px-14 md:pt-8 text-[#F9F5F2]/90">{mainParagraph}</p>
+                  <p className="text-center text-sm md:text-xl md:px-14 md:pt-12 text-[#F9F5F2]/90">{mainParagraph}</p>
                 </div>
               </div>
 
-              {/* RIGHT CARD — WHY SECTION */}
-              <div className="relative z-15 -mb-6 md:mb-0 bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6  pt-12 md:p-8  ">
+              {/* RIGHT CARD - WHY SECTION */}
+              <div className="relative z-15 -mb-6 bg-white text-center border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6  pt-12 md:p-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">
                   {whyTitle}
                 </h2>
-              <div className="text-sm md:text-base text-[#01AC51]">
+              <div className="text-sm md:text-xl text-[#01AC51]">
                   <div className="flex flex-col divide-y divide-[#F4B14A]/60">
                     {reasons.map((text, index) => (
                       <div key={index} className="flex items-start gap-3 py-3">
-                        <span className="mt-1 text-[#F8D092] text-lg"> <Zap /> </span>
+                        <span className="mt-1 text-[#F8D092]"> <Zap /> </span>
                         <p>{text}</p>
                       </div>
                     ))}
@@ -103,41 +103,41 @@ export default function WhatIsCongestion() {
             </div>
           </div>
 
-          {/* ROW 2 — WHY IS IT A PROBLEM? (SAME FOR BOTH) */}
-        <div className="relative z-10 -mb-4 md:mb-0 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-12 space-y-6">
+          {/* ROW 2 - WHY IS IT A PROBLEM? */}
+        <div className="relative z-10 -mb-4 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-12 md:pt-18 md:pb-12 space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-center">
               Why is it a problem?
             </h2>
-            <div className="grid gap-4 md:grid-cols-2 md:py-6 text-sm md:text-base">
-              <div className="space-y-3">
-             <div className="flex items-center gap-3 justify-start border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg"><House /></span>
-                  <p>Harder to connect new homes or EV chargers.</p>
+            <div className="grid gap-4 md:grid-cols-2 md:py-6 text-sm md:text-xl md:text-base">
+              <div className="space-y-5  md:flex md:flex-col md:items-center">
+                <div className="flex items-center gap-3 justify-start md:w-3/4 border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A] "><House /></span>
+                  <p className="flex-1 text-center">Harder to connect new homes or EV chargers.</p>
                 </div>
-               <div className="flex items-center gap-3 justify-start  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg"><BanknoteArrowUp /></span>
-                  <p>Higher electricity costs during peaks.</p>
+                <div className="flex items-center gap-3 justify-start md:w-3/4 border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A]"><BanknoteArrowUp /></span>
+                  <p className="flex-1 text-center">Higher electricity costs during peaks.</p>
                 </div>
               </div>
-              <div className="space-y-3">
-               <div className="flex items-center gap-3 justify-start border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg"><Earth /></span>
-                  <p>More pressure on the environment.</p>
+              <div className="space-y-5  md:flex md:flex-col md:items-center">
+                <div className="flex items-center gap-3 justify-start md:w-3/4 border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A]"><Earth /></span>
+                  <p className="flex-1 text-center">More pressure on the environment.</p>
                 </div>
-               <div className="flex items-center gap-3 justify-start  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
-                  <span className="text-[#F4B14A] text-lg"><TriangleAlert /></span>
-                  <p>Greater risk of local power outages.</p>
+                <div className="flex items-center gap-3 justify-start md:w-3/4  border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
+                  <span className="text-[#F4B14A]"><TriangleAlert /></span>
+                  <p className="flex-1 text-center">Greater risk of local power outages.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* ROW 3 — HOW CAN WE HELP? (SAME STRUCTURE, WORKS FOR BOTH) */}
-          <div className="relative z-5 -mb-4 md:mb-0 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-8 space-y-6 md:space-y-0 pt-10 md:p-8">
+          {/* ROW 3 = HOW CAN WE HELP? */}
+          <div className="relative z-5 -mb-5 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-8 space-y-6 md:space-y-0 pt-10 md:pt-16 md:pb-10">
             <h2 className="text-2xl md:text-3xl md:pb-6 font-bold text-center text-[#01AC51]">
               How can we help?
             </h2>
-            <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:py-6 text-sm md:text-base place-items-center">
+            <div className="space-y-4 md:space-y-11 md:grid md:grid-cols-2 md:py-6 text-sm md:text-xl place-items-center">
               {/* pill 1 */}
               <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
                 <span className="text-[#F4B14A] text-lg"><Clock10 /></span>
@@ -162,8 +162,8 @@ export default function WhatIsCongestion() {
             </div>
           </div>
 
-          {/* ROW 4 — FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
-            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:p-8">
+          {/* ROW 4 - FROM PROBLEM TO SOLUTION + PHONE MOCKUP */}
+            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:pt-16 md:pb-12 md:p-8">
               {/* top row: text left, phones right */}
               <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
                 {/* TEXT + ICON LEFT */}
@@ -191,7 +191,7 @@ export default function WhatIsCongestion() {
                       helping balance it.
                     </p>
                   )}
-                    {/* button exactly under phones */}
+                  {/* BUTTON */}
                   <a href={`${base}/how-ourgrid-works`}
                     className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 mt-2 md:mt-5 rounded-full bg-[#01AC51] text-white 
                     font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors">
@@ -199,8 +199,8 @@ export default function WhatIsCongestion() {
                   </a>
                 </div>
 
-                {/* PHONES RIGHT + BUTTON UNDER */}
-                <div className="flex flex-col items-center md:items-center gap-4">
+                {/* PHONES */}
+                <div className="flex flex-col items-center md:items-center md:pl-14">
                   <div className="relative w-40 h-80 md:w-64 md:h-94">
                     {/* back phone */}
                     <img
