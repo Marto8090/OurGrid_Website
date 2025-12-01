@@ -50,6 +50,7 @@ export default function App() {
             <Route path="dashboards" element={<Dashboards />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="privacy-policy" element={<Privacy />} />
+            
           </Route>
         </Routes>
       </BrowserRouter>
