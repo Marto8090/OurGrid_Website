@@ -65,63 +65,68 @@ export default function Header() {
     };
 
     return (
-      <div
-        className={`
-          relative flex items-center 
-          bg-[#4F2E39]/10 border border-[#4F2E39]/30
-          rounded-full p-1 h-10 w-[240px]
-          ${className}
-        `}
-      >
-        {/* SLIDING BACKGROUND (The "Active" State) */}
-        {/* We use width 50% and translate it left or right */}
-        <div
-  className={`
-    absolute top-1 bottom-1 w-[calc(50%-4px)]
-    bg-[#4F2E39] rounded-full shadow-md
-    /* Use a custom spring-like bezier curve */
-    transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-    ${isMuni ? "translate-x-[100%] ml-1" : "translate-x-0"}
-  `}
-/>
 
-        {/* BUTTON 1: RESIDENT */}
-        <button
-          onClick={() => switchRole("user")}
-          className={`
-            relative z-10 w-1/2 flex items-center justify-center gap-2
-            text-sm font-bold transition-colors duration-300
-            ${!isMuni ? "text-[#F4B14A]" : "text-[#4F2E39] hover:text-[#4F2E39]/80"}
-          `}
-        >
-          {/* User Icon */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          Resident
-        </button>
+  <div
+    className={`
+      relative flex items-center justify-between
+      bg-[#4F2E39]/10 border border-[#4F2E39]/25
+      rounded-full p-1 h-11 w-[260px]
+      shadow-sm backdrop-blur-sm
+      ${className}
+    `}
+  >
+    {/* ACTIVE SLIDER */}
+    <div
+      className={`
+        absolute top-1 bottom-1 w-[50%]
+        bg-[#4F2E39] rounded-full
+        shadow-[0_4px_12px_rgba(0,0,0,0.25)]
+        transition-transform duration-400
+        ease-[cubic-bezier(.22,.61,.36,1)]
+        ${isMuni ? "translate-x-full" : "translate-x-0"}
+      `}
+    />
 
-        {/* BUTTON 2: MUNICIPALITY */}
-        <button
-          onClick={() => switchRole("municipality")}
-          className={`
-            relative z-10 w-1/2 flex items-center justify-center gap-2
-            text-sm font-bold transition-colors duration-300
-            ${isMuni ? "text-[#F4B14A]" : "text-[#4F2E39] hover:text-[#4F2E39]/80"}
-          `}
-        >
-          {/* Building Icon */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-            <path d="M3 21h18" />
-            <path d="M5 21V7l8-4 8 4v14" />
-            <path d="M17 21v-8.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V21" />
-          </svg>
-          Municiaplity
-        </button>
-      </div>
-    );
-  };
+    {/* RESIDENT */}
+    <button
+      onClick={() => switchRole("user")}
+      className={`
+        relative z-10 flex-1 h-full flex items-center justify-center gap-2
+        text-sm font-semibold
+        transition-colors duration-300
+        ${!isMuni ? "text-[#F4B14A]" : "text-[#4F2E39]"}
+      `}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" strokeWidth="2.2"
+        className="w-4 h-4">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+      </svg>
+      Resident
+    </button>
+
+    {/* MUNICIPALITY */}
+    <button
+      onClick={() => switchRole("municipality")}
+      className={`
+        relative z-10 flex-1 h-full flex items-center justify-center gap-2
+        text-sm font-semibold
+        transition-colors duration-300
+        ${isMuni ? "text-[#F4B14A]" : "text-[#4F2E39]"}
+      `}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" strokeWidth="2.2"
+        className="w-4 h-4">
+        <path d="M3 21h18" />
+        <path d="M5 21V7l8-4 8 4v14" />
+        <path d="M17 21v-8.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V21" />
+      </svg>
+      Municipality
+    </button>
+  </div>
+);      }
 
   return (
     <header className="sticky top-0 z-30 bg-[#F4B14A] text-[#4F2E39] shadow-md">
