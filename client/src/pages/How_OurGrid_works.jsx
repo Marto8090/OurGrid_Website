@@ -2,6 +2,8 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import mainPage from "../assets/mainPage.jpg";
 import devicesPage from "../assets/devicesPage.jpg";
 import LightBulb from "../assets/light-bulb.png";
+import { Cog } from "lucide-react";
+
 
 export default function HowOurGridWorks() {
   const { audience } = useAudience();
@@ -14,11 +16,17 @@ export default function HowOurGridWorks() {
   return (
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl shadow-md shadow-black/20">
-        <div className="max-w-md mx-auto px-4 py-8 space-y-3 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#F9F5F2]/60">
-            How OurGrid works
-          </p>
+      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl">
+        <div className="max-w-md mx-auto py-14 flex flex-col gap-3 items-center">
+          {/* Cog icon */}
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
+            <Cog className="w-10 h-10 md:w-12 md:h-12 text-[#D96532]" strokeWidth={2.4} />
+          </div>
+
+          {/* Title */}
+          <h1 className="text-2xl md:text-3xl font-extrabold">
+            How <span className="text-[#01AC51]">OurGrid</span> Works
+          </h1>
         </div>
       </section>
 
