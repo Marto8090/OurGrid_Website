@@ -222,9 +222,14 @@ export default function Landing() {
                 </div>
               </div>
 
-              {/* Bottom: store buttons */}
+                          {/* Bottom: store buttons */}
               <div className="mt-6 flex flex-col lg:flex-row gap-4 justify-center md:justify-start flex-wrap">
-                <a href="#" className="block">
+                <a 
+                  href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block"
+                >
                   <img
                     src={PlayStore1}
                     alt="Get it on Google Play"
@@ -232,7 +237,12 @@ export default function Landing() {
                   />
                 </a>
 
-                <a href="#" className="block">
+                <a 
+                  href="https://apps.apple.com/nl/app/ourgrid/id6478114711" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block"
+                >
                   <img
                     src={AppStore}
                     alt="Download on the App Store"
