@@ -1,29 +1,40 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-// CREATE A CONTEXT TO STORE THE SELECTED AUDIENCE (USER OR MUNICIPALITY)
+// CREATE THE CONTEXT
 const AudienceContext = createContext();
 
 export function AudienceProvider({ children }) {
   // STATE THAT HOLDS THE CURRENT AUDIENCE
   // INITIAL VALUE LOADS FROM LOCALSTORAGE SO IT PERSISTS ON REFRESH
-  const [audience, setAudience] = useState(
-    () => localStorage.getItem("audience") || null // "user" OR "municipALITY"
-  );
+  const [audience, setAudience] = useState(() => {
+    // Check if a value exists in storage
+    const stored = localStorage.getItem("audience");
+    return stored ? stored : null;
+  });
 
-  // WHENEVER AUDIENCE CHANGES, SAVE IT TO LOCALSTORAGE
+  // WHENEVER AUDIENCE CHANGES, SYNC IT WITH LOCALSTORAGE
   useEffect(() => {
-    if (audience) localStorage.setItem("audience", audience);
+    if (audience) {
+      localStorage.setItem("audience", audience);
+    } else {
+      // If audience is null (reset), remove it from storage
+      localStorage.removeItem("audience");
+    }
   }, [audience]);
 
   return (
-    // PROVIDE BOTH THE VALUE AND THE FUNCTION TO UPDATE IT TO ALL CHILD COMPONENTS
+    // PROVIDE BOTH THE VALUE AND THE SETTER FUNCTION
     <AudienceContext.Provider value={{ audience, setAudience }}>
       {children}
     </AudienceContext.Provider>
   );
 }
 
-// CUSTOM HOOK TO ACCESS AUDIENCE CONTEXT ANYWHERE IN THE APP
+// CUSTOM HOOK TO ACCESS CONTEXT
 export function useAudience() {
-  return useContext(AudienceContext);
+  const context = useContext(AudienceContext);
+  if (context === undefined) {
+    throw new Error("useAudience must be used within an AudienceProvider");
+  }
+  return context;
 }
