@@ -1,11 +1,9 @@
 import { useAudience } from "../context/AudienceContext.jsx";
-import mainPage from "../assets/mainPage.jpg";
+import RegisterPage from "../assets/RegisterPage.jpg";
 import devicesPage from "../assets/devicesPage.jpg";
 import dongle from "../assets/dongle.png";
 import powerBrick from "../assets/power brick.png";
 import { Cog } from "lucide-react";
-
-
 
 export default function HowOurGridWorks() {
   const { audience } = useAudience();
@@ -38,7 +36,7 @@ export default function HowOurGridWorks() {
         <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden relative">
           <div className="px-5 pt-6 pb-5 space-y-4">
             {/* Step number */}
-            <div className="w-12 h-12 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-xl font-bold">
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
               1
             </div>
             {/* Title */}
@@ -46,7 +44,7 @@ export default function HowOurGridWorks() {
               Plug your energy dongle
             </h2>
             {/* Grey circle */}
-            <div className="absolute top-40 -right-12 w-74 h-110 rounded-full bg-[#E0D7D7] opacity-100"></div>      
+            <div className="absolute top-40 -right-12 w-74 h-110 rounded-full bg-[#E0D7D7]"></div>      
             {/* Image container */}
             <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-3 border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center "> 
               <img
@@ -55,7 +53,7 @@ export default function HowOurGridWorks() {
                 className="w-full h-60 object-cover "
               />
             </div>
-            {/* Power brick positioned over the image */}
+            {/* Power brick positioned the image */}
             <div className="relative left-[132px] top-[-30px] mb-0">
               <img
                 src={powerBrick}
@@ -73,51 +71,51 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 2 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-lg font-bold">
-              2
-            </div>
-            <h2 className="text-lg font-semibold text-center">
-              Sign in or register
-            </h2>
+       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+        <div className="px-5 pt-6 pb-5 space-y-4">
 
-            <div className="mt-2 rounded-xl overflow-hidden border border-[#F9F5F2]/10 bg-[#3B202A] flex items-center justify-center py-4">
-              <img
-                src={mainPage}
-                alt="OurGrid login screen"
-                className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]"
-              />
-            </div>
-
-            <p className="text-sm leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-              After that by opening the OurGrid app and signing in,new users can register in just a few steps - no technical setup needed.Once logged in, you'll be connected to your city's local energy network.
-            </p>
+          <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+            2
           </div>
+
+          <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
+
+          {/* Soft background circle */}
+          <div className="absolute top-265 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/8"></div>
+
+          {/* PHONE WITH FADE */}
+          <div className="relative w-fit mx-auto">
+            <img src={RegisterPage} alt="OurGrid login screen"
+              className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
+            <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+          </div>
+
+          <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
+            After that by opening the OurGrid app and signing in,new users can register in just a few steps - no technical setup needed.Once logged in, you'll be connected to your city's local energy network.
+          </p>
+
         </div>
+      </div>
+
 
         {/* STEP 3 */}
         <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-lg font-bold">
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
               3
             </div>
-            <h2 className="text-lg font-semibold text-center">
+            <h2 className="text-2xl font-semibold text-center">
               See your usage, join challenges & take action
             </h2>
 
             <div className="mt-2 rounded-xl overflow-hidden border border-[#4F2E39]/10 bg-[#F9F5F2] flex items-center justify-center py-4">
-              <img
-                src={mainPage}
-                alt="OurGrid home screen"
-                className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]"
-              />
+              <img src alt="OurGrid home screen"
+                className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]" />
             </div>
 
-            <p className="text-sm leading-relaxed text-center mt-3">
-              The home screen shows your live power use and alerts you when
-              your area faces a peak load. Join challenges by keeping your
-              usage below the limit.
+            <p className="text-lg leading-relaxed text-center mt-3">
+              The home screen shows your live power use and alerts you when your area faces a peak load.
+              Join the challenge by keeping your usage below the target limit - every minute counts toward points.
             </p>
           </div>
         </div>
