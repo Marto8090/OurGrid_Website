@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Shield,
   Users,
@@ -8,9 +9,8 @@ import {
   RefreshCw,
   ChevronDown,
 } from "lucide-react";
-import { useState } from "react";
-import PrivacyBg from "../assets/PrivPol.png"; // Make sure this path is correct for your project
 
+// We keep your data exactly as it was
 const PRIVACY_SECTIONS = [
   {
     id: "privacy-policy",
@@ -99,124 +99,141 @@ export default function PrivacyPolicy() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col font-sans relative bg-[#F9F5F2]">
-      <section className="relative flex-1">
-        {/* === BACKGROUND LAYER === */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none h-full w-full">
-          {/* The Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-15 blur-[2px]"
-            style={{ backgroundImage: `url(${PrivacyBg})` }}
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#F9F5F2]" />
+    <div className="relative w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-16 lg:py-24 overflow-x-hidden font-sans">
+      
+      {/* === BACKGROUND DECORATION (Consistent with FAQ) === */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-5 top-10 opacity-5 animate-pulse">
+          <Shield size={150} strokeWidth={1} />
+        </div>
+        <div className="absolute right-5 bottom-20 opacity-5 -scale-x-100 animate-pulse delay-1000">
+          <Lock size={200} strokeWidth={1} />
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {/* === HEADER SECTION === */}
+        <div className="text-center mb-12 lg:mb-16 space-y-3">
+          <h2 className="text-[#01AC51] font-bold tracking-wider uppercase text-sm md:text-base">
+            Privacy & Data Use
+          </h2>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            Privacy Policy
+          </h1>
+          <p className="text-lg text-[#F9F5F2]/80 max-w-2xl mx-auto mt-4">
+             Transparent details on how OurGrid and its partners handle information about website visitors and app users.
+          </p>
         </div>
 
-        {/* === CONTENT LAYER === */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 space-y-8">
-          {/* Header */}
-          <div className="rounded-2xl text-white px-5 py-5 shadow-lg max-w-xl backdrop-blur-sm bg-[#4F2E39]">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#F4B14A]">
-              Privacy & Data Use
-            </p>
-            <h1 className="text-2xl sm:text-3xl font-bold mt-2">
-              Privacy Policy
-            </h1>
-            <p className="text-sm sm:text-base mt-2 opacity-90 leading-relaxed">
-              Transparent details on how OurGrid and its partners handle
-              information about website visitors and app users.
-            </p>
-          </div>
+        {/* === GRID LAYOUT === */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start pb-20">
+          {PRIVACY_SECTIONS.map((section) => {
+            const isOpen = openId === section.id;
+            const Icon = section.icon;
 
-          {/* Cards Grid */}
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-start">
-            {PRIVACY_SECTIONS.map((section) => {
-              const Icon = section.icon;
-              const isOpen = openId === section.id;
-
-              return (
-                <article
-                  key={section.id}
-                  className={`group relative rounded-2xl bg-white shadow-md transition-all duration-300 border-2 ${
-                    isOpen
-                      ? "ring-2 ring-[#01AC51] border-[#01AC51]"
-                      : "border-transparent hover:shadow-xl hover:-translate-y-1"
-                  }`}
+            return (
+              <div
+                key={section.id}
+                className={`
+                  relative w-full
+                  transition-all duration-300 ease-in-out
+                  ${isOpen ? "z-10" : "z-0"}
+                `}
+              >
+                <div
+                  className={`
+                    group relative flex flex-col 
+                    bg-[#F9F5F2] text-[#4F2E39] 
+                    transition-all duration-300
+                    overflow-hidden
+                    ${
+                      isOpen
+                        ? "rounded-3xl shadow-2xl scale-[1.02]"
+                        : "rounded-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+                    }
+                  `}
                 >
+                  {/* === CARD HEADER (Clickable) === */}
                   <button
-                    type="button"
                     onClick={() => toggle(section.id)}
-                    aria-expanded={isOpen}
-                    className="w-full text-left p-5 flex flex-col focus:outline-none rounded-2xl"
+                    className="w-full relative flex flex-col items-center justify-center text-center p-8 gap-5 outline-none cursor-pointer"
                   >
-                    {/* Card Header */}
-                    <div className="flex items-start gap-4 w-full">
-                      <div className="flex-1">
-                        <p className="text-[10px] font-bold uppercase tracking-widest mb-1 text-[#4F2E39]">
-                          Privacy
-                        </p>
-                        <h2 className="text-base font-bold text-[#1D252C]">
-                          {section.label}
-                        </h2>
-                      </div>
-
-                      {/* Icons */}
-                      <div className="flex flex-col items-end gap-2">
-                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white shadow-sm bg-[#01AC51]">
-                          <Icon className="h-4 w-4" aria-hidden="true" />
-                        </span>
-                        <span
-                          className={`inline-flex h-8 w-8 items-center justify-center rounded-full shadow-sm transition-transform duration-300 bg-[#F4B14A] text-[#4F2E39] ${
-                            isOpen ? "rotate-180" : "rotate-0"
-                          }`}
-                        >
-                          <ChevronDown className="h-5 w-5" aria-hidden="true" />
-                        </span>
+                    {/* Icon Circle */}
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-[#4F2E39]/5 rounded-full scale-110 transform" />
+                      <div className="relative w-20 h-20 flex items-center justify-center rounded-full bg-white/50">
+                        {/* CHANGED: Icon color is now green */}
+                        <Icon size={40} className="text-[#01AC51]" strokeWidth={1.5} />
                       </div>
                     </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-[#384450]">
-                      {section.short}
-                    </p>
+                    <h3 className="font-extrabold text-2xl leading-tight">
+                      {section.label}
+                    </h3>
 
-                    {/* Smooth Expansion Animation using Grid Rows */}
+                    {/* Chevron Indicator */}
                     <div
-                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                        isOpen
-                          ? "grid-rows-[1fr] opacity-100 mt-4"
-                          : "grid-rows-[0fr] opacity-0 mt-0"
-                      }`}
+                      className={`
+                        flex items-center justify-center w-8 h-8 rounded-full 
+                        transition-all duration-300 
+                        ${
+                          isOpen
+                            ? "bg-[#01AC51] text-white rotate-180"
+                            : "bg-[#4F2E39]/10 text-[#4F2E39] group-hover:bg-[#01AC51] group-hover:text-white"
+                        }
+                      `}
                     >
-                      <div className="overflow-hidden">
-                        <div className="pt-4 border-t space-y-2 text-sm leading-relaxed border-[#E2E8F0] text-[#384450]">
-                          {section.body.map((line, i) => (
-                            <p key={i}>{line}</p>
-                          ))}
-                        </div>
-                      </div>
+                      <ChevronDown size={20} strokeWidth={3} />
                     </div>
                   </button>
-                </article>
-              );
-            })}
-          </div>
 
-          {/* Still Curious Section (Internal Footer Info) */}
-          <div className="max-w-xl">
-            <div className="rounded-2xl px-6 py-6 shadow-md bg-[#4F2E39] text-[#F9F5F2]">
-              <p className="text-xs font-bold tracking-wide uppercase mb-2 text-[#F4B14A]">
-                Still curious?
-              </p>
-              <p className="text-sm sm:text-base leading-relaxed opacity-95">
+                  {/* === CONTENT SECTION === */}
+                  <div
+                    className={`
+                      transition-all duration-500 ease-in-out
+                      ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+                    `}
+                  >
+                    <div className="px-8 pb-8 pt-0 space-y-6">
+                      {/* Divider */}
+                      <div className="w-full h-[2px] bg-[#4F2E39]/10 mx-auto w-[85%] mb-6" />
+
+                      {/* Summary Text (Bold) */}
+                      <p className="font-bold text-lg leading-tight text-[#4F2E39]">
+                        {section.short}
+                      </p>
+
+                      {/* Detailed Body Text */}
+                      <div className="space-y-3 text-[#4F2E39]/80 text-base font-medium leading-relaxed">
+                        {section.body.map((line, i) => (
+                           <p key={i}>{line}</p> 
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Bottom Green Accent Line */}
+                    <div className="h-2 w-full bg-[#01AC51]" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* === BOTTOM INFO === */}
+        <div className="max-w-3xl mx-auto text-center border-t border-[#F9F5F2]/20 pt-10">
+            <h4 className="text-[#F4B14A] font-bold uppercase tracking-wide text-sm mb-3">
+                Still Curious?
+            </h4>
+            <p className="text-[#F9F5F2]/80 leading-relaxed">
                 If you have questions about this policy or want to exercise your
                 privacy rights, contact your local OurGrid project partner.
                 Their contact details are listed in the app and on the main
                 OurGrid website.
-              </p>
-            </div>
-          </div>
+            </p>
         </div>
-      </section>
-    </main>
+
+      </div>
+    </div>
   );
 }
