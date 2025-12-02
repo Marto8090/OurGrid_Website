@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
 import BackgroundVideo from "../assets/background.mov";
@@ -12,18 +12,22 @@ export default function Landing() {
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
 
+  // Refs for the animation
+  const circleContainerRef = useRef(null);
+  const ringRef = useRef(null);
+
   const heroTitle = isMunicipality
     ? "OurGrid for Municipalities"
     : "OurGrid for your neighborhood";
 
   const heroSubtitle = isMunicipality
     ? "Help your city reduce grid stress, support local energy co-ops, and give residents a clear, fair way to join in."
-    : "Help your neighborhood avoid grid stress  and get money using our app";
+    : "Help your neighborhood avoid grid stress and get money using our app";
 
   // Scroll-triggered circle animation over the phone image
   useEffect(() => {
-    const element = document.getElementById("circleAnimation");
-    const ring = document.getElementById("ring");
+    const element = circleContainerRef.current;
+    const ring = ringRef.current;
 
     if (!element || !ring) return;
 
@@ -31,7 +35,6 @@ export default function Landing() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animate to full circle
             ring.style.strokeDashoffset = "0";
           }
         });
@@ -56,14 +59,16 @@ export default function Landing() {
           playsInline
         />
 
+        {/* Overlay gradient for readability */}
         <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#4F2E39]/80 to-transparent opacity-60" />
 
         <div className="relative z-10 flex items-center justify-center w-full h-full px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">
               {heroTitle}
             </h1>
-            <p className="mt-6 text-lg md:text-2xl text-[#F9F5F2]/90">
+            <p className="mt-6 text-lg md:text-2xl text-[#F9F5F2]/90 drop-shadow-md max-w-2xl mx-auto">
               {heroSubtitle}
             </p>
           </div>
@@ -77,19 +82,19 @@ export default function Landing() {
       <section className="bg-[#4F2E39] text-[#F9F5F2] pb-8 md:pb-10 lg:pb-4 xl:pb-0">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center md:gap-10 lg:gap-12">
-            {/* Bullets */}
-            <div className="w-full md:w-7/12 space-y-16 md:pr-2">
+            
+            {/* Bullets (Left on desktop, Bottom on mobile) */}
+            <div className="w-full md:w-7/12 space-y-16 md:pr-2 pt-8 md:pt-0">
               {/* 1. Shift your usage */}
-              <div className="flex items-start gap-8 md:gap-9">
-                <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex items-center justify-center">
-                  <Zap className="w-full h-full text-[#01AC51]" />
+              <div className="flex items-start gap-6 md:gap-9 group">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+                  <Zap className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
-
                 <div>
-                  <p className="font-semibold text-lg md:text-2xl">
+                  <p className="font-semibold text-xl md:text-2xl text-[#F4B14A]">
                     Shift your usage
                   </p>
-                  <p className="text-[#F9F5F2]/80 text-sm md:text-base mt-1">
+                  <p className="text-[#F9F5F2]/80 text-base md:text-lg mt-2 leading-relaxed">
                     Move flexible appliances to less crowded hours and help your
                     neighborhood avoid grid stress.
                   </p>
@@ -97,16 +102,15 @@ export default function Landing() {
               </div>
 
               {/* 2. Avoid peaks */}
-              <div className="flex items-start gap-8 md:gap-9">
-                <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex items-center justify-center">
-                  <TrendingDown className="w-full h-full text-[#01AC51]" />
+              <div className="flex items-start gap-6 md:gap-9 group">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+                  <TrendingDown className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
-
                 <div>
-                  <p className="font-semibold text-lg md:text-2xl">
+                  <p className="font-semibold text-xl md:text-2xl text-[#F4B14A]">
                     Avoid peaks
                   </p>
-                  <p className="text-[#F9F5F2]/80 text-sm md:text-base mt-1">
+                  <p className="text-[#F9F5F2]/80 text-base md:text-lg mt-2 leading-relaxed">
                     When many people use electricity at the same time, cables
                     and transformers hit their limits. OurGrid helps spread that
                     demand.
@@ -115,16 +119,15 @@ export default function Landing() {
               </div>
 
               {/* 3. Earn points */}
-              <div className="flex items-start gap-8 md:gap-9">
-                <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex items-center justify-center">
-                  <Medal className="w-full h-full text-[#01AC51]" />
+              <div className="flex items-start gap-6 md:gap-9 group">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+                  <Medal className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
-
                 <div>
-                  <p className="font-semibold text-lg md:text-2xl">
+                  <p className="font-semibold text-xl md:text-2xl text-[#F4B14A]">
                     Earn points
                   </p>
-                  <p className="text-[#F9F5F2]/80 text-sm md:text-base mt-1">
+                  <p className="text-[#F9F5F2]/80 text-base md:text-lg mt-2 leading-relaxed">
                     Residents can earn points for shifting their usage. Cities
                     can connect these to local rewards and initiatives.
                   </p>
@@ -132,54 +135,51 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Phone with animated circle overlay */}
-            <div className="w-full md:w-4/12 flex justify-center md:justify-end">
+            {/* Phone Container - FIXED HERE */}
+            {/* removed 'sticky top-10', added 'md:sticky md:top-28' */}
+            <div className="w-full md:w-4/12 flex justify-center md:justify-end relative md:sticky md:top-28">
               <div
                 className="
                   relative
                   w-[220px] sm:w-[240px] md:w-[270px] lg:w-[320px]
                   drop-shadow-2xl
-                  [mask-image:linear-gradient(to_top,transparent_0%,transparent_25%,black_80%,black_100%)]
+                  [mask-image:linear-gradient(to_top,transparent_0%,transparent_15%,black_80%,black_100%)]
                 "
               >
-                {/* FULL CIRCLE ANIMATION OVERLAY */}
-       {/* FULL CIRCLE ANIMATION OVERLAY */}
-<div
-  id="circleAnimation"
-  className="
-    absolute inset-0
-    flex items-center justify-center
-    pointer-events-none
-    -translate-y-[28.6%]
-  "
->
-  <svg
-    className="w-[54%] h-[54%]"
-    viewBox="0 0 120 120"
-  >
-    <circle
-      id="ring"
-      cx="60"
-      cy="60"
-      r="54"
-      stroke="#01AC51"
-      strokeWidth="9"
-      fill="none"
-      strokeLinecap="round"
-      className="transition-all duration-[1800ms] ease-out"
-      strokeDasharray="339"
-      strokeDashoffset="339"
-    />
-  </svg>
-</div>
-
-
+                {/* CIRCLE ANIMATION */}
+                <div
+                  ref={circleContainerRef}
+                  className="
+                    absolute inset-0
+                    flex items-center justify-center
+                    pointer-events-none
+                    -translate-y-[28.6%]
+                    z-20
+                  "
+                >
+                  <svg className="w-[54%] h-[54%]" viewBox="0 0 120 120">
+                    <circle
+                      ref={ringRef}
+                      cx="60"
+                      cy="60"
+                      r="54"
+                      stroke="#01AC51"
+                      strokeWidth="9"
+                      fill="none"
+                      strokeLinecap="round"
+                      className="transition-all duration-[1800ms] ease-out drop-shadow-[0_0_10px_rgba(1,172,81,0.6)]"
+                      strokeDasharray="339"
+                      strokeDashoffset="339"
+                    />
+                  </svg>
+                </div>
 
                 {/* PHONE IMAGE */}
                 <img
                   src={PhoneImage}
                   alt="OurGrid app on phone"
                   className="
+                    relative z-10
                     w-full h-auto
                     rounded-[32px]
                     border-4 border-[#F4B14A]/70
@@ -194,77 +194,69 @@ export default function Landing() {
       </section>
 
       {/* SECTION 3+4 – Start now + Grid congestion cards */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-14">
-        {/* full-width container with only side padding */}
-        <div className="w-full px-4 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-16">
+        <div className="w-full px-4 lg:px-10 max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
             {/* START NOW CARD */}
-            <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-between">
-              {/* Top: QR + text */}
-              <div className="flex items-start gap-4 md:gap-6">
-                {/* QR – tablet/desktop only */}
-                <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0">
+            <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-between hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+              <div className="flex items-start gap-6 md:gap-8">
+                <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0 rounded-xl">
                   <img
                     src={QR}
-                    alt="QR"
+                    alt="Scan to download"
                     className="w-full h-full object-cover"
                   />
                 </div>
-
                 <div className="text-left">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#F4B14A]">
                     Start now
                   </h2>
-                  <p className="mt-2 text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
+                  <p className="mt-3 text-sm md:text-base lg:text-lg leading-relaxed text-[#F9F5F2]/90">
                     Scan the QR or use the buttons below to download the app
                     when OurGrid is available in your area.
                   </p>
                 </div>
               </div>
 
-                          {/* Bottom: store buttons */}
-              <div className="mt-6 flex flex-col lg:flex-row gap-4 justify-center md:justify-start flex-wrap">
-                <a 
-                  href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block"
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a
+                  href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transform transition-transform hover:scale-105 active:scale-95"
                 >
                   <img
                     src={PlayStore1}
                     alt="Get it on Google Play"
-                    className="h-20 md:h-24 w-auto object-contain min-w-[210px]"
+                    className="h-16 md:h-20 w-auto object-contain"
                   />
                 </a>
-
-                <a 
-                  href="https://apps.apple.com/nl/app/ourgrid/id6478114711" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block"
+                <a
+                  href="https://apps.apple.com/nl/app/ourgrid/id6478114711"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transform transition-transform hover:scale-105 active:scale-95"
                 >
                   <img
                     src={AppStore}
                     alt="Download on the App Store"
-                    className="h-20 md:h-24 w-auto object-contain min-w-[230px]"
+                    className="h-16 md:h-20 w-auto object-contain"
                   />
                 </a>
               </div>
             </div>
 
             {/* WHAT IS GRID CONGESTION CARD */}
-            <div className="rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-8 flex flex-col justify-center">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center lg:text-left">
-                Are you curious what grid congestion is?
+            <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-center items-center hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center max-w-lg leading-tight">
+                Are you curious what <span className="text-[#01AC51]">grid congestion</span> is?
               </h3>
-
-              <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+              <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 w-full justify-center">
                 <img
                   src={Question}
                   alt="Question"
-                  className="w-20 md:w-28 lg:w-32 object-contain flex-shrink-0"
+                  className="w-20 md:w-24 lg:w-32 object-contain flex-shrink-0 animate-pulse-slow"
                 />
-
                 <div className="flex-1 flex justify-center sm:justify-start">
                   <a
                     href={
@@ -275,15 +267,18 @@ export default function Landing() {
                     className="
                       inline-flex items-center justify-center
                       px-8 md:px-10 lg:px-12
-                      py-3 md:py-3.5 lg:py-4
+                      py-3 md:py-4
                       rounded-full
                       bg-[#01AC51]
-                      text-white font-semibold
+                      text-white font-bold
                       text-sm md:text-base lg:text-lg
-                      shadow-md hover:bg-[#019245] transition-colors
+                      shadow-lg shadow-[#01AC51]/30
+                      transform transition-all duration-300
+                      hover:bg-[#019245] hover:scale-105 hover:shadow-xl
+                      active:scale-95
                     "
                   >
-                    What is Grid congestion?
+                    Learn More
                   </a>
                 </div>
               </div>
