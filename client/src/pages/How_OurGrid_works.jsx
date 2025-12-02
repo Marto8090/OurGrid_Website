@@ -1,8 +1,10 @@
 import { useAudience } from "../context/AudienceContext.jsx";
 import mainPage from "../assets/mainPage.jpg";
 import devicesPage from "../assets/devicesPage.jpg";
-import LightBulb from "../assets/light-bulb.png";
+import dongle from "../assets/dongle.png";
+import powerBrick from "../assets/power brick.png";
 import { Cog } from "lucide-react";
+
 
 
 export default function HowOurGridWorks() {
@@ -33,33 +35,45 @@ export default function HowOurGridWorks() {
       {/* STEPS CONTAINER */}
       <section className="max-w-md mx-auto">
         {/* STEP 1 */}
-        <div className="bg-white rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden relative">
           <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-lg font-bold">
+            {/* Step number */}
+            <div className="w-12 h-12 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-xl font-bold">
               1
             </div>
-            <h2 className="text-lg font-semibold text-center">
+            {/* Title */}
+            <h2 className="text-2xl font-semibold text-center">
               Plug your energy dongle
             </h2>
-
-            <div className="mt-2 rounded-xl overflow-hidden border border-[#4F2E39]/10 bg-[#F9F5F2] flex items-center justify-center py-4">
+            {/* Grey circle */}
+            <div className="absolute top-40 -right-12 w-74 h-110 rounded-full bg-[#E0D7D7] opacity-100"></div>      
+            {/* Image container */}
+            <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-3 border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center "> 
               <img
-                src={LightBulb}
+                src={dongle}
                 alt="Energy dongle illustration"
-                className="w-24 h-24 object-contain"
+                className="w-full h-60 object-cover "
               />
             </div>
-
-            <p className="text-sm leading-relaxed text-center mt-3">
-              Connect the dongle to your home energy meter. This lets OurGrid
-              read your real-time usage and link it to your Wi-Fi so the app
-              can show your data.
+            {/* Power brick positioned over the image */}
+            <div className="relative left-[132px] top-[-30px] mb-0">
+              <img
+                src={powerBrick}
+                alt="Power brick Illustration"
+                className="w-25 h-auto"
+              />
+            </div>
+            {/* Description */}
+            <p className="text-lg leading-relaxed text-center relative z-10">
+              Start by connecting your device to your home energy meter.
+              This allows it to track your real-time energy usage. Once connected,
+              link the device to your Wi-Fi network to sync your data securely.
             </p>
           </div>
         </div>
 
         {/* STEP 2 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-lg font-bold">
               2
@@ -77,14 +91,13 @@ export default function HowOurGridWorks() {
             </div>
 
             <p className="text-sm leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-              Open the OurGrid app and sign in. New users can register in just
-              a few steps – no technical setup needed.
+              After that by opening the OurGrid app and signing in,new users can register in just a few steps - no technical setup needed.Once logged in, you'll be connected to your city's local energy network.
             </p>
           </div>
         </div>
 
         {/* STEP 3 */}
-        <div className="bg-white rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-lg font-bold">
               3
@@ -110,7 +123,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 4 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-lg font-bold">
               4
@@ -128,7 +141,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 5 */}
-        <div className="bg-white rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-lg font-bold">
               5
@@ -146,7 +159,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 6 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border border-[#F4B14A]/60 overflow-hidden">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-mdborder-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-lg font-bold">
               6
@@ -173,21 +186,17 @@ export default function HowOurGridWorks() {
       </section>
 
       {/* COUNTINUE TO APP */}
-      <section className="max-w-md mx-auto px-4 pb-10">
-        <div className="bg-white rounded-2xl shadow-md border border-[#F4B14A]/60 p-5 space-y-4 text-center">
+      <section className="max-w-md mx-auto">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl p-5 space-y-4 text-center">
           <p className="font-semibold text-base">
             Do you want a hands on experience?
           </p>
           <p className="text-sm">
-            Download the OurGrid app and try it yourself in a pilot project
-            near you.
+            Download the OurGrid app and try it yourself in a pilot project near you.
           </p>
-          <button
-            type="button"
-            className="inline-flex items-center justify-center px-6 py-2.5 mt-1 rounded-full bg-[#01AC51] text-white font-semibold text-sm shadow-md hover:bg-[#019245] transition-colors"
-          >
-            Download the app →
-          </button>
+          <button type="button"
+            className="inline-flex items-center justify-center px-6 py-2.5 mt-1 rounded-full bg-[#01AC51] text-white font-semibold text-sm shadow-md hover:bg-[#019245] transition-colors"> 
+            Download the app → </button>
         </div>
       </section>
     </div>
