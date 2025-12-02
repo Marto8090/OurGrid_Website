@@ -1,6 +1,7 @@
 import { useAudience } from "../context/AudienceContext.jsx";
 import RegisterPage from "../assets/RegisterPage.jpg";
-import devicesPage from "../assets/devicesPage.jpg";
+import PeakCongestion from "../assets/PeakCongestion.jpg";
+import ChallengePopUp from "../assets/ChallengePopUp.jpg";
 import dongle from "../assets/dongle.png";
 import powerBrick from "../assets/power brick.png";
 import { Cog } from "lucide-react";
@@ -81,7 +82,7 @@ export default function HowOurGridWorks() {
           <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
 
           {/* Soft background circle */}
-          <div className="absolute top-265 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/8"></div>
+          <div className="absolute top-265 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6"></div>
 
           {/* PHONE WITH FADE */}
           <div className="relative w-fit mx-auto">
@@ -91,12 +92,12 @@ export default function HowOurGridWorks() {
           </div>
 
           <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-            After that by opening the OurGrid app and signing in,new users can register in just a few steps - no technical setup needed.Once logged in, you'll be connected to your city's local energy network.
+            After that by opening the OurGrid app and signing in, new users can register in just a few steps -
+            no technical setup needed. Once logged in, you'll be connected to your city's local energy network.
           </p>
 
         </div>
       </div>
-
 
         {/* STEP 3 */}
         <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
@@ -107,16 +108,42 @@ export default function HowOurGridWorks() {
             <h2 className="text-2xl font-semibold text-center">
               See your usage, join challenges & take action
             </h2>
-
-            <div className="mt-2 rounded-xl overflow-hidden border border-[#4F2E39]/10 bg-[#F9F5F2] flex items-center justify-center py-4">
-              <img src alt="OurGrid home screen"
-                className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]" />
+            {/* PHONE STACK */}
+            <div className="relative w-52 h-75 mx-auto my-6">
+              {/* Back phone */}
+              <img src={PeakCongestion} alt="Back screen"
+                className="absolute right-0 top-2 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"/>
+              {/* Front phone */}
+              <img
+                src={ChallengePopUp} alt="Front screen"
+                 className="absolute left-0 bottom-0 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"/>
             </div>
 
-            <p className="text-lg leading-relaxed text-center mt-3">
-              The home screen shows your live power use and alerts you when your area faces a peak load.
-              Join the challenge by keeping your usage below the target limit - every minute counts toward points.
-            </p>
+            <div className="relative p-5 text-center space-y-4">
+              {/* top-left curve */}
+              <div className="absolute top-0 left-0 w-40 h-20 
+                  border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl"></div>
+
+              {/* top-right curve */}
+              <div className="absolute top-0 right-0 w-40 h-20 
+                  border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl"></div>
+
+              {/* bottom-left curve */}
+              <div className="absolute bottom-0 left-0 w-40 h-20 
+                  border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl"></div>
+
+              {/* bottom-right curve */}
+              <div className="absolute bottom-0 right-0 w-40 h-20 
+                  border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl"></div>
+
+              <p className="text-lg leading-relaxed">
+                The home screen shows your live power use and alerts you when your area faces a peak load.
+              </p>
+              <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto"></div>
+              <p className="text-lg leading-relaxed">
+                Join the challenge by keeping your usage below the target limit - every minute counts toward points.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -168,7 +195,7 @@ export default function HowOurGridWorks() {
 
             <div className="mt-2 rounded-xl overflow-hidden border border-[#F9F5F2]/10 bg-[#3B202A] flex items-center justify-center py-4">
               <img
-                src={devicesPage}
+                src
                 alt="OurGrid devices screen"
                 className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]"
               />
