@@ -10,7 +10,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-// We keep your data exactly as it was
 const PRIVACY_SECTIONS = [
   {
     id: "privacy-policy",
@@ -101,7 +100,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="relative w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-16 lg:py-24 overflow-x-hidden font-sans">
       
-      {/* === BACKGROUND DECORATION (Consistent with FAQ) === */}
+      {/* === BACKGROUND DECORATION === */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-5 top-10 opacity-5 animate-pulse">
           <Shield size={150} strokeWidth={1} />
@@ -127,9 +126,16 @@ export default function PrivacyPolicy() {
 
         {/* === GRID LAYOUT === */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start pb-20">
-          {PRIVACY_SECTIONS.map((section) => {
+          {PRIVACY_SECTIONS.map((section, index) => {
             const isOpen = openId === section.id;
             const Icon = section.icon;
+
+            // GRID LOGIC:
+            // If it's the first item (index 0), span all columns on Desktop (lg:col-span-3)
+            // This creates a layout of: [ 1 (Full) ] then [ 3 cols ] then [ 3 cols ]
+            const gridClasses = index === 0 
+                ? "col-span-1 md:col-span-2 lg:col-span-3" 
+                : "col-span-1";
 
             return (
               <div
@@ -137,6 +143,7 @@ export default function PrivacyPolicy() {
                 className={`
                   relative w-full
                   transition-all duration-300 ease-in-out
+                  ${gridClasses}
                   ${isOpen ? "z-10" : "z-0"}
                 `}
               >
@@ -148,7 +155,7 @@ export default function PrivacyPolicy() {
                     overflow-hidden
                     ${
                       isOpen
-                        ? "rounded-3xl shadow-2xl scale-[1.02]"
+                        ? "rounded-3xl shadow-2xl scale-[1.01]"
                         : "rounded-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
                     }
                   `}
@@ -162,7 +169,6 @@ export default function PrivacyPolicy() {
                     <div className="relative">
                       <div className="absolute inset-0 bg-[#4F2E39]/5 rounded-full scale-110 transform" />
                       <div className="relative w-20 h-20 flex items-center justify-center rounded-full bg-white/50">
-                        {/* CHANGED: Icon color is now green */}
                         <Icon size={40} className="text-[#01AC51]" strokeWidth={1.5} />
                       </div>
                     </div>
@@ -199,12 +205,13 @@ export default function PrivacyPolicy() {
                       <div className="w-full h-[2px] bg-[#4F2E39]/10 mx-auto w-[85%] mb-6" />
 
                       {/* Summary Text (Bold) */}
-                      <p className="font-bold text-lg leading-tight text-[#4F2E39]">
+                      {/* We limit max width on the first wide card so lines don't get too long to read */}
+                      <p className={`font-bold text-lg leading-tight text-[#4F2E39] ${index === 0 ? "max-w-3xl mx-auto text-center" : ""}`}>
                         {section.short}
                       </p>
 
                       {/* Detailed Body Text */}
-                      <div className="space-y-3 text-[#4F2E39]/80 text-base font-medium leading-relaxed">
+                      <div className={`space-y-3 text-[#4F2E39]/80 text-base font-medium leading-relaxed ${index === 0 ? "max-w-3xl mx-auto text-center" : ""}`}>
                         {section.body.map((line, i) => (
                            <p key={i}>{line}</p> 
                         ))}
