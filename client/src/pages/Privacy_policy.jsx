@@ -7,22 +7,9 @@ import {
   Lock,
   RefreshCw,
   ChevronDown,
-  ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
 import PrivacyBg from "../assets/PrivPol.png"; // Make sure this path is correct for your project
-
-// Centralized colors makes it easier to theme or change later
-const COLORS = {
-  bg: "#F9F5F2",
-  primary: "#4F2E39", // Dark plum
-  secondary: "#2C6EA4", // Blue
-  accent: "#F4B14A", // Orange/Gold
-  success: "#01AC51", // Green
-  textDark: "#1D252C",
-  textGray: "#384450",
-  border: "#E2E8F0",
-};
 
 const PRIVACY_SECTIONS = [
   {
@@ -112,16 +99,12 @@ export default function PrivacyPolicy() {
   };
 
   return (
-    <main
-      className="min-h-screen flex flex-col font-sans relative"
-      style={{ backgroundColor: COLORS.bg }}
-    >
+    <main className="min-h-screen flex flex-col font-sans relative bg-[#F9F5F2]">
       <section className="relative flex-1">
         {/* === BACKGROUND LAYER === */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none h-full w-full">
           {/* The Image */}
           <div
-            // Added 'bg-fixed' here. This is the Tailwind utility for background-attachment: fixed
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-15 blur-[2px]"
             style={{ backgroundImage: `url(${PrivacyBg})` }}
           />
@@ -131,23 +114,17 @@ export default function PrivacyPolicy() {
 
         {/* === CONTENT LAYER === */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 space-y-8">
-
           {/* Header */}
-          <div
-            className="rounded-2xl text-white px-5 py-5 shadow-lg max-w-xl backdrop-blur-sm"
-            style={{ backgroundColor: COLORS.primary }}
-          >
-            <p
-              className="text-xs font-bold uppercase tracking-wider"
-              style={{ color: COLORS.accent }}
-            >
+          <div className="rounded-2xl text-white px-5 py-5 shadow-lg max-w-xl backdrop-blur-sm bg-[#4F2E39]">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#F4B14A]">
               Privacy & Data Use
             </p>
             <h1 className="text-2xl sm:text-3xl font-bold mt-2">
               Privacy Policy
             </h1>
             <p className="text-sm sm:text-base mt-2 opacity-90 leading-relaxed">
-              Transparent details on how OurGrid and its partners handle information about website visitors and app users.
+              Transparent details on how OurGrid and its partners handle
+              information about website visitors and app users.
             </p>
           </div>
 
@@ -160,13 +137,11 @@ export default function PrivacyPolicy() {
               return (
                 <article
                   key={section.id}
-                  className={`group relative rounded-2xl bg-white shadow-md transition-all duration-300 ${
-                    isOpen ? "ring-2" : "hover:shadow-xl hover:-translate-y-1"
+                  className={`group relative rounded-2xl bg-white shadow-md transition-all duration-300 border-2 ${
+                    isOpen
+                      ? "ring-2 ring-[#01AC51] border-[#01AC51]"
+                      : "border-transparent hover:shadow-xl hover:-translate-y-1"
                   }`}
-                  style={{
-                    borderColor: isOpen ? COLORS.success : "transparent",
-                    ringColor: isOpen ? COLORS.success : "transparent"
-                  }}
                 >
                   <button
                     type="button"
@@ -177,62 +152,43 @@ export default function PrivacyPolicy() {
                     {/* Card Header */}
                     <div className="flex items-start gap-4 w-full">
                       <div className="flex-1">
-                        <p
-                          className="text-[10px] font-bold uppercase tracking-widest mb-1"
-                          style={{ color: COLORS.primary }}
-                        >
+                        <p className="text-[10px] font-bold uppercase tracking-widest mb-1 text-[#4F2E39]">
                           Privacy
                         </p>
-                        <h2
-                          className="text-base font-bold"
-                          style={{ color: COLORS.textDark }}
-                        >
+                        <h2 className="text-base font-bold text-[#1D252C]">
                           {section.label}
                         </h2>
                       </div>
 
                       {/* Icons */}
                       <div className="flex flex-col items-end gap-2">
-                        <span
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white shadow-sm"
-                          style={{ backgroundColor: COLORS.success }}
-                        >
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-white shadow-sm bg-[#01AC51]">
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </span>
                         <span
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-full shadow-sm transition-transform duration-300"
-                          style={{
-                            backgroundColor: COLORS.accent,
-                            color: COLORS.primary,
-                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                          }}
+                          className={`inline-flex h-8 w-8 items-center justify-center rounded-full shadow-sm transition-transform duration-300 bg-[#F4B14A] text-[#4F2E39] ${
+                            isOpen ? "rotate-180" : "rotate-0"
+                          }`}
                         >
-                           <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                          <ChevronDown className="h-5 w-5" aria-hidden="true" />
                         </span>
                       </div>
                     </div>
 
-                    <p
-                      className="mt-3 text-sm leading-relaxed"
-                      style={{ color: COLORS.textGray }}
-                    >
+                    <p className="mt-3 text-sm leading-relaxed text-[#384450]">
                       {section.short}
                     </p>
 
                     {/* Smooth Expansion Animation using Grid Rows */}
                     <div
                       className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100 mt-4"
+                          : "grid-rows-[0fr] opacity-0 mt-0"
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div
-                          className="pt-4 border-t space-y-2 text-sm leading-relaxed"
-                          style={{
-                            borderColor: COLORS.border,
-                            color: COLORS.textGray
-                          }}
-                        >
+                        <div className="pt-4 border-t space-y-2 text-sm leading-relaxed border-[#E2E8F0] text-[#384450]">
                           {section.body.map((line, i) => (
                             <p key={i}>{line}</p>
                           ))}
@@ -247,14 +203,8 @@ export default function PrivacyPolicy() {
 
           {/* Still Curious Section (Internal Footer Info) */}
           <div className="max-w-xl">
-            <div
-              className="rounded-2xl px-6 py-6 shadow-md"
-              style={{ backgroundColor: COLORS.primary, color: COLORS.bg }}
-            >
-              <p
-                className="text-xs font-bold tracking-wide uppercase mb-2"
-                style={{ color: COLORS.accent }}
-              >
+            <div className="rounded-2xl px-6 py-6 shadow-md bg-[#4F2E39] text-[#F9F5F2]">
+              <p className="text-xs font-bold tracking-wide uppercase mb-2 text-[#F4B14A]">
                 Still curious?
               </p>
               <p className="text-sm sm:text-base leading-relaxed opacity-95">
