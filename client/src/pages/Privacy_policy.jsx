@@ -10,7 +10,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
-import PrivacyBg from "../assets/PrivPol.png"; 
+import PrivacyBg from "../assets/PrivPol.png"; // Make sure this path is correct for your project
 
 // Centralized colors makes it easier to theme or change later
 const COLORS = {
@@ -113,24 +113,25 @@ export default function PrivacyPolicy() {
 
   return (
     <main
-      className="min-h-screen flex flex-col font-sans"
+      className="min-h-screen flex flex-col font-sans relative"
       style={{ backgroundColor: COLORS.bg }}
     >
       <section className="relative flex-1">
         {/* === BACKGROUND LAYER === */}
-        <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-          {/* The Image: Lower opacity (0.15) and subtle blur for better text readability */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none h-full w-full">
+          {/* The Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-15 blur-[2px]"
+            // Added 'bg-fixed' here. This is the Tailwind utility for background-attachment: fixed
+            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-15 blur-[2px]"
             style={{ backgroundImage: `url(${PrivacyBg})` }}
           />
-          {/* A soft gradient overlay to ensure the bottom text is always readable */}
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#F9F5F2]" />
         </div>
 
         {/* === CONTENT LAYER === */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 space-y-8">
-          
+
           {/* Header */}
           <div
             className="rounded-2xl text-white px-5 py-5 shadow-lg max-w-xl backdrop-blur-sm"
@@ -162,7 +163,7 @@ export default function PrivacyPolicy() {
                   className={`group relative rounded-2xl bg-white shadow-md transition-all duration-300 ${
                     isOpen ? "ring-2" : "hover:shadow-xl hover:-translate-y-1"
                   }`}
-                  style={{ 
+                  style={{
                     borderColor: isOpen ? COLORS.success : "transparent",
                     ringColor: isOpen ? COLORS.success : "transparent"
                   }}
@@ -189,7 +190,7 @@ export default function PrivacyPolicy() {
                           {section.label}
                         </h2>
                       </div>
-                      
+
                       {/* Icons */}
                       <div className="flex flex-col items-end gap-2">
                         <span
@@ -200,8 +201,8 @@ export default function PrivacyPolicy() {
                         </span>
                         <span
                           className="inline-flex h-8 w-8 items-center justify-center rounded-full shadow-sm transition-transform duration-300"
-                          style={{ 
-                            backgroundColor: COLORS.accent, 
+                          style={{
+                            backgroundColor: COLORS.accent,
                             color: COLORS.primary,
                             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
                           }}
@@ -227,9 +228,9 @@ export default function PrivacyPolicy() {
                       <div className="overflow-hidden">
                         <div
                           className="pt-4 border-t space-y-2 text-sm leading-relaxed"
-                          style={{ 
+                          style={{
                             borderColor: COLORS.border,
-                            color: COLORS.textGray 
+                            color: COLORS.textGray
                           }}
                         >
                           {section.body.map((line, i) => (
@@ -244,7 +245,7 @@ export default function PrivacyPolicy() {
             })}
           </div>
 
-          {/* Footer / Still Curious */}
+          {/* Still Curious Section (Internal Footer Info) */}
           <div className="max-w-xl">
             <div
               className="rounded-2xl px-6 py-6 shadow-md"
