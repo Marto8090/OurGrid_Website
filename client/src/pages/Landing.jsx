@@ -85,9 +85,11 @@ export default function Landing() {
             
             {/* Bullets (Left on desktop, Bottom on mobile) */}
             <div className="w-full md:w-7/12 space-y-16 md:pr-2 pt-8 md:pt-0">
+              
               {/* 1. Shift your usage */}
-              <div className="flex items-start gap-6 md:gap-9 group">
-                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+              <div className="flex items-start gap-6 md:gap-9">
+                {/* Removed hover effects, kept the background circle */}
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <Zap className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
                 <div>
@@ -102,8 +104,8 @@ export default function Landing() {
               </div>
 
               {/* 2. Avoid peaks */}
-              <div className="flex items-start gap-6 md:gap-9 group">
-                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+              <div className="flex items-start gap-6 md:gap-9">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <TrendingDown className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
                 <div>
@@ -119,8 +121,8 @@ export default function Landing() {
               </div>
 
               {/* 3. Earn points */}
-              <div className="flex items-start gap-6 md:gap-9 group">
-                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-white/10">
+              <div className="flex items-start gap-6 md:gap-9">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <Medal className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
                 <div>
@@ -135,8 +137,7 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Phone Container - FIXED HERE */}
-            {/* removed 'sticky top-10', added 'md:sticky md:top-28' */}
+            {/* Phone Container */}
             <div className="w-full md:w-4/12 flex justify-center md:justify-end relative md:sticky md:top-28">
               <div
                 className="

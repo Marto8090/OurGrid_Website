@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Zap } from "lucide-react";
+import { ChevronDown, Zap } from "lucide-react";
 
-// Images from /assets (Ensure these paths match your project structure)
+// Images
 import SettingImg from "../assets/setting.png";
 import MoneyImg from "../assets/money.png";
 import PadlockImg from "../assets/padlock.png";
@@ -104,118 +104,127 @@ export default function FAQ() {
   const toggle = (key) => setOpenKey(openKey === key ? null : key);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#4F2E39] text-[#F9F5F2] px-4 py-12 lg:py-20 flex justify-center overflow-x-hidden">
+    // Removed fixed height, removed overflowing padding
+    <div className="relative w-full bg-[#4F2E39] text-[#F9F5F2] px-4 py-16 lg:py-24 overflow-x-hidden font-sans">
+      
       {/* === BACKGROUND DECORATION === */}
-      {/* Floating Lightning Icons */}
-      <div className="hidden lg:block absolute left-10 top-20 opacity-10 pointer-events-none animate-pulse">
-        <Zap size={180} strokeWidth={2} className="text-[#F9F5F2]" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-5 top-10 opacity-5 animate-pulse">
+          <Zap size={150} strokeWidth={1} />
+        </div>
+        <div className="absolute right-5 bottom-20 opacity-5 -scale-x-100 animate-pulse delay-1000">
+          <Zap size={200} strokeWidth={1} />
+        </div>
       </div>
-      <div className="hidden lg:block absolute right-10 top-60 opacity-10 -scale-x-100 pointer-events-none animate-pulse delay-700">
-        <Zap size={180} strokeWidth={2} className="text-[#F9F5F2]" />
-      </div>
 
-      {/* === MAIN GRID === */}
-      {/* We add extra padding bottom (pb-40) to the container to ensure 
-         the absolute dropdowns don't get cut off if the last row is opened.
-      */}
-      <div className="relative max-w-6xl w-full flex flex-wrap gap-6 justify-center items-start pb-40">
-        {SECTIONS.map((item) => {
-          const isOpen = openKey === item.key;
+      <div className="max-w-7xl mx-auto">
+        {/* === HEADER SECTION === */}
+        <div className="text-center mb-12 lg:mb-16 space-y-3">
+          <h2 className="text-[#01AC51] font-bold tracking-wider uppercase text-sm md:text-base">
+            Support
+          </h2>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            Frequently Asked Questions
+          </h1>
+        </div>
 
-          return (
-            <div
-              key={item.key}
-              // Z-Index Logic: If open, z-50 puts it above neighbors. If closed, z-0 keeps it standard.
-              className={`
-                relative w-full sm:w-[48%] lg:w-[31%]
-                transition-all duration-300 ease-in-out
-                ${isOpen ? "z-50" : "z-0 hover:-translate-y-1"}
-              `}
-            >
-              {/* === CARD HEADER (The Clickable Part) === */}
-              <button
-                onClick={() => toggle(item.key)}
-                className={`
-                  w-full relative bg-[#F9F5F2] text-[#4F2E39] 
-                  flex flex-col items-center justify-center text-center 
-                  px-6 py-8 lg:py-10 gap-4 
-                  shadow-lg border-2 border-transparent
-                  transition-all duration-300
-                  focus:outline-none
-                  ${
-                    isOpen
-                      ? "rounded-t-3xl rounded-b-none border-[#01AC51]" // Open State
-                      : "rounded-3xl hover:shadow-xl" // Closed State
-                  }
-                `}
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 object-contain drop-shadow-md"
-                />
-                <h3 className="font-bold text-xl sm:text-2xl lg:text-3xl leading-tight">
-                  {item.title}
-                </h3>
+        {/* === MASONRY-STYLE GRID === */}
+        {/* items-start prevents empty cards from stretching to match the open card's height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+          {SECTIONS.map((item) => {
+            const isOpen = openKey === item.key;
 
-                {/* Arrow Icon */}
-                <div
-                  className={`transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                >
-                  <ChevronDown className="w-6 h-6 text-[#01AC51]" />
-                </div>
-              </button>
-
-              {/* === DROPDOWN CONTENT (Absolute Positioned) === */}
-              {/* This div sits absolutely relative to the card. 
-                  top-full pushes it directly below the header.
-                  w-full makes it same width as header.
-              */}
+            return (
               <div
+                key={item.key}
+                // Removed z-50 to prevent Navbar overlap. 
+                // z-10 is safer (above background, below navbar)
                 className={`
-                  absolute top-full left-0 w-full 
-                  bg-[#F9F5F2] text-[#4F2E39]
-                  rounded-b-3xl
-                  shadow-2xl
-                  border-2 border-t-0 border-[#01AC51]
-                  overflow-hidden
-                  transition-all duration-300 ease-out origin-top
-                  ${
-                    isOpen
-                      ? "opacity-100 scale-y-100 translate-y-0 visible"
-                      : "opacity-0 scale-y-95 -translate-y-2 invisible pointer-events-none"
-                  }
+                  relative w-full
+                  transition-all duration-300 ease-in-out
+                  ${isOpen ? "z-10" : "z-0"}
                 `}
               >
-                <div className="px-6 pb-8 pt-2 space-y-6">
-                  {item.qa.map((qa, i) => (
-                    <div
-                      key={i}
-                      // Staggered fade-in animation for text using standard Tailwind delay
-                      className={`
-                         transition-all duration-1500 ease-out
-                         ${
-                           isOpen
-                             ? "opacity-100 translate-y-0"
-                             : "opacity-0 translate-y-4"
-                         }
-                      `}
-                      // Add a slight inline style delay so text appears after box expands
-                      style={{ transitionDelay: `${i * 100}ms` }}
-                    >
-                      <p className="font-bold text-lg leading-snug">{qa.q}</p>
-                      <p className="text-[#01AC51] font-medium text-sm lg:text-base mt-1 leading-relaxed">
-                        {qa.a}
-                      </p>
+                <div
+                  className={`
+                    group relative flex flex-col 
+                    bg-[#F9F5F2] text-[#4F2E39] 
+                    transition-all duration-300
+                    overflow-hidden
+                    ${
+                      isOpen
+                        ? "rounded-3xl shadow-2xl scale-[1.02]" // Subtle pop
+                        : "rounded-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+                    }
+                  `}
+                >
+                  {/* === CARD HEADER === */}
+                  <button
+                    onClick={() => toggle(item.key)}
+                    className="w-full relative flex flex-col items-center justify-center text-center p-8 gap-5 outline-none cursor-pointer"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-[#4F2E39]/5 rounded-full scale-110 transform" />
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="relative w-20 h-20 object-contain"
+                      />
                     </div>
-                  ))}
+
+                    <h3 className="font-extrabold text-2xl leading-tight">
+                      {item.title}
+                    </h3>
+
+                    {/* Chevron Indicator */}
+                    <div
+                      className={`
+                        flex items-center justify-center w-8 h-8 rounded-full 
+                        transition-all duration-300 
+                        ${
+                          isOpen
+                            ? "bg-[#01AC51] text-white rotate-180"
+                            : "bg-[#4F2E39]/10 text-[#4F2E39] group-hover:bg-[#01AC51] group-hover:text-white"
+                        }
+                      `}
+                    >
+                      <ChevronDown size={20} strokeWidth={3} />
+                    </div>
+                  </button>
+
+                  {/* === CONTENT SECTION (Relative Flow) === */}
+                  {/* We use max-height animation for smooth slide down */}
+                  <div
+                    className={`
+                      transition-all duration-500 ease-in-out
+                      ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+                    `}
+                  >
+                    <div className="px-8 pb-8 pt-0 space-y-6">
+                      {/* Divider */}
+                      <div className="w-full h-[2px] bg-[#4F2E39]/10 mx-auto w-[85%] mb-6" />
+
+                      {item.qa.map((qa, i) => (
+                        <div key={i} className="space-y-2">
+                          <p className="font-bold text-lg leading-tight text-[#4F2E39]">
+                            {qa.q}
+                          </p>
+                          <p className="text-[#4F2E39]/80 text-base font-medium leading-relaxed">
+                            {qa.a}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Bottom Green Accent Line */}
+                    <div className="h-2 w-full bg-[#01AC51]" />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
