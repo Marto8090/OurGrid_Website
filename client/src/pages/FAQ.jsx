@@ -104,7 +104,6 @@ export default function FAQ() {
   const toggle = (key) => setOpenKey(openKey === key ? null : key);
 
   return (
-    // Removed fixed height, removed overflowing padding
     <div className="relative w-full bg-[#4F2E39] text-[#F9F5F2] px-4 py-16 lg:py-24 overflow-x-hidden font-sans">
       
       {/* === BACKGROUND DECORATION === */}
@@ -128,20 +127,24 @@ export default function FAQ() {
           </h1>
         </div>
 
-        {/* === MASONRY-STYLE GRID === */}
-        {/* items-start prevents empty cards from stretching to match the open card's height */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-          {SECTIONS.map((item) => {
+        {/* === GRID LAYOUT === */}
+        {/* Strategy for 5 Items:
+            We use a 6-column grid on large screens.
+            Item 1 spans all 6 columns.
+            Items 2-5 span 3 columns (half width).
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-start pb-20">
+          {SECTIONS.map((item, index) => {
             const isOpen = openKey === item.key;
+            const isFirst = index === 0;
 
             return (
               <div
                 key={item.key}
-                // Removed z-50 to prevent Navbar overlap. 
-                // z-10 is safer (above background, below navbar)
                 className={`
                   relative w-full
                   transition-all duration-300 ease-in-out
+                  ${isFirst ? "md:col-span-2 lg:col-span-6" : "md:col-span-1 lg:col-span-3"}
                   ${isOpen ? "z-10" : "z-0"}
                 `}
               >
@@ -153,7 +156,7 @@ export default function FAQ() {
                     overflow-hidden
                     ${
                       isOpen
-                        ? "rounded-3xl shadow-2xl scale-[1.02]" // Subtle pop
+                        ? "rounded-3xl shadow-2xl scale-[1.01]"
                         : "rounded-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
                     }
                   `}
@@ -193,8 +196,7 @@ export default function FAQ() {
                     </div>
                   </button>
 
-                  {/* === CONTENT SECTION (Relative Flow) === */}
-                  {/* We use max-height animation for smooth slide down */}
+                  {/* === CONTENT SECTION === */}
                   <div
                     className={`
                       transition-all duration-500 ease-in-out
@@ -205,16 +207,21 @@ export default function FAQ() {
                       {/* Divider */}
                       <div className="w-full h-[2px] bg-[#4F2E39]/10 mx-auto w-[85%] mb-6" />
 
-                      {item.qa.map((qa, i) => (
-                        <div key={i} className="space-y-2">
-                          <p className="font-bold text-lg leading-tight text-[#4F2E39]">
-                            {qa.q}
-                          </p>
-                          <p className="text-[#4F2E39]/80 text-base font-medium leading-relaxed">
-                            {qa.a}
-                          </p>
-                        </div>
-                      ))}
+                      {/* If it is the first (Hero) card, we center the content 
+                         and limit the width so lines aren't too long to read 
+                      */}
+                      <div className={isFirst ? "max-w-3xl mx-auto" : ""}>
+                          {item.qa.map((qa, i) => (
+                            <div key={i} className="space-y-2 mb-6 last:mb-0">
+                              <p className={`font-bold text-lg leading-tight text-[#4F2E39] ${isFirst ? "text-center" : "text-left"}`}>
+                                {qa.q}
+                              </p>
+                              <p className={`text-[#4F2E39]/80 text-base font-medium leading-relaxed ${isFirst ? "text-center" : "text-left"}`}>
+                                {qa.a}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
                     </div>
                     
                     {/* Bottom Green Accent Line */}
