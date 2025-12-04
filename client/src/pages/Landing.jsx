@@ -12,44 +12,54 @@ export default function Landing() {
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
 
-  // Refs for the animation
+  // REF FOR SCROLL-TRIGGERED ANIMATION CONTAINER
   const circleContainerRef = useRef(null);
+  // REF FOR THE SVG RING TO ANIMATE
   const ringRef = useRef(null);
 
+  // HERO TITLE CHANGES BASED ON AUDIENCE
   const heroTitle = isMunicipality
     ? "OurGrid for Municipalities"
     : "OurGrid for your neighborhood";
 
+  // HERO SUBTITLE BASED ON AUDIENCE
   const heroSubtitle = isMunicipality
     ? "Help your city reduce grid stress, support local energy co-ops, and give residents a clear, fair way to join in."
     : "Help your neighborhood avoid grid stress and get money using our app";
 
-  // Scroll-triggered circle animation over the phone image
+  // INTERSECTION OBSERVER THAT STARTS THE CIRCLE ANIMATION WHEN VISIBLE
   useEffect(() => {
     const element = circleContainerRef.current;
     const ring = ringRef.current;
 
+    // SAFETY CHECK – EXIT IF ELEMENTS ARE MISSING
     if (!element || !ring) return;
 
+    // CREATES OBSERVER TO WATCH WHEN THE PHONE IMAGE COMES INTO VIEW
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // WHEN 40% OF ELEMENT IS VISIBLE, TRIGGER ANIMATION
           if (entry.isIntersecting) {
-            ring.style.strokeDashoffset = "0";
+            ring.style.strokeDashoffset = "0"; // RING DRAWS ITSELF
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 } // 40% VISIBILITY REQUIRED
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
+
+    return () => observer.disconnect(); // CLEANUP ON UNMOUNT
   }, []);
 
   return (
     <div className="space-y-0">
-      {/* HERO - full width background video */}
+
+      {/* HERO SECTION WITH BACKGROUND VIDEO */}
       <section className="relative w-full overflow-hidden bg-black text-[#F9F5F2] h-[85vh] md:h-[95vh]">
+        
+        {/* FULLSCREEN BACKGROUND VIDEO */}
         <video
           src={BackgroundVideo}
           className="absolute inset-0 w-full h-full object-cover opacity-80"
@@ -59,15 +69,20 @@ export default function Landing() {
           playsInline
         />
 
-        {/* Overlay gradient for readability */}
+        {/* DARK OVERLAY TO IMPROVE TEXT READABILITY */}
         <div className="absolute inset-0 bg-black/40" />
+
+        {/* TOP GRADIENT TO BLEND VIDEO WITH CONTENT */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#4F2E39]/80 to-transparent opacity-60" />
 
+        {/* HERO TEXT CONTAINER */}
         <div className="relative z-10 flex items-center justify-center w-full h-full px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">
               {heroTitle}
             </h1>
+
+            {/* HERO SUBTITLE */}
             <p className="mt-6 text-lg md:text-2xl text-[#F9F5F2]/90 drop-shadow-md max-w-2xl mx-auto">
               {heroSubtitle}
             </p>
@@ -75,20 +90,22 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Spacer under hero */}
+      {/* SMALL SPACER TO TRANSITION FROM HERO */}
       <div className="h-10 md:h-18 bg-[#4F2E39]" />
 
-      {/* SECTION 2 – phone + 3 bullets */}
+      {/* SECTION 2 – PHONE + 3 BULLETS EXPLAINING BENEFITS */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] pb-8 md:pb-10 lg:pb-4 xl:pb-0">
         <div className="max-w-6xl mx-auto px-4">
+
+          {/* LAYOUT: PHONE RIGHT ON DESKTOP, BOTTOM ON MOBILE */}
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-center md:gap-10 lg:gap-12">
             
-            {/* Bullets (Left on desktop, Bottom on mobile) */}
+            {/* THREE BULLET POINTS SIDE */}
             <div className="w-full md:w-7/12 space-y-16 md:pr-2 pt-8 md:pt-0">
               
-              {/* 1. Shift your usage */}
+              {/* BULLET #1 */}
               <div className="flex items-start gap-6 md:gap-9">
-                {/* Removed hover effects, kept the background circle */}
+                {/* ICON WRAPPED IN CIRCLE */}
                 <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <Zap className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
                 </div>
@@ -103,7 +120,7 @@ export default function Landing() {
                 </div>
               </div>
 
-              {/* 2. Avoid peaks */}
+              {/* BULLET #2 */}
               <div className="flex items-start gap-6 md:gap-9">
                 <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <TrendingDown className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
@@ -120,7 +137,7 @@ export default function Landing() {
                 </div>
               </div>
 
-              {/* 3. Earn points */}
+              {/* BULLET #3 */}
               <div className="flex items-start gap-6 md:gap-9">
                 <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 flex items-center justify-center rounded-full bg-white/5">
                   <Medal className="w-12 h-12 md:w-16 md:h-16 text-[#01AC51]" />
@@ -137,7 +154,7 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Phone Container */}
+            {/* PHONE + ANIMATED RING */}
             <div className="w-full md:w-4/12 flex justify-center md:justify-end relative md:sticky md:top-28">
               <div
                 className="
@@ -147,7 +164,7 @@ export default function Landing() {
                   [mask-image:linear-gradient(to_top,transparent_0%,transparent_15%,black_80%,black_100%)]
                 "
               >
-                {/* CIRCLE ANIMATION */}
+                {/* CIRCLE ANIMATION OVERLAYED ON PHONE */}
                 <div
                   ref={circleContainerRef}
                   className="
@@ -169,13 +186,13 @@ export default function Landing() {
                       fill="none"
                       strokeLinecap="round"
                       className="transition-all duration-[1800ms] ease-out drop-shadow-[0_0_10px_rgba(1,172,81,0.6)]"
-                      strokeDasharray="339"
-                      strokeDashoffset="339"
+                      strokeDasharray="339"     
+                      strokeDashoffset="339"    
                     />
                   </svg>
                 </div>
 
-                {/* PHONE IMAGE */}
+                {/* PHONE IMAGE ITSELF */}
                 <img
                   src={PhoneImage}
                   alt="OurGrid app on phone"
@@ -194,13 +211,16 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* SECTION 3+4 – Start now + Grid congestion cards */}
+      {/* SECTION 3+4 – DOWNLOAD + GRID CONGESTION BUTTON */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-16">
         <div className="w-full px-4 lg:px-10 max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
-            {/* START NOW CARD */}
+
+            {/* LEFT CARD – DOWNLOAD / START NOW */}
             <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-between hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+              
               <div className="flex items-start gap-6 md:gap-8">
+                {/* QR ONLY VISIBLE ON LARGE SCREENS */}
                 <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0 rounded-xl">
                   <img
                     src={QR}
@@ -208,6 +228,7 @@ export default function Landing() {
                     className="w-full h-full object-cover"
                   />
                 </div>
+
                 <div className="text-left">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#F4B14A]">
                     Start now
@@ -219,6 +240,7 @@ export default function Landing() {
                 </div>
               </div>
 
+              {/* APP STORE BUTTONS */}
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a
                   href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en"
@@ -247,17 +269,24 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* WHAT IS GRID CONGESTION CARD */}
+            {/* RIGHT CARD – GRID CONGESTION CTA */}
             <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-center items-center hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+              
+              {/* CARD TITLE */}
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center max-w-lg leading-tight">
                 Are you curious what <span className="text-[#01AC51]">grid congestion</span> is?
               </h3>
+
               <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 w-full justify-center">
+                
+                {/* ANIMATED QUESTION ICON */}
                 <img
                   src={Question}
                   alt="Question"
                   className="w-20 md:w-24 lg:w-32 object-contain flex-shrink-0 animate-pulse-slow"
                 />
+
+                {/* BUTTON THAT LINKS TO AUDIENCE-SPECIFIC PAGE */}
                 <div className="flex-1 flex justify-center sm:justify-start">
                   <a
                     href={
