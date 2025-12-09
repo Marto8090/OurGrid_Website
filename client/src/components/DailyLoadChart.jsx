@@ -10,10 +10,10 @@ import {
 } from "recharts";
 
 const COLORS = {
-  primary: "#4F2E39",   // dark reddish – Typical day
-  secondary: "#2C6EA4", // optional if you need extra lines later
-  accent: "#F4B14A",    // yellow – grid, highlight
-  success: "#01AC51",   // green – shifted day
+  primary: "#4F2E39",
+  secondary: "#2C6EA4",
+  accent: "#F4B14A",
+  success: "#01AC51",
   bg: "#F9F5F2",
   text: "#1D252C",
 };
@@ -31,55 +31,57 @@ const dailyLoadData = [
 export default function DailyLoadChart() {
   return (
     <section className="w-full max-w-4xl mx-auto">
-      {/* Card wrapper with brand styling */}
       <div
-        className="rounded-2xl border shadow-md p-6"
+        className="rounded-3xl border shadow-md p-6 md:p-7 bg-gradient-to-br from-[#FDF7EF] via-[#F9F5F2] to-[#F2F5FB] transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
         style={{
-          backgroundColor: COLORS.bg,
-          borderColor: COLORS.primary + "20", // 12% opacity border
+          borderColor: COLORS.primary + "20",
         }}
       >
         {/* Header row */}
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="space-y-2">
             <h2
-              className="text-xl font-semibold"
+              className="text-xl md:text-2xl font-semibold"
               style={{ color: COLORS.text }}
             >
-              Daily Load Curve
+              Daily load curve of a neighbourhood
             </h2>
             <p
-              className="text-sm mt-1 max-w-xl"
+              className="text-sm max-w-xl"
               style={{ color: COLORS.text }}
             >
-              A typical neighbourhood uses the most electricity between{" "}
-              <span className="font-semibold">17:00 and 20:00</span>. That
-              creates a steep “evening peak”. When households shift some
-              tasks to earlier or later, the peak becomes smaller and the
-              transformer is under less stress.
+              Most homes use the most electricity in the{" "}
+              <span className="font-semibold">early evening</span>. That creates
+              a steep peak. Shifting a few tasks to earlier or later helps
+              flatten the curve and reduces congestion risk.
             </p>
           </div>
 
-          {/* Small pill to show this is static/demo data */}
-          <span
-            className="text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap"
-            style={{
-              backgroundColor: COLORS.accent + "33",
-              color: COLORS.primary,
-            }}
-          >
-            Static example · Not live data
-          </span>
+          <div className="flex flex-col items-end gap-2">
+            <span
+              className="text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap"
+              style={{
+                backgroundColor: COLORS.accent + "26",
+                color: COLORS.primary,
+              }}
+            >
+              Static example · Not live data
+            </span>
+            <span className="text-[11px] text-[#384450]">
+              Values shown as{" "}
+              <span className="font-medium">relative load</span>, not kW.
+            </span>
+          </div>
         </div>
 
-        {/* Legend chips (on brand) */}
+        {/* Legend chips */}
         <div className="mt-4 flex flex-wrap gap-4 text-sm">
           <span className="inline-flex items-center gap-2">
             <span
               className="h-3 w-3 rounded-full"
               style={{ backgroundColor: COLORS.primary }}
             />
-            <span style={{ color: COLORS.text }}>Typical day (peak load)</span>
+            <span style={{ color: COLORS.text }}>Typical day (evening peak)</span>
           </span>
 
           <span className="inline-flex items-center gap-2">
@@ -121,8 +123,8 @@ export default function DailyLoadChart() {
                 contentStyle={{
                   backgroundColor: COLORS.bg,
                   borderColor: COLORS.primary + "40",
-                  borderRadius: 12,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                  borderRadius: 16,
+                  boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
                 }}
                 labelStyle={{ color: COLORS.text, fontWeight: 600 }}
               />
@@ -133,7 +135,6 @@ export default function DailyLoadChart() {
                 }}
               />
 
-              {/* Typical day line */}
               <Line
                 type="monotone"
                 dataKey="typical"
@@ -142,8 +143,6 @@ export default function DailyLoadChart() {
                 dot={false}
                 name="Typical day"
               />
-
-              {/* Shifted usage line – green for “better” */}
               <Line
                 type="monotone"
                 dataKey="shifted"
@@ -156,14 +155,13 @@ export default function DailyLoadChart() {
           </ResponsiveContainer>
         </div>
 
-        {/* Footer explainer */}
         <p
           className="mt-4 text-sm"
           style={{ color: COLORS.text }}
         >
-          The goal of OurGrid is to help neighbourhoods move from the dark
-          red line to the green line: same comfort, fewer overloads, and a
-          calmer local grid.
+          The goal of OurGrid is to help neighbourhoods move from the dark red
+          line to the green line: same comfort, fewer overloads, and a calmer
+          local grid.
         </p>
       </div>
     </section>

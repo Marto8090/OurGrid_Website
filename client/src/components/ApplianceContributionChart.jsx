@@ -28,32 +28,31 @@ export default function ApplianceContributionChart() {
   return (
     <section className="w-full max-w-4xl mx-auto">
       <div
-        className="rounded-2xl border shadow-md p-6"
+        className="rounded-3xl border shadow-md p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
         style={{
-          backgroundColor: COLORS.bg,
           borderColor: COLORS.primary + "20",
         }}
       >
         <h2
-          className="text-xl font-semibold"
+          className="text-xl md:text-2xl font-semibold"
           style={{ color: COLORS.text }}
         >
-          What creates the evening peak?
+          Which appliances drive the peak?
         </h2>
         <p
           className="text-sm mt-1 max-w-xl"
           style={{ color: COLORS.text }}
         >
-          Heavy appliances like EV chargers and heat pumps use a lot of power in
-          a short time. When many homes run them at once, the local grid hits
-          its limits faster.
+          Heavy, flexible loads like EV chargers and heat pumps dominate the
+          evening peak. These are also the best candidates to shift to
+          off-peak hours.
         </p>
 
         <div className="mt-4" style={{ width: "100%", height: 280 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={applianceData}>
               <CartesianGrid
-                stroke={COLORS.accent + "40"}
+                stroke={COLORS.accent + "35"}
                 strokeDasharray="3 3"
               />
               <XAxis
@@ -76,7 +75,7 @@ export default function ApplianceContributionChart() {
                 contentStyle={{
                   backgroundColor: COLORS.bg,
                   borderColor: COLORS.primary + "40",
-                  borderRadius: 12,
+                  borderRadius: 16,
                 }}
                 labelStyle={{ color: COLORS.text, fontWeight: 600 }}
               />
@@ -84,7 +83,7 @@ export default function ApplianceContributionChart() {
                 dataKey="share"
                 name="Share of peak load"
                 fill={COLORS.accent}
-                radius={[6, 6, 0, 0]}
+                radius={[8, 8, 0, 0]}
               />
             </BarChart>
           </ResponsiveContainer>
@@ -94,8 +93,8 @@ export default function ApplianceContributionChart() {
           className="mt-4 text-sm"
           style={{ color: COLORS.text }}
         >
-          Shifting just a few of these tasks to earlier in the day can already
-          make a visible difference in the neighbourhood peak.
+          OurGrid helps households see which devices matter most, and how small
+          changes in timing can have a big impact on the shared grid.
         </p>
       </div>
     </section>
