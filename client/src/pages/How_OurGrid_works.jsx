@@ -8,10 +8,15 @@ import powerBrick from "../assets/power brick.png";
 import energyCables from "../assets/energyCables.png";
 import yourConsumption from "../assets/YourConsumption.jpg"; 
 import cable from "../assets/cable.png"; 
+import hand from "../assets/handHoldingPhone.png"; 
+import PlayStore1 from "../assets/PlayStore1.png";
+import AppStore from "../assets/AppStore.png";
 import devicesPage from "../assets/devicesPage.jpg";
 import { Cog } from "lucide-react";
+import { useState } from "react";
 
 export default function HowOurGridWorks() {
+  const [showOverlay, setShowOverlay] = useState(false);
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
 
@@ -370,19 +375,50 @@ export default function HowOurGridWorks() {
         </div>
       </section>
 
-      {/* COUNTINUE TO APP */}
+      {/* CONTINUE TO APP */}
       <section className="max-w-md mx-auto">
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl p-5 space-y-4 text-center">
-          <p className="font-semibold text-base">
-            Do you want a hands on experience?
-          </p>
-          <p className="text-sm">
-            Download the OurGrid app and try it yourself in a pilot project near you.
-          </p>
-          <button type="button"
-            className="inline-flex items-center justify-center px-6 py-2.5 mt-1 rounded-full bg-[#01AC51] text-white font-semibold text-sm shadow-md hover:bg-[#019245] transition-colors"> 
-            Download the app → </button>
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] p-5 space-y-4">
+          {/* TEXT + HAND IMAGE */}
+          <div className="flex items-center gap-3 py-3">
+              <p className="font-semibold text-xl pl-5 pb-2 text-base">Do you want a hands on experience?</p>
+        
+            <img src={hand} alt="Hand holding phone" className="w-18 h-18 object-contain"/>
+          </div>
+          {/* BUTTON OPENS OVERLAY */}
+          <button
+            onClick={() => setShowOverlay(true)} className="w-3/4 mx-auto flex items-center justify-center px-9 py-2.5 rounded-full 
+                bg-[#01AC51] text-white font-semibold text-md shadow-md 
+                hover:bg-[#019245] transition-colors"> Download the app →
+          </button>
         </div>
+        {/* OVERLAY */}
+        {showOverlay && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowOverlay(false)}>
+            <div
+              className="bg-[#4F2E39] rounded-xl border-1 border-[#F4B14A] p-7 w-80 space-y-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <p className="text-center text-2xl font-semibold text-white">Get the OurGrid App</p>
+              
+              <div className="space-y-3">
+                {/* Google Play */}
+                <a href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en" target="_blank">
+                  <img src={PlayStore1} className="w-full rounded-md shadow mb-4" />
+                </a>
+
+                {/* App Store */}
+                <a href="https://apps.apple.com/nl/app/ourgrid/id6478114711" target="_blank">
+                  <img src={AppStore} className="w-full rounded-md shadow" />
+                </a>
+              </div>
+
+              <button
+                onClick={() => setShowOverlay(false)}
+                className="w-full mt-2 px-4 py-2 text-white text-sm bg-[#6B3E4C] rounded-full hover:bg-[#5A3541] transition"> Close
+              </button>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );
