@@ -7,6 +7,8 @@ import dongle from "../assets/dongle.png";
 import powerBrick from "../assets/power brick.png";
 import energyCables from "../assets/energyCables.png";
 import yourConsumption from "../assets/YourConsumption.jpg"; 
+import cable from "../assets/cable.png"; 
+import devicesPage from "../assets/devicesPage.jpg";
 import { Cog } from "lucide-react";
 
 export default function HowOurGridWorks() {
@@ -289,11 +291,7 @@ export default function HowOurGridWorks() {
               <div className="relative z-10 flex flex-col gap-4">
                 {/* Phone */}
                 <div className="flex justify-center">
-                  <img
-                    src={yourConsumption}
-                    alt="Your consumption and trophies"
-                    className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"
-                  />
+                  <img src={yourConsumption} alt="Your consumption and trophies" className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
                 </div>
 
                 {/* Explanation */}
@@ -329,28 +327,45 @@ export default function HowOurGridWorks() {
 
 
         {/* STEP 6 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-mdborder-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-lg font-bold">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+          <div className="px-5 pt-6 pb-6 space-y-4">
+            {/* Step number */}
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
               6
             </div>
-            <h2 className="text-lg font-semibold text-center">
+
+            {/* Title */}
+            <h2 className="text-2xl font-semibold text-center">
               Manage your devices
             </h2>
 
-            <div className="mt-2 rounded-xl overflow-hidden border border-[#F9F5F2]/10 bg-[#3B202A] flex items-center justify-center py-4">
-              <img
-                src
-                alt="OurGrid devices screen"
-                className="w-36 h-72 object-cover rounded-2xl border-[3px] border-[#F4B14A]"
-              />
+            {/* Phone */}
+            <div className="mt-3 flex justify-center pb-9">
+              <img src={devicesPage} alt="OurGrid devices screen" className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
             </div>
 
-            <p className="text-sm leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-              OurGrid connects to devices like your meter, EV charger, or
-              battery. You can choose automatic or manual control so your
-              energy use shifts during congestion moments.
-            </p>
+            {/* Cable made from two copies of the image */}
+            <div className="mt-3 flex justify-center">
+              <div className="relative w-1/3 h-1/2">
+                {/* left half */}
+                <img src={cable} alt="Cable connection" className="absolute -left-12 -top-20 object-contain"/>
+                {/* right half (mirrored) */}
+                <img src={cable} alt="Cable connection" className="absolute -right-10.5 -top-[62.5px] object-contain scale-x-[-1] transform -scale-y-100"/>
+              </div>
+            </div>
+
+            {/* Text box with dashed yellow border */}
+            <div className="relative mt-4">
+              {/* electric glow behind */}
+              <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm"></div>
+              {/* main content box */}
+              <div className="relative rounded-3xl border-2 border-[#F4B14A] px-4 py-4 bg-[#3B202A] text-left text-sm leading-relaxed">
+                <span className="text-[#F4B14A] font-semibold">OurGrid</span> connects to
+                your smart devices - like your meter, EV charger, or battery. You can choose
+                automatic or manual control for each one. This helps shift your energy use
+                automatically during congestion moments.
+              </div>
+            </div>
           </div>
         </div>
       </section>
