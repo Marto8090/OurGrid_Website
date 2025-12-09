@@ -28,7 +28,7 @@ export default function HowOurGridWorks() {
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl">
-        <div className="max-w-md mx-auto py-14 flex flex-col gap-3 items-center">
+        <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-3 items-center">
           {/* Cog icon */}
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
             <Cog className="w-10 h-10 md:w-12 md:h-12 text-[#D96532]" strokeWidth={2.4} />
@@ -44,7 +44,7 @@ export default function HowOurGridWorks() {
       {/* STEPS CONTAINER */}
       <section className="max-w-md mx-auto">
         {/* STEP 1 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden relative">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden  -mt-6 md:mt-0 relative z-6">
           <div className="px-5 pt-6 pb-5 space-y-4">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -82,7 +82,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 2 */}
-       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-5">
         <div className="px-5 pt-6 pb-5 space-y-4">
 
           <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -110,7 +110,7 @@ export default function HowOurGridWorks() {
       </div>
 
         {/* STEP 3 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-4">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
               3
@@ -158,7 +158,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 4 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-3">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
               4
@@ -276,7 +276,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 5 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-2">
           <div className="px-5 pt-6 pb-6 space-y-5">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -332,7 +332,7 @@ export default function HowOurGridWorks() {
 
 
         {/* STEP 6 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-1">
           <div className="px-5 pt-6 pb-6 space-y-4">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -376,10 +376,10 @@ export default function HowOurGridWorks() {
       </section>
 
       {/* CONTINUE TO APP */}
-      <section className="max-w-md mx-auto">
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] p-5 space-y-4">
+      <section className="max-w-md mx-auto -mt-6 md:mt-0 relative z-0">
+        <div className="bg-white rounded-2xl rounded-b-none pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5 space-y-4">
           {/* TEXT + HAND IMAGE */}
-          <div className="flex items-center gap-3 py-3">
+          <div className="flex items-center gap-3">
               <p className="font-semibold text-xl pl-5 pb-2 text-base">Do you want a hands on experience?</p>
         
             <img src={hand} alt="Hand holding phone" className="w-18 h-18 object-contain"/>
