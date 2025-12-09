@@ -6,6 +6,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Cell,              // ← add this
 } from "recharts";
 
 const COLORS = {
@@ -17,8 +18,8 @@ const COLORS = {
 };
 
 const peakData = [
-  { scenario: "Before coordination", peakLoad: 2.5, color: "#4F2E39" },
-  { scenario: "After coordination", peakLoad: 1.8, color: "#01AC51" },
+  { scenario: "Before coordination", peakLoad: 2.5, color: "#4F2E39" }, // dark red
+  { scenario: "After coordination",  peakLoad: 1.8, color: "#01AC51" }, // green
 ];
 
 export default function BeforeAfterPeakChart() {
@@ -81,10 +82,10 @@ export default function BeforeAfterPeakChart() {
                 dataKey="peakLoad"
                 name="Peak load"
                 radius={[10, 10, 0, 0]}
-                // per-bar color
-                fill={COLORS.primary}
               >
-                {/* You can add a custom shape later if needed */}
+                {peakData.map((entry, index) => (
+                  <Cell key={index} fill={entry.color} />
+                ))}
               </Bar>
             </BarChart>
           </ResponsiveContainer>

@@ -7,6 +7,28 @@ import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
 export default function Dashboards() {
   const { audience } = useAudience();
 
+  const chipConfig =
+    audience === "municipality"
+      ? {
+          label: "Municipal insights",
+          bg: "rgba(230, 240, 250, 0.9)",
+          border: "rgba(44, 110, 164, 0.35)",
+          text: "#2C6EA4",
+        }
+      : audience === "user"
+      ? {
+          label: "Residents view",
+          bg: "rgba(253, 247, 239, 0.9)",
+          border: "rgba(79, 46, 57, 0.25)",
+          text: "#4F2E39",
+        }
+      : {
+          label: "Residents & municipal view",
+          bg: "rgba(255, 255, 255, 0.85)",
+          border: "rgba(148, 163, 184, 0.4)",
+          text: "#1D252C",
+        };
+
   return (
     <main
       className="min-h-screen"
@@ -41,11 +63,15 @@ export default function Dashboards() {
             </div>
 
             <div className="flex flex-wrap gap-2 text-xs md:text-sm">
-              <span className="px-3 py-1 rounded-full bg-white/80 border border-[#4F2E39]/15 text-[#4F2E39] font-medium">
-                Residents view
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/80 border border-[#2C6EA4]/15 text-[#2C6EA4] font-medium">
-                Municipal insights
+              <span
+                className="px-3 py-1 rounded-full font-medium cursor-default select-none border backdrop-blur"
+                style={{
+                  backgroundColor: chipConfig.bg,
+                  borderColor: chipConfig.border,
+                  color: chipConfig.text,
+                }}
+              >
+                {chipConfig.label}
               </span>
             </div>
           </div>
