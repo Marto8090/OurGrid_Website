@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const COLORS = {
   primary: "#4F2E39",
   accent: "#F4B14A",
@@ -9,11 +11,13 @@ const COLORS = {
 export default function PeakIndicator() {
   return (
     <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
-      <div
-        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
-        style={{
-          borderColor: COLORS.primary + "20",
-        }}
+      <motion.div
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm"
+        style={{ borderColor: COLORS.primary + "20" }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <h2
           className="text-lg sm:text-xl md:text-2xl font-semibold"
@@ -92,7 +96,7 @@ export default function PeakIndicator() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

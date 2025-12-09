@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   BarChart,
   Bar,
@@ -25,13 +27,18 @@ const applianceData = [
 ];
 
 export default function ApplianceContributionChart() {
+  const [showChart, setShowChart] = useState(false);
+
   return (
     <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
-      <div
-        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
-        style={{
-          borderColor: COLORS.primary + "20",
-        }}
+      <motion.div
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm"
+        style={{ borderColor: COLORS.primary + "20" }}
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        onViewportEnter={() => setShowChart(true)}
       >
         <h2
           className="text-lg sm:text-xl md:text-2xl font-semibold"
@@ -49,44 +56,48 @@ export default function ApplianceContributionChart() {
         </p>
 
         <div className="mt-3 sm:mt-4 w-full h-[220px] sm:h-[260px] md:h-[280px] lg:h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={applianceData}>
-              <CartesianGrid
-                stroke={COLORS.accent + "35"}
-                strokeDasharray="3 3"
-              />
-              <XAxis
-                dataKey="name"
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-              />
-              <YAxis
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-                label={{
-                  value: "Share of peak load (%)",
-                  angle: -90,
-                  position: "insideLeft",
-                  fill: COLORS.text,
-                  fontSize: 11,
-                }}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: COLORS.bg,
-                  borderColor: COLORS.primary + "40",
-                  borderRadius: 16,
-                }}
-                labelStyle={{ color: COLORS.text, fontWeight: 600 }}
-              />
-              <Bar
-                dataKey="share"
-                name="Share of peak load"
-                fill={COLORS.accent}
-                radius={[8, 8, 0, 0]}
-              />
-            </BarChart>
-          </ResponsiveContainer>
+          {showChart && (
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={applianceData}>
+                <CartesianGrid
+                  stroke={COLORS.accent + "35"}
+                  strokeDasharray="3 3"
+                />
+                <XAxis
+                  dataKey="name"
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                />
+                <YAxis
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                  label={{
+                    value: "Share of peak load (%)",
+                    angle: -90,
+                    position: "insideLeft",
+                    fill: COLORS.text,
+                    fontSize: 11,
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: COLORS.bg,
+                    borderColor: COLORS.primary + "40",
+                    borderRadius: 16,
+                  }}
+                  labelStyle={{ color: COLORS.text, fontWeight: 600 }}
+                />
+                <Bar
+                  dataKey="share"
+                  name="Share of peak load"
+                  fill={COLORS.accent}
+                  radius={[8, 8, 0, 0]}
+                  isAnimationActive={true}
+                  animationDuration={800}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
         </div>
 
         <p
@@ -96,7 +107,7 @@ export default function ApplianceContributionChart() {
           OurGrid helps households see which devices matter most, and how small
           changes in timing can have a big impact on the shared grid.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

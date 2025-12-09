@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   LineChart,
   Line,
@@ -29,13 +31,18 @@ const dailyLoadData = [
 ];
 
 export default function DailyLoadChart() {
+  const [showChart, setShowChart] = useState(false);
+
   return (
     <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
-      <div
-        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-gradient-to-br from-[#FDF7EF] via-[#F9F5F2] to-[#F2F5FB] transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
-        style={{
-          borderColor: COLORS.primary + "20",
-        }}
+      <motion.div
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-gradient-to-br from-[#FDF7EF] via-[#F9F5F2] to-[#F2F5FB]"
+        style={{ borderColor: COLORS.primary + "20" }}
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        onViewportEnter={() => setShowChart(true)}
       >
         {/* Header row */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -99,63 +106,69 @@ export default function DailyLoadChart() {
 
         {/* Chart */}
         <div className="mt-3 sm:mt-4 w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={dailyLoadData}>
-              <CartesianGrid
-                stroke={COLORS.accent + "40"}
-                strokeDasharray="3 3"
-              />
-              <XAxis
-                dataKey="time"
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-              />
-              <YAxis
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-                label={{
-                  value: "Relative load",
-                  angle: -90,
-                  position: "insideLeft",
-                  fill: COLORS.text,
-                  fontSize: 11,
-                }}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: COLORS.bg,
-                  borderColor: COLORS.primary + "40",
-                  borderRadius: 16,
-                  boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
-                }}
-                labelStyle={{ color: COLORS.text, fontWeight: 600 }}
-              />
-              <Legend
-                wrapperStyle={{
-                  paddingTop: 8,
-                  color: COLORS.text,
-                  fontSize: 11,
-                }}
-              />
+          {showChart && (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={dailyLoadData}>
+                <CartesianGrid
+                  stroke={COLORS.accent + "40"}
+                  strokeDasharray="3 3"
+                />
+                <XAxis
+                  dataKey="time"
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                />
+                <YAxis
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                  label={{
+                    value: "Relative load",
+                    angle: -90,
+                    position: "insideLeft",
+                    fill: COLORS.text,
+                    fontSize: 11,
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: COLORS.bg,
+                    borderColor: COLORS.primary + "40",
+                    borderRadius: 16,
+                    boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
+                  }}
+                  labelStyle={{ color: COLORS.text, fontWeight: 600 }}
+                />
+                <Legend
+                  wrapperStyle={{
+                    paddingTop: 8,
+                    color: COLORS.text,
+                    fontSize: 11,
+                  }}
+                />
 
-              <Line
-                type="monotone"
-                dataKey="typical"
-                stroke={COLORS.primary}
-                strokeWidth={3}
-                dot={false}
-                name="Typical day"
-              />
-              <Line
-                type="monotone"
-                dataKey="shifted"
-                stroke={COLORS.success}
-                strokeWidth={3}
-                dot={false}
-                name="Smoothed day"
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="typical"
+                  stroke={COLORS.primary}
+                  strokeWidth={3}
+                  dot={false}
+                  name="Typical day"
+                  isAnimationActive={true}
+                  animationDuration={800}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="shifted"
+                  stroke={COLORS.success}
+                  strokeWidth={3}
+                  dot={false}
+                  name="Smoothed day"
+                  isAnimationActive={true}
+                  animationDuration={900}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
         </div>
 
         <p
@@ -166,7 +179,7 @@ export default function DailyLoadChart() {
           line to the green line: same comfort, fewer overloads, and a calmer
           local grid.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

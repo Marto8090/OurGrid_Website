@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   BarChart,
   Bar,
@@ -23,13 +25,18 @@ const peakData = [
 ];
 
 export default function BeforeAfterPeakChart() {
+  const [showChart, setShowChart] = useState(false);
+
   return (
     <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
-      <div
-        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
-        style={{
-          borderColor: COLORS.primary + "20",
-        }}
+      <motion.div
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm"
+        style={{ borderColor: COLORS.primary + "20" }}
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        onViewportEnter={() => setShowChart(true)}
       >
         <h2
           className="text-lg sm:text-xl md:text-2xl font-semibold"
@@ -38,7 +45,7 @@ export default function BeforeAfterPeakChart() {
           Before and after coordination
         </h2>
         <p
-          className="text-xs sm:text-sm md:text-[15px] mt-1 max-w-xl"
+          className="text-xs sm:text-sm md:text[15px] mt-1 max-w-xl"
           style={{ color: COLORS.text }}
         >
           When enough people shift flexible tasks out of the peak window, the
@@ -47,48 +54,52 @@ export default function BeforeAfterPeakChart() {
         </p>
 
         <div className="mt-3 sm:mt-4 w-full h-[220px] sm:h-[250px] md:h-[270px] lg:h-[290px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={peakData} barCategoryGap={40}>
-              <CartesianGrid
-                stroke={COLORS.accent + "35"}
-                strokeDasharray="3 3"
-                vertical={false}
-              />
-              <XAxis
-                dataKey="scenario"
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-              />
-              <YAxis
-                stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 11 }}
-                label={{
-                  value: "Relative peak load",
-                  angle: -90,
-                  position: "insideLeft",
-                  fill: COLORS.text,
-                  fontSize: 11,
-                }}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: COLORS.bg,
-                  borderColor: COLORS.primary + "40",
-                  borderRadius: 16,
-                }}
-                labelStyle={{ color: COLORS.text, fontWeight: 600 }}
-              />
-              <Bar
-                dataKey="peakLoad"
-                name="Peak load"
-                radius={[10, 10, 0, 0]}
-              >
-                {peakData.map((entry, index) => (
-                  <Cell key={index} fill={entry.color} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+          {showChart && (
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={peakData} barCategoryGap={40}>
+                <CartesianGrid
+                  stroke={COLORS.accent + "35"}
+                  strokeDasharray="3 3"
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="scenario"
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                />
+                <YAxis
+                  stroke={COLORS.text}
+                  tick={{ fill: COLORS.text, fontSize: 11 }}
+                  label={{
+                    value: "Relative peak load",
+                    angle: -90,
+                    position: "insideLeft",
+                    fill: COLORS.text,
+                    fontSize: 11,
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: COLORS.bg,
+                    borderColor: COLORS.primary + "40",
+                    borderRadius: 16,
+                  }}
+                  labelStyle={{ color: COLORS.text, fontWeight: 600 }}
+                />
+                <Bar
+                  dataKey="peakLoad"
+                  name="Peak load"
+                  radius={[10, 10, 0, 0]}
+                  isAnimationActive={true}
+                  animationDuration={800}
+                >
+                  {peakData.map((entry, index) => (
+                    <Cell key={index} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
         </div>
 
         <div className="mt-3 sm:mt-4 flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm">
@@ -107,7 +118,7 @@ export default function BeforeAfterPeakChart() {
             <span style={{ color: COLORS.text }}>After coordination</span>
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
