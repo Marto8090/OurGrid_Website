@@ -13,10 +13,21 @@ import PlayStore1 from "../assets/PlayStore1.png";
 import AppStore from "../assets/AppStore.png";
 import devicesPage from "../assets/devicesPage.jpg";
 import { Cog } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function HowOurGridWorks() {
   const [showOverlay, setShowOverlay] = useState(false);
+  
+  //Locking the scrolling while in the overlay
+  useEffect(() => {
+  if (showOverlay) {
+    document.body.style.overflow = "hidden";     
+  }
+  else {
+    document.body.style.overflow = "auto";      
+  }
+
+}, [showOverlay]);
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
 
@@ -44,7 +55,7 @@ export default function HowOurGridWorks() {
       {/* STEPS CONTAINER */}
       <section className="max-w-md mx-auto">
         {/* STEP 1 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden  -mt-6 md:mt-0 relative z-6">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden -mt-6 md:mt-0 relative z-60">
           <div className="px-5 pt-6 pb-5 space-y-4">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -82,7 +93,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 2 */}
-       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-5">
+       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-50">
         <div className="px-5 pt-6 pb-5 space-y-4">
 
           <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -110,7 +121,7 @@ export default function HowOurGridWorks() {
       </div>
 
         {/* STEP 3 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-4">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-40">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
               3
@@ -158,7 +169,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 4 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-3">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-30">
           <div className="px-5 pt-6 pb-5 space-y-4">
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
               4
@@ -276,7 +287,7 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 5 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-2">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-20">
           <div className="px-5 pt-6 pb-6 space-y-5">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -332,7 +343,7 @@ export default function HowOurGridWorks() {
 
 
         {/* STEP 6 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-1">
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-10">
           <div className="px-5 pt-6 pb-6 space-y-4">
             {/* Step number */}
             <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -376,7 +387,7 @@ export default function HowOurGridWorks() {
       </section>
 
       {/* CONTINUE TO APP */}
-      <section className="max-w-md mx-auto -mt-6 md:mt-0 relative z-0">
+      <section className="max-w-md mx-auto -mt-6 md:mt-0 relative">
         <div className="bg-white rounded-2xl rounded-b-none pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5 space-y-4">
           {/* TEXT + HAND IMAGE */}
           <div className="flex items-center gap-3">
@@ -393,7 +404,7 @@ export default function HowOurGridWorks() {
         </div>
         {/* OVERLAY */}
         {showOverlay && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowOverlay(false)}>
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[999]" onClick={() => setShowOverlay(false)}>
             <div
               className="bg-[#4F2E39] rounded-xl border-1 border-[#F4B14A] p-7 w-80 space-y-6"
               onClick={(e) => e.stopPropagation()}
