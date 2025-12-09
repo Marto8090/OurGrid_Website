@@ -1,9 +1,8 @@
 import { useAudience } from "../context/AudienceContext";
 import DailyLoadChart from "../components/DailyLoadChart";
-// later you’ll add more:
-// import ApplianceContributionChart from "../components/ApplianceContributionChart";
-// import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
-// import PeakIndicator from "../components/PeakIndicator";
+import PeakIndicator from "../components/PeakIndicator";
+import ApplianceContributionChart from "../components/ApplianceContributionChart";
+import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
 
 export default function Dashboards() {
   const { audience } = useAudience();
@@ -17,17 +16,15 @@ export default function Dashboards() {
         </p>
         <p className="mt-1 text-sm text-[#384450] max-w-2xl">
           These static examples show how a typical neighbourhood grid behaves:
-          when the peak happens and how shifting usage can reduce congestion.
+          when the peak happens, what drives it, and what changes when people
+          start shifting their usage.
         </p>
       </header>
 
       <DailyLoadChart />
-
-      {/* Later you just stack the others here:
       <PeakIndicator />
       <ApplianceContributionChart />
       <BeforeAfterPeakChart />
-      */}
     </main>
   );
 }
