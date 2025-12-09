@@ -1,13 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";   // <-- only here
+import React from 'react'
+import ReactDOM from 'react-dom/client' // Import the whole object as ReactDOM
+import App from './App.jsx'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-
-createRoot(document.getElementById("root")).render(
+// We use ReactDOM.createRoot here
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
-); // ← no trailing comma
+  </React.StrictMode>,
+)
