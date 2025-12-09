@@ -37,22 +37,22 @@ export default function Dashboards() {
           "radial-gradient(circle at top left, #FFF3D9 0, #F9F5F2 40%, #E6F0FA 100%)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-4 py-10 space-y-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8 sm:space-y-10">
         {/* HERO / HEADER */}
-        <header className="space-y-4">
+        <header className="space-y-4 sm:space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-[#F4B14A55] backdrop-blur shadow-sm">
             <span className="h-2 w-2 rounded-full bg-[#01AC51]" />
-            <span className="text-xs font-medium tracking-wide text-[#4F2E39]">
+            <span className="text-[11px] sm:text-xs font-medium tracking-wide text-[#4F2E39]">
               Static demo dashboards · Audience: {audience || "unknown"}
             </span>
           </div>
 
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="space-y-2">
-              <h1 className="text-3xl md:text-4xl font-bold text-[#1D252C]">
+          <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D252C]">
                 See how a neighbourhood grid behaves
               </h1>
-              <p className="text-sm md:text-base text-[#384450] max-w-2xl">
+              <p className="text-sm sm:text-base text-[#384450] max-w-2xl">
                 These dashboards use example data to explain{" "}
                 <span className="font-semibold">when</span> congestion happens,
                 <span className="font-semibold"> what drives it</span>, and{" "}
@@ -62,9 +62,9 @@ export default function Dashboards() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2 text-xs md:text-sm">
+            <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
               <span
-                className="px-3 py-1 rounded-full font-medium cursor-default select-none border backdrop-blur"
+                className="px-3 py-1 rounded-full font-medium cursor-default select-none border backdrop-blur max-w-full"
                 style={{
                   backgroundColor: chipConfig.bg,
                   borderColor: chipConfig.border,
@@ -78,7 +78,7 @@ export default function Dashboards() {
         </header>
 
         {/* GRID OF DASHBOARDS */}
-        <section className="space-y-8">
+        <section className="space-y-6 sm:space-y-8">
           <DailyLoadChart />
           <PeakIndicator />
           <ApplianceContributionChart />
@@ -86,7 +86,7 @@ export default function Dashboards() {
         </section>
 
         {/* FOOTER NOTE */}
-        <footer className="pt-4 border-t border-white/60 text-xs text-[#384450]">
+        <footer className="pt-4 border-t border-white/60 text-[11px] sm:text-xs text-[#384450]">
           <p>
             All charts on this page use static, illustrative data. In a live
             deployment, these visuals can be powered by real measurements from

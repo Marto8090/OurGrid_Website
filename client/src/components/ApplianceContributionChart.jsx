@@ -26,29 +26,29 @@ const applianceData = [
 
 export default function ApplianceContributionChart() {
   return (
-    <section className="w-full max-w-4xl mx-auto">
+    <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
       <div
-        className="rounded-3xl border shadow-md p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-white/90 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
         style={{
           borderColor: COLORS.primary + "20",
         }}
       >
         <h2
-          className="text-xl md:text-2xl font-semibold"
+          className="text-lg sm:text-xl md:text-2xl font-semibold"
           style={{ color: COLORS.text }}
         >
           Which appliances drive the peak?
         </h2>
         <p
-          className="text-sm mt-1 max-w-xl"
+          className="text-xs sm:text-sm md:text-[15px] mt-1 max-w-xl"
           style={{ color: COLORS.text }}
         >
           Heavy, flexible loads like EV chargers and heat pumps dominate the
-          evening peak. These are also the best candidates to shift to
-          off-peak hours.
+          evening peak. These are also the best candidates to shift to off-peak
+          hours.
         </p>
 
-        <div className="mt-4" style={{ width: "100%", height: 280 }}>
+        <div className="mt-3 sm:mt-4 w-full h-[220px] sm:h-[260px] md:h-[280px] lg:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={applianceData}>
               <CartesianGrid
@@ -58,17 +58,17 @@ export default function ApplianceContributionChart() {
               <XAxis
                 dataKey="name"
                 stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 12 }}
+                tick={{ fill: COLORS.text, fontSize: 11 }}
               />
               <YAxis
                 stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 12 }}
+                tick={{ fill: COLORS.text, fontSize: 11 }}
                 label={{
                   value: "Share of peak load (%)",
                   angle: -90,
                   position: "insideLeft",
                   fill: COLORS.text,
-                  fontSize: 12,
+                  fontSize: 11,
                 }}
               />
               <Tooltip
@@ -90,7 +90,7 @@ export default function ApplianceContributionChart() {
         </div>
 
         <p
-          className="mt-4 text-sm"
+          className="mt-3 sm:mt-4 text-xs sm:text-sm"
           style={{ color: COLORS.text }}
         >
           OurGrid helps households see which devices matter most, and how small

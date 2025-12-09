@@ -30,24 +30,24 @@ const dailyLoadData = [
 
 export default function DailyLoadChart() {
   return (
-    <section className="w-full max-w-4xl mx-auto">
+    <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
       <div
-        className="rounded-3xl border shadow-md p-6 md:p-7 bg-gradient-to-br from-[#FDF7EF] via-[#F9F5F2] to-[#F2F5FB] transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
+        className="rounded-3xl border shadow-md p-4 sm:p-6 md:p-7 bg-gradient-to-br from-[#FDF7EF] via-[#F9F5F2] to-[#F2F5FB] transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
         style={{
           borderColor: COLORS.primary + "20",
         }}
       >
         {/* Header row */}
-        <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-2">
             <h2
-              className="text-xl md:text-2xl font-semibold"
+              className="text-lg sm:text-xl md:text-2xl font-semibold"
               style={{ color: COLORS.text }}
             >
               Daily load curve of a neighbourhood
             </h2>
             <p
-              className="text-sm max-w-xl"
+              className="text-xs sm:text-sm md:text-[15px] max-w-xl"
               style={{ color: COLORS.text }}
             >
               Most homes use the most electricity in the{" "}
@@ -57,9 +57,9 @@ export default function DailyLoadChart() {
             </p>
           </div>
 
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-start sm:items-end gap-1">
             <span
-              className="text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap"
+              className="text-[10px] sm:text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap"
               style={{
                 backgroundColor: COLORS.accent + "26",
                 color: COLORS.primary,
@@ -67,7 +67,7 @@ export default function DailyLoadChart() {
             >
               Static example · Not live data
             </span>
-            <span className="text-[11px] text-[#384450]">
+            <span className="text-[10px] sm:text-[11px] text-[#384450]">
               Values shown as{" "}
               <span className="font-medium">relative load</span>, not kW.
             </span>
@@ -75,13 +75,15 @@ export default function DailyLoadChart() {
         </div>
 
         {/* Legend chips */}
-        <div className="mt-4 flex flex-wrap gap-4 text-sm">
+        <div className="mt-3 sm:mt-4 flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm">
           <span className="inline-flex items-center gap-2">
             <span
               className="h-3 w-3 rounded-full"
               style={{ backgroundColor: COLORS.primary }}
             />
-            <span style={{ color: COLORS.text }}>Typical day (evening peak)</span>
+            <span style={{ color: COLORS.text }}>
+              Typical day (evening peak)
+            </span>
           </span>
 
           <span className="inline-flex items-center gap-2">
@@ -96,7 +98,7 @@ export default function DailyLoadChart() {
         </div>
 
         {/* Chart */}
-        <div className="mt-4" style={{ width: "100%", height: 320 }}>
+        <div className="mt-3 sm:mt-4 w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={dailyLoadData}>
               <CartesianGrid
@@ -106,17 +108,17 @@ export default function DailyLoadChart() {
               <XAxis
                 dataKey="time"
                 stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 12 }}
+                tick={{ fill: COLORS.text, fontSize: 11 }}
               />
               <YAxis
                 stroke={COLORS.text}
-                tick={{ fill: COLORS.text, fontSize: 12 }}
+                tick={{ fill: COLORS.text, fontSize: 11 }}
                 label={{
                   value: "Relative load",
                   angle: -90,
                   position: "insideLeft",
                   fill: COLORS.text,
-                  fontSize: 12,
+                  fontSize: 11,
                 }}
               />
               <Tooltip
@@ -130,8 +132,9 @@ export default function DailyLoadChart() {
               />
               <Legend
                 wrapperStyle={{
-                  paddingTop: 12,
+                  paddingTop: 8,
                   color: COLORS.text,
+                  fontSize: 11,
                 }}
               />
 
@@ -156,7 +159,7 @@ export default function DailyLoadChart() {
         </div>
 
         <p
-          className="mt-4 text-sm"
+          className="mt-3 sm:mt-4 text-xs sm:text-sm"
           style={{ color: COLORS.text }}
         >
           The goal of OurGrid is to help neighbourhoods move from the dark red
