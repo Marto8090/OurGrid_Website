@@ -6,6 +6,7 @@ import TipsActions from "../assets/Tips_Actions.jpg";
 import dongle from "../assets/dongle.png";
 import powerBrick from "../assets/power brick.png";
 import energyCables from "../assets/energyCables.png";
+import yourConsumption from "../assets/YourConsumption.jpg"; 
 import { Cog } from "lucide-react";
 
 export default function HowOurGridWorks() {
@@ -163,7 +164,7 @@ export default function HowOurGridWorks() {
             <div className="relative w-fit mx-auto pt-4">
               <img src={TipsActions} alt="OurGrid login screen"
                 className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"/>
-              <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]"></div>
+              <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]"></div>
             </div>
             <div className="space-y-4 text-[#F9F5F2]/90">
               {/* Intro text */}
@@ -268,22 +269,64 @@ export default function HowOurGridWorks() {
         </div>
 
         {/* STEP 5 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-10 h-10 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-lg font-bold">
+        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden">
+          <div className="px-5 pt-6 pb-6 space-y-5">
+            {/* Step number */}
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
               5
             </div>
-            <h2 className="text-lg font-semibold text-center">
+
+            {/* Title */}
+            <h2 className="text-2xl font-semibold text-center">
               Track your progress
             </h2>
+            
+            <div className="relative mt-4">
+              {/* GREY CIRCLE */}
+              <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
 
-            <p className="text-sm leading-relaxed text-center mt-2">
-              See how your daily consumption compares to the predicted grid
-              load. Your trophies show things like points earned, completed
-              challenges, and peaks avoided.
-            </p>
+              {/* CONTENT ON TOP */}
+              <div className="relative z-10 flex flex-col gap-4">
+                {/* Phone */}
+                <div className="flex justify-center">
+                  <img
+                    src={yourConsumption}
+                    alt="Your consumption and trophies"
+                    className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"
+                  />
+                </div>
+
+                {/* Explanation */}
+                <p className="text-sm leading-relaxed text-left pt-4">
+                  You can see your daily consumption and how it compares to the predicted
+                  grid load. Below that, your trophies show:
+                </p>
+
+                {/* Green pill stats */}
+                <div className="space-y-2 mt-1 -mx-5">
+                  <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    • Total points earned
+                  </div>
+                  <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    • Completed challenges
+                  </div>
+                  <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    • Peaks avoided
+                  </div>
+                  <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    • Expected earnings
+                  </div>
+                </div>
+
+                {/* Closing line */}
+                <p className="text-sm leading-relaxed text-left">
+                  The more you participate, the more rewards you collect.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+
 
         {/* STEP 6 */}
         <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-mdborder-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden">
