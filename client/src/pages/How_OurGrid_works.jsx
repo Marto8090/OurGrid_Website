@@ -38,7 +38,7 @@ export default function HowOurGridWorks() {
   return (
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl md:min-h-[250px]">
         <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-3 items-center">
           {/* Cog icon */}
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
@@ -53,333 +53,437 @@ export default function HowOurGridWorks() {
       </section>
 
       {/* STEPS CONTAINER */}
-      <section className="max-w-md mx-auto">
-        {/* STEP 1 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden -mt-6 md:mt-0 relative z-60">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            {/* Step number */}
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-              1
-            </div>
-            {/* Title */}
-            <h2 className="text-2xl font-semibold text-center">
-              Plug your energy dongle
-            </h2>
-            {/* Grey circle */}
-            <div className="absolute top-40 -right-12 w-74 h-110 rounded-full bg-[#E0D7D7]"></div>      
-            {/* Image container */}
-            <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-3 border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center "> 
-              <img
-                src={dongle}
-                alt="Energy dongle illustration"
-                className="w-full h-60 object-cover "
-              />
-            </div>
-            {/* Power brick positioned the image */}
-            <div className="relative left-[132px] top-[-30px] mb-0">
-              <img
-                src={powerBrick}
-                alt="Power brick Illustration"
-                className="w-25 h-auto"
-              />
-            </div>
-            {/* Description */}
-            <p className="text-lg leading-relaxed text-center relative z-10">
-              Start by connecting your device to your home energy meter.
-              This allows it to track your real-time energy usage. Once connected,
-              link the device to your Wi-Fi network to sync your data securely.
-            </p>
+      <section className="mx-auto">
+      {/* STEP 1 */}
+      <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden -mt-6 relative z-60 md:z-10 md:min-h-[500px]">
+        {/* MOBILE LAYOUT */}
+        <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+          {/* Step number */}
+          <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+            1
           </div>
+
+          {/* Title */}
+          <h2 className="text-2xl font-semibold text-center">
+            Plug your energy dongle
+          </h2>
+
+          {/* Grey circle */}
+          <div className="absolute top-40 -right-12 w-72 h-72 rounded-full bg-[#E0D7D7]" />
+
+          {/* Image */}
+          <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-[3px] border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center">
+            <img
+              src={dongle}
+              alt="Energy dongle illustration"
+              className="w-full h-60 object-cover"
+            />
+          </div>
+
+          {/* Power brick */}
+          <div className="relative left-[132px] top-[-30px] mb-0">
+            <img
+              src={powerBrick}
+              alt="Power brick Illustration"
+              className="w-25 h-auto"
+            />
+          </div>
+
+          {/* Description */}
+          <p className="text-lg leading-relaxed text-center relative z-10">
+            Start by connecting your device to your home energy meter.
+            This allows it to track your real-time energy usage. Once connected,
+            link the device to your Wi-Fi network to sync your data securely.
+          </p>
         </div>
 
-        {/* STEP 2 */}
-       <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-50">
-        <div className="px-5 pt-6 pb-5 space-y-4">
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden md:block md:px-10 md:py-10">
+          {/* grey circle behind image */}
+          <div className="absolute right-55 bottom-30 w-230 h-76 rounded-full bg-[#E0D7D7] rotate-[-35deg]" />
 
-          <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-            2
+          <div className="flex items-center gap-10 relative z-10">
+            {/* step + text */}
+            <div className="flex-1 relative z-10 pb-8">
+              <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+                {/* Step circle */}
+                <div className="w-14 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold mx-auto md:mx-0">
+                  1
+                </div>
+                {/* Title + text */}
+                <div className="space-y-5 text-center md:text-left">
+                  <h2 className="text-3xl font-semibold">
+                    Plug your energy dongle
+                  </h2>
+
+                  <p className="text-xl leading-relaxed max-w-xl">
+                    Start by connecting your device to your home energy meter.
+                    This allows it to track your real-time energy usage. Once connected,
+                    link the device to your Wi-Fi network to sync your data securely.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT: image */}
+            <div className="flex-1 flex justify-center pl-18">
+              <div className="relative w-full max-w-md">
+
+                {/* ICON BEHIND IMAGE */}
+                <img
+                  src={powerBrick}
+                  alt="Power brick Illustration"
+                  className="hidden md:block absolute -bottom-22 right-1/8 -translate-x-1/2 w-28 z-0 opacity-90"
+                />
+
+                {/* IMAGE ABOVE ICON */}
+                <div className="relative z-10 rounded-xl overflow-hidden border-[3px] border-[#4F2E39]/60 bg-[#F9F5F2]">
+                  <img
+                    src={dongle}
+                    alt="Energy dongle illustration"
+                    className="w-full h-76 object-cover"
+                  />
+                </div>
+
+              </div>
+            </div>
           </div>
-
-          <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
-
-          {/* Soft background circle */}
-          <div className="absolute top-30 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/8"></div>
-
-          {/* PHONE WITH FADE */}
-          <div className="relative w-fit mx-auto">
-            <img src={RegisterPage} alt="OurGrid login screen"
-              className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
-            <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
-          </div>
-
-          <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-            After that by opening the OurGrid app and signing in, new users can register in just a few steps -
-            no technical setup needed. Once logged in, you'll be connected to your city's local energy network.
-          </p>
-
         </div>
       </div>
 
-        {/* STEP 3 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-40">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-              3
+      {/* ROW: STEP 2 + STEP 3 */}
+      <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2">
+        {/* STEP 2 */}
+        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-36 relative z-50 md:z-20">
+          {/* MOBILE LAYOUT */}
+          <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+            {/* Step number */}
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+              2
             </div>
-            <h2 className="text-2xl font-semibold text-center">
-              See your usage, join challenges & take action
-            </h2>
-            {/* PHONE STACK */}
-            <div className="relative w-52 h-75 mx-auto my-6">
-              {/* Back phone */}
-              <img src={PeakCongestion} alt="Back screen"
-                className="absolute right-0 top-2 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"/>
-              {/* Front phone */}
+
+            {/* Title */}
+            <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
+
+            {/* Soft background circle */}
+            <div className="absolute top-64 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6 "></div>
+
+            {/* Phone with fade */}
+            <div className="relative w-fit mx-auto">
               <img
-                src={ChallengePopUp} alt="Front screen"
-                 className="absolute left-0 bottom-0 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"/>
+                src={RegisterPage}
+                alt="OurGrid login screen"
+                className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"
+              />
+              <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
             </div>
 
-            <div className="relative p-5 text-center space-y-4">
-              {/* top-left curve */}
-              <div className="absolute top-0 left-0 w-30 h-20 
-                  border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl"></div>
-
-              {/* top-right curve */}
-              <div className="absolute top-0 right-0 w-40 h-20 
-                  border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl"></div>
-
-              {/* bottom-left curve */}
-              <div className="absolute bottom-0 left-0 w-40 h-20 
-                  border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl"></div>
-
-              {/* bottom-right curve */}
-              <div className="absolute bottom-0 right-0 w-40 h-20 
-                  border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl"></div>
-
-              <p className="text-lg leading-relaxed">
-                The home screen shows your live power use and alerts you when your area faces a peak load.
-              </p>
-              <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto"></div>
-              <p className="text-lg leading-relaxed">
-                Join the challenge by keeping your usage below the target limit - every minute counts toward points.
-              </p>
-            </div>
+            <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
+              After that by opening the OurGrid app and signing in, new users can register
+              in just a few steps - no technical setup needed. Once logged in, you'll be
+              connected to your city's local energy network.
+            </p>
           </div>
-        </div>
 
-        {/* STEP 4 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:mt-0 relative z-30">
-          <div className="px-5 pt-6 pb-5 space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-              4
-            </div>
-            <h2 className="text-2xl font-semibold text-center">
-              Follow tips & take action
-            </h2>
+          {/* DESKTOP LAYOUT */}
+          <div className="hidden md:block md:px-10 md:py-10 relative">
+            {/* soft circle on the right */}
+            <div className="absolute top-20 right-101 w-72 h-170 rounded-full bg-[#F4B14A]/10 rotate-[-55deg]"/>
 
-            {/* PHONE WITH FADE */}
-            <div className="relative w-fit mx-auto pt-4">
-              <img src={TipsActions} alt="OurGrid login screen"
-                className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"/>
-              <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]"></div>
-            </div>
-            <div className="space-y-4 text-[#F9F5F2]/90">
-              {/* Intro text */}
-              <p className="text-lg leading-relaxed">
-                During a challenge, the app gives practical actions:
-              </p>
-              <div className="relative">
-                {/* background image */}
-                <img src={energyCables} className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none"/>
-                {/* Bullet list */}
-                <ul className="space-y-4">
-                  {/* ITEM 1 */}
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
-                    <span className="relative inline-block px-3 py-1">
-                      <span className="relative z-10 text-lg leading-relaxed">
-                        Delay charging your EV
-                      </span>
-                      {/* BOTTOM — full width */}
-                      <span className="absolute inset-y-0 right-0 w-1/2 
-                        border-b-2 border-r-2 
-                        border-[#F4B14A] rounded-r-full -z-0">
-                      </span>
-                      {/* TOP — shorter width */}
-                      <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                        border-t-2 border-r-2 
-                        border-[#F4B14A] rounded-tr-full -z-0">
-                      </span>
-                    </span>
-                  </li>
-
-                  {/* ITEM 2 */}
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
-                    <span className="relative inline-block px-3 py-1">
-                      <span className="relative z-10 text-lg leading-relaxed">
-                        Lower heating
-                      </span>
-                      {/* BOTTOM — full width */}
-                      <span className="absolute inset-y-0 right-0 w-1/2 
-                        border-b-2 border-r-2 
-                        border-[#F4B14A] rounded-r-full -z-0">
-                      </span>
-                      {/* TOP — shorter width */}
-                      <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                        border-t-2 border-r-2 
-                        border-[#F4B14A] rounded-tr-full -z-0">
-                      </span>
-                    </span>
-                  </li>
-
-                  {/* ITEM 3 */}
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
-                    <span className="relative inline-block px-3 py-1">
-                      <span className="relative z-10 text-lg leading-relaxed">
-                        Discharge your battery
-                      </span>
-
-                      {/* BOTTOM — full width */}
-                      <span className="absolute inset-y-0 right-0 w-3/5 
-                        border-b-2 border-r-2 
-                        border-[#F4B14A] rounded-r-full -z-0">
-                      </span>
-                      {/* TOP — shorter width */}
-                      <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                        border-t-2 border-r-2 
-                        border-[#F4B14A] rounded-tr-full -z-0">
-                      </span>
-                    </span>
-                  </li>
-
-                  {/* ITEM 4 */}
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
-                    <span className="relative inline-block px-3 py-1">
-                      <span className="relative z-10 text-lg leading-relaxed">
-                        Postpone laundry
-                      </span>
-                      {/* BOTTOM — full width */}
-                      <span className="absolute inset-y-0 right-0 w-2/3 
-                        border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0">
-                      </span>
-                      {/* TOP — shorter width */}
-                      <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                        border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0">
-                      </span>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              {/* Closing text */}
-              <p className="text-lg leading-relaxed">
-                Each action shows how much power it saves and helps you reach your goal faster.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* STEP 5 */}
-        <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-20">
-          <div className="px-5 pt-6 pb-6 space-y-5">
-            {/* Step number */}
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-              5
-            </div>
-
-            {/* Title */}
-            <h2 className="text-2xl font-semibold text-center">
-              Track your progress
-            </h2>
-            
-            <div className="relative mt-4">
-              {/* GREY CIRCLE */}
-              <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
-
-              {/* CONTENT ON TOP */}
-              <div className="relative z-10 flex flex-col gap-4">
-                {/* Phone */}
-                <div className="flex justify-center">
-                  <img src={yourConsumption} alt="Your consumption and trophies" className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
+            <div className="relative flex items-center">
+              {/*title + text */}
+              <div className="flex-1 space-y-6 pb-20">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                    2
+                  </div>
+                  <h2 className="text-3xl font-semibold">
+                    Sign in or register
+                  </h2>
                 </div>
 
-                {/* Explanation */}
-                <p className="text-sm leading-relaxed text-left pt-4">
-                  You can see your daily consumption and how it compares to the predicted
-                  grid load. Below that, your trophies show:
+                <p className="text-xl leading-relaxed max-w-xl pt-10 pr-10">
+                  Start by opening the OurGrid app and signing in. New users can register
+                  in just a few steps - no technical setup needed. Once logged in, you'll
+                  be connected to your city's local energy network.
                 </p>
+              </div>
+              {/* PHONE WITH FADE */}
+              <div className="relative w-2/5 mx-auto pl-8">
+                <img src={RegisterPage} alt="OurGrid login screen"
+                  className="w-50 h-90 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
+                <div className="absolute -bottom-1 left-6 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                {/* Green pill stats */}
-                <div className="space-y-2 mt-1 -mx-5">
-                  <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
-                    • Total points earned
-                  </div>
-                  <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
-                    • Completed challenges
-                  </div>
-                  <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
-                    • Peaks avoided
-                  </div>
-                  <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
-                    • Expected earnings
-                  </div>
-                </div>
 
-                {/* Closing line */}
-                <p className="text-sm leading-relaxed text-left">
-                  The more you participate, the more rewards you collect.
+          {/* STEP 3 */}
+          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:-mt-10 relative z-40">
+            <div className="px-5 pt-6 pb-5 space-y-4">
+              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                3
+              </div>
+              <h2 className="text-2xl font-semibold text-center">
+                See your usage, join challenges & take action
+              </h2>
+              {/* PHONE STACK */}
+              <div className="relative w-52 h-75 mx-auto my-6">
+                {/* Back phone */}
+                <img src={PeakCongestion} alt="Back screen"
+                  className="absolute right-0 top-2 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"/>
+                {/* Front phone */}
+                <img
+                  src={ChallengePopUp} alt="Front screen"
+                  className="absolute left-0 bottom-0 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"/>
+              </div>
+
+              <div className="relative p-5 text-center space-y-4">
+                {/* top-left curve */}
+                <div className="absolute top-0 left-0 w-30 h-20 
+                    border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl"></div>
+
+                {/* top-right curve */}
+                <div className="absolute top-0 right-0 w-40 h-20 
+                    border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl"></div>
+
+                {/* bottom-left curve */}
+                <div className="absolute bottom-0 left-0 w-40 h-20 
+                    border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl"></div>
+
+                {/* bottom-right curve */}
+                <div className="absolute bottom-0 right-0 w-40 h-20 
+                    border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl"></div>
+
+                <p className="text-lg leading-relaxed">
+                  The home screen shows your live power use and alerts you when your area faces a peak load.
+                </p>
+                <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto"></div>
+                <p className="text-lg leading-relaxed">
+                  Join the challenge by keeping your usage below the target limit - every minute counts toward points.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* ROW: STEP 4 + STEP 5 */}
+        <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 ">
+          {/* STEP 4 */}
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:-mt-80 relative z-30">
+            <div className="px-5 pt-6 pb-5 space-y-4">
+              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                4
+              </div>
+              <h2 className="text-2xl font-semibold text-center">
+                Follow tips & take action
+              </h2>
 
-        {/* STEP 6 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-10">
-          <div className="px-5 pt-6 pb-6 space-y-4">
-            {/* Step number */}
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-              6
-            </div>
+              {/* PHONE WITH FADE */}
+              <div className="relative w-fit mx-auto pt-4">
+                <img src={TipsActions} alt="OurGrid login screen"
+                  className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"/>
+                <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]"></div>
+              </div>
+              <div className="space-y-4 text-[#F9F5F2]/90">
+                {/* Intro text */}
+                <p className="text-lg leading-relaxed">
+                  During a challenge, the app gives practical actions:
+                </p>
+                <div className="relative">
+                  {/* background image */}
+                  <img src={energyCables} className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none"/>
+                  {/* Bullet list */}
+                  <ul className="space-y-4">
+                    {/* ITEM 1 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
 
-            {/* Title */}
-            <h2 className="text-2xl font-semibold text-center">
-              Manage your devices
-            </h2>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-lg leading-relaxed">
+                          Delay charging your EV
+                        </span>
+                        {/* BOTTOM — full width */}
+                        <span className="absolute inset-y-0 right-0 w-1/2 
+                          border-b-2 border-r-2 
+                          border-[#F4B14A] rounded-r-full -z-0">
+                        </span>
+                        {/* TOP — shorter width */}
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
+                          border-t-2 border-r-2 
+                          border-[#F4B14A] rounded-tr-full -z-0">
+                        </span>
+                      </span>
+                    </li>
 
-            {/* Phone */}
-            <div className="mt-3 flex justify-center pb-9">
-              <img src={devicesPage} alt="OurGrid devices screen" className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
-            </div>
+                    {/* ITEM 2 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
 
-            {/* Cable made from two copies of the image */}
-            <div className="mt-3 flex justify-center">
-              <div className="relative w-1/3 h-1/2">
-                {/* left half */}
-                <img src={cable} alt="Cable connection" className="absolute -left-12 -top-20 object-contain"/>
-                {/* right half (mirrored) */}
-                <img src={cable} alt="Cable connection" className="absolute -right-10.5 -top-[62.5px] object-contain scale-x-[-1] transform -scale-y-100"/>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-lg leading-relaxed">
+                          Lower heating
+                        </span>
+                        {/* BOTTOM — full width */}
+                        <span className="absolute inset-y-0 right-0 w-1/2 
+                          border-b-2 border-r-2 
+                          border-[#F4B14A] rounded-r-full -z-0">
+                        </span>
+                        {/* TOP — shorter width */}
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
+                          border-t-2 border-r-2 
+                          border-[#F4B14A] rounded-tr-full -z-0">
+                        </span>
+                      </span>
+                    </li>
+
+                    {/* ITEM 3 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-lg leading-relaxed">
+                          Discharge your battery
+                        </span>
+
+                        {/* BOTTOM — full width */}
+                        <span className="absolute inset-y-0 right-0 w-3/5 
+                          border-b-2 border-r-2 
+                          border-[#F4B14A] rounded-r-full -z-0">
+                        </span>
+                        {/* TOP — shorter width */}
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
+                          border-t-2 border-r-2 
+                          border-[#F4B14A] rounded-tr-full -z-0">
+                        </span>
+                      </span>
+                    </li>
+
+                    {/* ITEM 4 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-lg leading-relaxed">
+                          Postpone laundry
+                        </span>
+                        {/* BOTTOM — full width */}
+                        <span className="absolute inset-y-0 right-0 w-2/3 
+                          border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0">
+                        </span>
+                        {/* TOP — shorter width */}
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
+                          border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0">
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                {/* Closing text */}
+                <p className="text-lg leading-relaxed">
+                  Each action shows how much power it saves and helps you reach your goal faster.
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* Text box with dashed yellow border */}
-            <div className="relative mt-4">
-              {/* electric glow behind */}
-              <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm"></div>
-              {/* main content box */}
-              <div className="relative rounded-3xl border-2 border-[#F4B14A] px-4 py-4 bg-[#3B202A] text-left text-sm leading-relaxed">
-                <span className="text-[#F4B14A] font-semibold">OurGrid</span> connects to
-                your smart devices - like your meter, EV charger, or battery. You can choose
-                automatic or manual control for each one. This helps shift your energy use
-                automatically during congestion moments.
+          {/* STEP 5 */}
+          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-20">
+            <div className="px-5 pt-6 pb-6 space-y-5">
+              {/* Step number */}
+              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                5
+              </div>
+
+              {/* Title */}
+              <h2 className="text-2xl font-semibold text-center">
+                Track your progress
+              </h2>
+              
+              <div className="relative mt-4">
+                {/* GREY CIRCLE */}
+                <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
+
+                {/* CONTENT ON TOP */}
+                <div className="relative z-10 flex flex-col gap-4">
+                  {/* Phone */}
+                  <div className="flex justify-center">
+                    <img src={yourConsumption} alt="Your consumption and trophies" className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
+                  </div>
+
+                  {/* Explanation */}
+                  <p className="text-sm leading-relaxed text-left pt-4">
+                    You can see your daily consumption and how it compares to the predicted
+                    grid load. Below that, your trophies show:
+                  </p>
+
+                  {/* Green pill stats */}
+                  <div className="space-y-2 mt-1 -mx-5">
+                    <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                      • Total points earned
+                    </div>
+                    <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                      • Completed challenges
+                    </div>
+                    <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                      • Peaks avoided
+                    </div>
+                    <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                      • Expected earnings
+                    </div>
+                  </div>
+
+                  {/* Closing line */}
+                  <p className="text-sm leading-relaxed text-left">
+                    The more you participate, the more rewards you collect.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto">
+          {/* STEP 6 */}
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-10">
+            <div className="px-5 pt-6 pb-6 space-y-4">
+              {/* Step number */}
+              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                6
+              </div>
+
+              {/* Title */}
+              <h2 className="text-2xl font-semibold text-center">
+                Manage your devices
+              </h2>
+
+              {/* Phone */}
+              <div className="mt-3 flex justify-center pb-9">
+                <img src={devicesPage} alt="OurGrid devices screen" className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
+              </div>
+
+              {/* Cable made from two copies of the image */}
+              <div className="mt-3 flex justify-center">
+                <div className="relative w-1/3 h-1/2">
+                  {/* left half */}
+                  <img src={cable} alt="Cable connection" className="absolute -left-12 -top-20 object-contain"/>
+                  {/* right half (mirrored) */}
+                  <img src={cable} alt="Cable connection" className="absolute -right-10.5 -top-[62.5px] object-contain scale-x-[-1] transform -scale-y-100"/>
+                </div>
+              </div>
+
+              {/* Text box with dashed yellow border */}
+              <div className="relative mt-4">
+                {/* electric glow behind */}
+                <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm"></div>
+                {/* main content box */}
+                <div className="relative rounded-3xl border-2 border-[#F4B14A] px-4 py-4 bg-[#3B202A] text-left text-sm leading-relaxed">
+                  <span className="text-[#F4B14A] font-semibold">OurGrid</span> connects to
+                  your smart devices - like your meter, EV charger, or battery. You can choose
+                  automatic or manual control for each one. This helps shift your energy use
+                  automatically during congestion moments.
+                </div>
               </div>
             </div>
           </div>
