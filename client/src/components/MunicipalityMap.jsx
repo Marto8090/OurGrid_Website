@@ -1,7 +1,7 @@
-import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Popup, ZoomControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-// FULL EINDHOVEN GRID STRESS MAP
+// FULL EINDHOVEN GRID STRESS MAP (RED = high, YELLOW = mid, GREEN = low)
 const hotspots = [
   // RED – High congestion
   {
@@ -90,50 +90,67 @@ const hotspots = [
 
 export default function MunicipalityMap() {
   return (
-    <div className="rounded-3xl border shadow-md p-4 bg-gradient-to-br from-[#EAF3FF] via-[#F4F8FF] to-white w-full h-[300px] sm:h-[340px] md:h-[380px]">
+    <div className="rounded-3xl border shadow-md p-4 bg-gradient-to-br from-[#EAF3FF] via-[#F4F8FF] to-white w-full">
+
+      {/* TITLE */}
       <h2 className="text-xl font-semibold mb-3 text-[#1D252C]">
         Congestion hotspots (real map view)
       </h2>
 
-      <MapContainer
-        center={[51.4416, 5.4697]}
-        zoom={12.5}
-        scrollWheelZoom={false}
-        style={{
-          height: "100%",
-          width: "100%",
-          borderRadius: "20px",
-          overflow: "hidden",
-        }}
-      >
-        <TileLayer
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; OpenStreetMap contributors"
-        />
+      {/* RESPONSIVE MAP WRAPPER */}
+      <div className="relative w-full aspect-video sm:h-[340px] md:h-[380px] rounded-3xl overflow-hidden">
 
-        {hotspots.map((spot, i) => (
-          <CircleMarker
-            key={i}
-            center={[spot.lat, spot.lng]}
-            radius={spot.severity === 3 ? 18 : spot.severity === 2 ? 14 : 10}
-            pathOptions={{
-              color:
+        <MapContainer
+          center={[51.4416, 5.4697]} // Eindhoven center
+          zoom={12.5}
+          scrollWheelZoom={false}
+          touchZoom={false}
+          dragging={false}
+          tap={false}
+          zoomControl={false} // Disable default zoom controls (top-left)
+          style={{ height: "100%", width: "100%" }}
+        >
+          {/* BASE MAP */}
+          <TileLayer
+            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
+          />
+
+          {/* CUSTOM ZOOM BUTTONS IN BOTTOM-RIGHT */}
+          <ZoomControl position="bottomright" />
+
+          {/* HOTSPOTS */}
+          {hotspots.map((spot, i) => (
+            <CircleMarker
+              key={i}
+              center={[spot.lat, spot.lng]}
+              radius={
                 spot.severity === 3
-                  ? "#D7263D" // red
+                  ? 18
                   : spot.severity === 2
-                  ? "#F4B14A" // yellow
-                  : "#01AC51", // green
-              fillOpacity: 0.7,
-            }}
-          >
-            <Popup>
-              <strong>{spot.label}</strong>
-              <br />
-              Severity level: {spot.severity}
-            </Popup>
-          </CircleMarker>
-        ))}
-      </MapContainer>
+                  ? 14
+                  : 10
+              }
+              pathOptions={{
+                color:
+                  spot.severity === 3
+                    ? "#D7263D" // red
+                    : spot.severity === 2
+                    ? "#F4B14A" // yellow
+                    : "#01AC51", // green
+                fillOpacity: 0.7,
+              }}
+            >
+              <Popup>
+                <strong>{spot.label}</strong>
+                <br />
+                Severity level: {spot.severity}
+              </Popup>
+            </CircleMarker>
+          ))}
+        </MapContainer>
+
+      </div>
     </div>
   );
 }
