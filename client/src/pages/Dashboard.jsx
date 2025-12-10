@@ -1,8 +1,16 @@
+//Resident components
+
 import { useAudience } from "../context/AudienceContext";
 import DailyLoadChart from "../components/DailyLoadChart";
 import PeakIndicator from "../components/PeakIndicator";
 import ApplianceContributionChart from "../components/ApplianceContributionChart";
 import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
+
+//Municipality components
+import MunicipalityLoadOverview from "../components/MunicipalityLoadOverview";
+import ParticipationTrend from "../components/ParticipationTrend";
+import EnergyShiftSummary from "../components/EnergyShiftSummary";
+import GridStressMap from "../components/GridStressMap";
 
 export default function Dashboards() {
   const { audience } = useAudience();
