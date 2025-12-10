@@ -79,11 +79,23 @@ export default function Dashboards() {
 
         {/* GRID OF DASHBOARDS */}
         <section className="space-y-6 sm:space-y-8">
-          <DailyLoadChart />
-          <PeakIndicator />
-          <ApplianceContributionChart />
-          <BeforeAfterPeakChart />
-        </section>
+  {audience === "municipality" ? (
+    <>
+      <MunicipalityLoadOverview />
+      <ParticipationTrend />
+      <EnergyShiftSummary />
+      <GridStressMap />
+    </>
+  ) : (
+    <>
+      <DailyLoadChart />
+      <PeakIndicator />
+      <ApplianceContributionChart />
+      <BeforeAfterPeakChart />
+    </>
+  )}
+</section>
+
 
         {/* FOOTER NOTE */}
         <footer className="pt-4 border-t border-white/60 text-[11px] sm:text-xs text-[#384450]">
