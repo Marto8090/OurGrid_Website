@@ -20,7 +20,7 @@ export default function Header() {
   const links = hasAudience
     ? [
         { label: "What is grid congestion?", to: `${base}/what-is-grid-congestion` },
-        { label: "How OurGrid works", to: `${base}/how-ourgrid-works` },
+        { label: "How OurGrid works?", to: `${base}/how-ourgrid-works` },
         { label: "Dashboards", to: `${base}/dashboards` },
         { label: "FAQ", to: `${base}/faq` },
         { label: "Privacy policy", to: `${base}/privacy-policy` },

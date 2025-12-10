@@ -103,7 +103,7 @@ export default function HowOurGridWorks() {
           <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
 
           {/* Soft background circle */}
-          <div className="absolute top-265 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6"></div>
+          <div className="absolute top-30 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/8"></div>
 
           {/* PHONE WITH FADE */}
           <div className="relative w-fit mx-auto">
