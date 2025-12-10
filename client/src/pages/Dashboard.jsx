@@ -1,8 +1,16 @@
+//Resident components
+
 import { useAudience } from "../context/AudienceContext";
 import DailyLoadChart from "../components/DailyLoadChart";
 import PeakIndicator from "../components/PeakIndicator";
 import ApplianceContributionChart from "../components/ApplianceContributionChart";
 import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
+
+//Municipality components
+import MunicipalityLoadOverview from "../components/MunicipalityLoadOverview";
+import ParticipationTrend from "../components/ParticipationTrend";
+import EnergyShiftSummary from "../components/EnergyShiftSummary";
+import GridStressMap from "../components/GridStressMap";
 
 export default function Dashboards() {
   const { audience } = useAudience();
@@ -79,11 +87,23 @@ export default function Dashboards() {
 
         {/* GRID OF DASHBOARDS */}
         <section className="space-y-6 sm:space-y-8">
-          <DailyLoadChart />
-          <PeakIndicator />
-          <ApplianceContributionChart />
-          <BeforeAfterPeakChart />
-        </section>
+  {audience === "municipality" ? (
+    <>
+      <MunicipalityLoadOverview />
+      <ParticipationTrend />
+      <EnergyShiftSummary />
+      <GridStressMap />
+    </>
+  ) : (
+    <>
+      <DailyLoadChart />
+      <PeakIndicator />
+      <ApplianceContributionChart />
+      <BeforeAfterPeakChart />
+    </>
+  )}
+</section>
+
 
         {/* FOOTER NOTE */}
         <footer className="pt-4 border-t border-white/60 text-[11px] sm:text-xs text-[#384450]">
