@@ -1,4 +1,20 @@
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid
+} from "recharts";
+
+const COLORS = {
+  primary: "#2C6EA4",
+  text: "#1D252C",
+  bg: "#F9F5F2",
+};
 
 const data = [
   { hour: "00:00", load: 30 },
@@ -9,25 +25,55 @@ const data = [
 ];
 
 export default function MunicipalityLoadOverview() {
+  const [showChart, setShowChart] = useState(false);
+
   return (
-    <div className="bg-white/70 backdrop-blur rounded-2xl p-6 shadow-md border border-[#2C6EA422]">
-      <h2 className="text-lg sm:text-xl font-semibold text-[#1D252C] mb-3">
-        Daily transformer load overview
-      </h2>
+    <section className="w-full max-w-4xl mx-auto px-1 sm:px-0">
+      <motion.div
+        className="rounded-3xl border shadow-md p-6 bg-gradient-to-br from-[#EAF3FF] via-[#F4F8FF] to-[#FFFFFF]"
+        style={{ borderColor: COLORS.primary + "40" }}
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        onViewportEnter={() => setShowChart(true)}
+      >
+        <h2 className="text-xl font-semibold mb-2" style={{ color: COLORS.text }}>
+          Daily transformer load overview
+        </h2>
 
-      <p className="text-sm text-[#384450] mb-4">
-        Shows how electricity demand rises across the neighbourhood and when congestion risk increases.
-      </p>
+        <p className="text-sm mb-4" style={{ color: COLORS.text }}>
+          Shows neighbourhood-level load and when congestion risk increases in a typical day.
+        </p>
 
-      <ResponsiveContainer width="100%" height={250}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e0e6ed" />
-          <XAxis dataKey="hour" />
-          <YAxis />
-          <Tooltip />
-          <Line type="monotone" dataKey="load" stroke="#2C6EA4" strokeWidth={3} dot={false} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+        <div className="w-full h-[240px] sm:h-[280px] md:h-[320px]">
+          {showChart && (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={data}>
+                <CartesianGrid stroke="#d1e3f5" strokeDasharray="3 3" />
+                <XAxis dataKey="hour" tick={{ fill: COLORS.text, fontSize: 11 }} />
+                <YAxis tick={{ fill: COLORS.text, fontSize: 11 }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: COLORS.bg,
+                    borderColor: COLORS.primary + "40",
+                    borderRadius: 14,
+                  }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="load"
+                  stroke={COLORS.primary}
+                  strokeWidth={3}
+                  dot={false}
+                  isAnimationActive={true}
+                  animationDuration={900}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+      </motion.div>
+    </section>
   );
 }
