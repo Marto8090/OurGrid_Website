@@ -153,116 +153,177 @@ export default function HowOurGridWorks() {
 
       {/* ROW: STEP 2 + STEP 3 */}
       <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2">
-        {/* STEP 2 */}
-        <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-36 relative z-50 md:z-20">
-          {/* MOBILE LAYOUT */}
-          <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
-            {/* Step number */}
-            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-              2
+          {/* STEP 2 */}
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-36 relative z-50 md:z-20">
+            {/* MOBILE LAYOUT */}
+            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+              {/* Step number */}
+              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                2
+              </div>
+
+              {/* Title */}
+              <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
+
+              {/* Soft background circle */}
+              <div className="absolute top-64 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6 "></div>
+
+              {/* Phone with fade */}
+              <div className="relative w-fit mx-auto">
+                <img
+                  src={RegisterPage}
+                  alt="OurGrid login screen"
+                  className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"
+                />
+                <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+              </div>
+
+              <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
+                After that by opening the OurGrid app and signing in, new users can register
+                in just a few steps - no technical setup needed. Once logged in, you'll be
+                connected to your city's local energy network.
+              </p>
             </div>
 
-            {/* Title */}
-            <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
+            {/* DESKTOP LAYOUT */}
+            <div className="hidden md:block md:px-10 md:py-10 relative">
+              {/* soft circle on the right */}
+              <div className="absolute top-20 right-101 w-72 h-170 rounded-full bg-[#F4B14A]/10 rotate-[-55deg]"/>
 
-            {/* Soft background circle */}
-            <div className="absolute top-64 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6 "></div>
-
-            {/* Phone with fade */}
-            <div className="relative w-fit mx-auto">
-              <img
-                src={RegisterPage}
-                alt="OurGrid login screen"
-                className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"
-              />
-              <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
-            </div>
-
-            <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-              After that by opening the OurGrid app and signing in, new users can register
-              in just a few steps - no technical setup needed. Once logged in, you'll be
-              connected to your city's local energy network.
-            </p>
-          </div>
-
-          {/* DESKTOP LAYOUT */}
-          <div className="hidden md:block md:px-10 md:py-10 relative">
-            {/* soft circle on the right */}
-            <div className="absolute top-20 right-101 w-72 h-170 rounded-full bg-[#F4B14A]/10 rotate-[-55deg]"/>
-
-            <div className="relative flex items-center">
-              {/*title + text */}
-              <div className="flex-1 space-y-6 pb-20">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-                    2
+              <div className="relative flex items-center">
+                {/*title + text */}
+                <div className="flex-1 space-y-6 pb-20">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                      2
+                    </div>
+                    <h2 className="text-3xl font-semibold">
+                      Sign in or register
+                    </h2>
                   </div>
-                  <h2 className="text-3xl font-semibold">
-                    Sign in or register
-                  </h2>
-                </div>
 
-                <p className="text-xl leading-relaxed max-w-xl pt-10 pr-10">
-                  Start by opening the OurGrid app and signing in. New users can register
-                  in just a few steps - no technical setup needed. Once logged in, you'll
-                  be connected to your city's local energy network.
-                </p>
-              </div>
-              {/* PHONE WITH FADE */}
-              <div className="relative w-2/5 mx-auto pl-8">
-                <img src={RegisterPage} alt="OurGrid login screen"
-                  className="w-50 h-90 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
-                <div className="absolute -bottom-1 left-6 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+                  <p className="text-xl leading-relaxed max-w-xl pt-10 pr-10">
+                    Start by opening the OurGrid app and signing in. New users can register
+                    in just a few steps - no technical setup needed. Once logged in, you'll
+                    be connected to your city's local energy network.
+                  </p>
+                </div>
+                {/* PHONE WITH FADE */}
+                <div className="relative w-2/5 mx-auto pl-8">
+                  <img src={RegisterPage} alt="OurGrid login screen"
+                    className="w-50 h-90 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
+                  <div className="absolute -bottom-1 left-6 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
 
           {/* STEP 3 */}
-          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:-mt-10 relative z-40">
-            <div className="px-5 pt-6 pb-5 space-y-4">
+          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pb-16 pt-7 -mt-6 md:-mt-10 relative z-40">
+            {/* MOBILE VERSION */}
+            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
                 3
               </div>
               <h2 className="text-2xl font-semibold text-center">
                 See your usage, join challenges & take action
               </h2>
+
               {/* PHONE STACK */}
               <div className="relative w-52 h-75 mx-auto my-6">
                 {/* Back phone */}
-                <img src={PeakCongestion} alt="Back screen"
-                  className="absolute right-0 top-2 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"/>
+                <img
+                  src={PeakCongestion}
+                  alt="Back screen"
+                  className="absolute right-0 top-2 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"
+                />
                 {/* Front phone */}
                 <img
-                  src={ChallengePopUp} alt="Front screen"
-                  className="absolute left-0 bottom-0 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"/>
+                  src={ChallengePopUp}
+                  alt="Front screen"
+                  className="absolute left-0 bottom-0 w-32 h-64 rounded-[25px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"
+                />
               </div>
 
               <div className="relative p-5 text-center space-y-4">
                 {/* top-left curve */}
                 <div className="absolute top-0 left-0 w-30 h-20 
-                    border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl"></div>
-
+                    border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl" />
                 {/* top-right curve */}
                 <div className="absolute top-0 right-0 w-40 h-20 
-                    border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl"></div>
-
+                    border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl" />
                 {/* bottom-left curve */}
                 <div className="absolute bottom-0 left-0 w-40 h-20 
-                    border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl"></div>
-
+                    border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl" />
                 {/* bottom-right curve */}
                 <div className="absolute bottom-0 right-0 w-40 h-20 
-                    border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl"></div>
+                    border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl" />
 
                 <p className="text-lg leading-relaxed">
                   The home screen shows your live power use and alerts you when your area faces a peak load.
                 </p>
-                <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto"></div>
+                <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto" />
                 <p className="text-lg leading-relaxed">
                   Join the challenge by keeping your usage below the target limit - every minute counts toward points.
                 </p>
+              </div>
+            </div>
+
+            {/* DESKTOP VERSION */}
+            <div className="hidden md:flex flex-col px-10 pt-6 pb-12 gap-10">
+              {/* Step + heading on top */}
+              <div className="flex flex-row items-center gap-4">
+                <div className="w-16 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                  3
+                </div>
+                <h2 className="text-3xl font-semibold text-center max-w-3xl">
+                  See your usage, join challenges & take action
+                </h2>
+              </div>
+
+              {/* Content row: text left, phones right */}
+              <div className="flex items-center gap-14">
+                {/* LEFT: text */}
+                <div className="relative p-5 text-center space-y-4">
+                  {/* top-left curve */}
+                  <div className="absolute top-0 left-0 w-30 h-20 
+                      border-t-2 border-l-2 border-[#4F2E39] rounded-tl-4xl" />
+                  {/* top-right curve */}
+                  <div className="absolute top-0 right-0 w-30 h-20 
+                      border-t-2 border-r-2 border-[#4F2E39] rounded-tr-4xl" />
+                  {/* bottom-left curve */}
+                  <div className="absolute bottom-0 left-0 w-30 h-20 
+                      border-b-2 border-l-2 border-[#4F2E39] rounded-bl-4xl" />
+                  {/* bottom-right curve */}
+                  <div className="absolute bottom-0 right-0 w-30 h-20 
+                      border-b-2 border-r-2 border-[#4F2E39] rounded-br-4xl" />
+
+                  <p className="text-xl leading-relaxed">
+                    The home screen shows your live power use and alerts you when your area faces a peak load.
+                  </p>
+                  <div className="w-30 h-px border-1 bg-[#4F2E39] mx-auto" />
+                  <p className="text-xl leading-relaxed">
+                    Join the challenge by keeping your usage below the target limit - every minute counts toward points.
+                  </p>
+                </div>
+
+                {/* RIGHT: phone stack */}
+                <div className="flex-1 flex justify-center pr-8">
+                  <div className="relative w-64 h-80">
+                    {/* Back phone */}
+                    <img
+                      src={PeakCongestion}
+                      alt="Back screen"
+                      className="absolute right-0 top-4 w-36 h-72 rounded-[28px] border-[3px] border-[#F4B14A] shadow-xl object-cover opacity-90"
+                    />
+                    {/* Front phone */}
+                    <img
+                      src={ChallengePopUp}
+                      alt="Front screen"
+                      className="absolute left-0 bottom-0 w-40 h-80 rounded-[28px] border-[3px] border-[#F4B14A] shadow-2xl object-cover z-10"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -271,125 +332,194 @@ export default function HowOurGridWorks() {
         {/* ROW: STEP 4 + STEP 5 */}
         <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 ">
           {/* STEP 4 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl overflow-hidden pt-7 -mt-6 md:-mt-80 relative z-30">
-            <div className="px-5 pt-6 pb-5 space-y-4">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pt-7 -mt-6 md:-mt-55 relative z-30">
+            {/* MOBILE LAYOUT – unchanged */}
+            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 4
               </div>
               <h2 className="text-2xl font-semibold text-center">
-                Follow tips & take action
+                Follow tips &amp; take action
               </h2>
 
               {/* PHONE WITH FADE */}
               <div className="relative w-fit mx-auto pt-4">
-                <img src={TipsActions} alt="OurGrid login screen"
-                  className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"/>
-                <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]"></div>
+                <img
+                  src={TipsActions}
+                  alt="OurGrid login screen"
+                  className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"
+                />
+                <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]" />
               </div>
+
               <div className="space-y-4 text-[#F9F5F2]/90">
-                {/* Intro text */}
                 <p className="text-lg leading-relaxed">
                   During a challenge, the app gives practical actions:
                 </p>
+
                 <div className="relative">
-                  {/* background image */}
-                  <img src={energyCables} className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none"/>
-                  {/* Bullet list */}
+                  <img
+                    src={energyCables}
+                    className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none"
+                  />
                   <ul className="space-y-4">
                     {/* ITEM 1 */}
                     <li className="flex items-start gap-3">
                       <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
                       <span className="relative inline-block px-3 py-1">
                         <span className="relative z-10 text-lg leading-relaxed">
                           Delay charging your EV
                         </span>
-                        {/* BOTTOM — full width */}
-                        <span className="absolute inset-y-0 right-0 w-1/2 
-                          border-b-2 border-r-2 
-                          border-[#F4B14A] rounded-r-full -z-0">
-                        </span>
-                        {/* TOP — shorter width */}
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                          border-t-2 border-r-2 
-                          border-[#F4B14A] rounded-tr-full -z-0">
-                        </span>
+                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
                       </span>
                     </li>
 
                     {/* ITEM 2 */}
                     <li className="flex items-start gap-3">
                       <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
                       <span className="relative inline-block px-3 py-1">
                         <span className="relative z-10 text-lg leading-relaxed">
                           Lower heating
                         </span>
-                        {/* BOTTOM — full width */}
-                        <span className="absolute inset-y-0 right-0 w-1/2 
-                          border-b-2 border-r-2 
-                          border-[#F4B14A] rounded-r-full -z-0">
-                        </span>
-                        {/* TOP — shorter width */}
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                          border-t-2 border-r-2 
-                          border-[#F4B14A] rounded-tr-full -z-0">
-                        </span>
+                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
                       </span>
                     </li>
 
                     {/* ITEM 3 */}
                     <li className="flex items-start gap-3">
                       <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
                       <span className="relative inline-block px-3 py-1">
                         <span className="relative z-10 text-lg leading-relaxed">
                           Discharge your battery
                         </span>
-
-                        {/* BOTTOM — full width */}
-                        <span className="absolute inset-y-0 right-0 w-3/5 
-                          border-b-2 border-r-2 
-                          border-[#F4B14A] rounded-r-full -z-0">
-                        </span>
-                        {/* TOP — shorter width */}
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                          border-t-2 border-r-2 
-                          border-[#F4B14A] rounded-tr-full -z-0">
-                        </span>
+                        <span className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
                       </span>
                     </li>
 
                     {/* ITEM 4 */}
                     <li className="flex items-start gap-3">
                       <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-
                       <span className="relative inline-block px-3 py-1">
                         <span className="relative z-10 text-lg leading-relaxed">
                           Postpone laundry
                         </span>
-                        {/* BOTTOM — full width */}
-                        <span className="absolute inset-y-0 right-0 w-2/3 
-                          border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0">
-                        </span>
-                        {/* TOP — shorter width */}
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 
-                          border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0">
-                        </span>
+                        <span className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
                       </span>
                     </li>
                   </ul>
                 </div>
-                {/* Closing text */}
+
                 <p className="text-lg leading-relaxed">
+                  Each action shows how much power it saves and helps you reach your goal
+                  faster.
+                </p>
+              </div>
+            </div>
+
+            {/* DESKTOP LAYOUT */}
+            <div className="hidden md:flex md:flex-col md:px-10 md:py-8 md:space-y-10 relative">
+              {/* STEP + TITLE*/}
+              <div className="flex items-center justify-left gap-6 w-full">
+                <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                  4
+                </div>
+                <h2 className="text-3xl font-semibold text-center">
+                  Follow tips &amp; take action
+                </h2>
+              </div>
+
+            {/* PHONE + TEXT LAYOUT */}
+            <div className="mt-6 flex flex-col md:flex-row md:items-start md:gap-10">
+              <div className="order-2 md:order-1 flex-1 relative w-full max-w-4xl space-y-6 text-left text-[#F9F5F2]/90 mt-4 md:mt-0">
+                <p className="text-xl leading-relaxed pl-8">
+                  During a challenge, the app gives practical actions:
+                </p>
+
+                <div className="relative">
+                  {/* background image */}
+                  <img
+                    src={energyCables}
+                    className="absolute -bottom-30 right-36 w-52 opacity-70 object-contain transform scale-x-[-1] "
+                  />
+
+                  <ul className="space-y-4 pl-6">
+                    {/* ITEM 1 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-xl leading-relaxed">
+                          Delay charging your EV
+                        </span>
+                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
+                      </span>
+                    </li>
+
+                    {/* ITEM 2 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-xl leading-relaxed">
+                          Lower heating
+                        </span>
+                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
+                      </span>
+                    </li>
+
+                    {/* ITEM 3 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-xl leading-relaxed">
+                          Discharge your battery
+                        </span>
+                        <span className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
+                      </span>
+                    </li>
+
+                    {/* ITEM 4 */}
+                    <li className="flex items-start gap-3">
+                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+                      <span className="relative inline-block px-3 py-1">
+                        <span className="relative z-10 text-xl leading-relaxed">
+                          Postpone laundry
+                        </span>
+                        <span className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
+                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <p className="text-xl pl-8 leading-relaxed">
                   Each action shows how much power it saves and helps you reach your goal faster.
                 </p>
               </div>
+
+              {/* PHONE WITH FADE */}
+              <div className="order-1 md:order-2 flex-1 flex justify-center md:justify-end pr-6">
+                <div className="relative w-fit mx-auto md:mx-0 pt-8">
+                  <img
+                    src={TipsActions}
+                    alt="OurGrid login screen"
+                    className="w-54 h-80 object-cover rounded-2xl border border-[#000000]"
+                  />
+                  <div className="absolute -bottom-1 left-0 w-full h-32 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]" />
+                </div>
+              </div>
+            </div>
+
             </div>
           </div>
 
           {/* STEP 5 */}
-          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-20">
+          <div className="bg-white rounded-2xl md:rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-15 relative z-20 md:z-40">
             <div className="px-5 pt-6 pb-6 space-y-5">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -446,7 +576,7 @@ export default function HowOurGridWorks() {
 
         <div className="mx-auto">
           {/* STEP 6 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:mt-0 relative z-10">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-10 relative z-10 md: z-30">
             <div className="px-5 pt-6 pb-6 space-y-4">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
