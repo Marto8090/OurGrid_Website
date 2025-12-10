@@ -10,7 +10,7 @@ import BeforeAfterPeakChart from "../components/BeforeAfterPeakChart";
 import MunicipalityLoadOverview from "../components/MunicipalityLoadOverview";
 import ParticipationTrend from "../components/ParticipationTrend";
 import EnergyShiftSummary from "../components/EnergyShiftSummary";
-import GridStressMap from "../components/GridStressMap";
+import MunicipalityMap from "../components/MunicipalityMap";
 
 export default function Dashboards() {
   const { audience } = useAudience();
@@ -92,7 +92,8 @@ export default function Dashboards() {
       <MunicipalityLoadOverview />
       <ParticipationTrend />
       <EnergyShiftSummary />
-      <GridStressMap />
+      <MunicipalityMap />
+
     </>
   ) : (
     <>
