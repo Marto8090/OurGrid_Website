@@ -33,7 +33,7 @@ export default function Header() {
     hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] transition-all
   `;
 
-  // --- NEW "SEGMENTED CONTROL" COMPONENT ---
+ 
 // --- NEW "SEGMENTED CONTROL" COMPONENT ---
   const AudienceSwitcher = ({ className = "" }) => {
     
@@ -116,7 +116,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#F4B14A] text-[#4F2E39] shadow-md">
+    <header className="sticky top-0 z-[999] bg-[#F4B14A] text-[#4F2E39] shadow-md">
       <style>{`
         @keyframes menuDrop {
           from { transform: scaleY(0.85); opacity: 0; }
