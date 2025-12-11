@@ -212,110 +212,131 @@ export default function Landing() {
       </section>
 
       {/* SECTION 3+4 – DOWNLOAD + GRID CONGESTION BUTTON */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-16">
-        <div className="w-full px-4 lg:px-10 max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+<section className="bg-[#4F2E39] text-[#F9F5F2] py-10 md:py-16">
+  {/* MATCHED WIDTH WITH SECTION ABOVE (max-w-6xl) */}
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
 
-            {/* LEFT CARD – DOWNLOAD / START NOW */}
-            <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-between hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
-              
-              <div className="flex items-start gap-6 md:gap-8">
-                {/* QR ONLY VISIBLE ON LARGE SCREENS */}
-                <div className="hidden lg:block w-32 h-32 lg:w-40 lg:h-40 overflow-hidden flex-shrink-0 rounded-xl">
-                  <img
-                    src={QR}
-                    alt="Scan to download"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+      {/* LEFT CARD – DOWNLOAD / START NOW */}
+      <div className="h-full min-h-[340px] lg:min-h-[380px] rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-8 md:p-10 flex flex-col justify-between hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+        
+        <div className="flex items-start gap-6 md:gap-8">
+          {/* QR VISIBLE ON LG+ SCREENS */}
+          {/* ADDED mt-6 HERE FOR TOP PADDING EFFECT */}
+          <div className="hidden lg:block mt-6 w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden border border-[#F4B14A]/30">
+            <img
+              src={QR}
+              alt="Scan to download"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-                <div className="text-left">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#F4B14A]">
-                    Start now
-                  </h2>
-                  <p className="mt-3 text-sm md:text-base lg:text-lg leading-relaxed text-[#F9F5F2]/90">
-                    Scan the QR or use the buttons below to download the app
-                    when OurGrid is available in your area.
-                  </p>
-                </div>
-              </div>
-
-              {/* APP STORE BUTTONS */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a
-                  href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transform transition-transform hover:scale-105 active:scale-95"
-                >
-                  <img
-                    src={PlayStore1}
-                    alt="Get it on Google Play"
-                    className="h-16 md:h-20 w-auto object-contain"
-                  />
-                </a>
-                <a
-                  href="https://apps.apple.com/nl/app/ourgrid/id6478114711"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transform transition-transform hover:scale-105 active:scale-95"
-                >
-                  <img
-                    src={AppStore}
-                    alt="Download on the App Store"
-                    className="h-16 md:h-20 w-auto object-contain"
-                  />
-                </a>
-              </div>
-            </div>
-
-            {/* RIGHT CARD – GRID CONGESTION CTA */}
-            <div className="h-full rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 md:p-10 flex flex-col justify-center items-center hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
-              
-              {/* CARD TITLE */}
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center max-w-lg leading-tight">
-                Are you curious what <span className="text-[#01AC51]">grid congestion</span> is?
-              </h3>
-
-              <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 w-full justify-center">
-                
-                {/* ANIMATED QUESTION ICON */}
-                <img
-                  src={Question}
-                  alt="Question"
-                  className="w-20 md:w-24 lg:w-32 object-contain flex-shrink-0 animate-pulse-slow"
-                />
-
-                {/* BUTTON THAT LINKS TO AUDIENCE-SPECIFIC PAGE */}
-                <div className="flex-1 flex justify-center sm:justify-start">
-                  <a
-                    href={
-                      isMunicipality
-                        ? "/m/what-is-grid-congestion"
-                        : "/u/what-is-grid-congestion"
-                    }
-                    className="
-                      inline-flex items-center justify-center
-                      px-8 md:px-10 lg:px-12
-                      py-3 md:py-4
-                      rounded-full
-                      bg-[#01AC51]
-                      text-white font-bold
-                      text-sm md:text-base lg:text-lg
-                      shadow-lg shadow-[#01AC51]/30
-                      transform transition-all duration-300
-                      hover:bg-[#019245] hover:scale-105 hover:shadow-xl
-                      active:scale-95
-                    "
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="text-left flex-1">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#F4B14A]">
+              Start now
+            </h2>
+            {/* BIGGER TEXT */}
+            <p className="mt-4 text-base md:text-lg lg:text-xl leading-relaxed text-[#F9F5F2]/90">
+              Scan the QR or use the buttons below to download the app
+              when OurGrid is available in your area.
+            </p>
           </div>
         </div>
-      </section>
+
+        {/* APP STORE BUTTONS */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a
+            href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block transform transition-transform hover:scale-105 active:scale-95"
+          >
+            <img
+              src={PlayStore1}
+              alt="Get it on Google Play"
+              className="h-14 md:h-16 lg:h-18 w-auto object-contain"
+            />
+          </a>
+          <a
+            href="https://apps.apple.com/nl/app/ourgrid/id6478114711"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block transform transition-transform hover:scale-105 active:scale-95"
+          >
+            <img
+              src={AppStore}
+              alt="Download on the App Store"
+              className="h-14 md:h-16 lg:h-18 w-auto object-contain"
+            />
+          </a>
+        </div>
+      </div>
+
+      {/* RIGHT CARD – GRID CONGESTION CTA */}
+      <div className="group relative h-full min-h-[340px] lg:min-h-[380px] rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-8 md:p-10 overflow-hidden hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+        
+        {/* DECORATIVE BACKGROUND BLUR */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-48 h-48 bg-[#01AC51]/20 blur-[60px] rounded-full pointer-events-none" />
+
+        {/* CHANGED LAYOUT TO FLEX-COL TO STACK HEADER ON TOP */}
+        <div className="relative z-10 flex flex-col h-full justify-between">
+          
+          {/* 1. HEADING SECTION (TOP) */}
+          <div className="w-full text-center md:text-left mb-6">
+            <h3 className="text-2xl md:text-3xl font-extrabold leading-tight">
+              Are you curious what <span className="text-[#01AC51]">grid congestion</span> is?
+            </h3>
+          </div>
+
+          {/* 2. BUTTON & IMAGE SECTION (BOTTOM) */}
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-6 w-full">
+            
+            {/* BUTTON */}
+            <div className="flex-shrink-0">
+               <a
+                href={
+                  isMunicipality
+                    ? "/m/what-is-grid-congestion"
+                    : "/u/what-is-grid-congestion"
+                }
+                className="
+                  inline-flex items-center justify-center
+                  px-8 py-3
+                  rounded-full
+                  bg-[#01AC51]
+                  text-white font-bold
+                  text-lg
+                  shadow-lg shadow-[#01AC51]/30
+                  transform transition-all duration-300
+                  hover:bg-[#019245] hover:scale-105 hover:shadow-xl
+                  active:scale-95
+                "
+              >
+                Learn More
+              </a>
+            </div>
+
+            {/* LARGE IMAGE */}
+            <div className="flex-shrink-0">
+              <img
+                src={Question}
+                alt="Question mark"
+                className="
+                  w-32 md:w-40 lg:w-48 
+                  object-contain drop-shadow-2xl 
+                  transition-transform duration-500 
+                  group-hover:rotate-12 group-hover:scale-110
+                "
+              />
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
     </div>
   );
 }
