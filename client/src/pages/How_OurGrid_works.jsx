@@ -41,7 +41,7 @@ export default function HowOurGridWorks() {
   return (
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl md:min-h-[280px]">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl min-h-[240px] md:min-h-[280px]">
         <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-6 items-center">
           {/* Cog icon */}
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
@@ -58,7 +58,7 @@ export default function HowOurGridWorks() {
       {/* STEPS CONTAINER */}
       <section className="mx-auto">
       {/* STEP 1 */}
-      <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden -mt-6 md:-mt-10 relative z-60 md:z-10 md:min-h-[500px]">
+      <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pb-4 -mt-10 md:-mt-10 relative z-60 md:z-10 md:min-h-[500px]">
         {/* MOBILE LAYOUT */}
         <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
           {/* Step number */}
@@ -157,9 +157,9 @@ export default function HowOurGridWorks() {
       {/* ROW: STEP 2 + STEP 3 */}
       <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2">
           {/* STEP 2 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-36 relative z-50 md:z-20">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 pb-4 -mt-13 md:-mt-36 relative z-50 md:z-20">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+            <div className="px-5 pt-14 pb-5 space-y-4 md:hidden">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 2
@@ -222,9 +222,9 @@ export default function HowOurGridWorks() {
           </div>
 
           {/* STEP 3 */}
-          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pb-16 pt-7 -mt-6 md:-mt-13 relative z-40">
+          <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] md:rounded-4xl overflow-hidden pb-10 pt-7 -mt-19 md:-mt-13 relative z-40">
             {/* MOBILE VERSION */}
-            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+            <div className="px-5 pt-12 space-y-4 md:hidden">
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
                 3
               </div>
@@ -335,9 +335,9 @@ export default function HowOurGridWorks() {
         {/* ROW: STEP 4 + STEP 5 */}
         <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 ">
           {/* STEP 4 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pt-7 -mt-6 md:-mt-55 relative z-30">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pt-7 -mt-13 md:-mt-55 relative z-30">
             {/* MOBILE LAYOUT – unchanged */}
-            <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
+            <div className="px-5 pt-14 pb-5 space-y-4 md:hidden">
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 4
               </div>
@@ -522,9 +522,9 @@ export default function HowOurGridWorks() {
           </div>
 
           {/* STEP 5 */}
-          <div className="bg-white rounded-2xl md:rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-2 -mt-6 md:-mt-15 relative z-20 md:z-40">
+          <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-2 -mt-16 md:-mt-15 relative z-20 md:z-40">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-6 pb-6 space-y-5 md:hidden">
+            <div className="px-5 pt-14 pb-6 space-y-5 md:hidden">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
                 5
@@ -551,29 +551,29 @@ export default function HowOurGridWorks() {
                   </div>
 
                   {/* Explanation */}
-                  <p className="text-sm leading-relaxed text-left pt-4">
+                  <p className="text-smdleading-relaxed text-left pt-4">
                     You can see your daily consumption and how it compares to the predicted
                     grid load. Below that, your trophies show:
                   </p>
 
                   {/* Green pill stats */}
                   <div className="space-y-2 mt-1 -mx-5">
-                    <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-ms font-semibold px-4 py-1.5 text-left shadow-sm">
                       • Total points earned
                     </div>
-                    <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
                       • Completed challenges
                     </div>
-                    <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
                       • Peaks avoided
                     </div>
-                    <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-sm font-semibold px-4 py-1.5 text-left shadow-sm">
+                    <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
                       • Expected earnings
                     </div>
                   </div>
 
                   {/* Closing line */}
-                  <p className="text-sm leading-relaxed text-left">
+                  <p className="text-md leading-relaxed text-left">
                     The more you participate, the more rewards you collect.
                   </p>
                 </div>
@@ -642,9 +642,9 @@ export default function HowOurGridWorks() {
 
         <div className="mx-auto">
           {/* STEP 6 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-4 -mt-6 md:-mt-40 relative z-10 md:z-30">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-4 -mt-14 md:-mt-40 relative z-10 md:z-30">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-6 pb-6 space-y-4 md:hidden">
+            <div className="px-5 pt-16 pb-8 space-y-4 md:hidden">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 6
@@ -658,7 +658,7 @@ export default function HowOurGridWorks() {
               {/* Phone */}
               <div className="mt-3 flex justify-center pb-9">
                 <img
-                  src={devicesPage}
+                  src={devicesPage2}
                   alt="OurGrid devices screen"
                   className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
               </div>
@@ -684,7 +684,7 @@ export default function HowOurGridWorks() {
                 {/* electric glow behind */}
                 <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm"></div>
                 {/* main content box */}
-                <div className="relative rounded-3xl border-2 border-[#F4B14A] px-4 py-4 bg-[#3B202A] text-left text-sm leading-relaxed">
+                <div className="relative rounded-3xl border-2 border-[#F4B14A] px-4 py-4 bg-[#3B202A] text-left text-md leading-relaxed">
                   <span className="text-[#F4B14A] font-semibold">OurGrid</span> connects to
                   your smart devices - like your meter, EV charger, or battery. You can choose
                   automatic or manual control for each one. This helps shift your energy use
@@ -757,7 +757,7 @@ export default function HowOurGridWorks() {
                 </div>
 
                 {/* RIGHT: glowing text box */}
-                <div className="flex-1 pl-25 pt-10">
+                <div className="flex-1 pl-25 pt-15">
                   <div className="relative max-w-xl">
                     {/* glow */}
                     <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm" />
@@ -777,20 +777,28 @@ export default function HowOurGridWorks() {
       </section>
 
       {/* CONTINUE TO APP */}
-      <section className="max-w-md mx-auto -mt-6 md:mt-0 relative">
-        <div className="bg-white rounded-2xl rounded-b-none pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5 space-y-4">
-          {/* TEXT + HAND IMAGE */}
-          <div className="flex items-center gap-3">
-              <p className="font-semibold text-xl pl-5 pb-2 text-base">Do you want a hands on experience?</p>
-        
-            <img src={hand} alt="Hand holding phone" className="w-18 h-18 object-contain"/>
+      <section className="mx-auto -mt-6 md:-mt-6 relative">
+        <div className="bg-white pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-8 md:pt-6">
+            {/* TEXT + HAND IMAGE */}
+            <div className="flex items-center gap-3 flex-1 justify-center md:justify-start md:pl-16 lg:pl-20">
+              <p className="font-semibold text-xl md:text-2xl">
+                Do you want a hands on experience?
+              </p>
+              <img src={hand} alt="Hand holding phone" className="w-18 h-18 object-contain"/>
+            </div>
+
+            {/* BUTTON OPENS OVERLAY */}
+            <div className="flex justify-center pt-4 md:justify-end w-full md:w-auto md:pr-16 lg:pr-20">
+              <button
+                onClick={() => setShowOverlay(true)}
+                className="inline-flex items-center justify-center px-8 pt md:px-10 lg:px-12 py-3 md:py-4
+                          rounded-full bg-[#01AC51] text-white font-bold text-md md:text-base lg:text-lg
+                          shadow-lg shadow-[#01AC51]/30 transform transition-all duration-300 hover:bg-[#019245]
+                          hover:scale-105 hover:shadow-xl active:scale-95"> Download the app →
+              </button>
+            </div>
           </div>
-          {/* BUTTON OPENS OVERLAY */}
-          <button
-            onClick={() => setShowOverlay(true)} className="w-3/4 mx-auto flex items-center justify-center px-9 py-2.5 rounded-full 
-                bg-[#01AC51] text-white font-semibold text-md shadow-md 
-                hover:bg-[#019245] transition-colors"> Download the app →
-          </button>
         </div>
         {/* OVERLAY */}
         {showOverlay && (
@@ -800,7 +808,6 @@ export default function HowOurGridWorks() {
               onClick={(e) => e.stopPropagation()}
             >
               <p className="text-center text-2xl font-semibold text-white">Get the OurGrid App</p>
-              
               <div className="space-y-3">
                 {/* Google Play */}
                 <a href="https://play.google.com/store/apps/details?id=io.openremote.ourgrid&hl=en" target="_blank">

@@ -27,19 +27,32 @@ export default function Header() {
       ]
     : [];
 
-  const navLinkClass = `
-    text-[17px] text-[#4F2E39] font-semibold tracking-wide pb-1
-    border-b-2 border-transparent hover:text-white hover:border-[#4F2E39]
-    hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)] transition-all
+  // BASE LINK STYLES
+  const navLinkBase = `
+    relative
+    text-[17px] font-semibold tracking-wide pb-1
+    border-b-2
+    transition-all duration-200
+    hover:text-white hover:border-[#4F2E39]
+    hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]
   `;
 
- 
-// --- NEW "SEGMENTED CONTROL" COMPONENT ---
+  // ACTIVE LINK DETECTOR
+  const getNavLinkClass = (to) => {
+    const isActive =
+      location.pathname === to || location.pathname.startsWith(to);
+
+    return `
+      ${navLinkBase}
+      ${isActive ? "text-white border-[#4F2E39]" : "text-[#4F2E39] border-transparent "}
+    `;
+  };
+
+  // --- "SEGMENTED CONTROL" COMPONENT ---
   const AudienceSwitcher = ({ className = "" }) => {
-    
-    // Function to handle the switch logic
     const switchRole = (targetRole) => {
       if (audience === targetRole) return;
+
       const currentPath = location.pathname;
       let nextPath = "";
 
@@ -67,8 +80,7 @@ export default function Header() {
           ${className}
         `}
       >
-        {/* SLIDING BACKGROUND (The "Active" State) */}
-        {/* We use translate-x-full to move it exactly 100% of its own width to the right */}
+        {/* SLIDING BACKGROUND */}
         <div
           className={`
             absolute top-1 bottom-1 left-1
@@ -79,7 +91,7 @@ export default function Header() {
           `}
         />
 
-        {/* BUTTON 1: RESIDENT */}
+        {/* RESIDENT */}
         <button
           onClick={() => switchRole("user")}
           className={`
@@ -88,14 +100,23 @@ export default function Header() {
             ${!isMuni ? "text-[#F4B14A]" : "text-[#4F2E39] hover:text-[#4F2E39]/80"}
           `}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4 h-4"
+          >
             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
             <circle cx="12" cy="7" r="4" />
           </svg>
           Resident
         </button>
 
-        {/* BUTTON 2: MUNICIPALITY */}
+        {/* MUNICIPALITY */}
         <button
           onClick={() => switchRole("municipality")}
           className={`
@@ -104,7 +125,16 @@ export default function Header() {
             ${isMuni ? "text-[#F4B14A]" : "text-[#4F2E39] hover:text-[#4F2E39]/80"}
           `}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4 h-4"
+          >
             <path d="M3 21h18" />
             <path d="M5 21V7l8-4 8 4v14" />
             <path d="M17 21v-8.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V21" />
@@ -153,12 +183,15 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-8">
           {hasAudience &&
             links.map((link) => (
-              <Link key={link.label} to={link.to} className={navLinkClass}>
+              <Link
+                key={link.label}
+                to={link.to}
+                className={getNavLinkClass(link.to)}
+              >
                 {link.label}
               </Link>
             ))}
 
-          {/* DESKTOP SWITCHER */}
           <AudienceSwitcher />
         </div>
 
@@ -194,7 +227,9 @@ export default function Header() {
                   key={link.label}
                   to={link.to}
                   onClick={() => setOpen(false)}
-                  className={`${navLinkClass} w-full text-left px-2 py-1 rounded-md active:bg-[#4F2E39]/10`}
+                  className={`${getNavLinkClass(
+                    link.to
+                  )} w-full text-left px-2 py-1 rounded-md active:bg-[#4F2E39]/10`}
                 >
                   {link.label}
                 </Link>
@@ -207,7 +242,7 @@ export default function Header() {
 
             <div className="w-full h-[1px] bg-[#4F2E39]/20 my-1" />
 
-            {/* MOBILE SWITCHER (CENTERED) */}
+            {/* MOBILE SWITCHER */}
             <div className="flex justify-center">
               <AudienceSwitcher className="w-full" />
             </div>
