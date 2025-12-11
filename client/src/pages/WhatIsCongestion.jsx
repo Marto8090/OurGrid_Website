@@ -46,7 +46,8 @@ export default function WhatIsCongestion() {
       ];
 
   return (
-    <div className="space-y-0">
+    <div className="space-y-0 bg-[#4f2e39]/0">
+
       
       {/* TOP STRIP */}
       <Reveal>
