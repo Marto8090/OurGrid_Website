@@ -146,7 +146,8 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* SECTION 3: WHY IS IT A PROBLEM */}
-          <div className="relative z-10 -mb-4 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-12 space-y-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+          {/* SECTION 3: WHY IS IT A PROBLEM */}
+          <div className="relative z-10 -mb-4 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-14 md:pt-24 space-y-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div className="pointer-events-none absolute inset-0 flex justify-center -z-10">
               <motion.div
                 className="w-40 h-40 rounded-full bg-[#F4B14A]/15 blur-3xl mt-2"
@@ -313,6 +314,7 @@ export default function WhatIsCongestion() {
           </Reveal>
 
           {/* SECTION 5: FROM PROBLEM TO SOLUTION (Static Images, No Glow, No Uplift) */}
+          {/* SECTION 5: FROM PROBLEM TO SOLUTION */}
           <Reveal delay={0.4}>
             <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:pt-16 md:pb-12 md:p-8">
               <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
@@ -344,7 +346,8 @@ export default function WhatIsCongestion() {
                     </p>
                   )}
 
-                  <div className="w-full md:w-auto">
+                  {/* BUTTON CONTAINER - Changed to w-fit so line matches button width */}
+                  <div className="w-fit">
                     <a
                       href={`${base}/how-ourgrid-works`}
                       className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 mt-2 md:mt-5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors"
