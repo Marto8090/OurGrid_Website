@@ -4,15 +4,16 @@ import LightBulb from "../assets/light-bulb.png";
 import mainPage from "../assets/mainPage.jpg";
 import devicesPage from "../assets/devicesPage.jpg";
 
-import { House } from 'lucide-react';
-import { BanknoteArrowUp } from 'lucide-react';
-import { Earth } from 'lucide-react';
-import { TriangleAlert } from 'lucide-react';
-import { Zap } from 'lucide-react';
-import { Clock10 } from 'lucide-react';
-import { History } from 'lucide-react';
-import { Handshake } from 'lucide-react';
+import { House } from "lucide-react";
+import { BanknoteArrowUp } from "lucide-react";
+import { Earth } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
+import { Zap } from "lucide-react";
+import { Clock10 } from "lucide-react";
+import { History } from "lucide-react";
+import { Handshake } from "lucide-react";
 
+import { motion } from "framer-motion";
 import Reveal from "../components/Reveal.jsx";
 
 export default function WhatIsCongestion() {
@@ -46,7 +47,7 @@ export default function WhatIsCongestion() {
 
   return (
     <div className="space-y-0">
-
+      
       {/* TOP STRIP */}
       <Reveal>
         <section className="relative -mb-4 md:mb-0 bg-[#4F2E39] rounded-b-2xl md:rounded-b-[32px] shadow-md shadow-black/20 overflow-hidden">
@@ -72,15 +73,16 @@ export default function WhatIsCongestion() {
           {/* WHAT + WHY SECTION */}
           <Reveal delay={0.1}>
             <div className="grid md:grid-cols-2">
-
               {/* LEFT CARD */}
-              <div className="relative z-20 -mb-6 rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
+              <div
+                className="relative z-20 -mb-6 rounded-2xl overflow-hidden border-2 border-[#F4B14A] shadow-md"
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center"
-                }}>
-                <div className="absolute inset-0 bg-[#4F2E39]/60"></div>
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="absolute inset-0 bg-[#4F2E39]/60" />
 
                 <div className="relative z-20 p-6 md:p-8 text-[#F9F5F2] space-y-4">
                   <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
@@ -100,14 +102,15 @@ export default function WhatIsCongestion() {
                   <div className="flex flex-col divide-y divide-[#F4B14A]/60">
                     {reasons.map((text, index) => (
                       <div key={index} className="flex items-start gap-3 py-3">
-                        <span className="mt-1 text-[#F8D092]"><Zap /></span>
+                        <span className="mt-1 text-[#F8D092]">
+                          <Zap />
+                        </span>
                         <p>{text}</p>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-
             </div>
           </Reveal>
 
@@ -152,93 +155,110 @@ export default function WhatIsCongestion() {
               </h2>
 
               <div className="space-y-4 md:space-y-11 md:grid md:grid-cols-2 md:py-6 text-sm md:text-xl place-items-center">
-
                 <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
                   <span className="text-[#F4B14A] text-lg"><Clock10 /></span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Shift some use to quieter hours.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Shift some use to quieter hours.</p>
                 </div>
 
                 <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
                   <span className="text-[#F4B14A] text-lg"><History /></span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Delay EV charging or laundry.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Delay EV charging or laundry.</p>
                 </div>
 
                 <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3 md:col-span-2 md:justify-self-center">
                   <span className="text-[#F4B14A] text-lg"><Handshake /></span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Small changes = big community impact.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Small changes = big community impact.</p>
                 </div>
-
               </div>
             </div>
           </Reveal>
 
           {/* FROM PROBLEM TO SOLUTION */}
-          <Reveal delay={0.4}>
-            <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:pt-16 md:pb-12 md:p-8">
-              <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
+          {/* FROM PROBLEM TO SOLUTION */}
+<Reveal delay={0.4}>
+  <div className="relative bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:pt-16 md:pb-12 md:p-8">
 
-                {/* TEXT */}
-                <div className="flex flex-col items-center md:items-center text-center md:text-left md:pl-14 space-y-4">
-                  <img
-                    src={LightBulb}
-                    alt="Light bulb icon"
-                    className="w-18 h-18 md:w-24 md:h-24 object-contain"
-                  />
+    {/* subtle glow */}
+    <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">
+      <motion.div
+        className="w-48 h-48 rounded-full bg-[#F4B14A]/20 blur-3xl mt-6"
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold">
-                    From problem to solution
-                  </h2>
+    <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
 
-                  {isMunicipality ? (
-                    <p className="text-base text-center md:text-lg text-[#F9F5F2]/90 max-w-md">
-                      Municipalities, co-ops, and residents can work together to reduce
-                      peak loads, avoid costly upgrades, and build more resilient local
-                      energy systems.
-                    </p>
-                  ) : (
-                    <p className="text-base text-center md:text-xl max-w-md">
-                      <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
-                      helps you see when your grid is under stress and rewards you for
-                      helping balance it.
-                    </p>
-                  )}
+      {/* TEXT (centered again) */}
+      <div className="flex flex-col items-center text-center space-y-4">
 
-                  <a href={`${base}/how-ourgrid-works`}
-                    className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 mt-2 md:mt-5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors">
-                    <span>See how</span>
-                    <span className="mx-1 font-semibold text-[#F4B14A]">OurGrid</span>
-                    <span>works</span>
-                  </a>
-                </div>
+        <img
+          src={LightBulb}
+          alt="Light bulb icon"
+          className="w-18 h-18 md:w-24 md:h-24 object-contain"
+        />
 
-                {/* PHONES */}
-                <div className="flex flex-col items-center md:items-center md:pl-14">
-                  <div className="relative w-40 h-80 md:w-64 md:h-94">
+        <h2 className="text-2xl md:text-3xl font-bold">
+          From problem to solution
+        </h2>
 
-                    <img
-                      src={devicesPage}
-                      alt="OurGrid devices screen"
-                      className="absolute right-0 top-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
-                    />
+        {isMunicipality ? (
+          <p className="text-base md:text-lg text-[#F9F5F2]/90 max-w-md">
+            Municipalities, co-ops, and residents can work together to reduce
+            peak loads, avoid costly upgrades, and build more resilient local
+            energy systems.
+          </p>
+        ) : (
+          <p className="text-base md:text-xl max-w-md">
+            <span className="font-semibold text-[#F4B14A]">OurGrid</span>{" "}
+            helps you see when your grid is under stress and rewards you for
+            helping balance it.
+          </p>
+        )}
 
-                    <img
-                      src={mainPage}
-                      alt="OurGrid main screen"
-                      className="absolute left-0 bottom-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
-                    />
+        {/* CTA + underline */}
+        <div className="mt-2">
+          <a
+            href={`${base}/how-ourgrid-works`}
+            className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors"
+          >
+            <span>See how</span>
+            <span className="mx-1 font-semibold text-[#F4B14A]">OurGrid</span>
+            <span>works</span>
+          </a>
 
-                  </div>
-                </div>
+          <motion.div
+            className="h-[2px] bg-[#01AC51] rounded-full mt-2 mx-auto"
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ maxWidth: "200px" }}
+          />
+        </div>
+      </div>
 
-              </div>
-            </div>
-          </Reveal>
+      {/* PHONES */}
+      <div className="flex flex-col items-center">
+        <div className="relative w-40 h-80 md:w-64 md:h-94">
+
+          <img
+            src={devicesPage}
+            alt="OurGrid devices screen"
+            className="absolute right-0 top-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+          />
+
+          <img
+            src={mainPage}
+            alt="OurGrid main screen"
+            className="absolute left-0 bottom-0 w-32 h-64 md:w-42 md:h-[20rem] rounded-[1.75rem] border-[3px] border-[#F4B14A] shadow-2xl object-cover"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Reveal>
 
         </div>
       </section>
