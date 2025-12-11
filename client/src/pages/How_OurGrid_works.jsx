@@ -8,10 +8,13 @@ import powerBrick from "../assets/power brick.png";
 import energyCables from "../assets/energyCables.png";
 import yourConsumption from "../assets/YourConsumption.jpg"; 
 import cable from "../assets/cable.png"; 
+import cable2 from "../assets/cable2.png"; 
 import hand from "../assets/handHoldingPhone.png"; 
 import PlayStore1 from "../assets/PlayStore1.png";
 import AppStore from "../assets/AppStore.png";
+import devicesPage2 from "../assets/devicesPage2.jpeg";
 import devicesPage from "../assets/devicesPage.jpg";
+import line from "../assets/line.png"
 import { Cog } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -38,15 +41,15 @@ export default function HowOurGridWorks() {
   return (
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
-      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl md:min-h-[250px]">
-        <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-3 items-center">
+      <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl md:min-h-[280px]">
+        <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-6 items-center">
           {/* Cog icon */}
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
             <Cog className="w-10 h-10 md:w-12 md:h-12 text-[#D96532]" strokeWidth={2.4} />
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-extrabold">
+          <h1 className="text-2xl md:text-4xl font-extrabold">
             How <span className="text-[#01AC51]">OurGrid</span> Works
           </h1>
         </div>
@@ -55,7 +58,7 @@ export default function HowOurGridWorks() {
       {/* STEPS CONTAINER */}
       <section className="mx-auto">
       {/* STEP 1 */}
-      <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden -mt-6 relative z-60 md:z-10 md:min-h-[500px]">
+      <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden -mt-6 md:-mt-10 relative z-60 md:z-10 md:min-h-[500px]">
         {/* MOBILE LAYOUT */}
         <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
           {/* Step number */}
@@ -133,7 +136,7 @@ export default function HowOurGridWorks() {
                 <img
                   src={powerBrick}
                   alt="Power brick Illustration"
-                  className="hidden md:block absolute -bottom-22 right-1/8 -translate-x-1/2 w-28 z-0 opacity-90"
+                  className="hidden md:block absolute -bottom-19 right-1/10 -translate-x-1/2 w-28 z-0 opacity-90"
                 />
 
                 {/* IMAGE ABOVE ICON */}
@@ -219,7 +222,7 @@ export default function HowOurGridWorks() {
           </div>
 
           {/* STEP 3 */}
-          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pb-16 pt-7 -mt-6 md:-mt-10 relative z-40">
+          <div className="bg-white rounded-2xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pb-16 pt-7 -mt-6 md:-mt-13 relative z-40">
             {/* MOBILE VERSION */}
             <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -519,8 +522,9 @@ export default function HowOurGridWorks() {
           </div>
 
           {/* STEP 5 */}
-          <div className="bg-white rounded-2xl md:rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-15 relative z-20 md:z-40">
-            <div className="px-5 pt-6 pb-6 space-y-5">
+          <div className="bg-white rounded-2xl md:rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-2 -mt-6 md:-mt-15 relative z-20 md:z-40">
+            {/* MOBILE LAYOUT */}
+            <div className="px-5 pt-6 pb-6 space-y-5 md:hidden">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
                 5
@@ -530,7 +534,7 @@ export default function HowOurGridWorks() {
               <h2 className="text-2xl font-semibold text-center">
                 Track your progress
               </h2>
-              
+
               <div className="relative mt-4">
                 {/* GREY CIRCLE */}
                 <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
@@ -539,7 +543,11 @@ export default function HowOurGridWorks() {
                 <div className="relative z-10 flex flex-col gap-4">
                   {/* Phone */}
                   <div className="flex justify-center">
-                    <img src={yourConsumption} alt="Your consumption and trophies" className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
+                    <img
+                      src={yourConsumption}
+                      alt="Your consumption and trophies"
+                      className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"
+                    />
                   </div>
 
                   {/* Explanation */}
@@ -571,13 +579,72 @@ export default function HowOurGridWorks() {
                 </div>
               </div>
             </div>
+
+            {/* DESKTOP LAYOUT */}
+            <div className="hidden md:block md:pt-10 md:pb-16">
+              <div className="relative">
+                {/* GREY CIRCLE BEHIND CONTENT */}
+                <div className="absolute -left-32 top-24 w-80 h-100 rounded-full bg-[#E0D7D7] -z-0" />
+
+                <div className="relative z-10 space-y-10">
+                  {/* STEP + TITLE */}
+                  <div className="flex items-center px-10 gap-4">
+                    <div className="w-14 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                      5
+                    </div>
+                    <h2 className="text-3xl font-semibold">
+                      Track your progress
+                    </h2>
+                  </div>
+
+                  {/* TEXT LEFT - PHONE RIGHT */}
+                  <div className="flex items-start gap-10">
+                    {/* LEFT: TEXT + BARS */}
+                    <div className="flex-1 space-y-5 text-left">
+                      <p className="text-xl leading-relaxed px-10">
+                        You can see your daily consumption and how it compares to the
+                        predicted grid load. Below that, your trophies show:
+                      </p>
+
+                      <div className="space-y-3">
+                        <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
+                          <div className="px-10"> • Total points earned</div>
+                        </div>
+                        <div className="w-full bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
+                          <div className="px-10"> • Completed challenges</div>
+                        </div>
+                        <div className="w-9/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
+                          <div className="px-10">• Peaks avoided</div>
+                        </div>
+                        <div className="w-17/20 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
+                          <div className="px-10"> • Expected earnings</div>
+                        </div>
+                      </div>
+
+                      <p className="text-xl px-10 leading-relaxed">
+                        The more you participate, the more rewards you collect.
+                      </p>
+                    </div>
+
+                    {/* RIGHT: PHONE */}
+                    <div className="flex-1 flex justify-center">
+                      <img
+                        src={yourConsumption}
+                        alt="Your consumption and trophies"
+                        className="w-56 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="mx-auto">
           {/* STEP 6 */}
-          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 -mt-6 md:-mt-10 relative z-10 md: z-30">
-            <div className="px-5 pt-6 pb-6 space-y-4">
+          <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-2xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-4 -mt-6 md:-mt-40 relative z-10 md:z-30">
+            {/* MOBILE LAYOUT */}
+            <div className="px-5 pt-6 pb-6 space-y-4 md:hidden">
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 6
@@ -590,16 +657,25 @@ export default function HowOurGridWorks() {
 
               {/* Phone */}
               <div className="mt-3 flex justify-center pb-9">
-                <img src={devicesPage} alt="OurGrid devices screen" className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
+                <img
+                  src={devicesPage}
+                  alt="OurGrid devices screen"
+                  className="w-40 rounded-3xl border-[3px] border-[#F4B14A] shadow-md"/>
               </div>
 
               {/* Cable made from two copies of the image */}
               <div className="mt-3 flex justify-center">
                 <div className="relative w-1/3 h-1/2">
                   {/* left half */}
-                  <img src={cable} alt="Cable connection" className="absolute -left-12 -top-20 object-contain"/>
+                  <img
+                    src={cable}
+                    alt="Cable connection"
+                    className="absolute -left-12 -top-20 object-contain"/>
                   {/* right half (mirrored) */}
-                  <img src={cable} alt="Cable connection" className="absolute -right-10.5 -top-[62.5px] object-contain scale-x-[-1] transform -scale-y-100"/>
+                  <img
+                    src={cable}
+                    alt="Cable connection"
+                    className="absolute -right-10.5 -top-[62.5px] object-contain scale-x-[-1] transform -scale-y-100"/>
                 </div>
               </div>
 
@@ -613,6 +689,86 @@ export default function HowOurGridWorks() {
                   your smart devices - like your meter, EV charger, or battery. You can choose
                   automatic or manual control for each one. This helps shift your energy use
                   automatically during congestion moments.
+                </div>
+              </div>
+            </div>
+
+            {/* DESKTOP LAYOUT */}
+            <div className="hidden md:flex md:flex-col md:gap-10 md:px-10 md:py-6">
+              {/* Step + heading in one row */}
+              <div className="flex items-center justify-left gap-6">
+                <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                  6
+                </div>
+                <h2 className="text-3xl font-semibold text-center">
+                  Manage your devices
+                </h2>
+              </div>
+              {/*Glow Behind Phone*/}
+              <div className="hidden md:block absolute left-93 top-22 -translate-x-1/2 w-[300px] h-[550px] rounded-full bg-[#F4B14A] opacity-40 blur-3xl z-0"/>
+
+              {/* Phone + cables left, text right */}
+              <div className="flex items-center gap-10">
+                {/* LEFT: phone + cables */}
+                <div className="flex-1 flex justify-center">
+                  <div className="relative w-full max-w-xs">
+                    {/* phone */}
+                    <div className="order-1 md:order-2 flex-1 flex justify-center md:justify-end pr-12 pb-6">
+                      <div className="relative w-fit mx-auto md:mx-0 z-20">
+                        <img
+                          src={devicesPage2}
+                          alt="OurGrid login screen"
+                          className="w-56 h-112 object-cover rounded-2xl border border-[#000000]"/>
+                      </div>
+                    </div>
+
+                    {/* cables under phone */}
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[220px]">
+                      <img
+                        src={cable2}
+                        alt="Cable connection"
+                        className="absolute left-82 -top-66 object-contain rotate-90 w-30"/>
+                      <img
+                        src={cable2}
+                        alt="Cable connection"
+                        className="absolute left-97 -top-66 object-contain scale-x-[-1] transform -scale-y-100  rotate-90 w-30"/>
+                      <img
+                        src={line}
+                        alt="Cable connection"
+                        className="absolute left-71 -top-[231.5px] object-contain h-13.5"/>
+                      <img
+                        src={line}
+                        alt="Cable connection"
+                        className="absolute left-60 -top-[231.5px] object-contain h-13.5"/>
+                      <img
+                        src={line}
+                        alt="Cable connection"
+                        className="absolute left-135 -top-[231.5px] object-contain h-13.5"/>
+                       <img
+                        src={line}
+                        alt="Cable connection"
+                        className="absolute left-125 -top-[231.5px] object-contain h-13.5"/>
+                         <img
+                        src={line}
+                        alt="Cable connection"
+                        className="absolute left-50 -top-[231.5px] object-contain h-13.5"/>
+                    </div>
+                  </div>
+                </div>
+
+                {/* RIGHT: glowing text box */}
+                <div className="flex-1 pl-25 pt-10">
+                  <div className="relative max-w-xl">
+                    {/* glow */}
+                    <div className="absolute inset-0 rounded-3xl bg-[#F4B14A] opacity-30 blur-sm" />
+                    {/* box */}
+                    <div className="relative rounded-3xl border-2 border-[#F4B14A] px-6 py-6 bg-[#3B202A] text-left text-xl leading-relaxed">
+                      <span className="text-[#F4B14A] font-semibold">OurGrid</span> connects to
+                      your smart devices - like your meter, EV charger, or battery. You can choose
+                      automatic or manual control for each one. This helps shift your energy use
+                      automatically during congestion moments.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
