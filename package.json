@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "framer-motion": "^12.23.25",
+    "framer-motion": "^12.23.26",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.552.0",
     "react-leaflet": "^5.0.0",
