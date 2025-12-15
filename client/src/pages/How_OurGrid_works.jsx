@@ -522,31 +522,31 @@ export default function HowOurGridWorks() {
                     className="absolute -bottom-30 right-36 w-52 opacity-70 object-contain transform scale-x-[-1] "
                   />
 
-                 <ul className="space-y-4 pl-6">
+                <ul className="space-y-4">
   {/* ITEM 1 */}
   <li className="flex items-start gap-3">
     <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
     <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-xl leading-relaxed">
+      <span className="relative z-10 text-lg leading-relaxed">
         Delay charging your EV
       </span>
-      {/* Bottom Corner - Draws from Right */}
+      
+      {/* 1. TOP PART: Draws Left -> Right */}
       <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }} 
-        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
-      />
-      {/* Top Corner - Draws from Right */}
-      <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }} 
+        transition={{ delay: 0.2, duration: 0.6, ease: "linear" }}
         className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+
+      {/* 2. BOTTOM PART: Radial Reveal (Overlaps by 0.1s) */}
+      <motion.span 
+        initial={{ clipPath: "circle(0% at 100% 0)" }} 
+        whileInView={{ clipPath: "circle(200% at 100% 0)" }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.7, duration: 0.8, ease: "linear" }}
+        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
       />
     </span>
   </li>
@@ -555,24 +555,24 @@ export default function HowOurGridWorks() {
   <li className="flex items-start gap-3">
     <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
     <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-xl leading-relaxed">
+      <span className="relative z-10 text-lg leading-relaxed">
         Lower heating
       </span>
+      {/* Top Part */}
       <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true }}
-        transition={{ delay: 0.5, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
-        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
-      />
-      <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.6, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
+        transition={{ delay: 0.4, duration: 0.6, ease: "linear" }}
         className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+      {/* Bottom Part */}
+      <motion.span 
+        initial={{ clipPath: "circle(0% at 100% 0)" }}
+        whileInView={{ clipPath: "circle(200% at 100% 0)" }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.9, duration: 0.8, ease: "linear" }}
+        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
       />
     </span>
   </li>
@@ -581,24 +581,24 @@ export default function HowOurGridWorks() {
   <li className="flex items-start gap-3">
     <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
     <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-xl leading-relaxed">
+      <span className="relative z-10 text-lg leading-relaxed">
         Discharge your battery
       </span>
+      {/* Top Part */}
       <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true }}
-        transition={{ delay: 0.8, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
-        className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
-      />
-      <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.9, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
+        transition={{ delay: 0.6, duration: 0.6, ease: "linear" }}
         className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+      {/* Bottom Part */}
+      <motion.span 
+        initial={{ clipPath: "circle(0% at 100% 0)" }}
+        whileInView={{ clipPath: "circle(200% at 100% 0)" }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.1, duration: 0.8, ease: "linear" }}
+        className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
       />
     </span>
   </li>
@@ -607,28 +607,29 @@ export default function HowOurGridWorks() {
   <li className="flex items-start gap-3">
     <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
     <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-xl leading-relaxed">
+      <span className="relative z-10 text-lg leading-relaxed">
         Postpone laundry
       </span>
+      {/* Top Part */}
       <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true }}
-        transition={{ delay: 1.1, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
-        className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
-      />
-      <motion.span 
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.2, duration: 0.5, ease: "circOut" }}
-        style={{ transformOrigin: "right" }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "linear" }}
         className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+      {/* Bottom Part */}
+      <motion.span 
+        initial={{ clipPath: "circle(0% at 100% 0)" }}
+        whileInView={{ clipPath: "circle(200% at 100% 0)" }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.3, duration: 0.8, ease: "linear" }}
+        className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
       />
     </span>
   </li>
 </ul>
+
                 </div>
 
                 <p className="text-xl pl-8 leading-relaxed">
