@@ -13,7 +13,7 @@ import hand from "../assets/handHoldingPhone.png";
 import PlayStore1 from "../assets/PlayStore1.png";
 import AppStore from "../assets/AppStore.png";
 import devicesPage2 from "../assets/devicesPage2.jpeg";
-import devicesPage from "../assets/devicesPage.jpg";
+import { motion } from "framer-motion";
 import line from "../assets/line.png"
 import { Cog } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -23,14 +23,14 @@ export default function HowOurGridWorks() {
   
   //Locking the scrolling while in the overlay
   useEffect(() => {
-  if (showOverlay) {
-    document.body.style.overflow = "hidden";     
-  }
-  else {
-    document.body.style.overflow = "auto";      
-  }
+    if (showOverlay) {
+      document.body.style.overflow = "hidden";     
+    }
+    else {
+      document.body.style.overflow = "auto";      
+    }
+  }, [showOverlay]);
 
-}, [showOverlay]);
   const { audience } = useAudience();
   const isMunicipality = audience === "municipality";
 
@@ -38,11 +38,29 @@ export default function HowOurGridWorks() {
     ? "How OurGrid works in your city"
     : "How OurGrid works for your home";
 
+  // --- ANIMATION CONFIGURATION ---
+  // This makes the text/images slide up gently (y: 20) and fade in
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
     <div className="bg-[#F9F5F2] text-[#4F2E39]">
       {/* TOP STRIP */}
       <section className="bg-[#4F2E39] text-[#F9F5F2] rounded-b-2xl min-h-[240px] md:min-h-[280px]">
-        <div className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-6 items-center">
+        {/* Animated Header Content */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="max-w-md mx-auto py-14 pt-12 flex flex-col gap-6 items-center"
+        >
           {/* Cog icon */}
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#3A1D27] flex items-center justify-center">
             <Cog className="w-10 h-10 md:w-12 md:h-12 text-[#D96532]" strokeWidth={2.4} />
@@ -52,7 +70,7 @@ export default function HowOurGridWorks() {
           <h1 className="text-2xl md:text-4xl font-extrabold">
             How <span className="text-[#01AC51]">OurGrid</span> Works
           </h1>
-        </div>
+        </motion.div>
       </section>
 
       {/* STEPS CONTAINER */}
@@ -60,52 +78,69 @@ export default function HowOurGridWorks() {
       {/* STEP 1 */}
       <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pb-4 -mt-10 md:-mt-10 relative z-60 md:z-10 md:min-h-[500px]">
         {/* MOBILE LAYOUT */}
-        <div className="px-5 pt-6 pb-5 space-y-4 md:hidden">
-          {/* Step number */}
-          <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-            1
-          </div>
-
-          {/* Title */}
-          <h2 className="text-2xl font-semibold text-center">
-            Plug your energy dongle
-          </h2>
-
-          {/* Grey circle */}
+        <div className="px-5 pt-6 pb-5 space-y-4 md:hidden relative">
+          
+          {/* Grey circle - STATIC (Outside animation so it doesn't jump) */}
           <div className="absolute top-40 -right-12 w-72 h-72 rounded-full bg-[#E0D7D7]" />
 
-          {/* Image */}
-          <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-[3px] border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center">
-            <img
-              src={dongle}
-              alt="Energy dongle illustration"
-              className="w-full h-60 object-cover"
-            />
-          </div>
+          {/* Animated Content */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            className="relative z-10 space-y-4"
+          >
+            {/* Step number */}
+            <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+              1
+            </div>
 
-          {/* Power brick */}
-          <div className="relative left-[132px] top-[-30px] mb-0">
-            <img
-              src={powerBrick}
-              alt="Power brick Illustration"
-              className="w-25 h-auto"
-            />
-          </div>
+            {/* Title */}
+            <h2 className="text-2xl font-semibold text-center">
+              Plug your energy dongle
+            </h2>
 
-          {/* Description */}
-          <p className="text-lg leading-relaxed text-center relative z-10">
-            Start by connecting your device to your home energy meter.
-            This allows it to track your real-time energy usage. Once connected,
-            link the device to your Wi-Fi network to sync your data securely.
-          </p>
+            {/* Image */}
+            <div className="relative z-10 mt-2 rounded-xl overflow-hidden border-[3px] border-[#4F2E39]/60 bg-[#F9F5F2] flex items-center justify-center">
+              <img
+                src={dongle}
+                alt="Energy dongle illustration"
+                className="w-full h-60 object-cover"
+              />
+            </div>
+
+            {/* Power brick */}
+            <div className="relative left-[132px] top-[-30px] mb-0">
+              <img
+                src={powerBrick}
+                alt="Power brick Illustration"
+                className="w-25 h-auto"
+              />
+            </div>
+
+            {/* Description */}
+            <p className="text-lg leading-relaxed text-center relative z-10">
+              Start by connecting your device to your home energy meter.
+              This allows it to track your real-time energy usage. Once connected,
+              link the device to your Wi-Fi network to sync your data securely.
+            </p>
+          </motion.div>
         </div>
 
         {/* DESKTOP LAYOUT */}
-        <div className="hidden md:block md:px-10 md:py-10">
-          {/* grey circle behind image */}
+        <div className="hidden md:block md:px-10 md:py-10 relative">
+          {/* grey circle behind image - STATIC */}
           <div className="absolute right-55 bottom-30 w-230 h-76 rounded-full bg-[#E0D7D7] rotate-[-35deg]" />
 
-          <div className="flex items-center gap-10 relative z-10">
+          {/* Animated Desktop Content */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            className="flex items-center gap-10 relative z-10"
+          >
             {/* step + text */}
             <div className="flex-1 relative z-10 pb-8">
               <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
@@ -150,7 +185,7 @@ export default function HowOurGridWorks() {
 
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -159,41 +194,55 @@ export default function HowOurGridWorks() {
           {/* STEP 2 */}
           <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-7 pb-4 -mt-13 md:-mt-36 relative z-50 md:z-20">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-14 pb-5 space-y-4 md:hidden">
-              {/* Step number */}
-              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
-                2
-              </div>
-
-              {/* Title */}
-              <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
-
-              {/* Soft background circle */}
+            <div className="px-5 pt-14 pb-5 space-y-4 md:hidden relative">
+              {/* Soft background circle - STATIC */}
               <div className="absolute top-64 -right-8 w-60 h-70 rounded-full bg-[#F4B14A]/6 "></div>
 
-              {/* Phone with fade */}
-              <div className="relative w-fit mx-auto">
-                <img
-                  src={RegisterPage}
-                  alt="OurGrid login screen"
-                  className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"
-                />
-                <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
-              </div>
+              {/* Animated Content */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+              >
+                {/* Step number */}
+                <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
+                  2
+                </div>
 
-              <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
-                After that by opening the OurGrid app and signing in, new users can register
-                in just a few steps - no technical setup needed. Once logged in, you'll be
-                connected to your city's local energy network.
-              </p>
+                {/* Title */}
+                <h2 className="text-2xl font-semibold text-center">Sign in or register</h2>
+
+                {/* Phone with fade */}
+                <div className="relative w-fit mx-auto mt-4">
+                  <img
+                    src={RegisterPage}
+                    alt="OurGrid login screen"
+                    className="w-36 h-72 object-cover rounded-2xl border-[1px] border-[#F4B14A]"
+                  />
+                  <div className="absolute -bottom-1 left-0 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
+                </div>
+
+                <p className="text-lg leading-relaxed text-center mt-3 text-[#F9F5F2]/90">
+                  After that by opening the OurGrid app and signing in, new users can register
+                  in just a few steps - no technical setup needed. Once logged in, you'll be
+                  connected to your city's local energy network.
+                </p>
+              </motion.div>
             </div>
 
             {/* DESKTOP LAYOUT */}
             <div className="hidden md:block md:px-10 md:py-10 relative">
-              {/* soft circle on the right */}
+              {/* soft circle on the right - STATIC */}
               <div className="absolute top-20 right-101 w-72 h-170 rounded-full bg-[#F4B14A]/10 rotate-[-55deg]"/>
 
-              <div className="relative flex items-center">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="relative flex items-center"
+              >
                 {/*title + text */}
                 <div className="flex-1 space-y-6 pb-20">
                   <div className="flex items-center gap-4">
@@ -217,14 +266,20 @@ export default function HowOurGridWorks() {
                     className="w-50 h-90 object-cover rounded-2xl border-[1px] border-[#F4B14A]"/>
                   <div className="absolute -bottom-1 left-6 w-full h-40 bg-gradient-to-b from-transparent via-[#4F2E39]/80 to-[#4F2E39]"></div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* STEP 3 */}
           <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] md:rounded-4xl overflow-hidden pb-10 pt-7 -mt-19 md:-mt-13 relative z-40">
             {/* MOBILE VERSION */}
-            <div className="px-5 pt-12 space-y-4 md:hidden">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+              className="px-5 pt-12 space-y-4 md:hidden"
+            >
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
                 3
               </div>
@@ -270,10 +325,16 @@ export default function HowOurGridWorks() {
                   Join the challenge by keeping your usage below the target limit - every minute counts toward points.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* DESKTOP VERSION */}
-            <div className="hidden md:flex flex-col px-10 pt-6 pb-12 gap-10">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeInUp}
+              className="hidden md:flex flex-col px-10 pt-6 pb-12 gap-10"
+            >
               {/* Step + heading on top */}
               <div className="flex flex-row items-center gap-4">
                 <div className="w-16 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
@@ -328,7 +389,7 @@ export default function HowOurGridWorks() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -337,7 +398,13 @@ export default function HowOurGridWorks() {
           {/* STEP 4 */}
           <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pt-7 -mt-13 md:-mt-55 relative z-30">
             {/* MOBILE LAYOUT – unchanged */}
-            <div className="px-5 pt-14 pb-5 space-y-4 md:hidden">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+              className="px-5 pt-14 pb-5 space-y-4 md:hidden"
+            >
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 4
               </div>
@@ -421,10 +488,16 @@ export default function HowOurGridWorks() {
                   faster.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* DESKTOP LAYOUT */}
-            <div className="hidden md:flex md:flex-col md:px-10 md:py-8 md:space-y-10 relative">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeInUp}
+              className="hidden md:flex md:flex-col md:px-10 md:py-8 md:space-y-10 relative"
+            >
               {/* STEP + TITLE*/}
               <div className="flex items-center justify-left gap-6 w-full">
                 <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -449,55 +522,113 @@ export default function HowOurGridWorks() {
                     className="absolute -bottom-30 right-36 w-52 opacity-70 object-contain transform scale-x-[-1] "
                   />
 
-                  <ul className="space-y-4 pl-6">
-                    {/* ITEM 1 */}
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-                      <span className="relative inline-block px-3 py-1">
-                        <span className="relative z-10 text-xl leading-relaxed">
-                          Delay charging your EV
-                        </span>
-                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
-                      </span>
-                    </li>
+                 <ul className="space-y-4 pl-6">
+  {/* ITEM 1 */}
+  <li className="flex items-start gap-3">
+    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+    <span className="relative inline-block px-3 py-1">
+      <span className="relative z-10 text-xl leading-relaxed">
+        Delay charging your EV
+      </span>
+      {/* Bottom Corner - Draws from Right */}
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }} 
+        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
+      />
+      {/* Top Corner - Draws from Right */}
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }} 
+        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+    </span>
+  </li>
 
-                    {/* ITEM 2 */}
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-                      <span className="relative inline-block px-3 py-1">
-                        <span className="relative z-10 text-xl leading-relaxed">
-                          Lower heating
-                        </span>
-                        <span className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
-                      </span>
-                    </li>
+  {/* ITEM 2 */}
+  <li className="flex items-start gap-3">
+    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+    <span className="relative inline-block px-3 py-1">
+      <span className="relative z-10 text-xl leading-relaxed">
+        Lower heating
+      </span>
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute inset-y-0 right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
+      />
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+    </span>
+  </li>
 
-                    {/* ITEM 3 */}
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-                      <span className="relative inline-block px-3 py-1">
-                        <span className="relative z-10 text-xl leading-relaxed">
-                          Discharge your battery
-                        </span>
-                        <span className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
-                      </span>
-                    </li>
+  {/* ITEM 3 */}
+  <li className="flex items-start gap-3">
+    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+    <span className="relative inline-block px-3 py-1">
+      <span className="relative z-10 text-xl leading-relaxed">
+        Discharge your battery
+      </span>
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute inset-y-0 right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
+      />
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.9, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+    </span>
+  </li>
 
-                    {/* ITEM 4 */}
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-                      <span className="relative inline-block px-3 py-1">
-                        <span className="relative z-10 text-xl leading-relaxed">
-                          Postpone laundry
-                        </span>
-                        <span className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" />
-                        <span className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" />
-                      </span>
-                    </li>
-                  </ul>
+  {/* ITEM 4 */}
+  <li className="flex items-start gap-3">
+    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+    <span className="relative inline-block px-3 py-1">
+      <span className="relative z-10 text-xl leading-relaxed">
+        Postpone laundry
+      </span>
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.1, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute inset-y-0 right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0" 
+      />
+      <motion.span 
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.2, duration: 0.5, ease: "circOut" }}
+        style={{ transformOrigin: "right" }}
+        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0" 
+      />
+    </span>
+  </li>
+</ul>
                 </div>
 
                 <p className="text-xl pl-8 leading-relaxed">
@@ -517,125 +648,198 @@ export default function HowOurGridWorks() {
                 </div>
               </div>
             </div>
-
-            </div>
+            </motion.div>
           </div>
 
           {/* STEP 5 */}
           <div className="bg-white rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-2 -mt-16 md:-mt-15 relative z-20 md:z-40">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-14 pb-6 space-y-5 md:hidden">
-              {/* Step number */}
-              <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-                5
-              </div>
+            <div className="px-5 pt-14 pb-6 space-y-5 md:hidden relative">
+              {/* STATIC GREY CIRCLE: Moved OUTSIDE motion.div so it stays static */}
+              <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
 
-              {/* Title */}
-              <h2 className="text-2xl font-semibold text-center">
-                Track your progress
-              </h2>
-
-              <div className="relative mt-4">
-                {/* GREY CIRCLE */}
-                <div className="absolute -left-20 top-13 w-64 h-120 rounded-full bg-[#E0D7D7] -z-0" />
-
-                {/* CONTENT ON TOP */}
-                <div className="relative z-10 flex flex-col gap-4">
-                  {/* Phone */}
-                  <div className="flex justify-center">
-                    <img
-                      src={yourConsumption}
-                      alt="Your consumption and trophies"
-                      className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"
-                    />
-                  </div>
-
-                  {/* Explanation */}
-                  <p className="text-smdleading-relaxed text-left pt-4">
-                    You can see your daily consumption and how it compares to the predicted
-                    grid load. Below that, your trophies show:
-                  </p>
-
-                  {/* Green pill stats */}
-                  <div className="space-y-2 mt-1 -mx-5">
-                    <div className="w-10/12 bg-[#01AC51] rounded-r-full text-white text-ms font-semibold px-4 py-1.5 text-left shadow-sm">
-                      • Total points earned
-                    </div>
-                    <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
-                      • Completed challenges
-                    </div>
-                    <div className="w-8/11 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
-                      • Peaks avoided
-                    </div>
-                    <div className="w-9/11 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm">
-                      • Expected earnings
-                    </div>
-                  </div>
-
-                  {/* Closing line */}
-                  <p className="text-md leading-relaxed text-left">
-                    The more you participate, the more rewards you collect.
-                  </p>
+              {/* Animated Content */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+                className="relative z-10"
+              >
+                {/* Step number */}
+                <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                  5
                 </div>
-              </div>
+
+                {/* Title */}
+                <h2 className="text-2xl font-semibold text-center mt-4">
+                  Track your progress
+                </h2>
+
+                {/* Phone */}
+                <div className="flex justify-center mt-4">
+                  <img
+                    src={yourConsumption}
+                    alt="Your consumption and trophies"
+                    className="w-40 rounded-2xl border border-[#4F2E39]/60 shadow-md"
+                  />
+                </div>
+
+                {/* Explanation */}
+                <p className="text-smdleading-relaxed text-left pt-4">
+                  You can see your daily consumption and how it compares to the predicted
+                  grid load. Below that, your trophies show:
+                </p>
+
+                {/* Green pill stats */}
+                {/* Green pill stats - MOBILE ANIMATION */}
+<div className="space-y-2 mt-1 -mx-5 overflow-hidden rounded-r-full">
+  
+  {/* Bar 1: Total points (was w-10/12 -> ~83.3%) */}
+  <motion.div 
+    initial={{ width: 0 }} 
+    whileInView={{ width: "83.3%" }} 
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+    className="bg-[#01AC51] rounded-r-full text-white text-ms font-semibold px-4 py-1.5 text-left shadow-sm whitespace-nowrap"
+  >
+    • Total points earned
+  </motion.div>
+
+  {/* Bar 2: Completed challenges (was w-11/12 -> ~91.6%) */}
+  <motion.div 
+    initial={{ width: 0 }} 
+    whileInView={{ width: "91.6%" }} 
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+    className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm whitespace-nowrap"
+  >
+    • Completed challenges
+  </motion.div>
+
+  {/* Bar 3: Peaks avoided (was w-8/11 -> ~72.7%) */}
+  <motion.div 
+    initial={{ width: 0 }} 
+    whileInView={{ width: "72.7%" }} 
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+    className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm whitespace-nowrap"
+  >
+    • Peaks avoided
+  </motion.div>
+
+  {/* Bar 4: Expected earnings (was w-9/11 -> ~81.8%) */}
+  <motion.div 
+    initial={{ width: 0 }} 
+    whileInView={{ width: "81.8%" }} 
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+    className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-1.5 text-left shadow-sm whitespace-nowrap"
+  >
+    • Expected earnings
+  </motion.div>
+</div>
+
+                {/* Closing line */}
+                <p className="text-md leading-relaxed text-left">
+                  The more you participate, the more rewards you collect.
+                </p>
+              </motion.div>
             </div>
 
             {/* DESKTOP LAYOUT */}
-            <div className="hidden md:block md:pt-10 md:pb-16">
-              <div className="relative">
-                {/* GREY CIRCLE BEHIND CONTENT */}
-                <div className="absolute -left-32 top-24 w-80 h-100 rounded-full bg-[#E0D7D7] -z-0" />
+            <div className="hidden md:block md:pt-10 md:pb-16 relative">
+              {/* STATIC GREY CIRCLE BEHIND CONTENT */}
+              <div className="absolute -left-32 top-24 w-80 h-100 rounded-full bg-[#E0D7D7] -z-0" />
 
-                <div className="relative z-10 space-y-10">
-                  {/* STEP + TITLE */}
-                  <div className="flex items-center px-10 gap-4">
-                    <div className="w-14 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
-                      5
-                    </div>
-                    <h2 className="text-3xl font-semibold">
-                      Track your progress
-                    </h2>
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeInUp}
+                className="relative z-10 space-y-10"
+              >
+                {/* STEP + TITLE */}
+                <div className="flex items-center px-10 gap-4">
+                  <div className="w-14 h-14 rounded-full border-2 border-[#4F2E39] flex items-center justify-center text-2xl font-bold">
+                    5
+                  </div>
+                  <h2 className="text-3xl font-semibold">
+                    Track your progress
+                  </h2>
+                </div>
+
+                {/* TEXT LEFT - PHONE RIGHT */}
+                <div className="flex items-start gap-10">
+                  {/* LEFT: TEXT + BARS */}
+                  <div className="flex-1 space-y-5 text-left">
+                    <p className="text-xl leading-relaxed px-10">
+                      You can see your daily consumption and how it compares to the
+                      predicted grid load. Below that, your trophies show:
+                    </p>
+
+                   {/* Green pill stats - DESKTOP ANIMATION */}
+<div className="space-y-3 overflow-hidden rounded-r-full py-2">
+  
+  {/* Bar 1 */}
+  <motion.div 
+     initial={{ width: 0 }} 
+     whileInView={{ width: "80%" }} // w-11/12
+     viewport={{ once: true }}
+     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+     className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm whitespace-nowrap"
+  >
+    <div className="px-10"> • Total points earned</div>
+  </motion.div>
+
+  {/* Bar 2 */}
+  <motion.div 
+     initial={{ width: 0 }} 
+     whileInView={{ width: "94%" }} // w-full
+     viewport={{ once: true }}
+     transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+     className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm whitespace-nowrap"
+  >
+    <div className="px-10"> • Completed challenges</div>
+  </motion.div>
+  
+  {/* Bar 3 */}
+  <motion.div 
+     initial={{ width: 0 }} 
+     whileInView={{ width: "70%" }} // w-9/12
+     viewport={{ once: true }}
+     transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+     className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm whitespace-nowrap"
+  >
+    <div className="px-10">• Peaks avoided</div>
+  </motion.div>
+
+  {/* Bar 4 */}
+  <motion.div 
+     initial={{ width: 0 }} 
+     whileInView={{ width: "85%" }} // w-17/20
+     viewport={{ once: true }}
+     transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+     className="bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm whitespace-nowrap"
+  >
+    <div className="px-10"> • Expected earnings</div>
+  </motion.div>
+</div>
+
+                    <p className="text-xl px-10 leading-relaxed">
+                      The more you participate, the more rewards you collect.
+                    </p>
                   </div>
 
-                  {/* TEXT LEFT - PHONE RIGHT */}
-                  <div className="flex items-start gap-10">
-                    {/* LEFT: TEXT + BARS */}
-                    <div className="flex-1 space-y-5 text-left">
-                      <p className="text-xl leading-relaxed px-10">
-                        You can see your daily consumption and how it compares to the
-                        predicted grid load. Below that, your trophies show:
-                      </p>
-
-                      <div className="space-y-3">
-                        <div className="w-11/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
-                          <div className="px-10"> • Total points earned</div>
-                        </div>
-                        <div className="w-full bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
-                          <div className="px-10"> • Completed challenges</div>
-                        </div>
-                        <div className="w-9/12 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
-                          <div className="px-10">• Peaks avoided</div>
-                        </div>
-                        <div className="w-17/20 bg-[#01AC51] rounded-r-full text-white text-md font-semibold px-4 py-2 shadow-sm">
-                          <div className="px-10"> • Expected earnings</div>
-                        </div>
-                      </div>
-
-                      <p className="text-xl px-10 leading-relaxed">
-                        The more you participate, the more rewards you collect.
-                      </p>
-                    </div>
-
-                    {/* RIGHT: PHONE */}
-                    <div className="flex-1 flex justify-center">
-                      <img
-                        src={yourConsumption}
-                        alt="Your consumption and trophies"
-                        className="w-56 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
-                    </div>
+                  {/* RIGHT: PHONE */}
+                  <div className="flex-1 flex justify-center">
+                    <img
+                      src={yourConsumption}
+                      alt="Your consumption and trophies"
+                      className="w-56 rounded-2xl border border-[#4F2E39]/60 shadow-md"/>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -644,7 +848,13 @@ export default function HowOurGridWorks() {
           {/* STEP 6 */}
           <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] overflow-hidden pt-4 -mt-14 md:-mt-40 relative z-10 md:z-30">
             {/* MOBILE LAYOUT */}
-            <div className="px-5 pt-16 pb-8 space-y-4 md:hidden">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+              className="px-5 pt-16 pb-8 space-y-4 md:hidden"
+            >
               {/* Step number */}
               <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
                 6
@@ -691,10 +901,16 @@ export default function HowOurGridWorks() {
                   automatically during congestion moments.
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* DESKTOP LAYOUT */}
-            <div className="hidden md:flex md:flex-col md:gap-10 md:px-10 md:py-6">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeInUp}
+              className="hidden md:flex md:flex-col md:gap-10 md:px-10 md:py-6"
+            >
               {/* Step + heading in one row */}
               <div className="flex items-center justify-left gap-6">
                 <div className="w-14 h-14 rounded-full border-2 border-[#F9F5F2] flex items-center justify-center text-2xl font-bold">
@@ -722,7 +938,7 @@ export default function HowOurGridWorks() {
                       </div>
                     </div>
 
-                    {/* cables under phone */}
+                    {/* cables under phone - INSIDE the Animated container so they move WITH the phone */}
                     <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[220px]">
                       <img
                         src={cable2}
@@ -771,14 +987,20 @@ export default function HowOurGridWorks() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CONTINUE TO APP */}
       <section className="mx-auto -mt-6 md:-mt-6 relative">
-        <div className="bg-white pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          className="bg-white pt-13 md:pt-8 pb-8 shadow-md border-2 border-[#F4B14A] p-5"
+        >
           <div className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-8 md:pt-6">
             {/* TEXT + HAND IMAGE */}
             <div className="flex items-center gap-3 flex-1 justify-center md:justify-start md:pl-16 lg:pl-20">
@@ -799,7 +1021,8 @@ export default function HowOurGridWorks() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
+        
         {/* OVERLAY */}
         {showOverlay && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[999]" onClick={() => setShowOverlay(false)}>
