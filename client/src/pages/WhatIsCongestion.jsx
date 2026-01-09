@@ -2,7 +2,7 @@ import { useAudience } from "../context/AudienceContext.jsx";
 import backgroundImage from "../assets/electricity_poles.png";
 import LightBulb from "../assets/light-bulb.png";
 import mainPage from "../assets/mainPage.jpg";
-import devicesPage from "../assets/devicesPage.jpg";
+import devicesPage from "../assets/DevicesPage.jpg";
 
 import { House } from "lucide-react";
 import { BanknoteArrowUp } from "lucide-react";
