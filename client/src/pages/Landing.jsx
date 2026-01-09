@@ -19,13 +19,17 @@ export default function Landing() {
 
   // HERO TITLE CHANGES BASED ON AUDIENCE
   const heroTitle = isMunicipality
-    ? "OurGrid for Municipalities"
-    : "OurGrid for your neighborhood";
+    ? "Local grids are reaching limits"
+    : "Electricity peaks overload local grids";
 
   // HERO SUBTITLE BASED ON AUDIENCE
-  const heroSubtitle = isMunicipality
-    ? "Help your city reduce grid stress, support local energy co-ops, and give residents a clear, fair way to join in."
-    : "Help your neighborhood avoid grid stress and get money using our app";
+const heroSubtitle = isMunicipality ? (
+  "OurGrid helps reduce peak loads and protect capacity for future development."
+  ):
+  (
+  <>Shift energy use, reduce grid stress, and earn{" "} <span className="text-[#01AC51] font-semibold">money</span> as a reward. </>
+);
+
 
   // INTERSECTION OBSERVER THAT STARTS THE CIRCLE ANIMATION WHEN VISIBLE
   useEffect(() => {
@@ -78,14 +82,15 @@ export default function Landing() {
         {/* HERO TEXT CONTAINER */}
         <div className="relative z-10 flex items-center justify-center w-full h-full px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg">
               {heroTitle}
             </h1>
 
             {/* HERO SUBTITLE */}
-            <p className="mt-6 text-lg md:text-2xl text-[#F9F5F2]/90 drop-shadow-md max-w-2xl mx-auto">
-              {heroSubtitle}
-            </p>
+          <p className="mt-6 text-lg md:text-2xl text-[#F9F5F2]/90 drop-shadow-md max-w-2xl mx-auto">
+            {heroSubtitle}
+          </p>
+
           </div>
         </div>
       </section>
