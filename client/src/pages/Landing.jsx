@@ -222,12 +222,11 @@ const heroSubtitle = isMunicipality ? (
   <div className="max-w-6xl mx-auto px-4">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
 
-      {/* LEFT CARD – DOWNLOAD / START NOW */}
+      {/* LEFT CARD – DOWNLOAD / START NOW (Unchanged) */}
       <div className="h-full min-h-[340px] lg:min-h-[380px] rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-8 md:p-10 flex flex-col justify-between hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
         
         <div className="flex items-start gap-6 md:gap-8">
           {/* QR VISIBLE ON LG+ SCREENS */}
-          {/* ADDED mt-6 HERE FOR TOP PADDING EFFECT */}
           <div className="hidden lg:block mt-6 w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden border border-[#F4B14A]/30">
             <img
               src={QR}
@@ -240,7 +239,6 @@ const heroSubtitle = isMunicipality ? (
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#F4B14A]">
               Start now
             </h2>
-            {/* BIGGER TEXT */}
             <p className="mt-4 text-base md:text-lg lg:text-xl leading-relaxed text-[#F9F5F2]/90">
               Scan the QR or use the buttons below to download the app
               when OurGrid is available in your area.
@@ -277,65 +275,57 @@ const heroSubtitle = isMunicipality ? (
         </div>
       </div>
 
-      {/* RIGHT CARD – GRID CONGESTION CTA */}
-      <div className="group relative h-full min-h-[340px] lg:min-h-[380px] rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-8 md:p-10 overflow-hidden hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300">
+      {/* RIGHT CARD – MOBILE FIXED (Compact Height) */}
+      <div className="group relative h-full min-h-[280px] lg:min-h-[380px] rounded-3xl border-2 border-[#F4B14A] bg-[#4F2E39] shadow-lg p-6 sm:p-8 md:p-10 overflow-hidden hover:shadow-xl hover:shadow-[#F4B14A]/10 transition-shadow duration-300 flex flex-col justify-center gap-6 lg:gap-8">
         
         {/* DECORATIVE BACKGROUND BLUR */}
         <div className="absolute top-1/2 right-0 -translate-y-1/2 w-48 h-48 bg-[#01AC51]/20 blur-[60px] rounded-full pointer-events-none" />
 
-        {/* CHANGED LAYOUT TO FLEX-COL TO STACK HEADER ON TOP */}
-        <div className="relative z-10 flex flex-col h-full justify-between">
-          
-          {/* 1. HEADING SECTION (TOP) */}
-          <div className="w-full text-center md:text-left mb-6">
-            <h3 className="text-2xl md:text-3xl font-extrabold leading-tight">
+        {/* TOP: TEXT + ICON SIDE-BY-SIDE */}
+        <div className="relative z-10 flex flex-row items-center justify-between gap-4">
+          <div className="flex-1">
+            <h3 className="text-xl sm:text-2xl md:text-4xl font-extrabold leading-tight">
               Are you curious what <span className="text-[#01AC51]">grid congestion</span> is?
             </h3>
           </div>
-
-          {/* 2. BUTTON & IMAGE SECTION (BOTTOM) */}
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-6 w-full">
-            
-            {/* BUTTON */}
-            <div className="flex-shrink-0">
-               <a
-                href={
-                  isMunicipality
-                    ? "/m/what-is-grid-congestion"
-                    : "/u/what-is-grid-congestion"
-                }
-                className="
-                  inline-flex items-center justify-center
-                  px-8 py-3
-                  rounded-full
-                  bg-[#01AC51]
-                  text-white font-bold
-                  text-lg
-                  shadow-lg shadow-[#01AC51]/30
-                  transform transition-all duration-300
-                  hover:bg-[#019245] hover:scale-105 hover:shadow-xl
-                  active:scale-95
-                "
-              >
-                Learn More
-              </a>
-            </div>
-
-            {/* LARGE IMAGE */}
-            <div className="flex-shrink-0">
-              <img
-                src={Question}
-                alt="Question mark"
-                className="
-                  w-32 md:w-40 lg:w-48 
-                  object-contain drop-shadow-2xl 
-                  transition-transform duration-500 
-                  group-hover:rotate-12 group-hover:scale-110
-                "
-              />
-            </div>
-          </div>
           
+          <div className="flex-shrink-0">
+             <img
+              src={Question}
+              alt="Question mark"
+              className="
+                w-16 sm:w-20 md:w-32 lg:w-36 
+                object-contain drop-shadow-2xl 
+                transition-transform duration-500 
+                group-hover:rotate-12 group-hover:scale-110
+              "
+            />
+          </div>
+        </div>
+
+        {/* BOTTOM: BUTTON */}
+        <div className="relative z-10 w-full">
+           <a
+            href={
+              isMunicipality
+                ? "/m/what-is-grid-congestion"
+                : "/u/what-is-grid-congestion"
+            }
+            className="
+              w-full flex items-center justify-center
+              py-3.5 px-6
+              rounded-2xl
+              bg-[#01AC51]
+              text-white font-bold
+              text-lg md:text-xl
+              shadow-lg shadow-[#01AC51]/30
+              transform transition-all duration-300
+              hover:bg-[#019245] hover:scale-[1.02] hover:shadow-xl
+              active:scale-[0.98]
+            "
+          >
+            Learn More
+          </a>
         </div>
       </div>
 
