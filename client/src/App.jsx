@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AudienceProvider } from "./context/AudienceContext.jsx";
 
+import ScrollToTop from "./components/ScrollToTop.jsx";
+
 import AudienceChoice from "./pages/AudienceChoice.jsx";
 import CityChoice from "./pages/CityChoice.jsx";
 import Layout from "./components/Layout.jsx";
@@ -11,11 +13,11 @@ import Dashboards from "./pages/Dashboard.jsx";
 import Privacy from "./pages/Privacy_policy.jsx";
 import Landing from "./pages/Landing.jsx";
 
-
 export default function App() {
   return (
     <AudienceProvider>
       <BrowserRouter>
+         <ScrollToTop />
         <Routes>
           {/* Step 1: choose audience */}
           <Route path="/" element={<AudienceChoice />} />

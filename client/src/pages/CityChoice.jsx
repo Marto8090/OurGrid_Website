@@ -121,9 +121,9 @@ export default function CityChoice() {
                     setShowResults(false);
                   }}
                   className="
-                    absolute right-8 top-8.5 -translate-y-1/2
+                    absolute right-8 top-6 md:top-8.5 -translate-y-1/2
                     text-[#4F2E39]/50 hover:text-red-500
-                    text-2xl font-bold transition-colors
+                     text-xl md:text-2xl font-bold transition-colors
                   "
                   aria-label="Clear city selection"
                 >

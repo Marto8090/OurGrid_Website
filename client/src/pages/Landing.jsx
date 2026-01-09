@@ -318,7 +318,7 @@ const heroSubtitle = isMunicipality ? (
               bg-[#01AC51]
               text-white font-bold
               text-lg md:text-xl
-              shadow-lg shadow-[#01AC51]/30
+              shadow-lg 
               transform transition-all duration-300
               hover:bg-[#019245] hover:scale-[1.02] hover:shadow-xl
               active:scale-[0.98]
