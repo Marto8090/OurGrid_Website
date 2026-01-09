@@ -3,7 +3,7 @@ import RegisterPage from "../assets/RegisterPage.jpg";
 import PeakCongestion from "../assets/PeakCongestion.jpg";
 import ChallengePopUp from "../assets/ChallengePopUp.jpg";
 import TipsActions from "../assets/Tips_Actions.jpg";
-import dongle from "../assets/dongle.png";
+import dongle from "../assets/Dongle.png";
 import powerBrick from "../assets/power brick.png";
 import energyCables from "../assets/energyCables.png";
 import yourConsumption from "../assets/YourConsumption.jpg"; 
