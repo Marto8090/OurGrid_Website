@@ -12,7 +12,7 @@ import cable2 from "../assets/cable2.png";
 import hand from "../assets/handHoldingPhone.png"; 
 import PlayStore1 from "../assets/PlayStore1.png";
 import AppStore from "../assets/AppStore.png";
-import devicesPage2 from "../assets/devicesPage2.jpeg";
+import devicesPage2 from "../assets/DevicesPage2.jpeg";
 import { motion } from "framer-motion";
 import line from "../assets/line.png"
 import { Cog } from "lucide-react";
