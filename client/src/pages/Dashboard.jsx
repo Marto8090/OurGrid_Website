@@ -14,11 +14,12 @@ import MunicipalityMap from "../components/MunicipalityMap";
 export default function Dashboards() {
   const { audience } = useAudience();
 
+  // Config for the badge styles
   const chipConfig =
     audience === "municipality"
       ? {
           label: "Municipal insights",
-          bg: "#E6F0FA", // Slightly more solid for visibility
+          bg: "#E6F0FA",
           border: "#2C6EA4",
           text: "#1e4b70",
         }
@@ -47,16 +48,17 @@ export default function Dashboards() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8 sm:space-y-10">
         
         {/* HERO / HEADER */}
-        <header className="space-y-4 sm:space-y-5">
+        <header className="space-y-4">
           
-          {/* REMOVED THE PREVIOUS TOP BADGE HERE */}
-
-          <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-end md:justify-between">
-            <div className="space-y-2 sm:space-y-3">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D252C]">
+          {/* FLEX CONTAINER: Column on mobile, Row on Desktop */}
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            
+            {/* LEFT SIDE: Title & Description */}
+            <div className="space-y-3 md:max-w-2xl">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D252C] leading-tight">
                 See how a neighbourhood grid behaves
               </h1>
-              <p className="text-sm sm:text-base text-[#384450] max-w-2xl">
+              <p className="text-sm sm:text-base text-[#384450] leading-relaxed">
                 These dashboards use example data to explain{" "}
                 <span className="font-semibold">when</span> congestion happens,
                 <span className="font-semibold"> what drives it</span>, and{" "}
@@ -66,18 +68,25 @@ export default function Dashboards() {
               </p>
             </div>
 
-            {/* ENHANCED RIGHT SIDE INDICATOR WITH GREEN DOT */}
-            <div className="flex flex-wrap gap-2">
+            {/* RIGHT SIDE: Audience Indicator (Responsive) */}
+            <div className="flex-shrink-0">
               <span
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold tracking-wide cursor-default select-none border shadow-md transition-transform hover:scale-[1.02]"
+                className="
+                  inline-flex items-center gap-3 
+                  px-5 py-3 
+                  rounded-xl 
+                  text-sm font-bold tracking-wide 
+                  cursor-default select-none 
+                  border-2 shadow-md 
+                  transition-transform hover:scale-[1.02]
+                "
                 style={{
                   backgroundColor: chipConfig.bg,
                   borderColor: chipConfig.border,
                   color: chipConfig.text,
-                  borderWidth: "1.5px", // Thicker border for visibility
                 }}
               >
-                {/* THE GREEN DOT */}
+                {/* PULSING GREEN DOT */}
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#01AC51] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-[#01AC51]"></span>
@@ -86,6 +95,7 @@ export default function Dashboards() {
                 {chipConfig.label}
               </span>
             </div>
+
           </div>
         </header>
 
@@ -109,7 +119,7 @@ export default function Dashboards() {
         </section>
 
         {/* FOOTER NOTE */}
-        <footer className="pt-4 border-t border-white/60 text-[11px] sm:text-xs text-[#384450]">
+        <footer className="pt-6 border-t border-white/60 text-[11px] sm:text-xs text-[#384450]">
           <p>
             All charts on this page use static, illustrative data. In a live
             deployment, these visuals can be powered by real measurements from
