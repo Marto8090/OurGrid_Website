@@ -1070,7 +1070,7 @@ export default function HowOurGridWorks() {
         >
           <div className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-8 md:pt-6">
             {/* TEXT + HAND IMAGE */}
-            <div className="flex items-center gap-3 flex-1 justify-center md:justify-start md:pl-16 lg:pl-20">
+            <div className="flex items-center gap-3 flex-1 justify-center md:justify-start md:pl-16 lg:pl-50">
               <p className="font-semibold text-xl md:text-2xl">
                 Do you want a hands on experience?
               </p>
@@ -1078,7 +1078,7 @@ export default function HowOurGridWorks() {
             </div>
 
             {/* BUTTON OPENS OVERLAY */}
-            <div className="flex justify-center pt-4 md:justify-end w-full md:w-auto md:pr-16 lg:pr-20">
+            <div className="flex justify-center md:justify-end w-full md:w-auto md:pr-16 lg:pr-60">
               <button
                 onClick={() => setShowOverlay(true)}
                 className="inline-flex items-center justify-center px-8 pt md:px-10 lg:px-12 py-3 md:py-4

@@ -99,17 +99,37 @@ export default function CityChoice() {
                 onChange={(e) => {
                   setQuery(e.target.value);
                   setShowResults(true);
+                  setCity(""); // typing deselects previous city
                 }}
                 onFocus={() => setShowResults(true)}
                 placeholder="Search for your city"
                 className="
                   w-full bg-[#F9F5F2] text-[#4F2E39]
                   text-base md:text-lg lg:text-2xl font-semibold
-                  px-6 py-3.5 md:py-4 lg:py-5
+                  px-6 pr-14 py-3.5 md:py-4 lg:py-5
                   rounded-full shadow-lg outline-none
                   focus:ring-4 focus:ring-[#01AC51]/40
                 "
               />
+              {/* CLEAR (X) BUTTON */}
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCity("");
+                    setQuery("");
+                    setShowResults(false);
+                  }}
+                  className="
+                    absolute right-8 top-8.5 -translate-y-1/2
+                    text-[#4F2E39]/50 hover:text-red-500
+                    text-2xl font-bold transition-colors
+                  "
+                  aria-label="Clear city selection"
+                >
+                  x
+                </button>
+              )}
 
               {/* RESULTS OVERLAY */}
               {showResults && query && (
@@ -162,9 +182,23 @@ export default function CityChoice() {
 
             {/* STATUS TEXT */}
           <div className="max-w-xl mx-auto leading-relaxed">
-            <h3 className="text-2xl md:text-2xl md:pb-4 lg:text-3xl xl:text-4xl font-bold mb-6"> 
-                OurGrid is{" "} {!hasProject && ( <span className="text-red-500 font-extrabold">not </span> )} active here.
+            <h3 className="text-2xl md:text-2xl md:pb-4 lg:text-3xl xl:text-4xl font-bold mb-6">
+              {!hasCity ? (
+              <span className="font-extrabold"> City is not selected. </span>
+              ) : (
+                <>
+                  OurGrid is{" "}
+                  {!hasProject && (
+                    <span className="text-red-500 font-extrabold">not </span>
+                  )}
+                  <span className={ hasProject ? "text-[#01AC51] font-extrabold" : "" }>
+                    active
+                  </span>{" "}
+                  here.
+                </>
+              )}
             </h3>
+
             <p className="mb-6 text-md md:text-base lg:text-lg xl:text-xl text-[#F9F5F2]/90">
               Even if your city isn't part of an
               <span className="text-[#01AC51] font-semibold"> OurGrid </span>
