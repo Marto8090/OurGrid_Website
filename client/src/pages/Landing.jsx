@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useAudience } from "../context/AudienceContext.jsx";
 import PhoneImage from "../assets/OurGrid1.png";
-import BackgroundVideo from "../assets/background.h264";
+import BackgroundVideo from "../assets/background.mov";
 import QR from "../assets/QR.jpeg";
 import Question from "../assets/question.png";
 import { TrendingDown, Medal, Zap } from "lucide-react";
