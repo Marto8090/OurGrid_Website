@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useAudience } from "../context/AudienceContext.jsx";
 import backgroundImage from "../assets/electricity_poles.png";
 import LightBulb from "../assets/light-bulb.png";
@@ -21,6 +22,23 @@ export default function WhatIsCongestion() {
   const isMunicipality = audience === "municipality";
   const base = isMunicipality ? "/m" : "/u";
 
+  // Disable (scroll pop-up reveal) animation on mobile
+  const [disableRevealOnMobile, setDisableRevealOnMobile] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+
+    const onChange = (e) => setDisableRevealOnMobile(e.matches);
+
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  const MaybeReveal = ({ children, delay = 0 }) =>
+    disableRevealOnMobile ? <>{children}</> : <Reveal delay={delay}>{children}</Reveal>;
+
   const mainTitle = isMunicipality
     ? "How congestion affects local policy"
     : "What is Grid Congestion?";
@@ -29,9 +47,7 @@ export default function WhatIsCongestion() {
     ? "New housing and EV stations can't connect to the grid. Higher local energy costs and slower renewable rollout. Climate goals delayed by network limits. Reduced reliability in high-density areas."
     : "Grid congestion happens when too many people use electricity at the same time - for example, when everyone cooks, charges their car, and turns on heating in the evening.";
 
-  const whyTitle = isMunicipality
-    ? "Why does it matter for cities?"
-    : "Why does it happen?";
+  const whyTitle = isMunicipality ? "Why does it matter for cities?" : "Why does it happen?";
 
   const reasons = isMunicipality
     ? [
@@ -83,9 +99,7 @@ export default function WhatIsCongestion() {
                 const relY = (e.clientY - rect.top) / rect.height - 0.5;
                 const moveX = relX * 12;
                 const moveY = relY * 12;
-                e.currentTarget.style.backgroundPosition = `${50 + moveX}% ${
-                  50 + moveY
-                }%`;
+                e.currentTarget.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundPosition = "center";
@@ -94,9 +108,7 @@ export default function WhatIsCongestion() {
               <div className="absolute inset-0 bg-[#4F2E39]/60" />
 
               <div className="relative z-20 p-6 md:p-8 text-[#F9F5F2] space-y-4">
-                <h2 className="text-center text-2xl md:text-3xl font-bold">
-                  {mainTitle}
-                </h2>
+                <h2 className="text-center text-2xl md:text-3xl font-bold">{mainTitle}</h2>
                 <p className="text-center text-sm md:text-xl md:px-14 md:pt-12 text-[#F9F5F2]/90">
                   {mainParagraph}
                 </p>
@@ -117,9 +129,7 @@ export default function WhatIsCongestion() {
                 />
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">
-                {whyTitle}
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#01AC51] mb-3">{whyTitle}</h2>
 
               <div className="text-sm md:text-xl text-[#01AC51]">
                 <div className="flex flex-col divide-y divide-[#F4B14A]/60">
@@ -146,7 +156,6 @@ export default function WhatIsCongestion() {
           </div>
 
           {/* SECTION 3: WHY IS IT A PROBLEM */}
-          {/* SECTION 3: WHY IS IT A PROBLEM */}
           <div className="relative z-10 -mb-4 bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] rounded-b-2xl md:rounded-2xl shadow-md p-6 md:p-8 pt-14 md:pt-24 space-y-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div className="pointer-events-none absolute inset-0 flex justify-center -z-10">
               <motion.div
@@ -160,9 +169,7 @@ export default function WhatIsCongestion() {
               />
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-center">
-              Why is it a problem?
-            </h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-center">Why is it a problem?</h2>
 
             <div className="grid gap-4 md:grid-cols-2 md:py-6 text-sm md:text-base md:text-xl">
               <div className="space-y-5 md:flex md:flex-col md:items-center">
@@ -178,9 +185,7 @@ export default function WhatIsCongestion() {
                   >
                     <House />
                   </motion.span>
-                  <p className="flex-1 text-center">
-                    Harder to connect new homes or EV chargers.
-                  </p>
+                  <p className="flex-1 text-center">Harder to connect new homes or EV chargers.</p>
                 </div>
 
                 <div className="flex items-center gap-3 justify-start md:w-3/4 border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
@@ -195,9 +200,7 @@ export default function WhatIsCongestion() {
                   >
                     <BanknoteArrowUp />
                   </motion.span>
-                  <p className="flex-1 text-center">
-                    Higher electricity costs during peaks.
-                  </p>
+                  <p className="flex-1 text-center">Higher electricity costs during peaks.</p>
                 </div>
               </div>
 
@@ -214,9 +217,7 @@ export default function WhatIsCongestion() {
                   >
                     <Earth />
                   </motion.span>
-                  <p className="flex-1 text-center">
-                    More pressure on the environment.
-                  </p>
+                  <p className="flex-1 text-center">More pressure on the environment.</p>
                 </div>
 
                 <div className="flex items-center gap-3 justify-start md:w-3/4 border-2 border-dashed border-[#F4B14A]/40 rounded-full px-4 py-2">
@@ -231,16 +232,14 @@ export default function WhatIsCongestion() {
                   >
                     <TriangleAlert />
                   </motion.span>
-                  <p className="flex-1 text-center">
-                    Greater risk of local power outages.
-                  </p>
+                  <p className="flex-1 text-center">Greater risk of local power outages.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* SECTION 4: HOW CAN WE HELP (With Reveal) */}
-          <Reveal delay={0.3}>
+          {/* SECTION 4: HOW CAN WE HELP (Reveal disabled on mobile) */}
+          <MaybeReveal delay={0.3}>
             <div className="relative z-5 -mb-5 bg-white rounded-b-2xl md:rounded-2xl shadow-md border-2 border-[#F4B14A] p-6 md:p-8 pt-10 space-y-6 md:space-y-0 md:pt-16 md:pb-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
               <div className="pointer-events-none absolute inset-0 flex justify-center -z-10">
                 <motion.div
@@ -271,9 +270,7 @@ export default function WhatIsCongestion() {
                   >
                     <Clock10 />
                   </motion.span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Shift some use to quieter hours.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Shift some use to quieter hours.</p>
                 </div>
 
                 <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3">
@@ -288,9 +285,7 @@ export default function WhatIsCongestion() {
                   >
                     <History />
                   </motion.span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Delay EV charging or laundry.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Delay EV charging or laundry.</p>
                 </div>
 
                 <div className="flex items-center gap2 w-full md:w-auto bg-[#E9E2E0] border-2 border-dashed border-[#A49F9D]/40 rounded-full px-4 py-2 md:px-8 md:py-3 md:col-span-2 md:justify-self-center">
@@ -305,17 +300,14 @@ export default function WhatIsCongestion() {
                   >
                     <Handshake />
                   </motion.span>
-                  <p className="md:text-xl text-[#01AC51] ml-4">
-                    Small changes = big community impact.
-                  </p>
+                  <p className="md:text-xl text-[#01AC51] ml-4">Small changes = big community impact.</p>
                 </div>
               </div>
             </div>
-          </Reveal>
+          </MaybeReveal>
 
-          {/* SECTION 5: FROM PROBLEM TO SOLUTION (Static Images, No Glow, No Uplift) */}
-          {/* SECTION 5: FROM PROBLEM TO SOLUTION */}
-          <Reveal delay={0.4}>
+          {/* SECTION 5: FROM PROBLEM TO SOLUTION (Reveal disabled on mobile) */}
+          <MaybeReveal delay={0.4}>
             <div className="bg-[#4F2E39] text-[#F9F5F2] border-2 border-[#F4B14A] shadow-md p-6 pt-12 md:pt-16 md:pb-12 md:p-8">
               <div className="grid gap-6 md:gap-10 md:grid-cols-2 items-center">
                 {/* TEXT */}
@@ -326,45 +318,41 @@ export default function WhatIsCongestion() {
                     className="w-18 h-18 md:w-24 md:h-24 object-contain"
                   />
 
-                  <h2 className="text-2xl md:text-3xl font-bold">
-                    From problem to solution
-                  </h2>
+                  <h2 className="text-2xl md:text-3xl font-bold">From problem to solution</h2>
 
                   {isMunicipality ? (
                     <p className="text-base text-center md:text-lg text-[#F9F5F2]/90 max-w-md">
-                      Municipalities, co-ops, and residents can work together to
-                      reduce peak loads, avoid costly upgrades, and build more
-                      resilient local energy systems.
+                      Municipalities, co-ops, and residents can work together to reduce peak loads,
+                      avoid costly upgrades, and build more resilient local energy systems.
                     </p>
                   ) : (
                     <p className="text-base text-center md:text-xl max-w-md">
-                      <span className="font-semibold text-[#F4B14A]">
-                        OurGrid
-                      </span>{" "}
-                      helps you see when your grid is under stress and rewards
-                      you for helping balance it.
+                      <span className="font-semibold text-[#F4B14A]">OurGrid</span> helps you see
+                      when your grid is under stress and rewards you for helping balance it.
                     </p>
                   )}
 
-                  {/* BUTTON CONTAINER - Changed to w-fit so line matches button width */}
                   <div className="w-fit">
                     <a
                       href={`${base}/how-ourgrid-works`}
                       className="inline-flex items-center justify-center px-6 md:px-8 py-2.5 mt-2 md:mt-5 rounded-full bg-[#01AC51] text-white font-semibold text-sm md:text-lg shadow-md hover:bg-[#019245] transition-colors"
                     >
                       <span>See how</span>
-                      <span className="mx-1 font-semibold text-[#F4B14A]">
-                        OurGrid
-                      </span>
+                      <span className="mx-1 font-semibold text-[#F4B14A]">OurGrid</span>
                       <span>works</span>
                     </a>
-                    <motion.div
-                      className="h-[2px] bg-[#F4B14A] rounded-full mt-2"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8 }}
-                    />
+
+                    {disableRevealOnMobile ? (
+                      <div className="h-[2px] bg-[#F4B14A] rounded-full mt-2 w-full" />
+                    ) : (
+                      <motion.div
+                        className="h-[2px] bg-[#F4B14A] rounded-full mt-2"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -386,7 +374,7 @@ export default function WhatIsCongestion() {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </MaybeReveal>
         </div>
       </section>
     </div>

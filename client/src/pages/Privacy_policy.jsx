@@ -40,8 +40,8 @@ const PRIVACY_SECTIONS = [
     short: "The OurGrid website is public and does not require registration.",
     body: [
       "OurGrid's website is public and does not require registration.",
-      "We don’t collect or store personal information beyond basic, anonymous analytics used to improve accessibility and performance.",
-      "Only essential cookies are used – no tracking or marketing cookies.",
+      "We don't collect or store personal information beyond basic, anonymous analytics used to improve accessibility and performance.",
+      "Only essential cookies are used - no tracking or marketing cookies.",
     ],
   },
   {
@@ -65,7 +65,7 @@ const PRIVACY_SECTIONS = [
     short: "You can always ask to see, correct or delete your data.",
     body: [
       "You can request access to, correction, or deletion of your personal data at any time.",
-      "Contact your local project partner for help – details are provided inside the app and on the OurGrid website.",
+      "Contact your local project partner for help - details are provided inside the app and on the OurGrid website.",
     ],
   },
   {
@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
         <div className="absolute left-5 top-10 opacity-5 animate-pulse">
           <Shield size={150} strokeWidth={1} />
         </div>
-        <div className="absolute right-5 bottom-20 opacity-5 -scale-x-100 animate-pulse delay-1000">
+        <div className="absolute -right-10 bottom-55 opacity-5 -scale-x-100 animate-pulse delay-1000">
           <Lock size={200} strokeWidth={1} />
         </div>
       </div>
@@ -229,15 +229,16 @@ export default function PrivacyPolicy() {
 
         {/* === BOTTOM INFO === */}
         <div className="max-w-3xl mx-auto text-center border-t border-[#F9F5F2]/20 pt-10">
-            <h4 className="text-[#F4B14A] font-bold uppercase tracking-wide text-sm mb-3">
-                Still Curious?
-            </h4>
-            <p className="text-[#F9F5F2]/80 leading-relaxed">
-                If you have questions about this policy or want to exercise your
-                privacy rights, contact your local OurGrid project partner.
-                Their contact details are listed in the app and on the main
-                OurGrid website.
-            </p>
+          <h4 className="text-[#F4B14A] font-bold uppercase tracking-wide text-sm mb-3">
+            Still Curious?
+          </h4>
+          {/* font-bold makes it bold by default (mobile), md:font-normal drops it back on desktop */}
+          <p className="text-[#F9F5F2]/80 font-bold md:font-normal leading-relaxed">
+            If you have questions about this policy or want to exercise your
+            privacy rights, contact your local OurGrid project partner.
+            Their contact details are listed in the app and on the main
+            OurGrid website.
+          </p>
         </div>
 
       </div>
