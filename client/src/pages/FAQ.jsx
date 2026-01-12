@@ -202,10 +202,12 @@ export default function FAQ() {
       
       {/* === BACKGROUND DECORATION === */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-5 top-10 opacity-[0.03] animate-pulse text-[#4F2E39]">
+        {/* Changed opacity from 0.03 to 0.01 */}
+        <div className="absolute left-5 top-10 opacity-[0.01] animate-pulse text-[#4F2E39]">
           <Zap size={150} strokeWidth={1} />
         </div>
-        <div className="absolute right-5 bottom-20 opacity-[0.03] -scale-x-100 animate-pulse delay-1000 text-[#4F2E39]">
+        {/* Changed opacity from 0.03 to 0.01 */}
+        <div className="absolute right-5 bottom-20 opacity-[0.01] -scale-x-100 animate-pulse delay-1000 text-[#4F2E39]">
           <Zap size={200} strokeWidth={1} />
         </div>
       </div>
