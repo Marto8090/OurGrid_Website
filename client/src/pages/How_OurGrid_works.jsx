@@ -13,8 +13,8 @@ import hand from "../assets/handHoldingPhone.png";
 import PlayStore1 from "../assets/PlayStore1.png";
 import AppStore from "../assets/AppStore.png";
 import devicesPage2 from "../assets/DevicesPage2.jpeg";
-import { motion } from "framer-motion";
 import line from "../assets/line.png"
+import { motion } from "framer-motion";
 import { Cog } from "lucide-react";
 import { useState, useEffect } from "react";
 
