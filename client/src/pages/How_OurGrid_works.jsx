@@ -397,7 +397,8 @@ export default function HowOurGridWorks() {
         <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 ">
           {/* STEP 4 */}
           <div className="bg-[#4F2E39] text-[#F9F5F2] rounded-4xl shadow-md border-2 border-[#F4B14A] rounded-b-2xl md:rounded-4xl overflow-hidden pt-7 -mt-13 md:-mt-55 relative z-30">
-            {/* MOBILE LAYOUT – unchanged */}
+            
+            {/* MOBILE LAYOUT - FIXED ANIMATION */}
             <motion.div 
               initial="hidden"
               whileInView="visible"
@@ -416,7 +417,7 @@ export default function HowOurGridWorks() {
               <div className="relative w-fit mx-auto pt-4">
                 <img
                   src={TipsActions}
-                  alt="OurGrid login screen"
+                  alt="OurGrid tips screen"
                   className="w-48 h-70 object-cover rounded-2xl border-[1px] border-[#000000]"
                 />
                 <div className="absolute -bottom-1 left-0 w-full h-30 bg-gradient-to-b from-transparent via-[#4F2E39]/90 to-[#4F2E39]" />
@@ -430,133 +431,59 @@ export default function HowOurGridWorks() {
                 <div className="relative">
                   <img
                     src={energyCables}
-                    className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none"
+                    className="absolute -bottom-20 -right-8 w-40 opacity-80 object-contain pointer-events-none select-none z-0"
                   />
-                  <ul className="space-y-4">
-  {/* ITEM 1 */}
-  <li className="flex items-start gap-3 relative">
-    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-    <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-lg leading-relaxed">
-        Delay charging your EV
-      </span>
-      
-      {/* 1. TOP PART: Wipes Left -> Right */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 100% 0 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 0.2, duration: 0.7, ease: "linear" }}
-        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
+                  
+                  {/* MOBILE LIST: Exact Desktop Logic, adjusted for spacing */}
+                  {/* MOBILE LIST: w-fit ensures the bracket hugs the text, creating 'different sizes' for each item */}
+                  <ul className="space-y-6 relative z-10">
+                    {[
+                      "Delay charging your EV",
+                      "Lower heating",
+                      "Discharge your battery",
+                      "Postpone laundry"
+                    ].map((text, index) => (
+                      <li key={index} className="flex items-start gap-3 relative group">
+                        <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
+                        
+                        {/* FIX: 'w-fit' makes the container shrink to the text length. 'pr-7' adds space for the bracket. */}
+                        <span className="relative inline-block px-3 py-1 w-fit pr-7">
+                          <span className="relative z-10 text-lg leading-relaxed">
+                            {text}
+                          </span>
+                          
+                          {/* 1. TOP-RIGHT BRACKET */}
+                          <motion.span 
+                            initial={{ clipPath: "inset(0 100% 0 0)" }}
+                            whileInView={{ clipPath: "inset(0 0 0 0)" }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 + (index * 0.2), duration: 0.6, ease: "linear" }}
+                            // Increased width to w-2/5 for better visibility on short text
+                            className="absolute top-0 right-0 h-[17px] w-2/5 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0"
+                          />
 
-      {/* 2. BOTTOM PART: Wipes Top -> Bottom (Starts slightly before Top finishes) */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 0 100% 0)" }} 
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 0.8, duration: 0.7, ease: "linear" }} // 0.2 + 0.7 = 0.9 (start at 0.8 for smooth overlap)
-        className="absolute inset-y-0 top-[15px] right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-br-full -z-0" 
-        style={{ willChange: "clip-path" }}
-      />
-    </span>
-  </li>
-
-  {/* ITEM 2 */}
-  <li className="flex items-start gap-3 relative">
-    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-    <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-lg leading-relaxed">
-        Lower heating
-      </span>
-      {/* Top Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 100% 0 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 0.4, duration: 0.7, ease: "linear" }}
-        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-      {/* Bottom Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 0 100% 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 1.0, duration: 0.7, ease: "linear" }}
-        className="absolute inset-y-0 top-[15px] right-0 w-1/2 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-    </span>
-  </li>
-
-  {/* ITEM 3 */}
-  <li className="flex items-start gap-3 relative">
-    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-    <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-lg leading-relaxed">
-        Discharge your battery
-      </span>
-      {/* Top Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 100% 0 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 0.6, duration: 0.7, ease: "linear" }}
-        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-      {/* Bottom Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 0 100% 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 1.2, duration: 0.7, ease: "linear" }}
-        className="absolute inset-y-0 top-[15px] right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-    </span>
-  </li>
-
-  {/* ITEM 4 */}
-  <li className="flex items-start gap-3 relative">
-    <span className="text-[#F4B14A] text-xl leading-none mt-1">•</span>
-    <span className="relative inline-block px-3 py-1">
-      <span className="relative z-10 text-lg leading-relaxed">
-        Postpone laundry
-      </span>
-      {/* Top Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 100% 0 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 0.8, duration: 0.7, ease: "linear" }}
-        className="absolute top-0 right-0 h-[17px] w-1/3 border-t-2 border-r-2 border-[#F4B14A] rounded-tr-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-      {/* Bottom Part */}
-      <motion.span 
-        initial={{ clipPath: "inset(0 0 100% 0)" }}
-        whileInView={{ clipPath: "inset(0 0 0 0)" }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ delay: 1.4, duration: 0.7, ease: "linear" }}
-        className="absolute inset-y-0 top-[15px] right-0 w-2/3 border-b-2 border-r-2 border-[#F4B14A] rounded-r-full -z-0"
-        style={{ willChange: "clip-path" }} 
-      />
-    </span>
-  </li>
-</ul>
+                          {/* 2. BOTTOM-RIGHT BRACKET */}
+                          <motion.span 
+                            initial={{ clipPath: "circle(0% at 100% 0)" }} 
+                            whileInView={{ clipPath: "circle(200% at 100% 0)" }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.7 + (index * 0.2), duration: 0.8, ease: "linear" }}
+                            // Increased width to w-3/5 for better visibility on short text
+                            className="absolute inset-y-0 top-[15px] right-0 w-3/5 border-b-2 border-r-2 border-[#F4B14A] rounded-br-full -z-0"
+                          />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <p className="text-lg leading-relaxed">
-                  Each action shows how much power it saves and helps you reach your goal
-                  faster.
+                <p className="text-lg leading-relaxed pt-4">
+                  Each action shows how much power it saves and helps you reach your goal faster.
                 </p>
               </div>
             </motion.div>
 
-            {/* DESKTOP LAYOUT */}
+            {/* DESKTOP LAYOUT - UNCHANGED */}
             <motion.div 
               initial="hidden"
               whileInView="visible"
